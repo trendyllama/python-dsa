@@ -1,5 +1,5 @@
-from node import Node
-from linked_list import LinkedList
+from data_structures.node import Node
+from data_structures.linked_list import LinkedList
 
 class HashMap:
     def __init__(self, size):
