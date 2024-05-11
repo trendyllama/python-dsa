@@ -2,27 +2,30 @@ print("Once upon a time...")
 ######
 # TREENODE CLASS
 ######
+
+
 class TreeNode:
-  def __init__(self, story_piece):
-    self.story_piece = story_piece
-    self.choices = []
-    
-  def add_child(self, node):
-    self.choices.append(node)
-    
-  def traverse(self):
-    story_node = self
-    print(story_node.story_piece)
-    while story_node.choices != []:
-      choice = input("Enter 1 or 2 to continue the story: ")
-      if choice != "1" or "2":
-        print("Please choice 1 or 2!")
-        chosen_index = int(choice)
-        chosen_index -= 1
-        chosen_child = story_node.choices[chosen_index]
-        print(chosen_child.story_piece)
-        story_node = chosen_child
-    
+    def __init__(self, story_piece):
+        self.story_piece = story_piece
+        self.choices = []
+
+    def add_child(self, node):
+        self.choices.append(node)
+
+    def traverse(self):
+        story_node = self
+        print(story_node.story_piece)
+        while story_node.choices != []:
+            choice = input("Enter 1 or 2 to continue the story: ")
+            if choice != "1" or "2":
+                print("Please choice 1 or 2!")
+                chosen_index = int(choice)
+                chosen_index -= 1
+                chosen_child = story_node.choices[chosen_index]
+                print(chosen_child.story_piece)
+                story_node = chosen_child
+
+
 ######
 # VARIABLES FOR TREE
 ######
