@@ -1,5 +1,5 @@
-from algorithms.bubble_sort import bubble_sort
-from algorithms.elegant_quick_sort import quick_sort
+from bubble_sort import bubble_sort
+from elegant_quick_sort import quick_sort
 import time
 import random
 

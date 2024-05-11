@@ -1,5 +1,4 @@
-FROM python:12
+FROM python:3.12
 
 
-WORKDIR /python-dsa
 

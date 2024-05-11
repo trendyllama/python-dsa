@@ -57,6 +57,7 @@ def print_path(path):
   '''
     # If path is None, no path was found
     if path is None:
+
         print("No paths found!")
 
     # If a path was found, print path
