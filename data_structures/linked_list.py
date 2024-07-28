@@ -1,7 +1,21 @@
-from data_structures.node import Node
+
+class Node:
+    def __init__(self, value, link_node=None):
+        self.value = value
+        self.link_node = link_node
+
+    def set_next_node(self, link_node):
+        self.link_node = link_node
+
+    def get_next_node(self):
+        return self.link_node
+
+    def get_value(self):
+        return self.value
+
 
 class LinkedList:
-  def __init__(self, head_node=None):
+  def __init__(self, head_node: Node = None):
     self.head_node = head_node
   
   def insert(self, new_node):
