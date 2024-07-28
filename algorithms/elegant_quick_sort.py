@@ -12,7 +12,7 @@ def quick_sort(list_input: Iterable) -> Iterable:
     list_input = list(filter(lambda x: x != pivot, list_input))
 
     smaller = list(filter(lambda x: x < pivot, list_input))
-    larger = list(filter(lambda x: x >= pivot, list_input))
+    larger = list(filter(lambda x: x > pivot, list_input))
 
     return quick_sort(smaller) + [pivot] + quick_sort(larger)
 
@@ -24,4 +24,4 @@ print(RAND_LIST)
 print(quick_sort(RAND_LIST)) # weird that this removed duplicates
 
 print(sorted(RAND_LIST))
-# assert quick_sort(RAND_LIST) == sorted(RAND_LIST)
+assert quick_sort(RAND_LIST) == sorted(RAND_LIST)
