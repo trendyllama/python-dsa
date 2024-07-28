@@ -5,7 +5,7 @@
 def pattern_search(text: str, pattern: str) -> None:
 
     print("Input Text:", text, "Input Pattern:", pattern)
-    for index in range(len(text)):
+    for index, value in enumerate(text):
         print("Text Index:", index)
         match_count = 0
         for char, val in enumerate(pattern):

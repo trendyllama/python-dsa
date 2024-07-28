@@ -5,7 +5,7 @@ from data_structures.linked_list import LinkedList
 class HashMap:
     def __init__(self, size):
         self.array_size = size
-        self.array = [LinkedList() for i in range(self.array_size)]
+        self.array = [LinkedList() for _ in range(self.array_size)]
 
     def hash(self, key):
         hash_code = sum(key.encode())

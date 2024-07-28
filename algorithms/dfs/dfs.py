@@ -1,9 +1,14 @@
 from TreeNode import TreeNode, sample_root_node, print_tree
+from typing import (
+   Any,
+   Tuple,
+   Optional
+)
 
 print_tree(sample_root_node)
 
 
-def dfs(root: TreeNode, target, path=()):
+def dfs(root: TreeNode, target: Any, path: Tuple = ()) -> Optional[Tuple]:
   '''
   '''
     path = path + (root,)

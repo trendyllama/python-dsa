@@ -1,24 +1,26 @@
 from collections import deque
+from typing import (
+    Any
+)
 
 
 class TreeNode:
     def __init__(self, value):
         self.value = value  # data
-        self.children = []  # references to other nodes
+        self.children: list[Any] = []  # references to other nodes
 
     def __repr__(self):
         return self.value
 
-    def add_child(self, child_node):
+    def add_child(self, child_node_value):
         # creates parent-child relationship
-        print("Adding " + child_node.value)
-        self.children.append(child_node)
+        print("Adding " + child_node_value)
+        self.children.append(child_node_value)
 
-    def remove_child(self, child_node):
+    def remove_child(self, child_node_value):
         # removes parent-child relationship
-        print("Removing " + child_node.value + " from " + self.value)
-        self.children = [child for child in self.children
-                         if child is not child_node]
+        print("Removing " + child_node_value + " from " + self.value)
+        self.children = list(filter(lambda x: x != child_node_value, self.children))
 
     def traverse(self):
         # moves through each node referenced from self downwards
@@ -27,6 +29,12 @@ class TreeNode:
             current_node = nodes_to_visit.pop()
             print(current_node.value)
             nodes_to_visit += current_node.children
+    
+    def get_children(self):
+        return self.children
+    
+    def set_children(self, children):
+        self.children = children
 
 
 def print_tree(root: TreeNode):
