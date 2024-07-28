@@ -2,7 +2,8 @@
 '''
 
 
-def pattern_search(text, pattern):
+def pattern_search(text: str, pattern: str) -> None:
+
     print("Input Text:", text, "Input Pattern:", pattern)
     for index in range(len(text)):
         print("Text Index:", index)
@@ -17,9 +18,9 @@ def pattern_search(text, pattern):
             else:
                 break
         if match_count == len(pattern):
-            print("{} found at index {}".format(pattern, index))
+            print(f"{pattern} found at index {index}")
 
 
-text = "HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE"
-pattern = "NEEDLE"
-pattern_search(text, pattern)
+TEXT = "HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE"
+PATTERN = "NEEDLE"
+pattern_search(TEXT, PATTERN)
