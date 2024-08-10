@@ -1,30 +1,30 @@
-from typing import Optional, Any
+from typing import Optional, Any, Self
 
 
 class Node:
-    def __init__(self, value: Any, link_node = None):
-        self.value: Any = value
-        self.link_node: Optional[Node] = link_node
-
-    def set_next_node(self, link_node):
+    def __init__(self, value: Any, link_node: Optional[Self] = None):
+        self.value = value
         self.link_node = link_node
 
-    def get_next_node(self):
+    def set_next_node(self, link_node: Self) -> None:
+        self.link_node = link_node
+
+    def get_next_node(self) -> Optional[Self]:
         return self.link_node
 
-    def get_value(self):
+    def get_value(self) -> Any:
         return self.value
 
 
 
 class Stack:
-    def __init__(self, name):
+    def __init__(self, name) -> None:
         self.size: int = 0
         self.top_item: Optional[Node] = None
         self.limit: int = 1000
         self.name: str = name
 
-    def push(self, value):
+    def push(self, value) -> None:
         
         match self.has_space():
             case True:
@@ -35,38 +35,38 @@ class Stack:
             case False:
                 print("No more room!")
 
-    def pop(self):
+    def pop(self) -> None:
         
         match self.size:
             case self.size if self.size > 0:
                 item_to_remove = self.top_item
                 self.top_item = item_to_remove.get_next_node()
                 self.size -= 1
-                return item_to_remove.get_value()
-            case _:
+                return
+            case _ :
                 print("This stack is  empty.")
                 return
 
-    def peek(self):
+    def peek(self) -> Any:
         
         match self.size:
 
             case self.size if self.size > 0:
                 return self.top_item.get_value()
-            case _:
+            case _ :
                 print('the stack does not have a top value')
                 return
 
-    def has_space(self):
+    def has_space(self) -> bool:
         return self.limit > self.size
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.size == 0
 
-    def get_size(self):
+    def get_size(self) -> int:
         return self.size
 
-    def get_name(self):
+    def get_name(self) -> int:
         return self.name
 
     def print_items(self) -> None:
