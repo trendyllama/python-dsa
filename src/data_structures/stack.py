@@ -1,5 +1,5 @@
 from typing import Optional, Any
-from src.data_structures.node import Node
+from .node import Node
 
 
 class Stack:
