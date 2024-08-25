@@ -1,9 +1,9 @@
-from typing import Optional, Any, Self
-from node import Node
+from typing import Optional, Any
+from src.data_structures.node import Node
 
 
 class Stack:
-    def __init__(self, name) -> None:
+    def __init__(self, name = 'Test') -> None:
         self.size: int = 0
         self.top_item: Optional[Node] = None
         self.limit: int = 1000
