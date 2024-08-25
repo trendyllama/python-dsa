@@ -1,4 +1,4 @@
-from node import Node
+from src.data_structures.node import Node
 from typing import Optional
 
 
@@ -42,7 +42,7 @@ class Queue:
     def dequeue(self) -> None:
 
         self.size -= 1
-        
+
         match self.is_empty():
 
             case True:
