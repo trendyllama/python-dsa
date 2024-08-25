@@ -1,13 +1,14 @@
 from collections import deque
 from typing import (
-    Any
+    Any,
+    Self
 )
 
 
 class TreeNode:
-    def __init__(self, value):
-        self.value = value  # data
-        self.children: list[Any] = []  # references to other nodes
+    def __init__(self, value: Any):
+        self.value: Any = value  # data
+        self.children: list[Self] = []  # references to other nodes
 
     def __repr__(self):
         return self.value
@@ -61,11 +62,10 @@ def print_tree(root: TreeNode):
 
 
 def print_path(path):
-  '''
-  '''
+    '''
+    '''
     # If path is None, no path was found
     if path is None:
-
         print("No paths found!")
 
     # If a path was found, print path

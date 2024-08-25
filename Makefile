@@ -1,5 +1,5 @@
 
-default: test
+default: test clean
 
 
 test:
