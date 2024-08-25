@@ -1,4 +1,3 @@
-import random
 from typing import Iterable
 
 def quick_sort(list_input: Iterable) -> Iterable:
@@ -17,11 +16,4 @@ def quick_sort(list_input: Iterable) -> Iterable:
     return quick_sort(smaller) + [pivot] + quick_sort(larger)
 
 
-# test statements
-RAND_LIST = [random.randint(1, 50) for _ in range(50)]
 
-print(set(RAND_LIST))
-print(quick_sort(RAND_LIST)) # weird that this removed duplicates
-
-print(sorted(RAND_LIST))
-assert quick_sort(RAND_LIST) == list(set(sorted(RAND_LIST)))
