@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "codecademy-dsa-python"
+version = "0.1.0"
+description = ""
+authors = ["trendyllama <143849158+trendyllama@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
