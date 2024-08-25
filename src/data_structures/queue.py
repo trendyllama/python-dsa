@@ -1,5 +1,5 @@
 from src.data_structures.node import Node
-from typing import Optional
+from typing import Optional, Callable
 
 
 class EmptyQueueError(Exception):
@@ -59,26 +59,16 @@ class Queue:
         print(self.head.value)
 
 
-    def print(self):
+    def print(self) -> Optional[Callable]:
 
-        while isinstance(self.head, Node):
+        match self.is_empty():
 
-            try:
+            case True:
+                return
+
+            case False:
                 self.peek()
 
                 self.dequeue()
 
-            except EmptyQueueError:
-                return
-
-
-if __name__ == '__main__':
-
-    queue = Queue()
-
-    for i in range(1, 20):
-
-        queue.enqueue(i)
-
-
-    queue.print()
+                return self.print()
