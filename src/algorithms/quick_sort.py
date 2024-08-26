@@ -1,7 +1,9 @@
 from random import randrange, shuffle
+from typing import Callable, Optional
 
 
-def quicksort(list_input: list, start: int, end: int) -> None:
+def quicksort(list_input: list, start: int,
+              end: int, comparision_func: Optional[Callable] = None) -> None:
     '''
     - inelegant implementation of quicksort
     '''
@@ -10,10 +12,12 @@ def quicksort(list_input: list, start: int, end: int) -> None:
     if start >= end:
         return
     print(f"Running quicksort on {list_input[start: end + 1]}")
+
     # select random element to be pivot
     pivot_idx = randrange(start, end + 1)
     pivot_element = list_input[pivot_idx]
     print(f"Selected pivot {pivot_element}")
+
     # swap random element with last element in sub-lists
     list_input[end], list_input[pivot_idx] = list_input[pivot_idx], list_input[end]
 
