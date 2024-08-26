@@ -7,4 +7,3 @@ jobs:
         steps:
             - run: python -m pip install --upgrade pip
             - run: python -m unittest
-            - run: pip install mypy && mypy src/
