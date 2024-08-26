@@ -1,8 +1,5 @@
 import random
-from typing import (
-    Callable,
-    Iterable
-)
+from typing import Callable, Iterable
 
 
 def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
@@ -20,7 +17,9 @@ def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
     return arr
 
 
-def quicksort(list_input: Iterable, start: int, end: int, comparison_function: Callable) -> Iterable:
+def quicksort(
+    list_input: Iterable, start: int, end: int, comparison_function: Callable
+) -> Iterable:
 
     if start >= end:
         return
@@ -32,9 +31,15 @@ def quicksort(list_input: Iterable, start: int, end: int, comparison_function: C
 
     for i in range(start, end):
         if comparison_function(pivot_element, list_input[i]):
-            list_input[i], list_input[less_than_pointer] = list_input[less_than_pointer], list_input[i]
+            list_input[i], list_input[less_than_pointer] = (
+                list_input[less_than_pointer],
+                list_input[i],
+            )
             less_than_pointer += 1
-    list_input[end], list_input[less_than_pointer] = list_input[less_than_pointer], list_input[end]
+    list_input[end], list_input[less_than_pointer] = (
+        list_input[less_than_pointer],
+        list_input[end],
+    )
 
     quicksort(list_input, start, less_than_pointer - 1, comparison_function)
     quicksort(list_input, less_than_pointer + 1, end, comparison_function)

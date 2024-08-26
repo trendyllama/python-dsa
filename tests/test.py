@@ -1,4 +1,3 @@
-
 import unittest
 import random
 from src.data_structures.stack import Stack
@@ -25,7 +24,7 @@ class TestQuicksort(unittest.TestCase):
 
     def test_quicksort(self):
 
-        self.assertEqual(quick_sort([3,6,2,9]), [2,3,6,9])
+        self.assertEqual(quick_sort([3, 6, 2, 9]), [2, 3, 6, 9])
 
         RAND_LIST = [random.randint(1, 50) for _ in range(50)]
 
@@ -41,6 +40,5 @@ class TestQueue(unittest.TestCase):
         for i in range(1, 20):
 
             queue.enqueue(i)
-
 
         queue.print()

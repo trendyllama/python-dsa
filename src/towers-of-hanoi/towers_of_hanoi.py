@@ -18,7 +18,7 @@ while num_disks < 3:
 for i in range(num_disks, 0, -1):
     left_stack.push(i)
 
-num_optimal_moves = 2 ** num_disks - 1
+num_optimal_moves = 2**num_disks - 1
 
 print(f"\nThe fastest you can solve this game is in {num_optimal_moves} moves")
 
@@ -59,4 +59,6 @@ while right_stack.get_size() != num_disks:
         else:
             print("\n\nInvalid Move. Try Again")
 
-print(f"\n\nYou completed the game in {NUM_USER_MOVES} moves, and the optimal number of moves is {num_optimal_moves}")
+print(
+    f"\n\nYou completed the game in {NUM_USER_MOVES} moves, and the optimal number of moves is {num_optimal_moves}"
+)

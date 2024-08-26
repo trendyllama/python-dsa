@@ -1,8 +1,5 @@
 from collections import deque
-from typing import (
-    Any,
-    Self
-)
+from typing import Any, Self
 
 
 class TreeNode:
@@ -30,10 +27,10 @@ class TreeNode:
             current_node = nodes_to_visit.pop()
             print(current_node.value)
             nodes_to_visit += current_node.children
-    
+
     def get_children(self):
         return self.children
-    
+
     def set_children(self, children):
         self.children = children
 
@@ -49,9 +46,9 @@ def print_tree(root: TreeNode):
         node, level = stack.pop()
 
         if level > 0 and len(stack) > 0 and level <= stack[-1][1]:
-            level_str += "   "*(level-1) + "├─"
+            level_str += "   " * (level - 1) + "├─"
         elif level > 0:
-            level_str += "   "*(level-1) + "└─"
+            level_str += "   " * (level - 1) + "└─"
         level_str += str(node.value)
         level_str += "\n"
         level += 1
@@ -62,8 +59,7 @@ def print_tree(root: TreeNode):
 
 
 def print_path(path):
-    '''
-    '''
+    """ """
     # If path is None, no path was found
     if path is None:
         print("No paths found!")

@@ -21,11 +21,17 @@ def quicksort(list_input: list, start: int, end: int) -> None:
         if list_input[i] < pivot_element:
             # swap element to the right-most portion of lesser elements
             print(f"Swapping {list_input[i]} with {list_input[less_than_pointer]}")
-            list_input[i], list_input[less_than_pointer] = list_input[less_than_pointer], list_input[i]
+            list_input[i], list_input[less_than_pointer] = (
+                list_input[less_than_pointer],
+                list_input[i],
+            )
             # tally that we have one more lesser element
             less_than_pointer += 1
     # move pivot element to the right-most portion of lesser elements
-    list_input[end], list_input[less_than_pointer] = list_input[less_than_pointer], list_input[end]
+    list_input[end], list_input[less_than_pointer] = (
+        list_input[less_than_pointer],
+        list_input[end],
+    )
     print(f"{list_input[start: end + 1]} successfully partitioned")
     # recursively sort left and right sub-lists
     quicksort(list_input, start, less_than_pointer - 1)

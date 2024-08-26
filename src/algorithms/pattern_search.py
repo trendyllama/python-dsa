@@ -1,5 +1,5 @@
-'''
-'''
+"""
+"""
 
 
 def pattern_search(text: str, pattern: str) -> None:
@@ -11,9 +11,9 @@ def pattern_search(text: str, pattern: str) -> None:
         for char, val in enumerate(pattern):
             print("Pattern Index:", char)
             if pattern[char] == text[char + index]:
-                print('Matching index found')
-                print(f'Match count: {match_count}')
-                
+                print("Matching index found")
+                print(f"Match count: {match_count}")
+
                 match_count += 1
             else:
                 break

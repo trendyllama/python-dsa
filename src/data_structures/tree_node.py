@@ -10,8 +10,7 @@ class TreeNode:
 
     def remove_child(self, child_node):
         print("Removing " + child_node.value + " from " + self.value)
-        self.children = [child for child in self.children
-                         if child is not child_node]
+        self.children = [child for child in self.children if child is not child_node]
 
     def traverse(self):
         print("Traversing...")
@@ -22,14 +21,25 @@ class TreeNode:
             nodes_to_visit += current_node.children
 
 
-if __name__ == '__main__':
-    root = TreeNode("CEO")
-    first_child = TreeNode("Vice-President")
-    second_child = TreeNode("Head of Marketing")
-    third_child = TreeNode("Marketing Assistant")
+class StoryTreeNode:
+    def __init__(self, story_piece):
+        self.story_piece = story_piece
+        self.choices = []
 
-    root.add_child(first_child)
-    root.add_child(second_child)
-    second_child.add_child(third_child)
+    def add_child(self, node):
+        self.choices.append(node)
 
-    root.traverse()
+    def traverse(self):
+        story_node = self
+        print(story_node.story_piece)
+
+        while story_node.choices:
+
+            choice = input("Enter 1 or 2 to continue the story: ")
+            if choice not in ["1", "2"]:
+                print("Please choice 1 or 2!")
+                chosen_index = int(choice)
+                chosen_index -= 1
+                chosen_child = story_node.choices[chosen_index]
+                print(chosen_child.story_piece)
+                story_node = chosen_child

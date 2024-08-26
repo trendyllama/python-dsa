@@ -2,10 +2,12 @@ from typing import Optional, Any, Self
 
 
 class Node:
-    def __init__(self,
-                 value: Any,
-                 next_node: Optional[Self] = None,
-                 prev_node: Optional[Self] = None):
+    def __init__(
+        self,
+        value: Any,
+        next_node: Optional[Self] = None,
+        prev_node: Optional[Self] = None,
+    ):
         self.value = value
         self.next_node = next_node
         self.prev_node = prev_node
@@ -21,6 +23,6 @@ class Node:
 
     def set_prev_node(self, prev_node):
         self.prev_node = prev_node
-        
+
     def get_prev_node(self):
         return self.prev_node

@@ -1,5 +1,6 @@
 from typing import Iterable
 
+
 def quick_sort(list_input: Iterable) -> Iterable:
 
     if len(list_input) <= 1:
@@ -14,6 +15,3 @@ def quick_sort(list_input: Iterable) -> Iterable:
     larger = list(filter(lambda x: x > pivot, list_input))
 
     return quick_sort(smaller) + [pivot] + quick_sort(larger)
-
-
-

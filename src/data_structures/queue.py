@@ -18,7 +18,6 @@ class Queue:
 
         return bool(self.head is None and self.tail is None)
 
-
     def enqueue(self, value) -> None:
 
         match self.is_empty():
@@ -38,7 +37,6 @@ class Queue:
                 self.size += 1
                 self.tail = new_node
 
-
     def dequeue(self) -> None:
 
         self.size -= 1
@@ -52,12 +50,9 @@ class Queue:
 
                 self.head = self.head.get_prev_node()
 
-
-
     def peek(self) -> None:
 
         print(self.head.value)
-
 
     def print(self) -> Optional[Callable]:
 
