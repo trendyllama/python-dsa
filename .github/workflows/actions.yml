@@ -6,11 +6,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: python -m pip install --upgrade pip
+            - run: pip install black && black $(find . | grep -E "\.py")
             - run: python -m unittest
-            - run: pip install mypy && mypy $(git ls-files '*.py')
-            - run: pip install pylint && pylint $(git ls-files '*.py')
-    clean:
-        runs-on: ubuntu-latest
-        steps:
-            - run: find . | grep -E "__pycache__" | xargs rm -rf
-            - run: pip install black && black $(git ls-files '*.py')
+            - run: pip install mypy && mypy $(find . | grep -E "\.py")
+            - run: pip install pylint && pylint $(find . | grep -E "\.py")
