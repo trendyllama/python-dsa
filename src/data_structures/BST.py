@@ -37,9 +37,12 @@ class BinarySearchTree:
             return None
 
     def depth_first_traversal(self):
+
         if self.left is not None:
             self.left.depth_first_traversal()
+
         print(f"Depth={self.depth}, Value={self.value}")
+
         if self.right is not None:
             self.right.depth_first_traversal()
 

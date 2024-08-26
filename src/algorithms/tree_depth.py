@@ -1,4 +1,9 @@
-def depth(tree_node):
+from typing import Callable, Union, Optional
+
+def depth(tree_node) -> Union[Callable, int]:
+    '''
+    - note: this function is recursive
+    '''
 
     if tree_node is None:
         return 0
@@ -15,7 +20,10 @@ def depth(tree_node):
 # HELPER FUNCTION TO BUILD TREES
 
 
-def build_bst(my_list):
+def build_bst(my_list) -> Optional[Callable]:
+    '''
+    - note: this function is recursive
+    '''
     if len(my_list) == 0:
         return None
 
@@ -38,6 +46,9 @@ tree_level_4 = build_bst([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
 
 
 def test_cases_tree():
+    '''
+    - test cases
+    '''
 
     assert depth(tree_level_1) == 1
     assert depth(tree_level_2) == 2

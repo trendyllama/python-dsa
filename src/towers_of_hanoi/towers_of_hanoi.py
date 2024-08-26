@@ -1,11 +1,13 @@
+
+
 from src.data_structures.stack import Stack
 
 print("\nLet's play Towers of Hanoi!!")
 
 
-left_stack = Stack("Left")
-middle_stack = Stack("Middle")
-right_stack = Stack("Right")
+left_stack = Stack()
+middle_stack = Stack()
+right_stack = Stack()
 
 stacks: list[Stack] = [left_stack, middle_stack, right_stack]
 # set up game
@@ -60,5 +62,6 @@ while right_stack.get_size() != num_disks:
             print("\n\nInvalid Move. Try Again")
 
 print(
-    f"\n\nYou completed the game in {NUM_USER_MOVES} moves, and the optimal number of moves is {num_optimal_moves}"
+    f"\n\nYou completed the game in {
+        NUM_USER_MOVES} moves, and the optimal number of moves is {num_optimal_moves}"
 )

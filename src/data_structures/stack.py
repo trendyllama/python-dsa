@@ -2,45 +2,66 @@ from typing import Optional, Any
 from .node import Node
 
 
+class StackOverflowError(Exception):
+    """
+    - exception for handling a stack overflow
+    """
+
+
+class EmptyStackError(Exception):
+    """
+    - exception for handling an empty stack
+    """
+
+
 class Stack:
-    def __init__(self, name="Test") -> None:
+    """
+    - codecademy implementation of a stack
+    """
+
+    def __init__(self) -> None:
         self.size: int = 0
         self.top_item: Optional[Node] = None
         self.limit: int = 1000
-        self.name: str = name
 
-    def push(self, value) -> None:
+    def push(self, value: Any) -> None:
+        """
+        - adds a node to the top of the stack
+        """
 
-        match self.has_space():
-            case True:
-                item = Node(value)
-                item.set_next_node(self.top_item)
-                self.top_item = item
-                self.size += 1
-            case False:
-                print("No more room!")
+        if self.has_space():
+            item = Node(value)
+            item.set_next_node(self.top_item)
+            self.top_item = item
+            self.size += 1
+        else:
+            raise StackOverflowError
 
     def pop(self) -> None:
+        """
+        - removes the top node of the stack
+        """
 
-        match self.size:
-            case self.size if self.size > 0:
-                item_to_remove = self.top_item
-                self.top_item = item_to_remove.get_next_node()
-                self.size -= 1
-                return
-            case _:
-                print("This stack is  empty.")
-                return
+        if self.size > 0:
+
+            item_to_remove = self.top_item
+            self.top_item = item_to_remove.get_next_node()
+            self.size -= 1
+
+        else:
+
+            raise EmptyStackError
 
     def peek(self) -> Any:
+        """
+        - returns the value of the Node at the top of the stack
+        """
 
-        match self.size:
+        if self.size > 0:
 
-            case self.size if self.size > 0:
-                return self.top_item.get_value()
-            case _:
-                print("the stack does not have a top value")
-                return
+            return self.top_item.get_value()
+
+        raise EmptyStackError
 
     def has_space(self) -> bool:
         return self.limit > self.size
@@ -51,24 +72,18 @@ class Stack:
     def get_size(self) -> int:
         return self.size
 
-    def get_name(self) -> int:
-        return self.name
-
     def print_items(self) -> None:
 
-        match isinstance(self.top_item, Node):
-            case True:
-                pointer = self.top_item
-            case False:
-                print("the stack is empty")
-                return
+        if not isinstance(self.top_item, Node):
+            raise EmptyStackError
 
+        pointer = self.top_item
         print_list: list[Node] = []
 
         while pointer:
             print_list.append(pointer.get_value())
             pointer = pointer.get_next_node()
         print_list.reverse()
-        print(f"{self.get_name()} Stack: {print_list}")
+        print(f"Stack: {print_list}")
 
         return

@@ -1,13 +1,19 @@
+'''
+- only contains the Node class
+'''
 from typing import Optional, Any, Self
 
 
 class Node:
+    '''
+    - codecademy implementation of a node
+    '''
     def __init__(
         self,
         value: Any,
         next_node: Optional[Self] = None,
         prev_node: Optional[Self] = None,
-    ):
+    ) -> None:
         self.value = value
         self.next_node = next_node
         self.prev_node = prev_node
@@ -21,8 +27,8 @@ class Node:
     def get_value(self) -> Any:
         return self.value
 
-    def set_prev_node(self, prev_node):
+    def set_prev_node(self, prev_node) -> Self:
         self.prev_node = prev_node
 
-    def get_prev_node(self):
+    def get_prev_node(self) -> Self:
         return self.prev_node

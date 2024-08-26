@@ -1,13 +1,22 @@
+"""
+- contains doubly linked list class
+"""
+
+from typing import Any
 from .node import Node
 from .linked_list import LinkedList
 
 
 class HashMap:
-    def __init__(self, size):
-        self.array_size = size
-        self.array = [LinkedList() for _ in range(self.array_size)]
+    """
+    - codecademy implementation of a hashmap
+    """
 
-    def hash(self, key):
+    def __init__(self, size: int) -> None:
+        self.array_size = size
+        self.array: list[LinkedList] = [LinkedList() for _ in range(self.array_size)]
+
+    def hash(self, key: Any) -> int:
         hash_code = sum(key.encode())
         return hash_code
 
@@ -24,19 +33,18 @@ class HashMap:
                 i[1] = value
         list_at_array.insert(payload)
 
-
-def retrieve(self, key):
-    hash_code = self.hash(key)
-    array_index = self.compress(hash_code)
-    payload = self.array[array_index]
-    list_at_index = Node([array_index, payload])
-    if payload[0] == key:
-        return payload[1]
-    if payload == None or payload[0] != key:
-        return None
-
-    for i in list_at_index:
-        if i[0] == key:
-            return i[1]
-        else:
+    def retrieve(self, key):
+        hash_code = self.hash(key)
+        array_index = self.compress(hash_code)
+        payload = self.array[array_index]
+        list_at_index = Node([array_index, payload])
+        if payload[0] == key:
+            return payload[1]
+        if payload is None or payload[0] != key:
             return None
+
+        for i in list_at_index:
+            if i[0] == key:
+                return i[1]
+            else:
+                return None

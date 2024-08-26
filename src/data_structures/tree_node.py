@@ -1,20 +1,26 @@
+from typing import Self, Any
+
+
 # Define your "TreeNode" Python class below
 class TreeNode:
-    def __init__(self, value):
+    def __init__(self, value: Any):
         self.value = value
         self.children = []
 
-    def add_child(self, child_node):
+    def add_child(self, child_node: Self):
+
         print("Adding " + child_node.value)
         self.children.append(child_node)
 
-    def remove_child(self, child_node):
-        print("Removing " + child_node.value + " from " + self.value)
+    def remove_child(self, child_node: Self):
+
+        print(f"Removing {child_node.value} from {self.value}")
         self.children = [child for child in self.children if child is not child_node]
 
     def traverse(self):
         print("Traversing...")
         nodes_to_visit = [self]
+
         while len(nodes_to_visit) > 0:
             current_node = nodes_to_visit.pop()
             print(current_node.value)
@@ -26,7 +32,7 @@ class StoryTreeNode:
         self.story_piece = story_piece
         self.choices = []
 
-    def add_child(self, node):
+    def add_child(self, node: Self):
         self.choices.append(node)
 
     def traverse(self):
@@ -40,6 +46,6 @@ class StoryTreeNode:
                 print("Please choice 1 or 2!")
                 chosen_index = int(choice)
                 chosen_index -= 1
-                chosen_child = story_node.choices[chosen_index]
+                chosen_child: Self = story_node.choices[chosen_index]
                 print(chosen_child.story_piece)
                 story_node = chosen_child

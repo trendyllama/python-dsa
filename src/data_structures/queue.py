@@ -1,8 +1,13 @@
-from src.data_structures.node import Node
 from typing import Optional, Callable
+from src.data_structures.node import Node
 
 
 class EmptyQueueError(Exception):
+    """
+    Purpose:
+        - exception to handle an empty queue
+    """
+
     pass
 
 
@@ -20,35 +25,32 @@ class Queue:
 
     def enqueue(self, value) -> None:
 
-        match self.is_empty():
+        if self.is_empty():
 
-            case True:
+            new_node = Node(value, None, None)
+            self.size += 1
+            self.head = new_node
 
-                new_node = Node(value, None, None)
-                self.size += 1
-                self.head = new_node
+            self.tail = new_node
 
-                self.tail = new_node
+            return
 
-            case False:
+        new_node = Node(value, self.tail, None)
 
-                new_node = Node(value, self.tail, None)
+        self.size += 1
+        self.tail = new_node
 
-                self.size += 1
-                self.tail = new_node
+        return
 
     def dequeue(self) -> None:
 
         self.size -= 1
 
-        match self.is_empty():
+        if self.is_empty():
 
-            case True:
-                raise EmptyQueueError("Cannot dequeue from an empty queue")
+            raise EmptyQueueError("Cannot dequeue from an empty queue")
 
-            case False:
-
-                self.head = self.head.get_prev_node()
+        self.head = self.head.get_prev_node()
 
     def peek(self) -> None:
 
@@ -56,14 +58,12 @@ class Queue:
 
     def print(self) -> Optional[Callable]:
 
-        match self.is_empty():
+        if self.is_empty():
 
-            case True:
-                return
+            return
 
-            case False:
-                self.peek()
+        self.peek()
 
-                self.dequeue()
+        self.dequeue()
 
-                return self.print()
+        return self.print()

@@ -2,6 +2,10 @@ from random import randrange, shuffle
 
 
 def quicksort(list_input: list, start: int, end: int) -> None:
+    '''
+    - inelegant implementation of quicksort
+    '''
+
     # this portion of list has been sorted
     if start >= end:
         return
@@ -38,8 +42,10 @@ def quicksort(list_input: list, start: int, end: int) -> None:
     quicksort(list_input, less_than_pointer + 1, end)
 
 
-LIST = [5, 3, 1, 7, 4, 6, 2, 8]
-shuffle(LIST)
-print("PRE SORT: ", LIST)
-quicksort(LIST, 0, len(LIST) - 1)
-print("POST SORT: ", LIST)
+if __name__ == '__main__':
+
+    LIST = [5, 3, 1, 7, 4, 6, 2, 8]
+    shuffle(LIST)
+    print("PRE SORT: ", LIST)
+    quicksort(LIST, 0, len(LIST) - 1)
+    print("POST SORT: ", LIST)
