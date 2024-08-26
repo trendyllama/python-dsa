@@ -1,11 +1,20 @@
+'''
+- helper functions for sorted tale
+'''
+
 import csv
+from pathlib import Path
 
 
-# This code loads the current book
-# shelf data from the csv file
-def load_books(filename):
+def load_books(filename: Path) -> list[str]:
+    '''
+    This code loads the current book
+    shelf data from the csv file
+    '''
+
     bookshelf = []
-    with open(filename) as file:
+
+    with open(filename, 'r', encoding='utf-8') as file:
         shelf = csv.DictReader(file)
         for book in shelf:
             # add your code here

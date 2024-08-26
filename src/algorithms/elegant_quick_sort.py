@@ -2,6 +2,9 @@ from typing import Iterable
 
 
 def quick_sort(list_input: Iterable) -> Iterable:
+    '''
+    - most elegant implementation of quicksort
+    '''
 
     if len(list_input) <= 1:
         return list_input

@@ -1,10 +1,9 @@
-print("Once upon a time...")
-######
-# TREENODE CLASS
-######
+'''
+- main module for the wilderness escape project
+'''
 from src.data_structures.tree_node import StoryTreeNode
 
-
+print("Once upon a time...")
 ######
 # VARIABLES FOR TREE
 ######
