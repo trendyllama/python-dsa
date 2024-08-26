@@ -1,4 +1,3 @@
 .venv
-.github
 .devcontainer
 __pycache__
