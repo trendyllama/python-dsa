@@ -51,9 +51,15 @@ class Queue:
 
             raise EmptyQueueError("Cannot dequeue from an empty queue")
 
+        if self.head is None:
+            raise TypeError
+
         self.head = self.head.get_prev_node()
 
     def peek(self) -> None:
+
+        if self.head is None:
+            raise TypeError
 
         print(self.head.value)
 

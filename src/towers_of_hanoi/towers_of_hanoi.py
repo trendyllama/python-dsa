@@ -40,6 +40,7 @@ class Game:
         )
 
     def get_input(self):
+
         choices = [stack.__qualname__[0] for stack in self.stacks]
         while True:
             for i, val in enumerate(self.stacks):

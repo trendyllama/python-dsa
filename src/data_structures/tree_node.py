@@ -59,6 +59,7 @@ class StoryTreeNode:
         while story_node.choices:
 
             choice = input("Enter 1 or 2 to continue the story: ")
+
             if choice not in ["1", "2"]:
                 print("Please choice 1 or 2!")
                 chosen_index = int(choice)

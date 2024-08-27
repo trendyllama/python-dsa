@@ -9,6 +9,7 @@ class BinarySearchTree:
         self.right = None
 
     def insert(self, value):
+
         if value < self.value:
             if self.left is None:
                 self.left = BinarySearchTree(value, self.depth + 1)

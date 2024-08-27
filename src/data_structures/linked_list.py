@@ -28,6 +28,7 @@ class LinkedList:
 
     def __iter__(self) -> Any:
         current_node = self.head_node
+
         while current_node:
             yield current_node.get_value()
             current_node = current_node.get_next_node()

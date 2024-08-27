@@ -1,9 +1,7 @@
 from random import randrange, shuffle
 from typing import Callable, Optional
-from src.helpers.get_time import get_time
 
 
-@get_time
 def quicksort(
     list_input: list, start: int, end: int, comparision_func: Optional[Callable] = None
 ) -> None:

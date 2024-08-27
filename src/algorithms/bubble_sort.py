@@ -3,7 +3,6 @@ i dont like that this does these operations in place
 """
 
 from typing import Any
-from src.helpers.get_time import get_time
 
 NUMS = [5, 2, 9, 1, 5, 6]
 
@@ -17,7 +16,6 @@ def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
     return arr
 
 
-@get_time
 def bubble_sort(arr: list[Any]) -> list[Any]:
 
     for idx1, val1 in enumerate(arr):

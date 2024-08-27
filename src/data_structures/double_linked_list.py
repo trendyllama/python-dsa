@@ -89,6 +89,10 @@ class DoublyLinkedList:
             self.remove_tail()
         else:
             next_node = node_to_remove.get_next_node()
+
+            if not isinstance(next_node, Node):
+                raise TypeError
+
             prev_node = node_to_remove.get_prev_node()
             next_node.set_prev_node(prev_node)
             prev_node.set_next_node(next_node)

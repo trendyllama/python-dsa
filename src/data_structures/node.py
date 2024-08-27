@@ -16,11 +16,12 @@ class Node:
         next_node: Optional[Self] = None,
         prev_node: Optional[Self] = None,
     ) -> None:
+
         self.value = value
         self.next_node = next_node
         self.prev_node = prev_node
 
-    def set_next_node(self, link_node: Self) -> None:
+    def set_next_node(self, link_node: Optional[Self]) -> None:
         self.next_node = link_node
 
     def get_next_node(self) -> Optional[Self]:
@@ -29,7 +30,11 @@ class Node:
     def get_value(self) -> Any:
         return self.value
 
-    def set_prev_node(self, prev_node: Self) -> None:
+    def set_prev_node(self, prev_node: Optional[Self]) -> None:
+
+        if prev_node is None:
+            raise TypeError
+
         self.prev_node = prev_node
 
     def get_prev_node(self) -> Self:
