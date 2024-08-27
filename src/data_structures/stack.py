@@ -31,9 +31,14 @@ class Stack:
 
         if self.has_space():
             item = Node(value)
+
+            if not isinstance(self.top_item, Node):
+                raise EmptyStackError
+
             item.set_next_node(self.top_item)
             self.top_item = item
             self.size += 1
+
         else:
             raise StackOverflowError
 
@@ -45,11 +50,14 @@ class Stack:
         if self.size > 0:
 
             item_to_remove = self.top_item
+
+            if not isinstance(item_to_remove, Node):
+                raise EmptyStackError
+
             self.top_item = item_to_remove.get_next_node()
             self.size -= 1
 
         else:
-
             raise EmptyStackError
 
     def peek(self) -> Any:
@@ -59,6 +67,9 @@ class Stack:
 
         if self.size > 0:
 
+            if not isinstance(self.top_item, Node):
+                raise EmptyStackError
+            
             return self.top_item.get_value()
 
         raise EmptyStackError

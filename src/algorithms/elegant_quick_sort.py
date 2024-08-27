@@ -1,7 +1,7 @@
-from typing import Iterable
+from typing import Iterable, Any
 
 
-def quick_sort(list_input: Iterable) -> Iterable:
+def quick_sort(list_input: list[Any]) -> list[Any]:
     '''
     - most elegant implementation of quicksort
     '''

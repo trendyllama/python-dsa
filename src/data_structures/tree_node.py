@@ -1,23 +1,36 @@
+'''
+- module for treenode class
+'''
 from typing import Self, Any
 
 
-# Define your "TreeNode" Python class below
+class EmptyTreeError(Exception):
+    '''
+    - exception for handling an empty tree
+    '''
+
+
+
 class TreeNode:
-    def __init__(self, value: Any):
+    '''
+    - codecademy implementation of treenode
+    '''
+
+    def __init__(self, value: Any) -> None:
         self.value = value
         self.children = []
 
-    def add_child(self, child_node: Self):
+    def add_child(self, child_node: Self) -> None:
 
         print("Adding " + child_node.value)
         self.children.append(child_node)
 
-    def remove_child(self, child_node: Self):
+    def remove_child(self, child_node: Self) -> None:
 
         print(f"Removing {child_node.value} from {self.value}")
         self.children = [child for child in self.children if child is not child_node]
 
-    def traverse(self):
+    def traverse(self) -> None:
         print("Traversing...")
         nodes_to_visit = [self]
 
@@ -28,14 +41,18 @@ class TreeNode:
 
 
 class StoryTreeNode:
-    def __init__(self, story_piece):
+    '''
+    - treenode class for sorted tale
+    '''
+
+    def __init__(self, story_piece) -> None:
         self.story_piece = story_piece
         self.choices = []
 
-    def add_child(self, node: Self):
+    def add_child(self, node: Self) -> None:
         self.choices.append(node)
 
-    def traverse(self):
+    def traverse(self) -> None:
         story_node = self
         print(story_node.story_piece)
 

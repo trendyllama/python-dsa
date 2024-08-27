@@ -2,13 +2,14 @@
 - algos for trees
 '''
 
-from typing import Callable, Union, Optional
+from typing import Callable, Union, Optional, Any
 from src.data_structures.tree_node import TreeNode
 
 
 def depth(tree_node: Optional[TreeNode]) -> Union[Callable, int]:
     '''
     - note: this function is recursive
+    - returns the depth of the tree as an integer
     '''
 
     if tree_node is None:
@@ -23,17 +24,15 @@ def depth(tree_node: Optional[TreeNode]) -> Union[Callable, int]:
     return right_depth + 1
 
 
-# HELPER FUNCTION TO BUILD TREES
-
-
-def build_bst(my_list: list[TreeNode]) -> Optional[Callable]:
+def build_bst(my_list: list[Any]) -> Optional[Any]:
     '''
     - note: this function is recursive
+    - helper function to build trees
     '''
     if len(my_list) == 0:
         return None
 
-    mid_idx = len(my_list) // 2
+    mid_idx: int = len(my_list) // 2
     mid_val = my_list[mid_idx]
 
     tree_node = {"data": mid_val}
@@ -43,11 +42,12 @@ def build_bst(my_list: list[TreeNode]) -> Optional[Callable]:
     return tree_node
 
 
-def test_cases_tree():
+def test_cases_tree() -> None:
     '''
     - test cases
+    - helper variables
     '''
-    # HELPER VARIABLES
+
     tree_level_1 = build_bst([1])
     tree_level_2 = build_bst([1, 2, 3])
     tree_level_4 = build_bst([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])

@@ -2,13 +2,13 @@
 i dont like that this does these operations in place
 """
 
-from typing import Iterable
-
+from typing import Any
+from src.helpers.get_time import get_time
 
 NUMS = [5, 2, 9, 1, 5, 6]
 
 
-def swap(arr: Iterable, index_1: int, index_2: int) -> Iterable:
+def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
 
     temp = arr[index_1]
     arr[index_1] = arr[index_2]
@@ -16,13 +16,13 @@ def swap(arr: Iterable, index_1: int, index_2: int) -> Iterable:
 
     return arr
 
+@get_time
+def bubble_sort(arr: list[Any]) -> list[Any]:
 
-def bubble_sort(arr: Iterable) -> Iterable:
-
-    for i in enumerate(arr):
-        for i in range(len(arr) - 1):
-            if arr[i] > arr[i + 1]:
-                swap(arr, i, i + 1)
+    for idx1, val1 in enumerate(arr):
+        for idx2 in range(len(arr) - 1):
+            if arr[idx1] > arr[idx2 + 1]:
+                swap(arr, idx1, idx2 + 1)
 
     return arr
 
