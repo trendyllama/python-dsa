@@ -20,10 +20,8 @@ print(ord("A"))
 
 
 def by_title_ascending(booka, bookb) -> bool:
-    if booka["title_lower"] > bookb["title_lower"]:
-        return True
-    else:
-        return False
+
+    return bool(booka["title_lower"] > bookb["title_lower"])
 
 
 def by_author_ascending(booka, bookb) -> bool:
