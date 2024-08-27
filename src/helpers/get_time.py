@@ -33,9 +33,6 @@ def test_func() -> None:
         count += i
 
 
-
-
-
 if __name__ == '__main__':
 
     test_func()

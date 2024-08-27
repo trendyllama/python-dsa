@@ -2,12 +2,13 @@
 - main module for stored tale project
 - uses functions from sorts.py and utils.py
 '''
+from pathlib import Path
 from src.algorithms.quick_sort import quicksort
 from .utils import load_books
 from .sorts import bubble_sort
 
 
-bookshelf = load_books("books_small.csv")
+bookshelf = load_books(Path("books_small.csv"))
 
 # for book in bookshelf:
 #   print(book['title'])
@@ -55,7 +56,7 @@ for book in bookshelf_v2:
     print(book["author"])
 
 
-long_bookshelf = load_books("books_large.csv")
+long_bookshelf = load_books(Path("books_large.csv"))
 
 bubble_sort(long_bookshelf, by_total_length)
 

@@ -21,4 +21,5 @@ def load_books(filename: Path) -> list[str]:
             book["author_lower"] = book["author"].lower()
             book["title_lower"] = book["title"].lower()
             bookshelf.append(book)
+            
     return bookshelf
