@@ -1,13 +1,15 @@
-'''
+"""
 - only contains the Node class
-'''
+"""
+
 from typing import Optional, Any, Self
 
 
 class Node:
-    '''
+    """
     - codecademy implementation of a node
-    '''
+    """
+
     def __init__(
         self,
         value: Any,

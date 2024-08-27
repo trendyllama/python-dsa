@@ -1,6 +1,6 @@
-'''
+"""
 - helper functions
-'''
+"""
 
 import time
 from collections.abc import Callable
@@ -16,10 +16,9 @@ def get_time(func: Callable) -> Callable:
 
         elp = time.time() - s
 
-        print(f'{func.__name__} executed in {elp} seconds')
+        print(f"{func.__name__} executed in {elp} seconds")
 
         return res
-
 
     return wrapper
 
@@ -33,6 +32,6 @@ def test_func() -> None:
         count += i
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     test_func()

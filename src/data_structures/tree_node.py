@@ -1,20 +1,20 @@
-'''
+"""
 - module for treenode class
-'''
+"""
+
 from typing import Self, Any
 
 
 class EmptyTreeError(Exception):
-    '''
+    """
     - exception for handling an empty tree
-    '''
-
+    """
 
 
 class TreeNode:
-    '''
+    """
     - codecademy implementation of treenode
-    '''
+    """
 
     def __init__(self, value: Any) -> None:
         self.value = value
@@ -41,9 +41,9 @@ class TreeNode:
 
 
 class StoryTreeNode:
-    '''
+    """
     - treenode class for sorted tale
-    '''
+    """
 
     def __init__(self, story_piece) -> None:
         self.story_piece = story_piece

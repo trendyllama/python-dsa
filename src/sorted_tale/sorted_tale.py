@@ -1,7 +1,8 @@
-'''
+"""
 - main module for stored tale project
 - uses functions from sorts.py and utils.py
-'''
+"""
+
 from pathlib import Path
 from src.algorithms.quick_sort import quicksort
 from .utils import load_books
@@ -31,9 +32,11 @@ def by_author_ascending(booka, bookb) -> bool:
 
 
 def by_total_length(booka, bookb) -> bool:
-    return bool(len(booka["title"]) + len(booka["author"]) > len(bookb["title"]) + len(
-        bookb["author"])
+    return bool(
+        len(booka["title"]) + len(booka["author"])
+        > len(bookb["title"]) + len(bookb["author"])
     )
+
 
 sort1 = bubble_sort(bookshelf, by_title_ascending)
 

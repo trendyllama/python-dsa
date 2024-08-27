@@ -3,9 +3,9 @@
 
 
 def pattern_search(text: str, pattern: str) -> None:
-    '''
+    """
     - string pattern searching algo
-    '''
+    """
     print("Input Text:", text, "Input Pattern:", pattern)
     for index, value in enumerate(text):
         print("Text Index:", index)

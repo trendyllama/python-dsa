@@ -1,16 +1,16 @@
-'''
+"""
 - algos for trees
-'''
+"""
 
 from typing import Callable, Union, Optional, Any
 from src.data_structures.tree_node import TreeNode
 
 
 def depth(tree_node: Optional[TreeNode]) -> Union[Callable, int]:
-    '''
+    """
     - note: this function is recursive
     - returns the depth of the tree as an integer
-    '''
+    """
 
     if tree_node is None:
         return 0
@@ -25,10 +25,10 @@ def depth(tree_node: Optional[TreeNode]) -> Union[Callable, int]:
 
 
 def build_bst(my_list: list[Any]) -> Optional[Any]:
-    '''
+    """
     - note: this function is recursive
     - helper function to build trees
-    '''
+    """
     if len(my_list) == 0:
         return None
 
@@ -43,10 +43,10 @@ def build_bst(my_list: list[Any]) -> Optional[Any]:
 
 
 def test_cases_tree() -> None:
-    '''
+    """
     - test cases
     - helper variables
-    '''
+    """
 
     tree_level_1 = build_bst([1])
     tree_level_2 = build_bst([1, 2, 3])

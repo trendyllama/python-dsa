@@ -1,4 +1,3 @@
-
 from typing import Callable, Optional
 from src.data_structures.stack import Stack
 
@@ -43,13 +42,11 @@ def get_input():
                     return val
 
 
-
 class Game:
 
     def __init__(self) -> None:
 
         self.num_moves = 0
-
 
     def main_loop(self) -> Optional[Callable]:
 
@@ -92,6 +89,7 @@ class Game:
             f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {num_optimal_moves}"
         )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
 
     Game().main_loop()

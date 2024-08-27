@@ -16,6 +16,7 @@ def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
 
     return arr
 
+
 @get_time
 def bubble_sort(arr: list[Any]) -> list[Any]:
 

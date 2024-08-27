@@ -69,7 +69,7 @@ class Stack:
 
             if not isinstance(self.top_item, Node):
                 raise EmptyStackError
-            
+
             return self.top_item.get_value()
 
         raise EmptyStackError

@@ -2,12 +2,14 @@ from random import randrange, shuffle
 from typing import Callable, Optional
 from src.helpers.get_time import get_time
 
+
 @get_time
-def quicksort(list_input: list, start: int,
-              end: int, comparision_func: Optional[Callable] = None) -> None:
-    '''
+def quicksort(
+    list_input: list, start: int, end: int, comparision_func: Optional[Callable] = None
+) -> None:
+    """
     - inelegant implementation of quicksort
-    '''
+    """
 
     # this portion of list has been sorted
     if start >= end:
@@ -47,7 +49,7 @@ def quicksort(list_input: list, start: int,
     quicksort(list_input, less_than_pointer + 1, end)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     LIST = [5, 3, 1, 7, 4, 6, 2, 8]
     shuffle(LIST)
