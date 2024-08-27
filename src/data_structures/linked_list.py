@@ -2,7 +2,7 @@
 - contains linked list class
 """
 
-from typing import Any
+from typing import Any, Optional
 from src.data_structures.node import Node
 
 
@@ -11,7 +11,7 @@ class LinkedList:
     - codecademy implementation of linked list
     """
 
-    def __init__(self, head_node: Node = None) -> None:
+    def __init__(self, head_node: Optional[Node] = None) -> None:
         self.head_node = head_node
 
     def insert(self, new_node) -> None:

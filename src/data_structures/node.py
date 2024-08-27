@@ -29,8 +29,12 @@ class Node:
     def get_value(self) -> Any:
         return self.value
 
-    def set_prev_node(self, prev_node) -> Self:
+    def set_prev_node(self, prev_node: Self) -> None:
         self.prev_node = prev_node
 
     def get_prev_node(self) -> Self:
+
+        if not isinstance(self.prev_node, Node):
+            raise TypeError
+
         return self.prev_node

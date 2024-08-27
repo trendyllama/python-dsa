@@ -14,7 +14,7 @@ class HashMap:
 
     def __init__(self, size: int) -> None:
         self.array_size = size
-        self.array: list[LinkedList] = [LinkedList() for _ in range(self.array_size)]
+        self.array: list = [LinkedList() for _ in range(self.array_size)]
 
     def hash(self, key: Any) -> int:
         hash_code = sum(key.encode())
@@ -36,8 +36,9 @@ class HashMap:
     def retrieve(self, key):
         hash_code = self.hash(key)
         array_index = self.compress(hash_code)
-        payload = self.array[array_index]
+        payload: list = self.array[array_index]
         list_at_index = Node([array_index, payload])
+
         if payload[0] == key:
             return payload[1]
         if payload is None or payload[0] != key:

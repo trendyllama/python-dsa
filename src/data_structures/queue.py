@@ -8,10 +8,11 @@ class EmptyQueueError(Exception):
         - exception to handle an empty queue
     """
 
-    pass
-
 
 class Queue:
+    """
+    - codecademy implementation of a queue
+    """
 
     def __init__(self) -> None:
 

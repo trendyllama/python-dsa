@@ -6,9 +6,9 @@ from typing import Callable, Iterable
 
 
 def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
-    '''
+    """
     - codecademy implementation of bubble sort
-    '''
+    """
     swaps = 0
 
     is_sorted = False
@@ -25,16 +25,16 @@ def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
     return arr
 
 
-def bubble_sort2(arr: Iterable, comparision_function: Callable) -> Callable | Iterable:
-    '''
+def bubble_sort2(arr: Iterable, comparison_function: Callable) -> Callable | Iterable:
+    """
     - not correct yet
-    '''
+    """
 
     for idx in range(len(arr) - 1):
 
-        if comparision_function(arr[idx], arr[idx + 1]):
+        if comparison_function(arr[idx], arr[idx + 1]):
             arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
 
-            return bubble_sort(arr=arr, comparison_function=comparision_function)
+            return bubble_sort(arr=arr, comparison_function=comparison_function)
 
     return arr
