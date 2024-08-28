@@ -1,3 +1,7 @@
+'''
+- contains stack class and exceptions related to the stack
+'''
+
 from typing import Optional, Any
 from .node import Node
 
@@ -91,7 +95,7 @@ class Stack:
         pointer = self.top_item
         print_list: list[Node] = []
 
-        while pointer:
+        while pointer is not None:
             print_list.append(pointer.get_value())
             pointer = pointer.get_next_node()
         print_list.reverse()

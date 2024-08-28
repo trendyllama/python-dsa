@@ -1,14 +1,32 @@
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
 import random
 
 
 class BinarySearchTree:
+    """_summary_
+    """
     def __init__(self, value, depth=1):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+            depth (int, optional): _description_. Defaults to 1.
+        """
         self.value = value
         self.depth = depth
         self.left = None
         self.right = None
 
     def insert(self, value):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+        """
 
         if value < self.value:
             if self.left is None:
@@ -28,6 +46,14 @@ class BinarySearchTree:
                 self.right.insert(value)
 
     def get_node_by_value(self, value):
+        """_summary_
+
+        Args:
+            value (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         if self.value == value:
             return self
         elif (self.left is not None) and (value < self.value):
@@ -38,6 +64,8 @@ class BinarySearchTree:
             return None
 
     def depth_first_traversal(self):
+        """_summary_
+        """        
 
         if self.left is not None:
             self.left.depth_first_traversal()

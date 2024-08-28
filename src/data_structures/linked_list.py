@@ -12,9 +12,19 @@ class LinkedList:
     """
 
     def __init__(self, head_node: Optional[Node] = None) -> None:
+        """_summary_
+
+        Args:
+            head_node (Optional[Node], optional): _description_. Defaults to None.
+        """
         self.head_node = head_node
 
     def insert(self, new_node) -> None:
+        """_summary_
+
+        Args:
+            new_node (_type_): _description_
+        """
         current_node = self.head_node
 
         if not current_node:
@@ -27,6 +37,14 @@ class LinkedList:
             current_node = next_node
 
     def __iter__(self) -> Any:
+        """_summary_
+
+        Returns:
+            Any: _description_
+
+        Yields:
+            Iterator[Any]: _description_
+        """        
         current_node = self.head_node
 
         while current_node:
