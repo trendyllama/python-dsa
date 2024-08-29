@@ -2,6 +2,7 @@ import unittest
 import random
 from src.data_structures.stack import Stack
 from src.data_structures.queue import Queue
+from src.data_structures.linked_list import LinkedList
 from src.algorithms.elegant_quick_sort import quick_sort
 
 
@@ -42,3 +43,16 @@ class TestQueue(unittest.TestCase):
             queue.enqueue(i)
 
         queue.print()
+
+class TestLinkedList(unittest.TestCase):
+
+    def test_linked_list(self):
+
+        ll = LinkedList()
+
+        for i in range(1, 11):
+
+            ll.insert(i)
+
+        for node in ll:
+            print(node)

@@ -15,26 +15,18 @@ class Queue:
     """
 
     def __init__(self) -> None:
-        """_summary_"""
+        """
+        - initializes a queue as empty by default
+        """
         self.head: Optional[Node] = None
         self.tail: Optional[Node] = None
         self.size: int = 0
 
     def is_empty(self) -> bool:
-        """_summary_
-
-        Returns:
-            bool: _description_
-        """
 
         return bool(self.head is None and self.tail is None)
 
     def enqueue(self, value) -> None:
-        """_summary_
-
-        Args:
-            value (_type_): _description_
-        """
 
         if self.is_empty():
 
@@ -54,12 +46,6 @@ class Queue:
         return
 
     def dequeue(self) -> None:
-        """_summary_
-
-        Raises:
-            EmptyQueueError: _description_
-            TypeError: _description_
-        """
 
         self.size -= 1
 
@@ -73,11 +59,6 @@ class Queue:
         self.head = self.head.get_prev_node()
 
     def peek(self) -> None:
-        """_summary_
-
-        Raises:
-            TypeError: _description_
-        """
 
         if self.head is None:
             raise TypeError
