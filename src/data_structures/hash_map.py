@@ -70,7 +70,7 @@ class HashMap:
 
         Returns:
             Optional[list]: _description_
-        """        
+        """
         hash_code = self.hash(key)
         array_index = self.compress(hash_code)
         payload: list = self.array[array_index]

@@ -44,7 +44,7 @@ class LinkedList:
 
         Yields:
             Iterator[Any]: _description_
-        """        
+        """
         current_node = self.head_node
 
         while current_node:

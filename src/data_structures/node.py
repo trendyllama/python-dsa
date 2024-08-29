@@ -75,7 +75,7 @@ class Node:
 
         Returns:
             Self: _description_
-        """        
+        """
 
         if not isinstance(self.prev_node, Node):
             raise TypeError

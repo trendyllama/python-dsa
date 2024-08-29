@@ -3,8 +3,8 @@ from typing import Any, Self
 
 
 class TreeNode:
-    """_summary_
-    """
+    """_summary_"""
+
     def __init__(self, value: Any):
         self.value: Any = value  # data
         self.children: list[Self] = []  # references to other nodes
@@ -33,8 +33,7 @@ class TreeNode:
         self.children = list(filter(lambda x: x != child_node_value, self.children))
 
     def traverse(self):
-        """_summary_
-        """
+        """_summary_"""
         # moves through each node referenced from self downwards
         nodes_to_visit = [self]
         while len(nodes_to_visit) > 0:
@@ -92,7 +91,7 @@ def print_path(path):
 
     Args:
         path (_type_): _description_
-    """    
+    """
     # If path is None, no path was found
     if path is None:
         print("No paths found!")

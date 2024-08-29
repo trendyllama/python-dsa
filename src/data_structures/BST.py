@@ -1,14 +1,15 @@
-    """_summary_
+"""_summary_
 
-    Returns:
-        _type_: _description_
-    """
+Returns:
+    _type_: _description_
+"""
+
 import random
 
 
 class BinarySearchTree:
-    """_summary_
-    """
+    """_summary_"""
+
     def __init__(self, value, depth=1):
         """_summary_
 
@@ -64,8 +65,7 @@ class BinarySearchTree:
             return None
 
     def depth_first_traversal(self):
-        """_summary_
-        """        
+        """_summary_"""
 
         if self.left is not None:
             self.left.depth_first_traversal()

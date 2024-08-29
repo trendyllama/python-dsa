@@ -8,8 +8,7 @@ class DoublyLinkedList:
     """
 
     def __init__(self) -> None:
-        """_summary_
-        """
+        """_summary_"""
         self.head_node = None
         self.tail_node = None
 
@@ -137,7 +136,7 @@ class DoublyLinkedList:
 
         Returns:
             str: _description_
-        """        
+        """
 
         string_list = ""
         current_node = self.head_node

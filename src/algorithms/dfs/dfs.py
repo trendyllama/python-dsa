@@ -14,7 +14,7 @@ def dfs(root: TreeNode, target: Any, path: Tuple = ()) -> Optional[Tuple]:
 
     Returns:
         Optional[Tuple]: _description_
-    """    
+    """
 
     path = path + (root,)
 

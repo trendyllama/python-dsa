@@ -15,8 +15,7 @@ class Queue:
     """
 
     def __init__(self) -> None:
-        """_summary_
-        """
+        """_summary_"""
         self.head: Optional[Node] = None
         self.tail: Optional[Node] = None
         self.size: int = 0
@@ -90,7 +89,7 @@ class Queue:
 
         Returns:
             Optional[Callable]: _description_
-        """        
+        """
 
         if self.is_empty():
 
