@@ -1,3 +1,7 @@
+"""
+- testing data structures and algos
+"""
+
 import unittest
 import random
 from src.data_structures.stack import Stack
@@ -43,6 +47,7 @@ class TestQueue(unittest.TestCase):
             queue.enqueue(i)
 
         queue.print()
+
 
 class TestLinkedList(unittest.TestCase):
 

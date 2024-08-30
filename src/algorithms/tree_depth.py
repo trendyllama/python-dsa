@@ -2,18 +2,18 @@
 - algos for trees
 """
 
-from typing import Callable, Union, Optional, Any
+from typing import Callable, Optional, Any
 from src.data_structures.tree_node import TreeNode
 
 
-def depth(tree_node: Optional[TreeNode]) -> Union[Callable, int]:
+def depth(tree_node: Optional[TreeNode]) -> Optional[Callable]:
     """
     - note: this function is recursive
     - returns the depth of the tree as an integer
     """
 
     if tree_node is None:
-        return 0
+        return
 
     left_depth = depth(tree_node["left_child"])
     right_depth = depth(tree_node["right_child"])

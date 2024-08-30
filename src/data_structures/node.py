@@ -16,12 +16,12 @@ class Node:
         next_node: Optional[Self] = None,
         prev_node: Optional[Self] = None,
     ) -> None:
-        '''
+        """
         Purpose:
             - initialize the node with starting parameters
             - using the previous node property to support a
               linked list
-        '''
+        """
 
         self.value = value
         self.next_node = next_node
@@ -40,9 +40,9 @@ class Node:
         return self.value
 
     def set_prev_node(self, prev_node: Optional[Self]) -> None:
-        '''
+        """
         - this method supports a doubly linked list
-        '''
+        """
 
         if prev_node is None:
             raise TypeError

@@ -1,4 +1,4 @@
-from typing import Iterable, Any
+from typing import Any
 
 
 def quick_sort(list_input: list[Any]) -> list[Any]:

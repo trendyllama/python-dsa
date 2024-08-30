@@ -2,7 +2,8 @@
 - contains doubly linked list class
 """
 
-from typing import Any, Hashable, Optional
+from typing import Any, Optional
+from collections.abc import Hashable
 from .node import Node
 from .linked_list import LinkedList
 
