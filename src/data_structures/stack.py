@@ -36,8 +36,7 @@ class Stack:
         if self.has_space():
             item = Node(value)
 
-            if not isinstance(self.top_item, Node):
-                raise EmptyStackError
+
 
             item.set_next_node(self.top_item)
             self.top_item = item

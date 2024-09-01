@@ -45,13 +45,13 @@ class Node:
         """
 
         if prev_node is None:
-            raise TypeError
+            return None
 
         self.prev_node = prev_node
 
-    def get_prev_node(self) -> Self:
+    def get_prev_node(self) -> Optional[Self]:
 
         if not isinstance(self.prev_node, Node):
-            raise TypeError
+            return None
 
         return self.prev_node

@@ -4,6 +4,7 @@
 
 import unittest
 import random
+from src.data_structures.node import Node
 from src.data_structures.stack import Stack
 from src.data_structures.queue import Queue
 from src.data_structures.linked_list import LinkedList
@@ -57,7 +58,8 @@ class TestLinkedList(unittest.TestCase):
 
         for i in range(1, 11):
 
-            ll.insert(i)
+            # FIXME: does a node really need to be instantiated here?
+            ll.insert(Node(i))
 
         for node in ll:
             print(node)
