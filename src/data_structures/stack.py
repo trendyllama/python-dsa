@@ -36,8 +36,6 @@ class Stack:
         if self.has_space():
             item = Node(value)
 
-
-
             item.set_next_node(self.top_item)
             self.top_item = item
             self.size += 1
