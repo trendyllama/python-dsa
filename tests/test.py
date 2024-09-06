@@ -2,13 +2,14 @@
 - testing data structures and algos
 """
 
-import unittest
 import random
-from src.data_structures.node import Node
-from src.data_structures.stack import Stack
-from src.data_structures.queue import Queue
-from src.data_structures.linked_list import LinkedList
+import unittest
+
 from src.algorithms.elegant_quick_sort import quick_sort
+from src.data_structures.linked_list import LinkedList
+from src.data_structures.node import Node
+from src.data_structures.queue import Queue
+from src.data_structures.stack import Stack
 
 
 class TestStack(unittest.TestCase):

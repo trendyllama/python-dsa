@@ -2,7 +2,8 @@
 - contains linked list class
 """
 
-from typing import Any, Optional, Iterator
+from typing import Any, Iterator, Optional
+
 from src.data_structures.node import Node
 
 

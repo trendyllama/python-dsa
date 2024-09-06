@@ -2,7 +2,8 @@
 - algos for trees
 """
 
-from typing import Callable, Optional, Any
+from typing import Any, Callable, Optional
+
 from src.data_structures.tree_node import TreeNode
 
 

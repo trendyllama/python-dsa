@@ -4,10 +4,11 @@
 """
 
 from pathlib import Path
-from src.algorithms.quick_sort import quicksort
-from .utils import load_books
-from .sorts import bubble_sort
 
+from src.algorithms.quick_sort import quicksort
+
+from .sorts import bubble_sort
+from .utils import load_books
 
 bookshelf = load_books(Path("books_small.csv"))
 

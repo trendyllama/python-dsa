@@ -2,7 +2,8 @@
 - contains stack class and exceptions related to the stack
 """
 
-from typing import Optional, Any
+from typing import Any, Optional
+
 from .node import Node
 
 

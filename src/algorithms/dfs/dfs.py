@@ -1,5 +1,6 @@
-from TreeNode import TreeNode, sample_root_node, print_tree
-from typing import Any, Tuple, Optional
+from typing import Any, Optional, Tuple
+
+from TreeNode import TreeNode, print_tree, sample_root_node
 
 print_tree(sample_root_node)
 

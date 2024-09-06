@@ -2,7 +2,7 @@
 - module for treenode class
 """
 
-from typing import Self, Any
+from typing import Any, Self
 
 
 class EmptyTreeError(Exception):

@@ -1,6 +1,6 @@
 from typing import Callable, Optional
-from src.data_structures.stack import Stack
 
+from src.data_structures.stack import Stack
 
 # set up game
 
