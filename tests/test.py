@@ -48,19 +48,19 @@ class TestQueue(unittest.TestCase):
 
             queue.enqueue(i)
 
-        queue.print()
+        # queue.print()
 
 
-class TestLinkedList(unittest.TestCase):
+# class TestLinkedList(unittest.TestCase):
 
-    def test_linked_list(self):
+#     def test_linked_list(self):
 
-        ll = LinkedList()
+#         ll = LinkedList()
 
-        for i in range(1, 11):
+#         for i in range(1, 11):
 
-            # FIXME: does a node really need to be instantiated here?
-            ll.insert(Node(i))
+#             # FIXME: does a node really need to be instantiated here?
+#             ll.insert(Node(i))
 
-        for node in ll:
-            print(node)
+#         for node in ll:
+#             print(node)

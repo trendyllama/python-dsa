@@ -1,14 +1,26 @@
 
-default: clean
+default: all
+
+setup:
+
+	black .
+
+	isort .
 
 test:
 	python -m unittest
 
 	pylint .
 
+build:
+
+	poetry build
+
+
 clean:
 	find . | grep -E "__pycache__" | xargs rm -rf
 
-	black .
+	rm -rf dist/
 
-	isort .
+
+all: setup test build

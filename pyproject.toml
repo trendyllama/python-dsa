@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "codecademy-dsa-python"
 version = "0.1.0"
-description = ""
+description = "data structures and algorithms course from codecademy"
 authors = ["trendyllama <143849158+trendyllama@users.noreply.github.com>"]
 readme = "README.md"
 
