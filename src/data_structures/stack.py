@@ -4,19 +4,8 @@
 
 from typing import Any, Optional
 
+from .exceptions import EmptyStackError, StackOverflowError
 from .node import Node
-
-
-class StackOverflowError(Exception):
-    """
-    - exception for handling a stack overflow
-    """
-
-
-class EmptyStackError(Exception):
-    """
-    - exception for handling an empty stack
-    """
 
 
 class Stack:

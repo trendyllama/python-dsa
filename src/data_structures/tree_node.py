@@ -4,11 +4,7 @@
 
 from typing import Any, Self
 
-
-class EmptyTreeError(Exception):
-    """
-    - exception for handling an empty tree
-    """
+from .exceptions import EmptyTreeError
 
 
 class TreeNode:

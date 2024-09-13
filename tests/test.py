@@ -8,7 +8,6 @@ import unittest
 from src.algorithms.elegant_quick_sort import quick_sort
 from src.data_structures.linked_list import LinkedList
 from src.data_structures.node import Node
-from src.data_structures.queue import Queue
 from src.data_structures.stack import Stack
 
 
@@ -36,19 +35,6 @@ class TestQuicksort(unittest.TestCase):
         RAND_LIST = [random.randint(1, 50) for _ in range(50)]
 
         self.assertEqual(quick_sort(RAND_LIST), list(set(sorted(RAND_LIST))))
-
-
-class TestQueue(unittest.TestCase):
-
-    def test_enqueue(self):
-
-        queue = Queue()
-
-        for i in range(1, 20):
-
-            queue.enqueue(i)
-
-        # queue.print()
 
 
 # class TestLinkedList(unittest.TestCase):

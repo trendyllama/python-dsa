@@ -2,12 +2,7 @@ from typing import Callable, Optional
 
 from src.data_structures.node import Node
 
-
-class EmptyQueueError(Exception):
-    """
-    Purpose:
-        - exception to handle an empty queue
-    """
+from .exceptions import EmptyQueueError
 
 
 class Queue:
