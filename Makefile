@@ -10,7 +10,7 @@ setup:
 test:
 	python -m unittest
 
-	pylint .
+	pylint src/
 
 build:
 

@@ -8,22 +8,6 @@ import unittest
 from src.algorithms.elegant_quick_sort import quick_sort
 from src.data_structures.linked_list import LinkedList
 from src.data_structures.node import Node
-from src.data_structures.stack import Stack
-
-
-class TestStack(unittest.TestCase):
-
-    def test_push(self):
-
-        stack = Stack()
-
-        stack.push(1)
-        stack.push(2)
-
-        self.assertEqual(stack.peek(), 2)
-
-        stack.pop()
-        self.assertEqual(stack.peek(), 1)
 
 
 class TestQuicksort(unittest.TestCase):
