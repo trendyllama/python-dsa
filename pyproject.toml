@@ -1,19 +1,12 @@
-[tool.poetry]
+[project]
 name = "codecademy-dsa-python"
 version = "0.1.0"
 description = "data structures and algorithms course from codecademy"
-authors = ["trendyllama <143849158+trendyllama@users.noreply.github.com>"]
+
 readme = "README.md"
 
-[tool.poetry.dependencies]
-python = "^3.12"
-
-
-[tool.poetry.group.dev.dependencies]
-isort = "^5.13.2"
-pylint = "^3.3.1"
-black = "^24.8.0"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.6.8",
+    "uv>=0.4.17",
+]
