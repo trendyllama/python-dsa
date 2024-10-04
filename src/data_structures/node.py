@@ -28,15 +28,12 @@ class Node:
         self.prev_node = prev_node
 
     def set_next_node(self, link_node: Optional[Self]) -> None:
-
         self.next_node = link_node
 
     def get_next_node(self) -> Optional[Self]:
-
         return self.next_node
 
     def get_value(self) -> Any:
-
         return self.value
 
     def set_prev_node(self, prev_node: Optional[Self]) -> None:
@@ -50,7 +47,6 @@ class Node:
         self.prev_node = prev_node
 
     def get_prev_node(self) -> Optional[Self]:
-
         if not isinstance(self.prev_node, Node):
             return None
 

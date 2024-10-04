@@ -39,7 +39,6 @@ class Stack:
         """
 
         if self.size > 0:
-
             item_to_remove = self.top_item
 
             if not isinstance(item_to_remove, Node):
@@ -57,7 +56,6 @@ class Stack:
         """
 
         if self.size > 0:
-
             if not isinstance(self.top_item, Node):
                 raise EmptyStackError
 
@@ -74,18 +72,12 @@ class Stack:
     def get_size(self) -> int:
         return self.size
 
-    def print_items(self) -> None:
-
+    def print(self) -> None:
         if not isinstance(self.top_item, Node):
-            raise EmptyStackError
+            return None
 
-        pointer = self.top_item
-        print_list: list[Node] = []
+        print(self.top_item.get_value())
 
-        while pointer is not None:
-            print_list.append(pointer.get_value())
-            pointer = pointer.get_next_node()
-        print_list.reverse()
-        print(f"Stack: {print_list}")
+        self.top_item = self.top_item.get_next_node()
 
-        return
+        return self.print()

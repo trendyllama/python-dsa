@@ -4,7 +4,6 @@
 
 from typing import Any, Self
 
-from .exceptions import EmptyTreeError
 
 
 class TreeNode:
@@ -17,12 +16,10 @@ class TreeNode:
         self.children = []
 
     def add_child(self, child_node: Self) -> None:
-
         print("Adding " + child_node.value)
         self.children.append(child_node)
 
     def remove_child(self, child_node: Self) -> None:
-
         print(f"Removing {child_node.value} from {self.value}")
         self.children = [child for child in self.children if child is not child_node]
 
@@ -53,7 +50,6 @@ class StoryTreeNode:
         print(story_node.story_piece)
 
         while story_node.choices:
-
             choice = input("Enter 1 or 2 to continue the story: ")
 
             if choice not in ["1", "2"]:

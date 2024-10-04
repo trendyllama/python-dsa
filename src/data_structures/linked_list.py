@@ -13,11 +13,9 @@ class LinkedList:
     """
 
     def __init__(self, head_node: Optional[Node] = None) -> None:
-
         self.head_node = head_node
 
     def insert(self, new_node_value: Any) -> None:
-
         current_node = self.head_node
 
         if not current_node:
@@ -30,7 +28,6 @@ class LinkedList:
             current_node = next_node
 
     def __iter__(self) -> Iterator[Any]:
-
         current_node = self.head_node
 
         while current_node is not None:

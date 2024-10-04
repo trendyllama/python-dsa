@@ -7,9 +7,7 @@ from collections.abc import Callable
 
 
 def get_time(func: Callable) -> Callable:
-
     def wrapper(*args, **kwargs):
-
         s = time.time()
 
         res = func(*args, **kwargs)
@@ -25,7 +23,6 @@ def get_time(func: Callable) -> Callable:
 
 @get_time
 def test_func() -> None:
-
     count = 0
 
     for i in range(1, 100000):
@@ -33,5 +30,4 @@ def test_func() -> None:
 
 
 if __name__ == "__main__":
-
     test_func()

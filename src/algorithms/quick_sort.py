@@ -48,7 +48,6 @@ def quicksort(
 
 
 if __name__ == "__main__":
-
     LIST = [5, 3, 1, 7, 4, 6, 2, 8]
     shuffle(LIST)
     print("PRE SORT: ", LIST)

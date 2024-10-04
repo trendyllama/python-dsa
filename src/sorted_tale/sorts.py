@@ -6,7 +6,6 @@ from typing import Callable, Iterable, Union
 
 
 def is_greater_than(element1: Union[int, float], element2: Union[int, float]) -> bool:
-
     return element1 < element2
 
 
@@ -38,7 +37,6 @@ def bubble_sort2(
     """
 
     for idx in range(len(arr) - 1):
-
         if comparison_function(arr[idx], arr[idx + 1]):
             arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
 

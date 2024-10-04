@@ -1,5 +1,4 @@
-"""_summary_
-"""
+"""_summary_"""
 
 
 def pattern_search(text: str, pattern: str) -> None:

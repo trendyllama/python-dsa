@@ -10,9 +10,7 @@ class InputError(Exception):
 
 
 class Game:
-
     def __init__(self) -> None:
-
         self.num_moves = 0
 
         print("\nLet's play Towers of Hanoi!!")
@@ -40,11 +38,9 @@ class Game:
         )
 
     def get_input(self):
-
         choices = [stack.__qualname__[0] for stack in self.stacks]
         while True:
             for i, val in enumerate(self.stacks):
-
                 name = val.__qualname__
 
                 letter = choices[i]
@@ -58,20 +54,17 @@ class Game:
                         return val
 
     def exit_game(self):
-
         print(
             f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {self.num_optimal_moves}"
         )
 
     def main_loop(self) -> Optional[Callable]:
-
         if self.right_stack.get_size() != self.num_disks:
             print("\n\n\n...Current Stacks...")
             for stack in self.stacks:
-                stack.print_items()
+                stack.print()
 
             def move() -> Callable:
-
                 print("\nWhich stack do you want to move from?\n")
                 from_stack = self.get_input()
                 print("\nWhich stack do you want to move to?\n")
@@ -100,5 +93,4 @@ class Game:
 
 
 if __name__ == "__main__":
-
     Game().main_loop()
