@@ -55,10 +55,8 @@ class Stack:
         - returns the value of the Node at the top of the stack
         """
 
-        if self.size > 0:
-            if not isinstance(self.top_item, Node):
-                raise EmptyStackError
-
+        if self.size > 0 and isinstance(self.top_item, Node):
+            
             return self.top_item.get_value()
 
         raise EmptyStackError

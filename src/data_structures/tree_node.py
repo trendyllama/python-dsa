@@ -21,7 +21,8 @@ class TreeNode:
 
     def remove_child(self, child_node: Self) -> None:
         print(f"Removing {child_node.value} from {self.value}")
-        self.children = [child for child in self.children if child is not child_node]
+
+        self.children = list(filter(lambda x: x != child_node, self.children))
 
     def traverse(self) -> None:
         print("Traversing...")
