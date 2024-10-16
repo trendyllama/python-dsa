@@ -1,4 +1,4 @@
-from typing import Callable, Optional
+from typing import Callable, Optional, Self, Union
 
 from src.data_structures.node import Node
 
@@ -21,41 +21,66 @@ class Queue:
     def is_empty(self) -> bool:
         return bool(self.head is None and self.tail is None)
 
-    def enqueue(self, value) -> None:
-        if self.is_empty():
-            new_node = Node(value, None, None)
-            self.size += 1
-            self.head = new_node
-
-            self.tail = new_node
-
-            return
-
-        new_node = Node(value, self.tail, None)
-
+    def increase_size(self) -> Self:
         self.size += 1
-        self.tail = new_node
 
-        return
+        return self
 
-    def dequeue(self) -> None:
+    def decrease_size(self) -> Self:
         self.size -= 1
 
-        if self.is_empty():
-            raise EmptyQueueError("Cannot dequeue from an empty queue")
+        return self
 
-        if self.head is None:
-            raise TypeError
+    def enqueue(self, value) -> Self:
 
-        self.head = self.head.get_prev_node()
+        self.increase_size()
 
-    def peek(self) -> None:
+        match self.is_empty():
+
+            case True:
+
+                new_node = Node(value, None, None)
+
+                self.head = new_node
+
+                self.tail = new_node
+
+            case False:
+
+                new_node = Node(value, self.tail, None)
+
+                self.tail = new_node
+
+        return self
+
+
+    def dequeue(self) -> Self:
+
+        self.decrease_size()
+
+        match self.is_empty():
+
+            case True:
+                raise EmptyQueueError("Cannot dequeue from an empty queue")
+
+            case False:
+                assert self.head is not None
+
+                self.head = self.head.get_prev_node()
+
+        return self
+
+
+    def peek(self) -> Self:
+
         if self.head is None:
             raise TypeError
 
         print(self.head.value)
 
-    def print(self) -> Optional[Callable]:
+        return self
+
+    def print(self) -> Union[Callable, Self]:
         """_summary_
 
         Returns:
@@ -65,10 +90,10 @@ class Queue:
         # TODO: this isnt working
 
         if not isinstance(self.head, Node):
-            return
+            return Self
 
         self.peek()
 
-        self.head = self.head.get_next_node()
+        self.head = self.head.get_prev_node()
 
         return self.print()

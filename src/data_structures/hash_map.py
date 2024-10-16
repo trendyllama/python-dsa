@@ -21,7 +21,9 @@ class HashMap:
             size (int): _description_
         """
         self.array_size = size
-        self.array: list = [LinkedList() for _ in range(self.array_size)]
+        # self.array: list = [LinkedList() for _ in range(self.array_size)]
+        self.array = list(map(lambda _: LinkedList(), range(self.array_size)))
+
 
     def hash(self, key: Hashable) -> int:
         """_summary_

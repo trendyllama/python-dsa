@@ -24,9 +24,14 @@ class TreeNode:
 
         self.children = list(filter(lambda x: x != child_node, self.children))
 
-    def traverse(self) -> None:
+    def traverse(self, nodes_to_visit) -> None:
         print("Traversing...")
         nodes_to_visit = [self]
+
+        if len(nodes_to_visit) < 0:
+            return
+
+        current_node = nodes_to_visit.pop()
 
         while len(nodes_to_visit) > 0:
             current_node = nodes_to_visit.pop()

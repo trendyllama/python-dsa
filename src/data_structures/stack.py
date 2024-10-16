@@ -2,7 +2,7 @@
 - contains stack class and exceptions related to the stack
 """
 
-from typing import Any, Optional
+from typing import Any, Optional, Self
 
 from .exceptions import EmptyStackError, StackOverflowError
 from .node import Node
@@ -18,37 +18,43 @@ class Stack:
         self.top_item: Optional[Node] = None
         self.limit: int = 1000
 
-    def push(self, value: Any) -> None:
+    def push(self, value: Any) -> Self:
         """
         - adds a node to the top of the stack
         """
 
-        if self.has_space():
-            item = Node(value)
+        match self.has_space():
+            case True:
+                item = Node(value)
 
-            item.set_next_node(self.top_item)
-            self.top_item = item
-            self.size += 1
+                item.set_next_node(self.top_item)
+                self.top_item = item
+                self.size += 1
 
-        else:
-            raise StackOverflowError
+                return self
+
+            case False:
+                raise StackOverflowError
 
     def pop(self) -> None:
         """
         - removes the top node of the stack
         """
 
-        if self.size > 0:
-            item_to_remove = self.top_item
+        match self.get_size() > 0:
 
-            if not isinstance(item_to_remove, Node):
+            case True:
+
+                item_to_remove = self.top_item
+
+                if not isinstance(item_to_remove, Node):
+                    raise EmptyStackError
+
+                self.top_item = item_to_remove.get_next_node()
+                self.size -= 1
+                
+            case False :
                 raise EmptyStackError
-
-            self.top_item = item_to_remove.get_next_node()
-            self.size -= 1
-
-        else:
-            raise EmptyStackError
 
     def peek(self) -> Any:
         """
@@ -56,7 +62,7 @@ class Stack:
         """
 
         if self.size > 0 and isinstance(self.top_item, Node):
-            
+
             return self.top_item.get_value()
 
         raise EmptyStackError

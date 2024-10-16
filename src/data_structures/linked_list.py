@@ -18,10 +18,10 @@ class LinkedList:
     def insert(self, new_node_value: Any) -> None:
         current_node = self.head_node
 
-        if not current_node:
+        if current_node is None:
             self.head_node = Node(new_node_value)
 
-        while current_node:
+        while current_node is not None:
             next_node = current_node.get_next_node()
             if not next_node:
                 current_node.set_next_node(new_node_value)

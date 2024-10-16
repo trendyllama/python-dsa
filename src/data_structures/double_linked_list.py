@@ -28,8 +28,13 @@ class DoublyLinkedList:
 
         self.head_node = new_head
 
-        if self.tail_node is None:
-            self.tail_node = new_head
+        match self.tail_node:
+
+            case None:
+                self.tail_node = new_head
+            case _:
+                return
+
 
     def add_to_tail(self, new_value: Any) -> None:
         """_summary_
@@ -113,22 +118,27 @@ class DoublyLinkedList:
 
             current_node = current_node.get_next_node()
 
-        if node_to_remove is None:
-            return None
+        match node_to_remove:
 
-        if node_to_remove == self.head_node:
-            self.remove_head()
-        elif node_to_remove == self.tail_node:
-            self.remove_tail()
-        else:
-            next_node = node_to_remove.get_next_node()
+            case None:
+                return None
 
-            if not isinstance(next_node, Node):
-                raise TypeError
+            case self.head_node:
+                self.remove_head()
 
-            prev_node = node_to_remove.get_prev_node()
-            next_node.set_prev_node(prev_node)
-            prev_node.set_next_node(next_node)
+            case self.tail_node:
+                self.remove_tail()
+
+            case _ :
+
+                next_node = node_to_remove.get_next_node()
+
+        if not isinstance(next_node, Node):
+            raise TypeError
+
+        prev_node = node_to_remove.get_prev_node()
+        next_node.set_prev_node(prev_node)
+        prev_node.set_next_node(next_node)
 
         return node_to_remove
 
@@ -141,7 +151,7 @@ class DoublyLinkedList:
 
         string_list = ""
         current_node = self.head_node
-        while current_node:
+        while current_node is not None:
             if current_node.get_value() is not None:
                 string_list += str(current_node.get_value()) + "\n"
             current_node = current_node.get_next_node()

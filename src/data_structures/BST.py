@@ -94,13 +94,16 @@ class BinarySearchTree:
             else:
                 self.left.insert(value)
         else:
-            if self.right is None:
-                self.right = BinarySearchTree(value, self.depth + 1)
-                print(
-                    f"Tree node {value} added to the right of {self.value} at depth {self.depth + 1}"
-                )
-            else:
-                self.right.insert(value)
+
+            match self.right:
+
+                case None:
+                    self.right = BinarySearchTree(value, self.depth + 1)
+                    print(
+                        f"Tree node {value} added to the right of {self.value} at depth {self.depth + 1}"
+                    )
+                case _ :
+                    self.right.insert(value)
 
     def get_node_by_value(self, value):
         """_summary_
@@ -122,6 +125,7 @@ class BinarySearchTree:
 
     def depth_first_traversal(self):
         """_summary_"""
+
 
         if self.left is not None:
             self.left.depth_first_traversal()

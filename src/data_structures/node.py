@@ -27,8 +27,10 @@ class Node:
         self.next_node = next_node
         self.prev_node = prev_node
 
-    def set_next_node(self, link_node: Optional[Self]) -> None:
+    def set_next_node(self, link_node: Optional[Self]) -> Self:
         self.next_node = link_node
+
+        return self
 
     def get_next_node(self) -> Optional[Self]:
         return self.next_node
@@ -36,7 +38,7 @@ class Node:
     def get_value(self) -> Any:
         return self.value
 
-    def set_prev_node(self, prev_node: Optional[Self]) -> None:
+    def set_prev_node(self, prev_node: Optional[Self]) -> Optional[Self]:
         """
         - this method supports a doubly linked list
         """
@@ -45,6 +47,8 @@ class Node:
             return None
 
         self.prev_node = prev_node
+
+        return self
 
     def get_prev_node(self) -> Optional[Self]:
         if not isinstance(self.prev_node, Node):

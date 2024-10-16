@@ -38,7 +38,9 @@ class Game:
         )
 
     def get_input(self):
-        choices = [stack.__qualname__[0] for stack in self.stacks]
+        # choices = [stack.__qualname__[0] for stack in self.stacks]
+        choices = list(map(lambda x: x.__qualname__[0], self.stacks))
+        
         while True:
             for i, val in enumerate(self.stacks):
                 name = val.__qualname__

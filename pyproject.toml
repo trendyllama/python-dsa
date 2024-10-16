@@ -2,8 +2,12 @@
 name = "codecademy-dsa-python"
 version = "0.1.0"
 description = "data structures and algorithms course from codecademy"
+requires-python = "^3.12"
 
 readme = "README.md"
+dependencies = [
+    
+]
 
 [tool.uv]
 dev-dependencies = [
