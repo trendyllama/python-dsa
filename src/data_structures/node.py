@@ -43,15 +43,19 @@ class Node:
         - this method supports a doubly linked list
         """
 
-        if prev_node is None:
-            return None
+        match prev_node:
 
-        self.prev_node = prev_node
+            case None:
+                return None
+            case Node():
+                self.prev_node = prev_node
+                return self
 
-        return self
 
     def get_prev_node(self) -> Optional[Self]:
-        if not isinstance(self.prev_node, Node):
-            return None
 
-        return self.prev_node
+        match self.prev_node:
+            case None:
+                return None
+            case Node():
+                return self.prev_node

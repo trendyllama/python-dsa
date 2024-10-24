@@ -73,12 +73,17 @@ class Queue:
 
     def peek(self) -> Self:
 
-        if self.head is None:
-            raise TypeError
+        match self.head:
 
-        print(self.head.value)
+            case Node():
+                print(self.head.value)
+                return self
 
-        return self
+            case None:
+
+                print(None)
+                return self
+            
 
     def print(self) -> Union[Callable, Self]:
         """_summary_
@@ -89,11 +94,12 @@ class Queue:
 
         # TODO: this isnt working
 
-        if not isinstance(self.head, Node):
-            return Self
+        match self.head:
 
-        self.peek()
-
-        self.head = self.head.get_prev_node()
-
-        return self.print()
+            case Node():
+                self.peek()
+                self.head = self.head.get_prev_node()
+                return self.print()
+            
+            case None:
+                return self
