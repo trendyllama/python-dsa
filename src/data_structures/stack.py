@@ -77,11 +77,16 @@ class Stack:
         return self.size
 
     def print(self) -> None:
-        if not isinstance(self.top_item, Node):
-            return None
 
-        print(self.top_item.get_value())
+        match self.top_item:
+            case Node():
+                print(self.top_item.get_value())
 
-        self.top_item = self.top_item.get_next_node()
+                self.top_item = self.top_item.get_next_node()
 
-        return self.print()
+                return self.print()
+        
+            case None:
+                return None
+
+

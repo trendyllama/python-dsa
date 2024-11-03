@@ -16,7 +16,19 @@ class LinkedList:
         self.head_node = head_node
 
     def insert(self, new_node_value: Any) -> None:
-        current_node = self.head_node
+        # current_node = self.head_node
+
+        match self.head_node:
+            case Node():
+                next_node = self.head_node.get_next_node()
+
+                match next_node:
+
+                    case None:
+                        self.head_node.set_next_node(Node(new_node_value))
+
+                    case Node():
+                        
 
         if current_node is None:
             self.head_node = Node(new_node_value)
