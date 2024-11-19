@@ -32,13 +32,10 @@ class Queue:
         return self
 
     def enqueue(self, value) -> Self:
-
         self.increase_size()
 
         match self.is_empty():
-
             case True:
-
                 new_node = Node(value, None, None)
 
                 self.head = new_node
@@ -46,20 +43,16 @@ class Queue:
                 self.tail = new_node
 
             case False:
-
                 new_node = Node(value, self.tail, None)
 
                 self.tail = new_node
 
         return self
 
-
     def dequeue(self) -> Self:
-
         self.decrease_size()
 
         match self.is_empty():
-
             case True:
                 raise EmptyQueueError("Cannot dequeue from an empty queue")
 
@@ -70,36 +63,24 @@ class Queue:
 
         return self
 
-
     def peek(self) -> Self:
-
         match self.head:
-
             case Node():
                 print(self.head.value)
                 return self
 
             case None:
-
                 print(None)
                 return self
-            
 
     def print(self) -> Union[Callable, Self]:
-        """_summary_
-
-        Returns:
-            Optional[Callable]: _description_
-        """
-
         # TODO: this isnt working
 
         match self.head:
-
             case Node():
                 self.peek()
                 self.head = self.head.get_prev_node()
                 return self.print()
-            
+
             case None:
                 return self

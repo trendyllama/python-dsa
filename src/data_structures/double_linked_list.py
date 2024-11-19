@@ -9,16 +9,10 @@ class DoublyLinkedList:
     """
 
     def __init__(self) -> None:
-        """_summary_"""
         self.head_node = None
         self.tail_node = None
 
     def add_to_head(self, new_value: Any) -> None:
-        """_summary_
-
-        Args:
-            new_value (Any): _description_
-        """
         new_head = Node(new_value)
         current_head = self.head_node
 
@@ -29,19 +23,12 @@ class DoublyLinkedList:
         self.head_node = new_head
 
         match self.tail_node:
-
             case None:
                 self.tail_node = new_head
             case _:
                 return
 
-
     def add_to_tail(self, new_value: Any) -> None:
-        """_summary_
-
-        Args:
-            new_value (Any): _description_
-        """
         new_tail = Node(new_value)
         current_tail = self.tail_node
 
@@ -55,11 +42,6 @@ class DoublyLinkedList:
             self.head_node = new_tail
 
     def remove_head(self) -> None:
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
         removed_head = self.head_node
 
         if removed_head is None:
@@ -76,11 +58,6 @@ class DoublyLinkedList:
         return removed_head.get_value()
 
     def remove_tail(self):
-        """_summary_
-
-        Returns:
-            _type_: _description_
-        """
         removed_tail = self.tail_node
 
         if removed_tail is None:
@@ -97,17 +74,6 @@ class DoublyLinkedList:
         return removed_tail.get_value()
 
     def remove_by_value(self, value_to_remove: Any) -> None:
-        """_summary_
-
-        Args:
-            value_to_remove (Any): _description_
-
-        Raises:
-            TypeError: _description_
-
-        Returns:
-            _type_: _description_
-        """
         node_to_remove = None
         current_node = self.head_node
 
@@ -119,7 +85,6 @@ class DoublyLinkedList:
             current_node = current_node.get_next_node()
 
         match node_to_remove:
-
             case None:
                 return None
 
@@ -129,8 +94,7 @@ class DoublyLinkedList:
             case self.tail_node:
                 self.remove_tail()
 
-            case _ :
-
+            case _:
                 next_node = node_to_remove.get_next_node()
 
         if not isinstance(next_node, Node):
@@ -143,12 +107,6 @@ class DoublyLinkedList:
         return node_to_remove
 
     def stringify_list(self) -> str:
-        """_summary_
-
-        Returns:
-            str: _description_
-        """
-
         string_list = ""
         current_node = self.head_node
         while current_node is not None:
