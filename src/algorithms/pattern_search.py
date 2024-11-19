@@ -6,10 +6,10 @@ def pattern_search(text: str, pattern: str) -> None:
     - string pattern searching algo
     """
     print("Input Text:", text, "Input Pattern:", pattern)
-    for index, value in enumerate(text):
+    for index, _ in enumerate(text):
         print("Text Index:", index)
         match_count = 0
-        for char, val in enumerate(pattern):
+        for char, _ in enumerate(pattern):
             print("Pattern Index:", char)
             if pattern[char] == text[char + index]:
                 print("Matching index found")
