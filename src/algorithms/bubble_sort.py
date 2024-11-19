@@ -8,16 +8,6 @@ NUMS = [5, 2, 9, 1, 5, 6]
 
 
 def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
-    """_summary_
-
-    Args:
-        arr (list[Any]): _description_
-        index_1 (int): _description_
-        index_2 (int): _description_
-
-    Returns:
-        list[Any]: _description_
-    """
     temp = arr[index_1]
     arr[index_1] = arr[index_2]
     arr[index_2] = temp
@@ -26,14 +16,6 @@ def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
 
 
 def bubble_sort(arr: list[Any]) -> list[Any]:
-    """_summary_
-
-    Args:
-        arr (list[Any]): _description_
-
-    Returns:
-        list[Any]: _description_
-    """
     # swap_indexes = filter(lambda x, y: arr[x] > arr[y + 1], range(len(arr)), range(len(arr) - 1))
     # arr = map(lambda x, y: swap(arr, x, y + 1) if arr[x] > arr[y + 1], range(len(arr)), range(len(arr) - 1))
     for idx1, _ in enumerate(arr):

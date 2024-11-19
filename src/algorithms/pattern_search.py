@@ -1,6 +1,3 @@
-"""_summary_"""
-
-
 def pattern_search(text: str, pattern: str) -> None:
     """
     - string pattern searching algo
