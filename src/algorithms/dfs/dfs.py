@@ -6,17 +6,6 @@ print_tree(sample_root_node)
 
 
 def dfs(root: TreeNode, target: Any, path: Tuple = ()) -> Optional[Tuple]:
-    """_summary_
-
-    Args:
-        root (TreeNode): _description_
-        target (Any): _description_
-        path (Tuple, optional): _description_. Defaults to ().
-
-    Returns:
-        Optional[Tuple]: _description_
-    """
-
     path = path + (root,)
 
     if root.value == target:

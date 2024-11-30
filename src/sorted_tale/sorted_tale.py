@@ -12,11 +12,8 @@ from .utils import load_books
 
 bookshelf = load_books(Path("books_small.csv"))
 
-# for book in bookshelf:
-#   print(book['title'])
-
 print(ord("a"))
-# print(ord(""))
+
 print(ord("A"))
 
 
@@ -37,16 +34,9 @@ def by_total_length(booka, bookb) -> bool:
 
 sort1 = bubble_sort(bookshelf, by_title_ascending)
 
-# for book in sort1:
-#     print(book['title'])
-
-
 bookshelf_v1 = bookshelf.copy()
 
 sort2 = bubble_sort(bookshelf_v1, by_author_ascending)
-
-# for book in sort2:
-#     print(book['author'])
 
 bookshelf_v2 = bookshelf.copy()
 

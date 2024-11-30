@@ -17,10 +17,9 @@ class Node:
         prev_node: Optional[Self] = None,
     ) -> None:
         """
-        Purpose:
-            - initialize the node with starting parameters
-            - using the previous node property to support a
-              linked list
+        - initialize the node with starting parameters
+        - using the previous node property to support a
+            linked list
         """
 
         self.value = value
@@ -44,16 +43,13 @@ class Node:
         """
 
         match prev_node:
-
             case None:
                 return None
             case Node():
                 self.prev_node = prev_node
                 return self
 
-
     def get_prev_node(self) -> Optional[Self]:
-
         match self.prev_node:
             case None:
                 return None

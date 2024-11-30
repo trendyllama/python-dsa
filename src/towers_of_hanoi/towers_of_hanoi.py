@@ -37,10 +37,10 @@ class Game:
             f"\nThe fastest you can solve this game is in {self.num_optimal_moves} moves"
         )
 
-    def get_input(self):
+    def get_input(self) -> Stack:
         # choices = [stack.__qualname__[0] for stack in self.stacks]
         choices = list(map(lambda x: x.__qualname__[0], self.stacks))
-        
+
         while True:
             for i, val in enumerate(self.stacks):
                 name = val.__qualname__
@@ -55,7 +55,7 @@ class Game:
                     if user_input == choices[i]:
                         return val
 
-    def exit_game(self):
+    def exit_game(self) -> None:
         print(
             f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {self.num_optimal_moves}"
         )
@@ -66,7 +66,7 @@ class Game:
             for stack in self.stacks:
                 stack.print()
 
-            def move() -> Callable:
+            def move() -> Callable | None:
                 print("\nWhich stack do you want to move from?\n")
                 from_stack = self.get_input()
                 print("\nWhich stack do you want to move to?\n")
