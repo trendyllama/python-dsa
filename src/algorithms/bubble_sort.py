@@ -18,7 +18,7 @@ def swap(arr: list[Any], index_1: int, index_2: int) -> list[Any]:
 def bubble_sort(arr: list[Any]) -> list[Any]:
     # swap_indexes = filter(lambda x, y: arr[x] > arr[y + 1], range(len(arr)), range(len(arr) - 1))
     # arr = map(lambda x, y: swap(arr, x, y + 1) if arr[x] > arr[y + 1], range(len(arr)), range(len(arr) - 1))
-    for idx1, _ in enumerate(arr):
+    for idx1 in range(len(arr) - 1):
         for idx2 in range(len(arr) - 1):
             if arr[idx1] > arr[idx2 + 1]:
                 swap(arr, idx1, idx2 + 1)
