@@ -9,6 +9,10 @@ def is_greater_than(element1: Union[int, float], element2: Union[int, float]) ->
     return element1 < element2
 
 
+def is_less_than(element1: Union[int, float], element2: Union[int, float]) -> bool:
+    return element1 > element2
+
+
 def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
     """
     - codecademy implementation of bubble sort
@@ -40,6 +44,6 @@ def bubble_sort2(
         if comparison_function(arr[idx], arr[idx + 1]):
             arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
 
-            return bubble_sort(arr=arr, comparison_function=comparison_function)
+            return bubble_sort2(arr=arr, comparison_function=comparison_function)
 
     return arr
