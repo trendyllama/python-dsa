@@ -1,9 +1,7 @@
-import unittest
-
 from src.data_structures.queue import Queue
 
 
-class TestQueue(unittest.TestCase):
+class TestQueue:
     def test_enqueue(self):
         queue = Queue()
 
