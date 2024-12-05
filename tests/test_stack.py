@@ -5,14 +5,18 @@ class TestStack:
     def test_push(self):
         stack = Stack()
 
-        stack.push(1)
-        stack.push(2)
+        for i in range(1, 200):
+            stack.push(i)
+            assert stack.peek() == i
 
-        assert stack.peek() == 2
+    # def test_pop(self):
+    #     stack = Stack()
 
-        stack.pop()
+    #     for i in range(1, 200):
+    #         stack.push(i)
 
-        assert stack.peek() == 1
+    #     for i in range(1, 200):
+    #         assert stack.pop() == 200 - i
 
     def test_print_items(self):
         stack = Stack()

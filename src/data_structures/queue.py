@@ -1,4 +1,4 @@
-from typing import Callable, Optional, Self, Union
+from typing import Callable, Optional, Self, Union, Any
 
 from src.data_structures.node import Node
 
@@ -63,15 +63,14 @@ class Queue:
 
         return self
 
-    def peek(self) -> Self:
+    def peek(self) -> Any:
         match self.head:
             case Node():
-                print(self.head.value)
-                return self
+                # print(self.head.value)
+                return self.head.value
 
             case None:
-                print(None)
-                return self
+                return None
 
     def print(self) -> Union[Callable, Self]:
         # TODO: this isnt working
