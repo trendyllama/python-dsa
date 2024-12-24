@@ -16,5 +16,5 @@ def test_dequeue():
         queue.enqueue(i)
 
     for i in range(1, 20):
-        queue.dequeue()
         assert queue.peek() == i
+        queue.dequeue()

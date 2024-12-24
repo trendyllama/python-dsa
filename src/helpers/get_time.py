@@ -8,11 +8,11 @@ from collections.abc import Callable
 
 def get_time(func: Callable) -> Callable:
     def wrapper(*args, **kwargs):
-        s = time.time()
+        s = time.perf_counter()
 
         res = func(*args, **kwargs)
 
-        elp = time.time() - s
+        elp = time.perf_counter() - s
 
         print(f"{func.__name__} executed in {elp} seconds")
 

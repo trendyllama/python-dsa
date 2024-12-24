@@ -11,10 +11,7 @@ def quick_sort(list_input: list[Any]) -> list[Any]:
 
     pivot = list_input[-1]
 
-    # remove pivot from list without mutation
-    filtered_list = filter(lambda x: x != pivot, list_input)
-
-    smaller = list(filter(lambda x: x < pivot, filtered_list))
-    larger = list(filter(lambda x: x > pivot, filtered_list))
+    smaller = [x for x in list_input[:-1] if x <= pivot]
+    larger = [x for x in list_input[:-1] if x > pivot]
 
     return quick_sort(smaller) + [pivot] + quick_sort(larger)

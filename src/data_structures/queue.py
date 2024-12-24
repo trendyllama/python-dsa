@@ -50,27 +50,25 @@ class Queue:
         return self
 
     def dequeue(self) -> Self:
-        self.decrease_size()
-
         match self.is_empty():
             case True:
                 raise EmptyQueueError("Cannot dequeue from an empty queue")
 
             case False:
                 assert self.head is not None
-
                 self.head = self.head.get_prev_node()
+                self.decrease_size()
+
+                if self.head is None:
+                    self.tail = None
 
         return self
 
     def peek(self) -> Any:
-        match self.head:
-            case Node():
-                # print(self.head.value)
-                return self.head.value
+        if self.head is None:
+            raise EmptyQueueError("Cannot peek from an empty queue")
 
-            case None:
-                return None
+        return self.head.get_value()
 
     def print(self) -> Union[Callable, Self]:
         # TODO: this isnt working

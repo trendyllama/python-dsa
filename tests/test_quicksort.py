@@ -12,4 +12,4 @@ def test_quicksort():
 
     RAND_LIST = [random.randint(1, 50) for _ in range(50)]
 
-    assert quick_sort(RAND_LIST) == list(set(sorted(RAND_LIST)))
+    assert quick_sort(RAND_LIST) == list(sorted(RAND_LIST))

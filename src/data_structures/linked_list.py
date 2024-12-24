@@ -23,6 +23,7 @@ class LinkedList:
 
         while current_node is not None:
             next_node = current_node.get_next_node()
+
             if not next_node:
                 current_node.set_next_node(new_node_value)
             current_node = next_node
