@@ -5,7 +5,6 @@
 from typing import Any, Self
 
 
-
 class TreeNode:
     """
     - codecademy implementation of treenode

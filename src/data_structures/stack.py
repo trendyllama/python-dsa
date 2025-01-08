@@ -42,9 +42,7 @@ class Stack:
         """
 
         match self.get_size() > 0:
-
             case True:
-
                 item_to_remove = self.top_item
 
                 if not isinstance(item_to_remove, Node):
@@ -52,8 +50,8 @@ class Stack:
 
                 self.top_item = item_to_remove.get_next_node()
                 self.size -= 1
-                
-            case False :
+
+            case False:
                 raise EmptyStackError
 
     def peek(self) -> Any:
@@ -62,7 +60,6 @@ class Stack:
         """
 
         if self.size > 0 and isinstance(self.top_item, Node):
-
             return self.top_item.get_value()
 
         raise EmptyStackError

@@ -21,18 +21,18 @@ class Queue:
     def is_empty(self) -> bool:
         return bool(self.head is None and self.tail is None)
 
-    def increase_size(self) -> Self:
+    def _increase_size(self) -> Self:
         self.size += 1
 
         return self
 
-    def decrease_size(self) -> Self:
+    def _decrease_size(self) -> Self:
         self.size -= 1
 
         return self
 
     def enqueue(self, value) -> Self:
-        self.increase_size()
+        self._increase_size()
 
         match self.is_empty():
             case True:
@@ -57,7 +57,7 @@ class Queue:
             case False:
                 assert self.head is not None
                 self.head = self.head.get_prev_node()
-                self.decrease_size()
+                self._decrease_size()
 
                 if self.head is None:
                     self.tail = None

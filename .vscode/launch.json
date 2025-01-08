@@ -1,10 +1,10 @@
 {
-    "configurations": [
-        {
-            "name": "pytest",
-            "type": "debugpy",
-            "request": "launch",
-            "module": "pytest",
-        }
-    ]
+  "configurations": [
+    {
+      "name": "pytest",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest"
+    }
+  ]
 }

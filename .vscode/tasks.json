@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "uv run ruff format ; npx prettier --write .",
+      "group": "build"
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "uv run ruff check",
+      "group": "build"
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "uv run pytest",
+      "group": "test"
+    },
+    {
+      "label": "main workflow",
+      "dependsOn": ["format", "lint", "test"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
