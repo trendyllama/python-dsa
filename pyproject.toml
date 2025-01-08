@@ -8,13 +8,7 @@ readme = "README.md"
 
 [tool.uv]
 dev-dependencies = [
-    "pre-commit>=4.0.1",
     "pytest>=8.3.4",
-    "python-semantic-release>=9.14.0",
     "ruff>=0.6.8",
     "uv>=0.4.17",
 ]
-
-
-[tool.semantic_release]
-version_variable = "version.py:__version__"
