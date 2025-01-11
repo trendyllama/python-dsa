@@ -60,7 +60,6 @@ class LinkedList:
         return " -> ".join(result)
 
     def __str__(self) -> str:
-
         return self.stringify_list()
 
     def __iter__(self) -> Iterator[Any]:
@@ -69,7 +68,6 @@ class LinkedList:
         return self
 
     def __next__(self) -> Any:
-
         if self.current_node is None:
             raise StopIteration
 

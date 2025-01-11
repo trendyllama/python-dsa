@@ -32,6 +32,9 @@ class Node:
         return self
 
     def get_next_node(self) -> Optional[Self]:
+        if self.next_node is None:
+            return None
+
         return self.next_node
 
     def get_value(self) -> Any:
