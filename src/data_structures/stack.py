@@ -82,3 +82,21 @@ class Stack:
         self.top_item = self.top_item.get_next_node()
 
         return self.print()
+
+    def __iter__(self) -> Self:
+        self.current_node = self.top_item
+
+        return self
+
+    def __next__(self) -> Any:
+        if not isinstance(self.current_node, Node):
+            raise StopIteration
+
+        value = self.current_node.get_value()
+
+        self.current_node = self.current_node.get_next_node()
+
+        return value
+
+    def __len__(self) -> int:
+        return self.get_size()

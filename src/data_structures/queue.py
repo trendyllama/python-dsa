@@ -81,3 +81,18 @@ class Queue:
 
             case None:
                 return self
+
+    def __iter__(self) -> Self:
+        self.current_node = self.head
+
+        return self
+
+    def __next__(self) -> Any:
+        if self.current_node is None:
+            raise StopIteration
+
+        value = self.current_node.get_value()
+
+        self.current_node = self.current_node.get_prev_node()
+
+        return value

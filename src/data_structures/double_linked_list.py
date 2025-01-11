@@ -114,3 +114,28 @@ class DoublyLinkedList:
                 string_list += str(current_node.get_value()) + "\n"
             current_node = current_node.get_next_node()
         return string_list
+
+    def __iter__(self):
+        self.current_node = self.head_node
+        return self
+
+    def __next__(self):
+        if self.current_node is None:
+            raise StopIteration
+        value = self.current_node.get_value()
+        self.current_node = self.current_node.get_next_node()
+        return value
+
+    def __str__(self) -> str:
+        return self.stringify_list()
+
+    def __repr__(self) -> str:
+        return self.stringify_list()
+
+    def __len__(self) -> int:
+        current_node = self.head_node
+        count = 0
+        while current_node is not None:
+            count += 1
+            current_node = current_node.get_next_node()
+        return count

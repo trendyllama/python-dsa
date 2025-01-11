@@ -12,9 +12,8 @@ def test_enqueue():
 def test_dequeue():
     queue = Queue()
 
-    for i in range(1, 20):
+    for i in range(20):
         queue.enqueue(i)
 
-    for i in range(1, 19):
-        assert queue.peek() == i
-        queue.dequeue()
+    for idx, val in enumerate(queue):
+        assert idx == val

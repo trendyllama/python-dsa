@@ -25,3 +25,12 @@ class TestStack:
             stack.push(num)
 
         stack.print()
+
+    def test_iter(self):
+        stack = Stack()
+
+        for num in range(10):
+            stack.push(num)
+
+        for i in range(len(stack)):
+            assert i == stack.pop()
