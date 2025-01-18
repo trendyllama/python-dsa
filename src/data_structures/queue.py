@@ -49,10 +49,10 @@ class Queue:
 
         return self
 
-    def dequeue(self) -> Self:
+    def dequeue(self) -> Self | None:
         match self.is_empty():
             case True:
-                raise EmptyQueueError("Cannot dequeue from an empty queue")
+                return None
 
             case False:
                 assert self.head is not None
@@ -66,7 +66,7 @@ class Queue:
 
     def peek(self) -> Any:
         if self.head is None:
-            raise EmptyQueueError("Cannot peek from an empty queue")
+            return None
 
         return self.head.get_value()
 

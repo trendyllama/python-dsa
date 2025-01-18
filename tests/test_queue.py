@@ -15,5 +15,6 @@ def test_dequeue():
     for i in range(20):
         queue.enqueue(i)
 
-    for idx, val in enumerate(queue):
-        assert idx == val
+
+    for i in range(1, 20):
+        assert queue.dequeue().peek() == (i + 1) if i < 19 else None

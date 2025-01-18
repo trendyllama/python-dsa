@@ -33,4 +33,5 @@ class TestStack:
             stack.push(num)
 
         for i in range(len(stack)):
-            assert i == stack.pop()
+            stack.pop()
+            assert i == stack.peek() if i < 9 else None
