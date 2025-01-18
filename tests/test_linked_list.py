@@ -23,6 +23,8 @@ def test_iterate_list():
     linked_list.insert(20)
     linked_list.insert(30)
     values = [value for value in linked_list]
+
+    assert all(isinstance(value, Node) for value in values)
     assert values == [10, 20, 30]
 
 def test_insert_multiple_nodes():
