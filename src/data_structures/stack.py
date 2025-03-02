@@ -2,7 +2,7 @@
 - contains stack class and exceptions related to the stack
 """
 
-from typing import Any, Optional, Self
+from typing import Any
 
 from .exceptions import EmptyStackError, StackOverflowError
 from .node import Node
@@ -15,7 +15,7 @@ class Stack:
 
     def __init__(self) -> None:
         self._size: int = 0
-        self._top_item: Optional[Node] = None
+        self._head: Node | None = None
         self._limit: int = 1000
 
     @property
@@ -27,12 +27,12 @@ class Stack:
         self._size = new_size
 
     @property
-    def top_item(self) -> Optional[Node]:
-        return self._top_item
+    def head(self) -> Node | None:
+        return self._head
 
-    @top_item.setter
-    def top_item(self, new_top_item: Optional[Node]) -> None:
-        self._top_item = new_top_item
+    @head.setter
+    def head(self, new_top_item: Node | None) -> None:
+        self._head = new_top_item
 
     @property
     def limit(self) -> int:
@@ -42,19 +42,28 @@ class Stack:
     def limit(self, new_limit: int) -> None:
         self._limit = new_limit
 
-    def push(self, value: Any) -> Self:
+    def _increase_size(self) -> None:
+        self.size += 1
+
+    def _decrease_size(self) -> None:
+        self.size -= 1
+
+    def push(self, value: Any) -> None:
         """
         - adds a node to the top of the stack
         """
 
+        if self.is_empty:
+            self.head = Node(value, None)
+            self._increase_size()
+            return
+
         if self.has_space:
-            item = Node(value)
+            item = Node(value, self.head)
 
-            item.next_node = self.top_item
-            self.top_item = item
-            self.size += 1
-
-            return self
+            self.head = item
+            self._increase_size()
+            return
 
         raise StackOverflowError
 
@@ -63,25 +72,24 @@ class Stack:
         - removes the top node of the stack
         """
 
-        if self.size > 0:
-            item_to_remove = self.top_item
+        if self.is_empty:
+            raise EmptyStackError
 
-            if not isinstance(item_to_remove, Node):
-                raise EmptyStackError
+        if self.size == 1:
+            self.head = None
+            self.size = 0
+            return
 
-            self.top_item = item_to_remove.next_node
-            self.size -= 1
-
-
-        raise EmptyStackError
+        self.head = self.head.next_node
+        self._decrease_size()
 
     def peek(self) -> Any:
         """
         - returns the value of the Node at the top of the stack
         """
 
-        if self.size > 0 and isinstance(self.top_item, Node):
-            return self.top_item.value
+        if not self.is_empty:
+            return self.head.value
 
         raise EmptyStackError
 
@@ -92,32 +100,3 @@ class Stack:
     @property
     def is_empty(self) -> bool:
         return self.size == 0
-
-
-    def print(self) -> None:
-        if not isinstance(self.top_item, Node):
-            return None
-
-        print(self.top_item.value)
-
-        self.top_item = self.top_item.next_node
-
-        return self.print()
-
-    def __iter__(self) -> Self:
-        self.current_node = self.top_item
-
-        return self
-
-    def __next__(self) -> Any:
-        if not isinstance(self.current_node, Node):
-            raise StopIteration
-
-        value = self.current_node.value
-
-        self.current_node = self.current_node.next_node
-
-        return value
-
-    def __len__(self) -> int:
-        return self.size

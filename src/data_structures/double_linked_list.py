@@ -12,7 +12,6 @@ class DoublyLinkedList:
         self._head_node = None
         self._tail_node = None
 
-
     @property
     def head(self) -> Node | None:
         return self._head_node
@@ -28,7 +27,6 @@ class DoublyLinkedList:
     @tail.setter
     def tail(self, new_tail: Node | None) -> None:
         self._tail_node = new_tail
-
 
     def add_to_head(self, new_value: Any) -> None:
         new_head = Node(new_value)

@@ -57,7 +57,6 @@ class Queue:
         return self
 
     def enqueue(self, value):
-
         if self.is_empty:
             assert self.size == 0
             new_node = Node(value, None, None)
@@ -88,9 +87,7 @@ class Queue:
         self._increase_size()
         assert self.size > 0
 
-
     def dequeue(self):
-
         if self.is_empty:
             raise EmptyQueueError("Cannot dequeue from an empty queue")
 
@@ -111,7 +108,6 @@ class Queue:
         self.head = self.head.next_node
         self.tail = self.tail.next_node
         self._decrease_size()
-
 
     def peek(self) -> Any:
         if self.is_empty:

@@ -32,8 +32,8 @@ def test_dequeue():
     assert queue.size == 0
     assert queue.is_empty
 
-def test_multiple_dequeue():
 
+def test_multiple_dequeue():
     queue = Queue()
 
     for i in range(1, 10):

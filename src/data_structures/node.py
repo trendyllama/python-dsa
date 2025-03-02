@@ -46,11 +46,13 @@ class Node:
 
     @previous_node.setter
     def previous_node(self, link_node: Self | None) -> None:
-
         self._prev_node = link_node
 
     @property
     def value(self) -> Any:
+        if self._value is None:
+            return None
+
         return self._value
 
     @value.setter

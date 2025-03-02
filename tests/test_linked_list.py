@@ -9,6 +9,7 @@ def test_insert_empty_list():
     assert linked_list.head_node is not None
     assert linked_list.head_node.value == 10
 
+
 def test_insert_non_empty_list():
     linked_list = LinkedList(Node(10))
     linked_list.insert(20)
@@ -18,6 +19,7 @@ def test_insert_non_empty_list():
     assert linked_list.head_node.next_node is not None
     assert linked_list.head_node.next_node == 20
 
+
 def test_iterate_list():
     linked_list = LinkedList(Node(10))
     linked_list.insert(20)
@@ -26,6 +28,7 @@ def test_iterate_list():
 
     assert all(isinstance(value, Node) for value in values)
     assert values == [10, 20, 30]
+
 
 def test_insert_multiple_nodes():
     linked_list = LinkedList()

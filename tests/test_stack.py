@@ -9,28 +9,14 @@ class TestStack:
             stack.push(i)
             assert stack.peek() == i
 
-    # def test_pop(self):
-    #     stack = Stack()
-
-    #     for i in range(1, 200):
-    #         stack.push(i)
-
-    #     for i in range(1, 200):
-    #         assert stack.pop() == 200 - i
-
-    def test_print_items(self):
+    def test_pop(self):
         stack = Stack()
 
-        for num in range(10):
-            stack.push(num)
+        for i in range(1, 200):
+            stack.push(i)
 
-        stack.print()
+        assert stack.size == 199
 
-    def test_iter(self):
-        stack = Stack()
-
-        for num in range(10):
-            stack.push(num)
-
-        for i in range(len(stack)):
-            assert i == stack.pop()
+        for i in range(1, 199):
+            stack.pop()
+            assert stack.peek() == 199 - i
