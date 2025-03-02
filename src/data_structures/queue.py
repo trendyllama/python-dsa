@@ -1,4 +1,4 @@
-from typing import Callable, Optional, Self, Union, Any
+from typing import Optional, Self, Any
 
 from src.data_structures.node import Node
 
@@ -56,68 +56,65 @@ class Queue:
 
         return self
 
-    def enqueue(self, value) -> Self:
+    def enqueue(self, value):
+
+        if self.is_empty:
+            assert self.size == 0
+            new_node = Node(value, None, None)
+
+            self.head = new_node
+
+            self.tail = new_node
+
+            self._increase_size()
+
+            return None
+
+        if self.size == 1:
+            new_node = Node(value, self.head, None)
+
+            self.tail = new_node
+
+            self.head.next_node = self.tail
+
+            self._increase_size()
+
+            return None
+
+        # this is the last node in the queue
+        new_node = Node(value, self.tail, None)
+
+        self.tail = new_node
         self._increase_size()
+        assert self.size > 0
 
-        match self.is_empty:
-            case True:
-                new_node = Node(value, None, None)
 
-                self.head = new_node
+    def dequeue(self):
 
-                self.tail = new_node
+        if self.is_empty:
+            raise EmptyQueueError("Cannot dequeue from an empty queue")
 
-            case False:
-                new_node = Node(value, self.tail, None)
+        if self.size == 1:
+            self.head = None
+            self.tail = None
+            self._decrease_size()
 
-                self.tail = new_node
+            return None
 
-        return self
+        if self.size == 2:
+            self.head = self.tail
+            self.tail = self.head
+            self._decrease_size()
 
-    def dequeue(self) -> Self:
-        match self.is_empty:
-            case True:
-                raise EmptyQueueError("Cannot dequeue from an empty queue")
+            return None
 
-            case False:
-                assert self.head is not None
-                self.head = self.head.previous_node
-                self._decrease_size()
+        self.head = self.head.next_node
+        self.tail = self.tail.next_node
+        self._decrease_size()
 
-                if self.head is None:
-                    self.tail = None
-
-        return self
 
     def peek(self) -> Any:
-        if self.head is None:
+        if self.is_empty:
             raise EmptyQueueError("Cannot peek from an empty queue")
 
         return self.head.value
-
-    def print(self) -> Union[Callable, Self]:
-        # TODO: this isnt working
-
-        match self.head:
-            case Node():
-                self.peek()
-                self.head = self.head.previous_node
-                return self.print()
-
-            case None:
-                return self
-
-    def __iter__(self) -> Self:
-        self.current_node = self.head
-
-        return self
-
-    def __next__(self) -> Any:
-        if self.current_node is None:
-            raise StopIteration
-
-        value = self.current_node.value
-
-        self.current_node = self.current_node.previous_node
-
-        return value

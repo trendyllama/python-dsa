@@ -11,8 +11,20 @@ class TreeNode:
     """
 
     def __init__(self, value: Any) -> None:
-        self.value = value
-        self.children = []
+        self._value = value
+        self._children = []
+
+    @property
+    def value(self) -> Any:
+        return self._value
+
+    @property
+    def children(self) -> list[Self]:
+        return self._children
+
+    @children.setter
+    def children(self, new_children: list[Self]) -> None:
+        self._children = new_children
 
     def add_child(self, child_node: Self) -> None:
         print("Adding " + child_node.value)
