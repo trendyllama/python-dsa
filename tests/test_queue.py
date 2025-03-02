@@ -6,12 +6,15 @@ def test_enqueue():
 
     queue.enqueue(1)
 
+    assert queue.head is not None
     assert queue.head.value == 1
     assert queue.head.next_node is None
 
     queue.enqueue(2)
     assert queue.head.value == 1
+    assert queue.tail is not None
     assert queue.tail.value == 2
+    assert queue.tail.next_node is not None
     assert queue.tail.next_node.value == 1
 
 
@@ -22,6 +25,8 @@ def test_dequeue():
     queue.enqueue(2)
 
     queue.dequeue()
+    assert queue.head is not None
+    assert queue.tail is not None
     assert queue.head.value == 2
     assert queue.tail.value == 2
     assert queue.size == 1
@@ -39,11 +44,15 @@ def test_multiple_dequeue():
     for i in range(1, 10):
         queue.enqueue(i)
         assert queue.size == i
+        assert queue.head is not None
         assert queue.head.value == 1
+        assert queue.tail is not None
         assert queue.tail.value == i
 
     assert queue.size == 9
+    assert queue.head is not None
     assert queue.head.value == 1
+    assert queue.tail is not None
     assert queue.tail.value == 9
 
     for i in range(1, 10):
