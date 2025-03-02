@@ -2,8 +2,6 @@
 - contains stack class and exceptions related to the stack
 """
 
-from typing import Any
-
 from .exceptions import EmptyStackError, StackOverflowError
 from .node import Node
 
@@ -48,7 +46,7 @@ class Stack:
     def _decrease_size(self) -> None:
         self.size -= 1
 
-    def push(self, value: Any) -> None:
+    def push(self, value) -> None:
         """
         - adds a node to the top of the stack
         """
@@ -80,13 +78,19 @@ class Stack:
             self.size = 0
             return
 
+        if self.head is None:
+            raise RuntimeError
+
         self.head = self.head.next_node
         self._decrease_size()
 
-    def peek(self) -> Any:
+    def peek(self):
         """
         - returns the value of the Node at the top of the stack
         """
+
+        if self.head is None:
+            raise RuntimeError
 
         if not self.is_empty:
             return self.head.value
