@@ -2,7 +2,7 @@
 - only contains the Node class
 """
 
-from typing import Any, Optional, Self
+from typing import Any, Self
 
 
 class Node:
@@ -13,8 +13,8 @@ class Node:
     def __init__(
         self,
         value: Any,
-        next_node: Optional[Self] = None,
-        prev_node: Optional[Self] = None,
+        next_node: Self | None = None,
+        prev_node: Self | None = None,
     ) -> None:
         """
         - initialize the node with starting parameters
@@ -22,39 +22,37 @@ class Node:
             linked list
         """
 
-        self.value = value
-        self.next_node = next_node
-        self.prev_node = prev_node
+        self._value = value
+        self._next_node = next_node
+        self._prev_node = prev_node
 
-    def set_next_node(self, link_node: Optional[Self]) -> Self:
-        self.next_node = link_node
-
-        return self
-
-    def get_next_node(self) -> Optional[Self]:
-        if self.next_node is None:
+    @property
+    def next_node(self) -> Self | None:
+        if self._next_node is None:
             return None
 
-        return self.next_node
+        return self._next_node
 
-    def get_value(self) -> Any:
-        return self.value
+    @next_node.setter
+    def next_node(self, link_node: Self | None) -> None:
+        self._next_node = link_node
 
-    def set_prev_node(self, prev_node: Optional[Self]) -> Optional[Self]:
-        """
-        - this method supports a doubly linked list
-        """
+    @property
+    def previous_node(self) -> Self | None:
+        if self._prev_node is None:
+            return None
 
-        match prev_node:
-            case None:
-                return None
-            case Node():
-                self.prev_node = prev_node
-                return self
+        return self._prev_node
 
-    def get_prev_node(self) -> Optional[Self]:
-        match self.prev_node:
-            case None:
-                return None
-            case Node():
-                return self.prev_node
+    @previous_node.setter
+    def previous_node(self, link_node: Self | None) -> None:
+
+        self._prev_node = link_node
+
+    @property
+    def value(self) -> Any:
+        return self._value
+
+    @value.setter
+    def value(self, new_value: Any) -> None:
+        self._value = new_value

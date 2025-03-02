@@ -14,10 +14,35 @@ class Queue:
         """
         - initializes a queue as empty by default
         """
-        self.head: Optional[Node] = None
-        self.tail: Optional[Node] = None
-        self.size: int = 0
+        self._head: Optional[Node] = None
+        self._tail: Optional[Node] = None
+        self._size: int = 0
 
+    @property
+    def head(self) -> Optional[Node]:
+        return self._head
+
+    @head.setter
+    def head(self, new_head: Optional[Node]) -> None:
+        self._head = new_head
+
+    @property
+    def tail(self) -> Optional[Node]:
+        return self._tail
+
+    @tail.setter
+    def tail(self, new_tail: Optional[Node]) -> None:
+        self._tail = new_tail
+
+    @property
+    def size(self) -> int:
+        return self._size
+
+    @size.setter
+    def size(self, new_size: int) -> None:
+        self._size = new_size
+
+    @property
     def is_empty(self) -> bool:
         return bool(self.head is None and self.tail is None)
 
@@ -34,7 +59,7 @@ class Queue:
     def enqueue(self, value) -> Self:
         self._increase_size()
 
-        match self.is_empty():
+        match self.is_empty:
             case True:
                 new_node = Node(value, None, None)
 
@@ -50,13 +75,13 @@ class Queue:
         return self
 
     def dequeue(self) -> Self:
-        match self.is_empty():
+        match self.is_empty:
             case True:
                 raise EmptyQueueError("Cannot dequeue from an empty queue")
 
             case False:
                 assert self.head is not None
-                self.head = self.head.get_prev_node()
+                self.head = self.head.previous_node
                 self._decrease_size()
 
                 if self.head is None:
@@ -68,7 +93,7 @@ class Queue:
         if self.head is None:
             raise EmptyQueueError("Cannot peek from an empty queue")
 
-        return self.head.get_value()
+        return self.head.value
 
     def print(self) -> Union[Callable, Self]:
         # TODO: this isnt working
@@ -76,7 +101,7 @@ class Queue:
         match self.head:
             case Node():
                 self.peek()
-                self.head = self.head.get_prev_node()
+                self.head = self.head.previous_node
                 return self.print()
 
             case None:
@@ -91,8 +116,8 @@ class Queue:
         if self.current_node is None:
             raise StopIteration
 
-        value = self.current_node.get_value()
+        value = self.current_node.value
 
-        self.current_node = self.current_node.get_prev_node()
+        self.current_node = self.current_node.previous_node
 
         return value

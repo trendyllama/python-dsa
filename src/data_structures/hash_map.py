@@ -14,9 +14,15 @@ class HashMap:
     """
 
     def __init__(self, size: int) -> None:
-        self.array_size = size
-        # self.array: list = [LinkedList() for _ in range(self.array_size)]
-        self.array = list(map(lambda _: LinkedList(), range(self.array_size)))
+        self._array_size = size
+
+    @property
+    def array_size(self) -> int:
+        return self._array_size
+
+    @property
+    def array(self) -> list:
+        return list(map(lambda _: LinkedList(), range(self.array_size)))
 
     def hash(self, key: Hashable) -> int:
         hash_code = hash(key)

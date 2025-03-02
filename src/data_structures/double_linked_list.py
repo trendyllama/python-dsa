@@ -9,16 +9,34 @@ class DoublyLinkedList:
     """
 
     def __init__(self) -> None:
-        self.head_node = None
-        self.tail_node = None
+        self._head_node = None
+        self._tail_node = None
+
+
+    @property
+    def head(self) -> Node | None:
+        return self._head_node
+
+    @head.setter
+    def head(self, new_head: Node | None) -> None:
+        self._head_node = new_head
+
+    @property
+    def tail(self) -> Node | None:
+        return self._tail_node
+
+    @tail.setter
+    def tail(self, new_tail: Node | None) -> None:
+        self._tail_node = new_tail
+
 
     def add_to_head(self, new_value: Any) -> None:
         new_head = Node(new_value)
         current_head = self.head_node
 
         if current_head is not None:
-            current_head.set_prev_node(new_head)
-            new_head.set_next_node(current_head)
+            current_head.previous_node = new_head
+            new_head.next_node = current_head
 
         self.head_node = new_head
 
@@ -33,8 +51,8 @@ class DoublyLinkedList:
         current_tail = self.tail_node
 
         if current_tail is not None:
-            current_tail.set_next_node(new_tail)
-            new_tail.set_prev_node(current_tail)
+            current_tail.next_node = new_tail
+            new_tail.previous_node = current_tail
 
         self.tail_node = new_tail
 
@@ -47,15 +65,15 @@ class DoublyLinkedList:
         if removed_head is None:
             return None
 
-        self.head_node = removed_head.get_next_node()
+        self.head_node = removed_head.next_node
 
         if self.head_node is not None:
-            self.head_node.set_prev_node(None)
+            self.head_node.previous_node = None
 
         if removed_head == self.tail_node:
             self.remove_tail()
 
-        return removed_head.get_value()
+        return removed_head.value
 
     def remove_tail(self):
         removed_tail = self.tail_node
@@ -63,26 +81,26 @@ class DoublyLinkedList:
         if removed_tail is None:
             return None
 
-        self.tail_node = removed_tail.get_prev_node()
+        self.tail_node = removed_tail.previous_node
 
         if self.tail_node is not None:
-            self.tail_node.set_next_node(None)
+            self.tail_node.next_node = None
 
         if removed_tail == self.head_node:
             self.remove_head()
 
-        return removed_tail.get_value()
+        return removed_tail.value
 
     def remove_by_value(self, value_to_remove: Any) -> None:
-        node_to_remove = None
+        node_to_remove: Node | None = None
         current_node = self.head_node
 
         while current_node is not None:
-            if current_node.get_value() == value_to_remove:
+            if current_node.value == value_to_remove:
                 node_to_remove = current_node
                 break
 
-            current_node = current_node.get_next_node()
+            current_node = current_node.next_node
 
         match node_to_remove:
             case None:
@@ -95,14 +113,14 @@ class DoublyLinkedList:
                 self.remove_tail()
 
             case _:
-                next_node = node_to_remove.get_next_node()
+                next_node = node_to_remove.next_node
 
         if not isinstance(next_node, Node):
             raise TypeError
 
-        prev_node = node_to_remove.get_prev_node()
-        next_node.set_prev_node(prev_node)
-        prev_node.set_next_node(next_node)
+        prev_node = node_to_remove.previous_node
+        next_node.previous_node = prev_node
+        prev_node.next_node = next_node
 
         return node_to_remove
 
@@ -110,9 +128,9 @@ class DoublyLinkedList:
         string_list = ""
         current_node = self.head_node
         while current_node is not None:
-            if current_node.get_value() is not None:
-                string_list += str(current_node.get_value()) + "\n"
-            current_node = current_node.get_next_node()
+            if current_node.value is not None:
+                string_list += str(current_node.value) + "\n"
+            current_node = current_node.next_node
         return string_list
 
     def __iter__(self):
@@ -122,8 +140,8 @@ class DoublyLinkedList:
     def __next__(self):
         if self.current_node is None:
             raise StopIteration
-        value = self.current_node.get_value()
-        self.current_node = self.current_node.get_next_node()
+        value = self.current_node.value
+        self.current_node = self.current_node.next_node
         return value
 
     def __str__(self) -> str:
@@ -137,5 +155,5 @@ class DoublyLinkedList:
         count = 0
         while current_node is not None:
             count += 1
-            current_node = current_node.get_next_node()
+            current_node = current_node.next_node
         return count

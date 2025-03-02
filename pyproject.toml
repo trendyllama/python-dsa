@@ -4,9 +4,6 @@ dynamic = ["version"]
 description = "data structures and algorithms course from codecademy"
 requires-python = ">=3.12"
 readme = "README.md"
-dependencies = [
-    "ruff>=0.6.8",
-]
 
 
 [tool.uv]

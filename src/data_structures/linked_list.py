@@ -13,7 +13,15 @@ class LinkedList:
     """
 
     def __init__(self, head_node: Optional[Node] = None) -> None:
-        self.head_node = head_node
+        self._head_node = head_node
+
+    @property
+    def head_node(self) -> Optional[Node]:
+        return self._head_node
+
+    @head_node.setter
+    def head_node(self, new_head_node: Optional[Node]) -> None:
+        self._head_node = new_head_node
 
     def insert(self, new_node_value: Any) -> None:
         current_node = self.head_node
@@ -22,10 +30,10 @@ class LinkedList:
             self.head_node = Node(new_node_value)
 
         while current_node is not None:
-            next_node = current_node.get_next_node()
+            next_node = current_node.next_node
 
             if not next_node:
-                current_node.set_next_node(new_node_value)
+                current_node.next_node = new_node_value
             current_node = next_node
 
     def delete(self, value_to_delete: Any) -> None:
@@ -34,17 +42,17 @@ class LinkedList:
 
         current_node = self.head_node
 
-        if current_node.get_value() == value_to_delete:
-            self.head_node = current_node.get_next_node()
+        if current_node.value == value_to_delete:
+            self.head_node = current_node.next_node
 
         while current_node:
-            next_node = current_node.get_next_node()
+            next_node = current_node.next_node
 
             if next_node is None:
                 break
 
-            if next_node.get_value() == value_to_delete:
-                current_node.set_next_node(next_node.get_next_node())
+            if next_node.value == value_to_delete:
+                current_node.next_node = next_node.next_node
                 current_node = None
             else:
                 current_node = next_node
@@ -54,8 +62,8 @@ class LinkedList:
         result = []
 
         while current_node:
-            result.append(current_node.get_value())
-            current_node = current_node.get_next_node()
+            result.append(current_node.value)
+            current_node = current_node.next_node
 
         return " -> ".join(result)
 
@@ -71,7 +79,7 @@ class LinkedList:
         if self.current_node is None:
             raise StopIteration
 
-        value = self.current_node.get_value()
-        self.current_node.get_next_node()
+        value = self.current_node.value
+        self.current_node.next_node
 
         return value
