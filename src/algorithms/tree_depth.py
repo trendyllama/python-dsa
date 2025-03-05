@@ -2,12 +2,12 @@
 - algos for trees
 """
 
-from typing import Any, Callable, Optional
+from collections.abc import Callable
 
 from src.data_structures.tree_node import TreeNode
 
 
-def depth(tree_node: Optional[TreeNode]) -> Optional[Callable]:
+def depth(tree_node: TreeNode | None) -> Callable | None:
     """
     - note: this function is recursive
     - returns the depth of the tree as an integer
@@ -25,7 +25,7 @@ def depth(tree_node: Optional[TreeNode]) -> Optional[Callable]:
     return right_depth + 1
 
 
-def build_bst(my_list: list[Any]) -> Optional[Any]:
+def build_bst(my_list: list):
     """
     - note: this function is recursive
     - helper function to build trees

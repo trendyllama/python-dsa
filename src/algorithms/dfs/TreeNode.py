@@ -1,10 +1,10 @@
 from collections import deque
-from typing import Any, Self
+from typing import Self
 
 
 class TreeNode:
-    def __init__(self, value: Any):
-        self.value: Any = value  # data
+    def __init__(self, value):
+        self.value = value  # data
         self.children: list[Self] = []  # references to other nodes
 
     def __repr__(self):

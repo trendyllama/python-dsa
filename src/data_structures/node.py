@@ -2,7 +2,7 @@
 - only contains the Node class
 """
 
-from typing import Any, Self
+from typing import Self
 
 
 class Node:
@@ -12,7 +12,7 @@ class Node:
 
     def __init__(
         self,
-        value: Any,
+        value,
         next_node: Self | None = None,
         prev_node: Self | None = None,
     ) -> None:
@@ -49,12 +49,12 @@ class Node:
         self._prev_node = link_node
 
     @property
-    def value(self) -> Any:
+    def value(self):
         if self._value is None:
             return None
 
         return self._value
 
     @value.setter
-    def value(self, new_value: Any) -> None:
+    def value(self, new_value) -> None:
         self._value = new_value

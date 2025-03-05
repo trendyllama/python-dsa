@@ -1,4 +1,3 @@
-from typing import Any
 
 from .node import Node
 
@@ -28,7 +27,7 @@ class DoublyLinkedList:
     def tail(self, new_tail: Node | None) -> None:
         self._tail_node = new_tail
 
-    def add_to_head(self, new_value: Any) -> None:
+    def add_to_head(self, new_value) -> None:
         new_head = Node(new_value)
         current_head = self.head_node
 
@@ -44,7 +43,7 @@ class DoublyLinkedList:
             case _:
                 return
 
-    def add_to_tail(self, new_value: Any) -> None:
+    def add_to_tail(self, new_value) -> None:
         new_tail = Node(new_value)
         current_tail = self.tail_node
 
@@ -89,7 +88,7 @@ class DoublyLinkedList:
 
         return removed_tail.value
 
-    def remove_by_value(self, value_to_remove: Any) -> None:
+    def remove_by_value(self, value_to_remove) -> None:
         node_to_remove: Node | None = None
         current_node = self.head_node
 

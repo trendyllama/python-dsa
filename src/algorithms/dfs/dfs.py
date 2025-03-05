@@ -1,11 +1,11 @@
-from typing import Any, Optional, Tuple
+
 
 from TreeNode import TreeNode, print_tree, sample_root_node
 
 print_tree(sample_root_node)
 
 
-def dfs(root: TreeNode, target: Any, path: Tuple = ()) -> Optional[Tuple]:
+def dfs(root: TreeNode, target, path: Tuple = ()) -> Tuple | None:
     path = path + (root,)
 
     if root.value == target:

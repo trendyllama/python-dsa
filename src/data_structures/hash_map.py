@@ -2,8 +2,8 @@
 - contains doubly linked list class
 """
 
-from typing import Any, Optional, Hashable
 
+from collections.abc import Hashable
 from .linked_list import LinkedList
 from .node import Node
 
@@ -31,7 +31,7 @@ class HashMap:
     def compress(self, hash_code):
         return hash_code % self.array_size
 
-    def assign(self, key: Hashable, value: Any) -> None:
+    def assign(self, key: Hashable, value) -> None:
         payload = Node([key, value])
         hash_code = self.hash(key)
         array_index = self.compress(hash_code)
@@ -43,7 +43,7 @@ class HashMap:
 
         list_at_array.insert(payload)
 
-    def retrieve(self, key: Hashable) -> Optional[list]:
+    def retrieve(self, key: Hashable) -> list | None:
         hash_code = self.hash(key)
         array_index = self.compress(hash_code)
         payload: list = self.array[array_index]

@@ -1,9 +1,9 @@
 from random import randrange, shuffle
-from typing import Callable, Optional
+from collections.abc import Callable
 
 
 def quicksort(
-    list_input: list, start: int, end: int, comparision_func: Optional[Callable] = None
+    list_input: list, start: int, end: int, comparision_func: Callable | None = None
 ) -> None:
     """
     - inelegant implementation of quicksort

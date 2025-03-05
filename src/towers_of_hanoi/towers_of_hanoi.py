@@ -1,5 +1,5 @@
-from typing import Callable, Optional
 
+from collections.abc import Callable
 from src.data_structures.stack import Stack
 
 # set up game
@@ -60,7 +60,7 @@ class Game:
             f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {self.num_optimal_moves}"
         )
 
-    def main_loop(self) -> Optional[Callable]:
+    def main_loop(self) -> Callable | None:
         if self.right_stack.get_size() != self.num_disks:
             print("\n\n\n...Current Stacks...")
             for stack in self.stacks:

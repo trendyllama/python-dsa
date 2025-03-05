@@ -1,7 +1,6 @@
-from typing import Any
 
 
-def quick_sort(list_input: list[Any]) -> list[Any]:
+def quick_sort(list_input: list) -> list:
     """
     - most elegant implementation of quicksort
     """

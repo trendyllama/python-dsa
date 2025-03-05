@@ -2,7 +2,7 @@
 - module for treenode class
 """
 
-from typing import Any, Self
+from typing import Self
 
 
 class TreeNode:
@@ -10,12 +10,12 @@ class TreeNode:
     - codecademy implementation of treenode
     """
 
-    def __init__(self, value: Any) -> None:
+    def __init__(self, value) -> None:
         self._value = value
         self._children = []
 
     @property
-    def value(self) -> Any:
+    def value(self):
         return self._value
 
     @property

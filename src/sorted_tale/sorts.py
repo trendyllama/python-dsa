@@ -2,14 +2,14 @@
 - sorting functions module
 """
 
-from typing import Callable, Iterable, Union
+from collections.abc import Callable, Iterable
 
 
-def is_greater_than(element1: Union[int, float], element2: Union[int, float]) -> bool:
+def is_greater_than(element1: int | float, element2: int | float) -> bool:
     return element1 < element2
 
 
-def is_less_than(element1: Union[int, float], element2: Union[int, float]) -> bool:
+def is_less_than(element1: int | float, element2: int | float) -> bool:
     return element1 > element2
 
 
@@ -35,7 +35,7 @@ def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
 
 def bubble_sort2(
     arr: Iterable, comparison_function: Callable
-) -> Union[Callable, Iterable]:
+) -> Callable | Iterable:
     """
     - not correct yet
     """
