@@ -22,7 +22,8 @@
     {
       "label": "clean",
       "type": "shell",
-      "command": "find . | grep __pycache__ | xargs rm -rf"
+      "command": "find . | grep __pycache__ | xargs rm -rf",
+    
     },
     {
       "label": "main workflow",

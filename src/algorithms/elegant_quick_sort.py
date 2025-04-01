@@ -1,5 +1,3 @@
-
-
 def quick_sort(list_input: list) -> list:
     """
     - most elegant implementation of quicksort

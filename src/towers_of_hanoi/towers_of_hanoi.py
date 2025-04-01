@@ -1,4 +1,3 @@
-
 from collections.abc import Callable
 from src.data_structures.stack import Stack
 
@@ -61,7 +60,7 @@ class Game:
         )
 
     def main_loop(self) -> Callable | None:
-        if self.right_stack.get_size() != self.num_disks:
+        if self.right_stack.size != self.num_disks:
             print("\n\n\n...Current Stacks...")
             for stack in self.stacks:
                 stack.print()
@@ -72,12 +71,12 @@ class Game:
                 print("\nWhich stack do you want to move to?\n")
                 to_stack = self.get_input()
 
-                if from_stack.get_size() == 0:
+                if from_stack.size == 0:
                     print("\n\nInvalid Move. Try Again")
 
                     return move()
 
-                if to_stack.get_size() == 0 or from_stack.peek() < to_stack.peek():
+                if to_stack.size == 0 or from_stack.peek() < to_stack.peek():
                     disk = from_stack.pop()
                     to_stack.push(disk)
 

@@ -2,8 +2,6 @@
 i dont like that this does these operations in place
 """
 
-
-
 NUMS = [5, 2, 9, 1, 5, 6]
 
 

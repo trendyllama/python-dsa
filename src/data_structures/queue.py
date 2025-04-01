@@ -49,10 +49,8 @@ class Queue:
     def _increase_size(self):
         self.size += 1
 
-
     def _decrease_size(self):
         self.size -= 1
-
 
     def enqueue(self, value):
         if self.is_empty:
@@ -119,5 +117,5 @@ class Queue:
 
         if self.head is None:
             raise RuntimeError
-        
+
         return self.head.value

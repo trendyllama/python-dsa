@@ -104,3 +104,17 @@ class Stack:
     @property
     def is_empty(self) -> bool:
         return self.size == 0
+
+    def __iter__(self):
+        current_node = self.head
+
+        while current_node:
+            yield current_node.value
+            current_node = current_node.next_node
+
+    def __next__(self):
+        return self.__iter__()
+
+    def print(self) -> None:
+        for node in self:
+            print(node)

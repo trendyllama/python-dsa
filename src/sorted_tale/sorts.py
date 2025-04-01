@@ -33,9 +33,7 @@ def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
     return arr
 
 
-def bubble_sort2(
-    arr: Iterable, comparison_function: Callable
-) -> Callable | Iterable:
+def bubble_sort2(arr: Iterable, comparison_function: Callable) -> Callable | Iterable:
     """
     - not correct yet
     """
