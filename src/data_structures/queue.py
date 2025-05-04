@@ -53,6 +53,21 @@ class Queue:
         self.size -= 1
 
     def enqueue(self, value):
+        '''
+        - adds a node to the end of the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.size
+        3
+        >>> queue.head.value
+        1
+        >>> queue.tail.value
+        3
+        '''
         if self.is_empty:
             assert self.size == 0
             new_node = Node(value, None, None)
@@ -87,6 +102,24 @@ class Queue:
         assert self.size > 0
 
     def dequeue(self):
+        '''
+        - removes the first node of the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.size
+        3
+        >>> queue.dequeue()
+        >>> queue.size
+        2
+        >>> queue.head.value
+        2
+        >>> queue.tail.value
+        3
+        '''
         if self.is_empty:
             raise EmptyQueueError("Cannot dequeue from an empty queue")
 
@@ -108,7 +141,6 @@ class Queue:
             raise RuntimeError
 
         self.head = self.head.next_node
-        self.tail = self.tail.next_node
         self._decrease_size()
 
     def peek(self):
