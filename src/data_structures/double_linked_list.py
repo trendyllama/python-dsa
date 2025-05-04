@@ -27,6 +27,21 @@ class DoublyLinkedList:
         self._tail_node = new_tail
 
     def add_to_head(self, new_value) -> None:
+        '''
+        - adds a node to the start of the doubly linked list
+
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_head(1)
+        >>> dll.add_to_head(2)
+        >>> dll.add_to_head(3)
+        >>> dll.head.value
+        3
+        >>> dll.head.next_node.value
+        2
+        >>> dll.head.next_node.next_node.value
+        1
+        '''
         new_head = Node(new_value)
         current_head = self.head_node
 
@@ -43,6 +58,22 @@ class DoublyLinkedList:
                 return
 
     def add_to_tail(self, new_value) -> None:
+        '''
+        - adds a node to the end of the doubly linked list
+
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_tail(1)
+        >>> dll.add_to_tail(2)
+        >>> dll.add_to_tail(3)
+        >>> dll.tail.value
+        3
+        >>> dll.tail.previous_node.value
+        2
+        >>> dll.tail.previous_node.previous_node.value
+        1
+
+        '''
         new_tail = Node(new_value)
         current_tail = self.tail_node
 
@@ -56,6 +87,19 @@ class DoublyLinkedList:
             self.head_node = new_tail
 
     def remove_head(self) -> None:
+        '''
+        - removes the first node of the doubly linked list
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_tail(1)
+        >>> dll.add_to_tail(2)
+        >>> dll.add_to_tail(3)
+        >>> dll.head.value
+        1
+        >>> dll.remove_head()
+        >>> dll.head.value
+        2
+        '''
         removed_head = self.head_node
 
         if removed_head is None:
@@ -71,7 +115,23 @@ class DoublyLinkedList:
 
         return removed_head.value
 
-    def remove_tail(self):
+    def remove_tail(self) -> None:
+        '''
+        - removes the last node of the doubly linked list
+
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_tail(1)
+        >>> dll.add_to_tail(2)
+        >>> dll.add_to_tail(3)
+        >>> dll.tail.value
+        3
+        >>> dll.remove_tail()
+        >>> dll.tail.value
+        2
+        >>> dll.tail.previous_node.value
+        1
+        '''
         removed_tail = self.tail_node
 
         if removed_tail is None:
@@ -85,9 +145,29 @@ class DoublyLinkedList:
         if removed_tail == self.head_node:
             self.remove_head()
 
-        return removed_tail.value
 
     def remove_by_value(self, value_to_remove) -> None:
+        '''
+
+        - removes a node from the doubly linked list by its value
+
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_tail(1)
+        >>> dll.add_to_tail(2)
+        >>> dll.add_to_tail(3)
+        >>> dll.add_to_tail(4)
+        >>> dll.add_to_tail(5)
+        >>> dll.remove_by_value(3)
+        >>> dll.head.value
+        1
+        >>> dll.tail.value
+        5
+        >>> dll.head.next_node.value
+        2
+        >>> dll.head.next_node.next_node.value
+        4
+        '''
         node_to_remove: Node | None = None
         current_node = self.head_node
 
@@ -121,6 +201,23 @@ class DoublyLinkedList:
         return node_to_remove
 
     def stringify_list(self) -> str:
+        '''
+        - returns a string representation of the doubly linked list
+
+        Examples:
+        >>> dll = DoublyLinkedList()
+        >>> dll.add_to_tail(1)
+        >>> dll.add_to_tail(2)
+        >>> dll.add_to_tail(3)
+        >>> dll.add_to_tail(4)
+        >>> dll.add_to_tail(5)
+        >>> dll.stringify_list()
+        1
+        2
+        3
+        4
+        5
+        '''
         string_list = ""
         current_node = self.head_node
         while current_node is not None:

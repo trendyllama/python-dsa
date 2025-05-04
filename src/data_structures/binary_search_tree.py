@@ -65,6 +65,33 @@ import random
 
 class BinarySearchTree:
     def __init__(self, value, depth=1):
+        '''
+        - initializes a binary search tree with a value and depth
+        - the depth is 1 for the root node
+        - the depth is incremented by 1 for each child node
+        - the left child node is less than the parent node
+        - the right child node is greater than or equal to the parent node
+        - the left and right child nodes are initialized to None
+
+        Examples:
+        >>> tree = BinarySearchTree(100)
+        >>> tree.value
+        100
+        >>> tree.depth
+        1
+        >>> tree.left
+        >>> tree.right
+        >>> tree.insert(50)
+        >>> tree.left.value
+        50
+        >>> tree.left.depth
+        2
+        >>> tree.insert(125)
+        >>> tree.right.value
+        125
+        >>> tree.right.depth
+        2
+        '''
         self.value = value
         self.depth = depth
         self.left = None
@@ -109,11 +136,12 @@ class BinarySearchTree:
             self.right.depth_first_traversal()
 
 
-print("Creating Binary Search Tree rooted at value 15:")
-tree = BinarySearchTree(15)
+if __name__ == "__main__":
+    print("Creating Binary Search Tree rooted at value 15:")
+    tree = BinarySearchTree(15)
 
-for x in range(10):
-    tree.insert(random.randint(0, 100))
+    for x in range(10):
+        tree.insert(random.randint(0, 100))
 
-print("Printing the inorder depth-first traversal:")
-tree.depth_first_traversal()
+    print("Printing the inorder depth-first traversal:")
+    tree.depth_first_traversal()
