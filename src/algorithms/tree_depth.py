@@ -58,4 +58,8 @@ def test_cases_tree() -> None:
     assert depth(tree_level_4) == 4
 
 
-test_cases_tree()
+if __name__ == "__main__":
+    """
+    - run test cases
+    """
+    test_cases_tree()

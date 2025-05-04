@@ -2,8 +2,8 @@
 - contains stack class and exceptions related to the stack
 """
 
-from .exceptions import EmptyStackError, StackOverflowError
-from .node import Node
+from src.data_structures.exceptions import EmptyStackError, StackOverflowError
+from src.data_structures.node import Node
 
 
 class Stack:
@@ -49,6 +49,16 @@ class Stack:
     def push(self, value) -> None:
         """
         - adds a node to the top of the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> stack.size
+        3
+        >>> stack.head.value
+        3
         """
 
         if self.is_empty:
@@ -68,6 +78,19 @@ class Stack:
     def pop(self) -> None:
         """
         - removes the top node of the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> stack.size
+        3
+        >>> stack.pop()
+        >>> stack.size
+        2
+        >>> stack.head.value
+        2
         """
 
         if self.is_empty:
@@ -87,6 +110,16 @@ class Stack:
     def peek(self):
         """
         - returns the value of the Node at the top of the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> stack.size
+        3
+        >>> stack.peek()
+        3
         """
 
         if self.head is None:
@@ -116,5 +149,18 @@ class Stack:
         return self.__iter__()
 
     def print(self) -> None:
+        '''
+        - prints the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> stack.print()
+        3
+        2
+        1
+        '''
         for node in self:
             print(node)

@@ -1,4 +1,4 @@
-from random import randrange, shuffle
+from random import randrange
 from collections.abc import Callable
 
 
@@ -7,6 +7,8 @@ def quicksort(
 ) -> None:
     """
     - inelegant implementation of quicksort
+
+    Examples:
     """
 
     # this portion of list has been sorted
@@ -45,11 +47,3 @@ def quicksort(
     # recursively sort left and right sub-lists
     quicksort(list_input, start, less_than_pointer - 1)
     quicksort(list_input, less_than_pointer + 1, end)
-
-
-if __name__ == "__main__":
-    LIST = [5, 3, 1, 7, 4, 6, 2, 8]
-    shuffle(LIST)
-    print("PRE SORT: ", LIST)
-    quicksort(LIST, 0, len(LIST) - 1)
-    print("POST SORT: ", LIST)

@@ -57,7 +57,7 @@ class StoryTreeNode:
 
     def __init__(self, story_piece) -> None:
         self.story_piece = story_piece
-        self.choices = []
+        self.choices: list[Self] = []
 
     def add_child(self, node: Self) -> None:
         self.choices.append(node)

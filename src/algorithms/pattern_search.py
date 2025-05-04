@@ -1,6 +1,8 @@
 def pattern_search(text: str, pattern: str) -> None:
     """
     - string pattern searching algo
+
+    Examples:
     """
     print("Input Text:", text, "Input Pattern:", pattern)
     for index, _ in enumerate(text):
@@ -19,6 +21,6 @@ def pattern_search(text: str, pattern: str) -> None:
             print(f"{pattern} found at index {index}")
 
 
-TEXT = "HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE"
-PATTERN = "NEEDLE"
-pattern_search(TEXT, PATTERN)
+# TEXT = "HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE"
+# PATTERN = "NEEDLE"
+# pattern_search(TEXT, PATTERN)

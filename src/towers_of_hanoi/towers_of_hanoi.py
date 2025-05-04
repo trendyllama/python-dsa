@@ -1,8 +1,13 @@
 from collections.abc import Callable
+import enum
 from src.data_structures.stack import Stack
 
 # set up game
 
+class GameStates(enum.Enum):
+
+    INVALID_MOVE = 0
+    
 
 class InputError(Exception):
     """ """
@@ -68,10 +73,16 @@ class Game:
             def move() -> Callable | None:
                 print("\nWhich stack do you want to move from?\n")
                 from_stack = self.get_input()
+
+                if from_stack is None:
+                    print("\n\nInvalid Move. Try Again")
+
+                    return move()
+
                 print("\nWhich stack do you want to move to?\n")
                 to_stack = self.get_input()
 
-                if from_stack.size == 0:
+                if from_stack.size == 0 or from_stack is None:
                     print("\n\nInvalid Move. Try Again")
 
                     return move()

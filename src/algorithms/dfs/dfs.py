@@ -1,9 +1,11 @@
-from TreeNode import TreeNode, print_tree, sample_root_node
+from TreeNode import TreeNode
 
-print_tree(sample_root_node)
 
 
 def dfs(root: TreeNode, target, path: tuple = ()) -> tuple | None:
+    """
+
+    """
     path = path + (root,)
 
     if root.value == target:
@@ -16,7 +18,3 @@ def dfs(root: TreeNode, target, path: tuple = ()) -> tuple | None:
             return path_found
 
     return None
-
-
-node = dfs(sample_root_node, "F")
-print(node)

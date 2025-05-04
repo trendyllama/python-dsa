@@ -20,6 +20,19 @@ class Node:
         - initialize the node with starting parameters
         - using the previous node property to support a
             linked list
+
+        Examples:
+        >>> node = Node(1)
+        >>> node.value
+        1
+        >>> node.next_node
+        >>> node.next_node = Node(2)
+        >>> node.next_node.value
+        2
+        >>> node.previous_node
+        >>> node.previous_node = Node(0)
+        >>> node.previous_node.value
+        0
         """
 
         self._value = value
@@ -50,6 +63,17 @@ class Node:
 
     @property
     def value(self):
+        '''
+        - returns the value of the node
+
+        Examples:
+        >>> node = Node(1)
+        >>> node.value
+        1
+        >>> node.value = 2
+        >>> node.value
+        2
+        '''
         if self._value is None:
             return None
 
