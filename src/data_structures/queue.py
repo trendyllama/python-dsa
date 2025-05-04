@@ -13,6 +13,25 @@ class Queue:
     def __init__(self) -> None:
         """
         - initializes a queue as empty by default
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.head
+        >>> queue.tail
+        >>> queue.size
+        0
+        >>> queue.is_empty
+        True
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.size
+        3
+        >>> queue.head.value
+        1
+        >>> queue.tail.value
+        3
+
         """
         self._head: Node | None = None
         self._tail: Node | None = None

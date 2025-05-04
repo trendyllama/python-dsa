@@ -12,6 +12,28 @@ class Stack:
     """
 
     def __init__(self) -> None:
+        '''
+        - initializes a stack as empty by default
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.head
+        >>> stack.size
+        0
+        >>> stack.is_empty
+        True
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> stack.size
+        3
+        >>> stack.head.value
+        3
+        >>> stack.head.next_node.value
+        2
+        >>> stack.head.next_node.next_node.value
+        1
+        '''
         self._size: int = 0
         self._head: Node | None = None
         self._limit: int = 1000

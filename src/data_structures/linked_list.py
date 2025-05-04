@@ -11,6 +11,16 @@ class LinkedList:
     """
 
     def __init__(self, head_node: Node | None = None) -> None:
+        '''
+        - initializes a linked list as empty by default
+
+        Examples:
+        >>> linked_list = LinkedList()
+        >>> linked_list.head_node
+        >>> linked_list.head_node = Node(1)
+        >>> linked_list.head_node.value
+        1
+        '''
         self._head_node = head_node
 
     @property
