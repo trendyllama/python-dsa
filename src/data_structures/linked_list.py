@@ -23,7 +23,7 @@ class LinkedList:
 
     @property
     def is_empty(self) -> bool:
-        '''
+        """
         - returns True if the linked list is empty
 
         Examples:
@@ -33,11 +33,11 @@ class LinkedList:
         >>> linked_list.append(1)
         >>> linked_list.is_empty
         False
-        '''
+        """
         return self.head_node is None
 
     def append(self, new_node_value) -> None:
-        '''
+        """
         - adds a new node to the end of the linked list
         - if the linked list is empty, it sets the new node as the head node
 
@@ -48,7 +48,7 @@ class LinkedList:
         >>> linked_list.append(3)
         >>> linked_list.head_node.value
         1
-        '''
+        """
         if self.is_empty:
             self.head_node = Node(new_node_value, None)
             return
@@ -62,7 +62,7 @@ class LinkedList:
             current_node = current_node.next_node
 
     def delete(self, value_to_delete) -> None:
-        '''
+        """
         Examples:
         >>> linked_list = LinkedList()
         >>> linked_list.append(1)
@@ -71,7 +71,7 @@ class LinkedList:
         >>> linked_list.delete(2)
         >>> linked_list.head_node.next_node.value
         3
-        '''
+        """
         if self.is_empty:
             return
 

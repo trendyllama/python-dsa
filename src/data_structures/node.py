@@ -63,7 +63,7 @@ class Node:
 
     @property
     def value(self):
-        '''
+        """
         - returns the value of the node
 
         Examples:
@@ -73,7 +73,7 @@ class Node:
         >>> node.value = 2
         >>> node.value
         2
-        '''
+        """
         if self._value is None:
             return None
 

@@ -4,10 +4,10 @@ from src.data_structures.stack import Stack
 
 # set up game
 
-class GameStates(enum.Enum):
 
+class GameStates(enum.Enum):
     INVALID_MOVE = 0
-    
+
 
 class InputError(Exception):
     """ """

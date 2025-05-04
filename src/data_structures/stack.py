@@ -149,7 +149,7 @@ class Stack:
         return self.__iter__()
 
     def print(self) -> None:
-        '''
+        """
         - prints the stack
 
         Examples:
@@ -161,6 +161,6 @@ class Stack:
         3
         2
         1
-        '''
+        """
         for node in self:
             print(node)

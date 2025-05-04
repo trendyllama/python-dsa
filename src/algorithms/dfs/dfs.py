@@ -1,11 +1,8 @@
 from TreeNode import TreeNode
 
 
-
 def dfs(root: TreeNode, target, path: tuple = ()) -> tuple | None:
-    """
-
-    """
+    """ """
     path = path + (root,)
 
     if root.value == target:

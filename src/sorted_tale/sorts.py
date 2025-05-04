@@ -6,7 +6,7 @@ from collections.abc import Callable, Iterable
 
 
 def is_greater_than(element1: int | float, element2: int | float) -> bool:
-    '''
+    """
     Examples:
     >>> is_greater_than(1, 2)
     True
@@ -15,12 +15,12 @@ def is_greater_than(element1: int | float, element2: int | float) -> bool:
     >>> is_greater_than(1, 1)
     False
 
-    '''
+    """
     return element1 < element2
 
 
 def is_less_than(element1: int | float, element2: int | float) -> bool:
-    '''
+    """
     Examples:
     >>> is_less_than(1, 2)
     False
@@ -28,7 +28,7 @@ def is_less_than(element1: int | float, element2: int | float) -> bool:
     True
     >>> is_less_than(1, 1)
     False
-    '''
+    """
     return element1 > element2
 
 

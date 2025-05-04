@@ -5,7 +5,6 @@
 from src.data_structures.tree_node import StoryTreeNode
 
 if __name__ == "__main__":
-
     print("Once upon a time...")
     ######
     # VARIABLES FOR TREE
