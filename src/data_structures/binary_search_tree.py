@@ -109,11 +109,13 @@ class BinarySearchTree:
             self.right.depth_first_traversal()
 
 
-print("Creating Binary Search Tree rooted at value 15:")
-tree = BinarySearchTree(15)
+if __name__ == "__main__":
+    # Example usage
+    print("Creating Binary Search Tree rooted at value 100:")
+    tree = BinarySearchTree(100)
 
-for x in range(10):
-    tree.insert(random.randint(0, 100))
+    for x in range(10):
+        tree.insert(random.randint(0, 100))
 
-print("Printing the inorder depth-first traversal:")
-tree.depth_first_traversal()
+    print("Printing the inorder depth-first traversal:")
+    tree.depth_first_traversal()

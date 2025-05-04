@@ -25,6 +25,16 @@ class LinkedList:
 
     @property
     def head_node(self) -> Node | None:
+        '''
+        - returns the head node of the linked list
+
+        Examples:
+        >>> linked_list = LinkedList()
+        >>> linked_list.head_node
+        >>> linked_list.head_node = Node(1)
+        >>> linked_list.head_node.value
+        1
+        '''
         return self._head_node
 
     @head_node.setter
