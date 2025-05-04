@@ -21,6 +21,27 @@ def pattern_search(text: str, pattern: str) -> None:
             print(f"{pattern} found at index {index}")
 
 
-# TEXT = "HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE"
-# PATTERN = "NEEDLE"
-# pattern_search(TEXT, PATTERN)
+def find_pattern(text: str, pattern: str) -> bool:
+    """
+    - string pattern searching algo
+
+    Examples:
+    >>> find_pattern("HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE", "NEEDLE")
+    True
+    >>> find_pattern("HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE", "NEEDLES")
+    False
+
+    """
+
+    if pattern in text:
+        return True
+    return False
+
+
+def find_number_of_patterns(text: str, pattern: str) -> int:
+    """
+    - string pattern searching algo
+
+    """
+
+    raise NotImplementedError

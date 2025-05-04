@@ -11,7 +11,7 @@ class LinkedList:
     """
 
     def __init__(self, head_node: Node | None = None) -> None:
-        '''
+        """
         - initializes a linked list as empty by default
 
         Examples:
@@ -20,7 +20,7 @@ class LinkedList:
         >>> linked_list.head_node = Node(1)
         >>> linked_list.head_node.value
         1
-        '''
+        """
         self._head_node = head_node
 
     @property
@@ -121,7 +121,6 @@ class LinkedList:
         current_index = 0
 
         for node in self:
-
             if current_node is None:
                 raise IndexError("Index out of bounds")
 
@@ -133,7 +132,6 @@ class LinkedList:
 
             current_index += 1
             current_node = current_node.next_node
-
 
     def __str__(self) -> str:
         """
@@ -196,6 +194,7 @@ class LinkedList:
             current_node = current_node.next_node
 
         return count
+
     def __iter__(self):
         """
         - returns an iterator for the linked list
@@ -205,6 +204,7 @@ class LinkedList:
         """
         self.current_node = self.head_node
         return self
+
     def __next__(self):
         """
         - returns the next value in the linked list

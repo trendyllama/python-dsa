@@ -12,7 +12,7 @@ class Stack:
     """
 
     def __init__(self) -> None:
-        '''
+        """
         - initializes a stack as empty by default
 
         Examples:
@@ -33,7 +33,7 @@ class Stack:
         2
         >>> stack.head.next_node.next_node.value
         1
-        '''
+        """
         self._size: int = 0
         self._head: Node | None = None
         self._limit: int = 1000
