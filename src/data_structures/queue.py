@@ -39,6 +39,19 @@ class Queue:
 
     @property
     def head(self) -> Node | None:
+        """
+        - returns the head of the queue
+        - the head is the first node in the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.head.value
+        1
+        """
+
         return self._head
 
     @head.setter
@@ -47,6 +60,18 @@ class Queue:
 
     @property
     def tail(self) -> Node | None:
+        """
+        - returns the tail of the queue
+        - the tail is the last node in the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.tail.value
+        3
+        """
         return self._tail
 
     @tail.setter
@@ -55,6 +80,17 @@ class Queue:
 
     @property
     def size(self) -> int:
+        """
+        - returns the size of the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.size
+        0
+        >>> queue.enqueue(1)
+        >>> queue.size
+        1
+        """
         return self._size
 
     @size.setter
@@ -63,6 +99,17 @@ class Queue:
 
     @property
     def is_empty(self) -> bool:
+        """
+        - returns True if the queue is empty, False otherwise
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.is_empty
+        True
+        >>> queue.enqueue(1)
+        >>> queue.is_empty
+        False
+        """
         return bool(self.head is None and self.tail is None)
 
     def _increase_size(self):
@@ -72,7 +119,7 @@ class Queue:
         self.size -= 1
 
     def enqueue(self, value):
-        '''
+        """
         - adds a node to the end of the queue
 
         Examples:
@@ -86,7 +133,7 @@ class Queue:
         1
         >>> queue.tail.value
         3
-        '''
+        """
         if self.is_empty:
             assert self.size == 0
             new_node = Node(value, None, None)
@@ -121,7 +168,7 @@ class Queue:
         assert self.size > 0
 
     def dequeue(self):
-        '''
+        """
         - removes the first node of the queue
 
         Examples:
@@ -138,7 +185,7 @@ class Queue:
         2
         >>> queue.tail.value
         3
-        '''
+        """
         if self.is_empty:
             raise EmptyQueueError("Cannot dequeue from an empty queue")
 

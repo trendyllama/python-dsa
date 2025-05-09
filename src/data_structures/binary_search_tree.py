@@ -137,8 +137,9 @@ class BinarySearchTree:
 
 
 if __name__ == "__main__":
-    print("Creating Binary Search Tree rooted at value 15:")
-    tree = BinarySearchTree(15)
+    # Example usage
+    print("Creating Binary Search Tree rooted at value 100:")
+    tree = BinarySearchTree(100)
 
     for x in range(10):
         tree.insert(random.randint(0, 100))

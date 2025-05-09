@@ -11,7 +11,7 @@ class TreeNode:
     """
 
     def __init__(self, value) -> None:
-        '''
+        """
         - initializes a tree node with a value and an empty list of children
 
         Examples:
@@ -20,7 +20,7 @@ class TreeNode:
         1
         >>> node.children
         []
-        '''
+        """
         self._value = value
         self._children = []
 
@@ -37,18 +37,17 @@ class TreeNode:
         self._children = new_children
 
     def add_child(self, child_node: Self) -> None:
-        '''
+        """
         - adds a child node to the current node
 
         Examples:
         >>> parent_node = TreeNode(1)
         >>> child_node = TreeNode(2)
         >>> parent_node.add_child(child_node)
-        '''
+        """
         self.children.append(child_node)
 
     def remove_child(self, child_node: Self) -> None:
-
         self.children = list(filter(lambda x: x != child_node, self.children))
 
     def traverse(self, nodes_to_visit) -> None:

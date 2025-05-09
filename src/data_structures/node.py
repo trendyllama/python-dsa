@@ -41,6 +41,16 @@ class Node:
 
     @property
     def next_node(self) -> Self | None:
+        """
+        - returns the next node that is linked to the current node
+
+        Examples:
+        >>> node = Node(1)
+        >>> node.next_node
+        >>> node.next_node = Node(2)
+        >>> node.next_node.value
+        2
+        """
         if self._next_node is None:
             return None
 
@@ -52,6 +62,17 @@ class Node:
 
     @property
     def previous_node(self) -> Self | None:
+        """
+        - returns the previous node that is linked to the current node
+
+        Examples:
+        >>> node = Node(1)
+        >>> node.previous_node
+        >>> node.previous_node = Node(0)
+        >>> node.previous_node.value
+        0
+        """
+
         if self._prev_node is None:
             return None
 

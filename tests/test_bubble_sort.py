@@ -1,3 +1,4 @@
+import random
 from src.algorithms.bubble_sort import bubble_sort
 
 from src.sorted_tale.sorts import (
@@ -9,16 +10,24 @@ from src.sorted_tale.sorts import (
 
 
 def test_bubble_sort():
-    assert bubble_sort([3, 6, 2, 9]) == [2, 3, 6, 9]
+    for _ in range(50):
+        rand_list = random.sample(range(100), 10)
+        assert bubble_sort(rand_list) == sorted(rand_list)
 
 
 def test_bubble_sort2():
-    assert bubble_sort2([3, 6, 2, 9], is_less_than) == [2, 3, 6, 9]
-
-    assert bubble_sort2([3, 6, 2, 9], is_greater_than) == [9, 6, 3, 2]
+    for _ in range(50):
+        rand_list = random.sample(range(100), 10)
+        assert bubble_sort2(rand_list, is_less_than) == sorted(rand_list)
+        assert bubble_sort2(rand_list, is_greater_than) == sorted(
+            rand_list, reverse=True
+        )
 
 
 def test_bubble_sort3():
-    assert bubble_sort3([3, 6, 2, 9], is_less_than) == [2, 3, 6, 9]
-
-    assert bubble_sort3([3, 6, 2, 9], is_greater_than) == [9, 6, 3, 2]
+    for _ in range(50):
+        rand_list = random.sample(range(100), 10)
+        assert bubble_sort3(rand_list, is_less_than) == sorted(rand_list)
+        assert bubble_sort3(rand_list, is_greater_than) == sorted(
+            rand_list, reverse=True
+        )
