@@ -40,7 +40,7 @@ class Stack:
 
     @property
     def size(self) -> int:
-        '''
+        """
         - returns the size of the stack
 
         Examples:
@@ -55,7 +55,7 @@ class Stack:
         >>> stack.pop()
         >>> stack.size
         2
-        '''
+        """
         return self._size
 
     @size.setter
@@ -64,7 +64,7 @@ class Stack:
 
     @property
     def head(self) -> Node | None:
-        '''
+        """
         - returns the head node of the stack
         - the head node is the top of the stack
 
@@ -76,16 +76,18 @@ class Stack:
         >>> stack.push(3)
         >>> stack.head.value
         3
-        '''
+        """
         return self._head
 
     @head.setter
     def head(self, new_top_item: Node | None) -> None:
         self._head = new_top_item
 
+        return None
+
     @property
     def limit(self) -> int:
-        '''
+        """
         - returns the limit of the stack
         - the limit is the maximum size of the stack
 
@@ -100,18 +102,23 @@ class Stack:
         >>> stack.push(1001)
         Traceback (most recent call last):
         src.data_structures.exceptions.StackOverflowError
-        '''
+        """
         return self._limit
 
     @limit.setter
     def limit(self, new_limit: int) -> None:
         self._limit = new_limit
 
+        return None
+
     def _increase_size(self) -> None:
         self.size += 1
 
+        return None
+
     def _decrease_size(self) -> None:
         self.size -= 1
+        return None
 
     def push(self, value) -> None:
         """
@@ -131,14 +138,14 @@ class Stack:
         if self.is_empty:
             self.head = Node(value, None)
             self._increase_size()
-            return
+            return None
 
         if self.has_space:
             item = Node(value, self.head)
 
             self.head = item
             self._increase_size()
-            return
+            return None
 
         raise StackOverflowError
 
@@ -166,13 +173,15 @@ class Stack:
         if self.size == 1:
             self.head = None
             self.size = 0
-            return
+            return None
 
         if self.head is None:
             raise RuntimeError
 
         self.head = self.head.next_node
         self._decrease_size()
+
+        return None
 
     def peek(self):
         """
@@ -199,7 +208,7 @@ class Stack:
 
     @property
     def has_space(self) -> bool:
-        '''
+        """
         - returns True if the stack has space to add a new node
 
         Examples:
@@ -212,12 +221,12 @@ class Stack:
         1000
         >>> stack.has_space
         False
-        '''
+        """
         return self.limit > self.size
 
     @property
     def is_empty(self) -> bool:
-        '''
+        """
         - returns True if the stack is empty
 
         Examples:
@@ -227,7 +236,7 @@ class Stack:
         >>> stack.push(1)
         >>> stack.is_empty
         False
-        '''
+        """
         return self.size == 0
 
     def __iter__(self):
@@ -254,5 +263,34 @@ class Stack:
         2
         1
         """
+
         for node in self:
             print(node)
+
+    def __str__(self) -> str:
+        """
+        - returns the string representation of the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> print(stack)
+        3 -> 2 -> 1
+        """
+        return " -> ".join(map(str, self))
+
+    def __len__(self) -> int:
+        """
+        - returns the length of the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> len(stack)
+        3
+        """
+        return self.size

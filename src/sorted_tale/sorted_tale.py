@@ -4,6 +4,7 @@
 """
 
 from pathlib import Path
+from operator import gt
 
 from src.algorithms.quick_sort import quicksort
 
@@ -19,15 +20,15 @@ if __name__ == "__main__":
     print(ord("A"))
 
     def by_title_ascending(booka, bookb) -> bool:
-        return bool(booka["title_lower"] > bookb["title_lower"])
+        return gt(booka["title_lower"], bookb["title_lower"])
 
     def by_author_ascending(booka, bookb) -> bool:
-        return bool(booka["author_lower"] > bookb["author_lower"])
+        return gt(booka["author_lower"], bookb["author_lower"])
 
     def by_total_length(booka, bookb) -> bool:
-        return bool(
-            len(booka["title"]) + len(booka["author"])
-            > len(bookb["title"]) + len(bookb["author"])
+        return gt(
+            len(booka["title"]) + len(booka["author"]),
+            len(bookb["title"]) + len(bookb["author"]),
         )
 
     sort1 = bubble_sort(bookshelf, by_title_ascending)

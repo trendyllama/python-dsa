@@ -48,6 +48,19 @@ class TreeNode:
         self.children.append(child_node)
 
     def remove_child(self, child_node: Self) -> None:
+        """
+
+        - removes a child node from the current node
+        - if the child node is not in the list of children, it does nothing
+        - if the child node is in the list of children, it removes it
+        Examples:
+        >>> parent_node = TreeNode(1)
+        >>> child_node = TreeNode(2)
+        >>> parent_node.add_child(child_node)
+        >>> parent_node.remove_child(child_node)
+        >>> parent_node.children
+        []
+        """
         self.children = list(filter(lambda x: x != child_node, self.children))
 
     def traverse(self, nodes_to_visit) -> None:
@@ -78,6 +91,10 @@ class StoryTreeNode:
         self.choices.append(node)
 
     def traverse(self) -> None:
+        """
+        - traverses the story tree and prints the story piece
+        - prints the story piece and the choices
+        """
         story_node = self
         print(story_node.story_piece)
 
