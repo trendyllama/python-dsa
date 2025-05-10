@@ -1,10 +1,7 @@
 from random import randrange
-from collections.abc import Callable
 
 
-def quicksort(
-    list_input: list, start: int, end: int, comparision_func: Callable | None = None
-) -> None:
+def quicksort(list_input: list, start: int, end: int) -> None:
     """
     - inelegant implementation of quicksort
 

@@ -113,9 +113,33 @@ class Queue:
         return bool(self.head is None and self.tail is None)
 
     def _increase_size(self):
+        """
+
+        - increases the size of the queue by 1
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.size
+        0
+        >>> queue.enqueue(1)
+        >>> queue.size
+        1
+        """
         self.size += 1
 
     def _decrease_size(self):
+        """
+        - decreases the size of the queue by 1
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.size
+        1
+        >>> queue.dequeue()
+        >>> queue.size
+        0
+        """
         self.size -= 1
 
     def enqueue(self, value):
@@ -210,6 +234,20 @@ class Queue:
         self._decrease_size()
 
     def peek(self):
+        """
+
+        - returns the value of the first node in the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> queue.enqueue(1)
+        >>> queue.enqueue(2)
+        >>> queue.enqueue(3)
+        >>> queue.size
+        3
+        >>> queue.peek()
+        1
+        """
         if self.is_empty:
             raise EmptyQueueError("Cannot peek from an empty queue")
 
@@ -217,3 +255,17 @@ class Queue:
             raise RuntimeError
 
         return self.head.value
+
+    def __len__(self):
+        """
+        - returns the size of the queue
+
+        Examples:
+        >>> queue = Queue()
+        >>> len(queue)
+        0
+        >>> queue.enqueue(1)
+        >>> len(queue)
+        1
+        """
+        return self.size

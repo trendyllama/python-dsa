@@ -83,7 +83,7 @@ class Node:
         self._prev_node = link_node
 
     @property
-    def value(self):
+    def value(self) -> Self | None:
         """
         - returns the value of the node
 

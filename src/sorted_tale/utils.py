@@ -6,6 +6,7 @@ import csv
 from pathlib import Path
 from dataclasses import dataclass
 
+
 @dataclass
 class Book:
     """
@@ -29,7 +30,6 @@ def load_books(filename: Path) -> list[Book]:
 
     with open(filename, "r", encoding="utf-8") as file:
         shelf = csv.DictReader(file)
-
 
     for book in shelf:
         # add your code here
