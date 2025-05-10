@@ -2,7 +2,7 @@
 name = "codecademy-dsa-python"
 dynamic = ["version"]
 description = "data structures and algorithms course from codecademy"
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 readme = "README.md"
 
 
