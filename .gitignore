@@ -1,5 +1,4 @@
 .venv
-.devcontainer
 __pycache__
 node_modules
 src/codecademy_dsa_python.egg-info
