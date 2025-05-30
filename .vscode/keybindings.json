@@ -1,5 +1,0 @@
-{
-    "key": "ctrl+r",
-    "command": "workbench.action.tasks.runTask",
-    "args": "clean"
-}

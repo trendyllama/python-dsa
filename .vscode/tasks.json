@@ -4,7 +4,7 @@
     {
       "label": "format",
       "type": "shell",
-      "command": "uv run ruff format ; npx prettier --write .",
+      "command": "uv run ruff format",
       "group": "build"
     },
     {
@@ -20,14 +20,8 @@
       "group": "test"
     },
     {
-      "label": "clean",
-      "type": "shell",
-      "command": "find . | grep __pycache__ | xargs rm -rf",
-    
-    },
-    {
       "label": "main workflow",
-      "dependsOn": ["format", "lint", "test", "clean"],
+      "dependsOn": ["format", "lint", "test"],
       "group": {
         "kind": "build",
         "isDefault": true
