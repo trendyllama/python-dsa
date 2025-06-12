@@ -59,6 +59,6 @@ class InputBox:
         Returns:
             str: The user input as a string.
         '''
-        self.input = input.get(1.0, 'end-1c')
+        self.input = self.input.get(1.0, 'end-1c')
         self.root.destroy()
         return self.input
