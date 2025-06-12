@@ -1,5 +1,18 @@
-# Python program to illustrate the concept
-# of threading
+'''
+Multithreading is when you can execute multiple locally contained processes simultaneously.
+
+Different functions (processes) are defined in their own scope before the main thread.
+
+In python, there is not true multithreading but simulated multithreading via the threading module.
+
+To calculate time.
+
+import time
+  s = time.perf_counter()
+  elapsed = time.perf_counter() - s
+  print("Executed in: " + str(elapsed) + " seconds")
+
+'''
 import threading
 import os
 
