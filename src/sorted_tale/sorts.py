@@ -2,7 +2,7 @@
 - sorting functions module
 """
 
-from collections.abc import Callable, Iterable
+from collections.abc import Callable
 
 
 def is_greater_than(element1: int | float, element2: int | float) -> bool:
@@ -32,7 +32,7 @@ def is_less_than(element1: int | float, element2: int | float) -> bool:
     return element1 > element2
 
 
-def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
+def bubble_sort(arr: list, comparison_function: Callable) -> list:
     """
     - codecademy implementation of bubble sort
 
@@ -61,7 +61,7 @@ def bubble_sort(arr: Iterable, comparison_function: Callable) -> Iterable:
     return arr
 
 
-def bubble_sort2(arr: Iterable, comparison_function: Callable) -> Callable | Iterable:
+def bubble_sort2(arr: list, comparison_function: Callable) -> Callable | list:
     """
     - not correct yet
 
