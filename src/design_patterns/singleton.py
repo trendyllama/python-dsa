@@ -1,9 +1,8 @@
 import os
 
+
 class Configuration:
-
     def __new__(cls):
-
         if not hasattr(Configuration, "instance"):
             cls.instance = super().__new__(cls)
 
@@ -20,10 +19,7 @@ class Configuration:
 
 
 class ApplicationState:
-
     def __new__(cls):
-
         if not hasattr(ApplicationState, "instance"):
             cls.instance = super().__new__(cls)
         return cls.instance
-

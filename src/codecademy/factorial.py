@@ -1,10 +1,8 @@
 from functools import lru_cache
 
-# recursive function for factorials
-
 @lru_cache
 def fact(n):
-    '''
+    """
     Example:
     >>> fact(5)
     120
@@ -14,7 +12,7 @@ def fact(n):
     1
     >>> fact(10)
     3628800
-    '''
+    """
     if n < 0:
         raise ValueError("Factorial is not defined for negative numbers")
 
@@ -24,9 +22,8 @@ def fact(n):
         return n * fact(n - 1)
 
 
-
 def fact_itr(n):
-    '''
+    """
     Example:
     >>> fact_itr(5)
     120
@@ -36,7 +33,7 @@ def fact_itr(n):
     1
     >>> fact_itr(10)
     3628800
-    '''
+    """
     if n < 0:
         raise ValueError("Factorial is not defined for negative numbers")
 

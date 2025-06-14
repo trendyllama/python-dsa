@@ -1,5 +1,4 @@
 from ctypes import CDLL
 
 
-cfile = CDLL('./cfile.so')
-
+cfile = CDLL("./cfile.so")

@@ -1,4 +1,3 @@
-
 def conversion(units: str, temp: float):
     if units == "F" or units == "Fahrenheit":
         c = (temp - 32) * (5 / 9)
@@ -23,9 +22,8 @@ def main():
     units = input("Type Fahrenheit or Celcius: ")
     temp = float(input("Type the temperature in those units: "))
 
-
-
     conversion(units, temp)
+
 
 if __name__ == "__main__":
     main()

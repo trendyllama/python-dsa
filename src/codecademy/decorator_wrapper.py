@@ -15,4 +15,3 @@ def my_pow(a, b):
     res = a**b
     return res
     # or just return a ** b, it doesn't really matter
-

@@ -1,4 +1,3 @@
-
 class School:
     def __init__(self, name, level, numberofStudents):
         self.name = name

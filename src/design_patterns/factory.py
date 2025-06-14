@@ -34,11 +34,8 @@ class FileParserFactory:
     def _parse_xml(self, file: File) -> str:
         raise NotImplementedError("XML parsing is not implemented yet")
 
-
-
     def _parse_yaml(self, file: File) -> str:
         raise NotImplementedError("YAML parsing is not implemented yet")
-
 
     def parse(self, file: File, file_type: str) -> str:
         """

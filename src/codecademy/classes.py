@@ -1,4 +1,3 @@
-
 class Menu:
     def __init__(self, name, items, start_time, end_time):
         self.name = name
@@ -78,7 +77,9 @@ def main():
 
     early_bird_menu = Menu("Early Bird", early_bird_items, 1500, 1800)
 
-    print(early_bird_menu.calculate_bill(["salumeria plate", "mushroom ravioli (vegan)"]))
+    print(
+        early_bird_menu.calculate_bill(["salumeria plate", "mushroom ravioli (vegan)"])
+    )
 
     # Dinner
     dinner_items = {
@@ -116,7 +117,8 @@ def main():
     )
 
     new_installment = Franchise(
-        "12 East Mulberry Street", [brunch_menu, early_bird_menu, dinner_menu, kids_menu]
+        "12 East Mulberry Street",
+        [brunch_menu, early_bird_menu, dinner_menu, kids_menu],
     )
 
     arepas_place = Franchise("189 Fitzgerald Avenue", arepas_menu)
@@ -132,6 +134,7 @@ def main():
     Arepa = Business("Take a' Arepa", arepas_place)
 
     print(Arepa.franchises)
+
 
 if __name__ == "__main__":
     main()

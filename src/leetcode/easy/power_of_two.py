@@ -1,4 +1,4 @@
-'''
+"""
 Given an integer n, return true if it is a power of two. Otherwise, return false.
 
 An integer n is a power of two, if there exists an integer x such that n == 2x.
@@ -25,11 +25,11 @@ Constraints:
 
 
 Follow up: Could you solve it without loops/recursion?
-'''
+"""
 
 
 def is_power_of_two(n: int) -> bool:
-    '''
+    """
     Examples:
 
     >>> is_power_of_two(1)
@@ -55,11 +55,11 @@ def is_power_of_two(n: int) -> bool:
 
     >>> is_power_of_two(2048)
     True
-    '''
+    """
 
-    bit_str = bin(n).split('b')[-1]
+    bit_str = bin(n).split("b")[-1]
 
     if bit_str == "1":
         return True
 
-    return bit_str[0] == "1" and all(char == '0' for char in bit_str[1:])
+    return bit_str[0] == "1" and all(char == "0" for char in bit_str[1:])

@@ -1,6 +1,79 @@
-from isa import ISA
-from memory import Memory, MainMemory
 from random import randint
+
+class Memory:
+    def __init__(self, name="Memory", access_time=1):
+        self.name = name
+        self.access_time = access_time
+        self.exec_time = 0
+        self.output = ""
+
+    def write(self, address, data):
+        self.exec_time += self.access_time
+
+    def read(self, address, data=None):
+        self.exec_time += self.access_time
+
+    def get_exec_time(self):
+        return self.exec_time
+
+class ISA:
+    def __init__(self):
+        self._memory: Memory | None = None
+        self.instructions = []
+        self.output = ""
+
+    @property
+    def memory(self):
+        if self._memory is None:
+            raise ValueError("Memory not set. Please set memory before accessing it.")
+        return self._memory
+
+    def set_memory(self, memory: Memory):
+        self._memory = memory
+
+    def read_instructions(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                instruction = line.strip()
+                if instruction:
+                    self.instructions.append(instruction)
+                    self.execute_instruction(instruction)
+
+    def execute_instruction(self, instruction):
+        parts = instruction.split()
+        command = parts[0].lower()
+        if command == "write":
+            address = int(parts[1])
+            data = " ".join(parts[2:])
+            self.memory.write(address, data)
+        elif command == "read":
+            address = int(parts[1])
+            data = self.memory.read(address)
+            if data is not None:
+                self.output += f"Data at {address}: {data}\n"
+            else:
+                self.output += f"No data found at {address}\n"
+
+    def get_exec_time(self):
+        return self.memory.get_exec_time()
+
+
+
+class MainMemory(Memory):
+    def __init__(self):
+        super().__init__(name="Main Memory", access_time=10)
+        self.data = {}
+
+    def write(self, address, data):
+        super().write()
+        self.data[address] = data
+
+    def read(self, address):
+        super().read()
+        return self.data.get(address, None)
+
+    def get_exec_time(self):
+        return self.exec_time
 
 
 class Cache(Memory):
@@ -62,7 +135,7 @@ class Cache(Memory):
         return set_number
 
     def fifo_policy(self, set_number):
-        index = self.fifo_indices[set_number]
+        # index = self.fifo_indices[set_number]
         self.fifo_indices[set_number] += 1
         if self.fifo_indices[set_number] == len(self.data) / self.sets + (
             set_number * int(len(self.data) / self.sets)
@@ -74,18 +147,15 @@ class Cache(Memory):
     # Returns entry on cache hit
     # Returns None on cache miss
     def get_entry(self, address):
-
         entry = filter(lambda x: x["tag"] == address, self.data)
 
         match list(entry):
-
             case []:
                 print("Miss")
                 return
-            case _ :
+            case _:
                 print("Hit")
                 return entry
-
 
     def get_exec_time(self):
         exec_time = self.exec_time + self.main_memory.get_exec_time()

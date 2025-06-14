@@ -1,6 +1,5 @@
-
 def is_palindrome_r(str):
-    '''
+    """
     Example:
     >>> is_palindrome_r("abba")
     True
@@ -10,7 +9,7 @@ def is_palindrome_r(str):
     True
     >>> is_palindrome_r("abcd")
     False
-    '''
+    """
 
     if len(str) < 2:
         return True
@@ -20,7 +19,7 @@ def is_palindrome_r(str):
 
 
 def is_palindrome_i(my_string):
-    '''
+    """
     Example:
     >>> is_palindrome_i("abba")
     True
@@ -30,11 +29,10 @@ def is_palindrome_i(my_string):
     True
     >>> is_palindrome_i("abcd")
     False
-    '''
+    """
 
     while len(my_string) > 1:
         if my_string[0] != my_string[-1]:
             return False
         my_string = my_string[1:-1]
     return True
-

@@ -26,7 +26,6 @@ answer = ""
 
 
 def statements(random_number):
-
     if random_number == 1:
         answer = "Yes - definitely."
     elif random_number == 2:

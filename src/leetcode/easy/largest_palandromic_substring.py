@@ -23,7 +23,7 @@ s consist of only digits and English letters.
 
 
 def reverse_string(input_string: str) -> str:
-    '''
+    """
     Examples:
     >>> reverse_string("hello") == "olleh"
     True
@@ -36,12 +36,12 @@ def reverse_string(input_string: str) -> str:
     True
     >>> reverse_string("12321") == "12321"
     True
-    '''
+    """
     return input_string[::-1]
 
 
 def is_palandrome(input_string: str) -> bool:
-    '''
+    """
     Examples:
     >>> is_palandrome("hello") == False
     True
@@ -53,7 +53,7 @@ def is_palandrome(input_string: str) -> bool:
     True
     >>> is_palandrome("12321") == True
     True
-    '''
+    """
     return input_string == reverse_string(input_string)
 
 

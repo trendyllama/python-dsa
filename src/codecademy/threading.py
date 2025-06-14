@@ -1,4 +1,4 @@
-'''
+"""
 Multithreading is when you can execute multiple locally contained processes simultaneously.
 
 Different functions (processes) are defined in their own scope before the main thread.
@@ -12,7 +12,8 @@ import time
   elapsed = time.perf_counter() - s
   print("Executed in: " + str(elapsed) + " seconds")
 
-'''
+"""
+
 import threading
 import os
 
