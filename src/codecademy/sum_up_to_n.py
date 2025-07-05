@@ -1,7 +1,7 @@
-from functools import cache, reduce
+from functools import reduce, lru_cache
 
 
-@cache
+@lru_cache(maxsize=10)
 def sum_to_n(n):
     """
     Example:
@@ -20,6 +20,7 @@ def sum_to_n(n):
         return n + sum_to_n(n - 1)
 
 
+@lru_cache(maxsize=10)
 def sum_to_n_functional(n: int) -> int:
     """
     Example:
