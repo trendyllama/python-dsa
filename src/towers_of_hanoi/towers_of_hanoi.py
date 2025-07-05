@@ -1,3 +1,4 @@
+import sys
 from collections.abc import Callable
 import enum
 from src.data_structures.stack import Stack
@@ -9,8 +10,7 @@ class GameStates(enum.Enum):
     INVALID_MOVE = 0
 
 
-class InputError(Exception):
-    """ """
+class InputError(Exception): ...
 
 
 class Game:
@@ -63,6 +63,7 @@ class Game:
         print(
             f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {self.num_optimal_moves}"
         )
+        sys.exit(0)
 
     def main_loop(self) -> Callable | None:
         if self.right_stack.size != self.num_disks:
