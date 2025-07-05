@@ -28,11 +28,6 @@ class School:
         )
 
 
-s = School("Hill", "High", 100)
-
-# print(s)
-
-
 class PrimarySchool(School):
     def __init__(self, name, numberofStudents, pickupPolicy):
         super().__init__(name, "primary", numberofStudents)
@@ -43,11 +38,6 @@ class PrimarySchool(School):
 
     def __repr__(self):
         return super().__repr__()
-
-
-p = PrimarySchool("Wyndcroft", 500, "Parents only")
-
-# print(p)
 
 
 class HighSchool(School):
@@ -62,6 +52,7 @@ class HighSchool(School):
         return "We offer {} as extra ciricular sports".format(self.sportsTeams)
 
 
-h = HighSchool("Lawrenceville", 100, ["Soccer", "Track", "Hockey"])
-
-print(h)
+if __name__ == "__main__":
+    p = PrimarySchool("Wyndcroft", 500, "Parents only")
+    h = HighSchool("Lawrenceville", 100, ["Soccer", "Track", "Hockey"])
+    s = School("Hill", "High", 100)

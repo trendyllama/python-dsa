@@ -2,9 +2,6 @@ from functools import reduce
 from typing import Tuple
 import random
 
-lst_first = list(map(lambda _: random.randint(0, 1000), range(200)))
-lst_second = list(map(lambda _: random.randint(0, 1000), range(200)))
-
 
 def larger_sum(lst1: list[int], lst2: list[int]) -> Tuple:
     sum1 = reduce(lambda x, y: x + y, lst1)
@@ -18,4 +15,7 @@ def larger_sum(lst1: list[int], lst2: list[int]) -> Tuple:
     )
 
 
-print(larger_sum(lst_first, lst_second))
+if __name__ == "__main__":
+    lst_first = list(map(lambda _: random.randint(0, 1000), range(200)))
+    lst_second = list(map(lambda _: random.randint(0, 1000), range(200)))
+    print(larger_sum(lst_first, lst_second))
