@@ -53,3 +53,14 @@ class FileParserFactory:
             return self._parse_yaml(file)
 
         raise ValueError(f"Unsupported file type: {file_type}")
+
+
+def file_parser(file: File, file_type: str) -> str:
+    """
+    factory method that creates a FileParserFactory instance
+    and calls the parse method on it
+
+    hides the complexity of creating a FileParserFactory instance
+    """
+    factory = FileParserFactory()
+    return factory.parse(file, file_type)
