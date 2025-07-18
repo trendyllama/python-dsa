@@ -12,8 +12,8 @@ def test_observer():
     """
     observer = AppObserver("observer")
 
-    observer.register(AppUser("user1"))
-    observer.register(AppUser("user2"))
-    observer.register(AppUser("user3"))
+    observer.subscribe(AppUser("user1"))
+    observer.subscribe(AppUser("user2"))
+    observer.subscribe(AppUser("user3"))
 
     observer.notify(Message("A new feature was just released!"))

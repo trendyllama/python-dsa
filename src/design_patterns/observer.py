@@ -15,13 +15,15 @@ class Message:
 class Observer(Protocol):
     def notify(self, message) -> None: ...
 
+    def subscribe(self, user) -> None: ...
+
 
 class AppObserver(Observer):
     def __init__(self, name: str) -> None:
         self.name = name
         self.users: list[AppUser] = []
 
-    def register(self, user) -> None:
+    def subscribe(self, user) -> None:
         self.users.append(user)
 
     def notify(self, message: Message) -> None:
