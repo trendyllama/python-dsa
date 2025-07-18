@@ -62,5 +62,4 @@ def file_parser(file: File, file_type: str) -> str:
 
     hides the complexity of creating a FileParserFactory instance
     """
-    factory = FileParserFactory()
-    return factory.parse(file, file_type)
+    return FileParserFactory().parse(file, file_type)
