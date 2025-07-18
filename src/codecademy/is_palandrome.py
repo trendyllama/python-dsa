@@ -1,4 +1,4 @@
-def is_palindrome_r(str):
+def is_palindrome_r(str: str) -> bool:
     """
     Example:
     >>> is_palindrome_r("abba")
@@ -18,7 +18,7 @@ def is_palindrome_r(str):
     return is_palindrome_r(str[1:-1])
 
 
-def is_palindrome_i(my_string):
+def is_palindrome_i(my_string: str) -> bool:
     """
     Example:
     >>> is_palindrome_i("abba")

@@ -1,9 +1,8 @@
 from functools import reduce
-from typing import Tuple
 import random
 
 
-def larger_sum(lst1: list[int], lst2: list[int]) -> Tuple:
+def larger_sum(lst1: list[int], lst2: list[int]) -> tuple[int, list[int], int]:
     sum1 = reduce(lambda x, y: x + y, lst1)
 
     sum2 = reduce(lambda x, y: x + y, lst2)

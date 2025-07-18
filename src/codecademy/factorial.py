@@ -2,7 +2,7 @@ from functools import lru_cache
 
 
 @lru_cache
-def fact(n):
+def fact(n: int) -> int:
     """
     Example:
     >>> fact(5)
@@ -23,7 +23,8 @@ def fact(n):
         return n * fact(n - 1)
 
 
-def fact_itr(n):
+@lru_cache
+def fact_itr(n: int) -> int:
     """
     Example:
     >>> fact_itr(5)
