@@ -211,6 +211,18 @@ class LinkedList:
         - allows for iteration over the linked list
         - used in for loops
         - returns the value of the current node
+
+        Examples:
+        >>> linked_list = LinkedList()
+        >>> linked_list.append(1)
+        >>> linked_list.append(2)
+        >>> linked_list.append(3)
+        >>> iterator = iter(linked_list)
+        >>> for value in iterator:
+        ...     print(value)
+        1
+        2
+        3
         """
         self.current_node = self.head_node
         return self
@@ -219,9 +231,23 @@ class LinkedList:
         """
         - returns the next value in the linked list
         - raises StopIteration when the end of the linked list is reached
+
+        Examples:
+        >>> linked_list = LinkedList()
+        >>> linked_list.append(1)
+        >>> linked_list.append(2)
+        >>> linked_list.append(3)
+        >>> iterator = iter(linked_list)
+        >>> next(iterator)
+        1
+        >>> next(iterator)
+        2
+        >>> next(iterator)
+        3
         """
         if self.current_node is None:
             raise StopIteration
+
         value = self.current_node.value
         self.current_node = self.current_node.next_node
         return value
