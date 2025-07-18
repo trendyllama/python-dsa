@@ -103,3 +103,14 @@ class Node:
     @value.setter
     def value(self, new_value) -> None:
         self._value = new_value
+
+    def __str__(self) -> str:
+        """
+        - returns a string representation of the node
+
+        Examples:
+        >>> node = Node(1)
+        >>> print(node)
+        Node(value=1)
+        """
+        return f"Node(value={self.value})"
