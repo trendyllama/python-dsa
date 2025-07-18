@@ -60,6 +60,12 @@ class Stack:
 
     @size.setter
     def size(self, new_size: int) -> None:
+        if not isinstance(new_size, int):
+            raise TypeError("Size must be an integer")
+
+        if new_size < 0:
+            raise ValueError("Size cannot be negative")
+
         self._size = new_size
 
     @property
@@ -240,6 +246,20 @@ class Stack:
         return self.size == 0
 
     def __iter__(self):
+        '''
+        - returns an iterator for the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> for value in stack:
+        ...     print(value)
+        3
+        2
+        1
+        '''
         current_node = self.head
 
         while current_node:
@@ -247,7 +267,29 @@ class Stack:
             current_node = current_node.next_node
 
     def __next__(self):
-        return self.__iter__()
+        '''
+
+        - returns the next value in the stack
+
+        Examples:
+        >>> stack = Stack()
+        >>> stack.push(1)
+        >>> stack.push(2)
+        >>> stack.push(3)
+        >>> next(stack)
+        3
+        >>> next(stack)
+        2
+        >>> next(stack)
+        1
+        '''
+
+        if self.head is None:
+            raise StopIteration
+        value = self.head.value
+        self.head = self.head.next_node
+        self._decrease_size()
+        return value
 
     def print(self) -> None:
         """
