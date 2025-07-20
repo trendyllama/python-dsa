@@ -1,4 +1,5 @@
 import os
+from typing import Self
 
 
 class SingletonMeta(type):
@@ -18,7 +19,7 @@ class SingletonMeta(type):
 
     """
 
-    _instances = {}
+    _instances: dict = {}
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
@@ -27,25 +28,26 @@ class SingletonMeta(type):
         return cls._instances[cls]
 
 
-class Configuration:
-    def __new__(cls):
-        if not hasattr(Configuration, "instance"):
-            cls.instance = super().__new__(cls)
+class Configuration(SingletonMeta):
+    """
+    A singleton class that holds configuration settings for the application.
 
-        return cls.instance
+    It reads the environment variable "ENVIRONMENT" to determine the configuration.
+    """
 
-    @property
-    def environment(self) -> str:
-        out = os.getenv("ENVIRONMENT")
-
-        if out is None:
+    def __init__(self):
+        env_var = os.getenv("ENVIRONMENT")
+        if env_var is None:
             raise ValueError("ENVIRONMENT variable not set")
 
-        return out
+        self.environment: str = env_var
 
 
 class ApplicationState:
-    def __new__(cls):
-        if not hasattr(ApplicationState, "instance"):
+    _instances = {}
+
+    def __new__(cls) -> Self:
+        if cls not in cls._instances:
             cls.instance = super().__new__(cls)
+
         return cls.instance
