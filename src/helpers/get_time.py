@@ -1,5 +1,6 @@
 """
 - helper functions
+
 """
 
 import time
@@ -27,7 +28,3 @@ def test_func() -> None:
 
     for i in range(1, 100000):
         count += i
-
-
-if __name__ == "__main__":
-    test_func()

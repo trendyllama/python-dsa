@@ -246,7 +246,7 @@ class Stack:
         return self.size == 0
 
     def __iter__(self):
-        '''
+        """
         - returns an iterator for the stack
 
         Examples:
@@ -259,7 +259,7 @@ class Stack:
         3
         2
         1
-        '''
+        """
         current_node = self.head
 
         while current_node:
@@ -267,7 +267,7 @@ class Stack:
             current_node = current_node.next_node
 
     def __next__(self):
-        '''
+        """
 
         - returns the next value in the stack
 
@@ -282,7 +282,7 @@ class Stack:
         2
         >>> next(stack)
         1
-        '''
+        """
 
         if self.head is None:
             raise StopIteration

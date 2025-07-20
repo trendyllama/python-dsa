@@ -60,13 +60,13 @@ class Context:
         self.strategy = strategy
 
     def execute(self, dataset: list) -> list:
-        '''
+        """
 
         Example:
         >>> context = Context(BubbleSortStrategy())
         >>> context.execute([3, 1, 2])
         [1, 2, 3]
-        '''
+        """
         return self.strategy.sort(dataset)
 
 

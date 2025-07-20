@@ -20,7 +20,7 @@ if __name__ == "__main__":
     logging.info("The random number is {}".format(random_number))
     answer = ""
 
-    def statements(random_number):
+    def statements(random_number: int) -> str:
         if random_number == 1:
             answer = "Yes - definitely."
         elif random_number == 2:

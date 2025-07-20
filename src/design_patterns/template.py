@@ -54,7 +54,7 @@ class ConcreteAlgorithm2(AlgoirthmTemplate):
 
 
 # Functional approach
-def execute_template(step1: Callable, step2: Callable, step3: Callable):
+def execute_template(step1: Callable, step2: Callable, step3: Callable) -> None:
     """
     functional approach
 

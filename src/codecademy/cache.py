@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Memory:
     def __init__(self, name="Memory", access_time=1):
         self.name = name
@@ -15,6 +16,7 @@ class Memory:
 
     def get_exec_time(self):
         return self.exec_time
+
 
 class ISA:
     def __init__(self):
@@ -56,7 +58,6 @@ class ISA:
 
     def get_exec_time(self):
         return self.memory.get_exec_time()
-
 
 
 class MainMemory(Memory):
