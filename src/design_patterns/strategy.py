@@ -53,13 +53,20 @@ class QuickSortStrategy(SortStrategy):
 
 
 class Context:
-    def __init__(self, strategy: SortStrategy):
+    def __init__(self, strategy: SortStrategy) -> None:
         self.strategy = strategy
 
-    def set_strategy(self, strategy: SortStrategy):
+    def set_strategy(self, strategy: SortStrategy) -> None:
         self.strategy = strategy
 
     def execute(self, dataset: list) -> list:
+        '''
+
+        Example:
+        >>> context = Context(BubbleSortStrategy())
+        >>> context.execute([3, 1, 2])
+        [1, 2, 3]
+        '''
         return self.strategy.sort(dataset)
 
 

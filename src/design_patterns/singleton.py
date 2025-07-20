@@ -3,8 +3,19 @@ import os
 
 class SingletonMeta(type):
     """
-    A metaclass for creating singleton classes.
-    Ensures that only one instance of the class can exist.
+    A metaclass for creating singleton classes. Ensures that only one instance of the class can exist.
+
+
+    Example:
+    >>> class MySingleton(metaclass=SingletonMeta):
+    ...     pass
+    >>> instance1 = MySingleton()
+    >>> instance2 = MySingleton()
+    >>> instance1 is instance2
+    True
+    >>> instance1 == instance2
+    True
+
     """
 
     _instances = {}
