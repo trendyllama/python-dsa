@@ -1,4 +1,22 @@
 class Menu:
+    """
+    Example:
+    >>> brunch_items = {
+    ...     "pancakes": 7.50,
+    ...     "waffles": 9.00,
+    ...     "burger": 11.00,
+    ...     "home fries": 4.50,
+    ...     "coffee": 1.50,
+    ...     "espresso": 3.00,
+    ...     "tea": 1.00,
+    ...     "mimosa": 10.50,
+    ...     "orange juice": 3.50,
+    ... }
+    >>> brunch_menu = Menu("Brunch", brunch_items, 1100, 1600)
+    >>> brunch_menu.calculate_bill(["pancakes", "home fries", "coffee"])
+    13.5
+    """
+
     def __init__(self, name, items, start_time, end_time):
         self.name = name
         self.items = items
@@ -25,6 +43,29 @@ class Menu:
 
 
 class Franchise:
+    """
+
+    Example:
+    >>> brunch_items = {
+    ...     "pancakes": 7.50,
+    ...     "waffles": 9.00,
+    ...     "burger": 11.00,
+    ...     "home fries": 4.50,
+    ...     "coffee": 1.50,
+    ...     "espresso": 3.00,
+    ...     "tea": 1.00,
+    ...     "mimosa": 10.50,
+    ...     "orange juice": 3.50,
+    ... }
+    >>> brunch_menu = Menu("Brunch", brunch_items, 1100, 1600)
+    >>> flagship_store = Franchise("1232 West End Road", [brunch_menu])
+    >>> flagship_store.available_menus(1200)
+    [The Brunch menu is availble from 1100 to 1600.]
+    >>> new_installment = Franchise("12 East Mulberry Street", [brunch_menu])
+    >>> new_installment.available_menus(1200)
+    [The Brunch menu is availble from 1100 to 1600.]
+    """
+
     def __init__(self, address, menus):
         self.address = address
         self.menus = menus
@@ -41,6 +82,13 @@ class Franchise:
 
 
 class Business:
+    """
+    Example:
+
+
+
+    """
+
     def __init__(self, name, franchises):
         self.name = name
         self.franchises = franchises

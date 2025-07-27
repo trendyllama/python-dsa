@@ -4,7 +4,7 @@ from scipy.stats import norm
 
 def black_scholes(
     S: float, K: float, T: int | float, r: float, sigma: int | float, type: str = "c"
-):
+) -> np.float64:
     """
     Calculates the price of a European-style option using the Black-Scholes model.
 
@@ -18,6 +18,12 @@ def black_scholes(
 
     Returns:
       The price of the option.
+
+    Example:
+    >>> black_scholes(100, 100, 1, 0.05, 0.2, "c")
+    np.float64(10.450583572185565)
+    >>> black_scholes(100, 100, 1, 0.05, 0.2, "p")
+    np.float64(5.573526022256971)
     """
 
     d1 = (np.log(S / K) + (r + sigma**2 / 2) * T) / (sigma * np.sqrt(T))
@@ -27,22 +33,3 @@ def black_scholes(
         return S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
     else:
         return K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
-
-
-if __name__ == "__main__":
-    price = float(input("Whats the current price of the underlying?: "))
-    strike = float(input("What's the strike price of the option?: "))
-    time_to_mat = float(
-        input("What's the time to maturity of the option? (input in terms of years): ")
-    )
-    risk_free_rate = float(input("What's the risk free rate? (%1 as 1.00): "))
-    implied_vol = float(
-        input("What's the implied vol of the underlying? (%1 as 1.00): ")
-    )
-    type = str(input("Is it a call or a put? (c or p): "))
-
-    print(
-        "Black Scholes theo = {}".format(
-            black_scholes(price, strike, time_to_mat, risk_free_rate, implied_vol, type)
-        )
-    )

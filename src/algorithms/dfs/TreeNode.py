@@ -3,6 +3,25 @@ from typing import Self
 
 
 class TreeNode:
+    """
+
+    Example:
+    >>> root = TreeNode(1)
+    >>> child1 = TreeNode(2)
+    >>> child2 = TreeNode(3)
+    >>> root.children = [child1, child2]
+    >>> child1.children = [TreeNode(4), TreeNode(5)]
+    >>> child2.children = [TreeNode(6)]
+    >>> root.value
+    1
+    >>> child1.value
+    2
+    >>> child2.value
+    3
+    >>> root.children[0].value
+    2
+    """
+
     def __init__(self, value):
         self.value = value  # data
         self.children: list[Self] = []  # references to other nodes
@@ -11,8 +30,15 @@ class TreeNode:
         return self.value
 
     def add_child(self, child_node_value):
+        """
+        Example:
+        >>> root = TreeNode("A")
+        >>> child = TreeNode("B")
+        >>> root.add_child(child)
+        >>> root.children[0].value
+        'B'
+        """
         # creates parent-child relationship
-        print("Adding " + child_node_value)
         self.children.append(child_node_value)
 
     def remove_child(self, child_node_value):
@@ -21,7 +47,10 @@ class TreeNode:
         self.children = list(filter(lambda x: x != child_node_value, self.children))
 
     def traverse(self):
-        """_summary_"""
+        """
+        Example:
+
+        """
         # moves through each node referenced from self downwards
         nodes_to_visit = [self]
         while len(nodes_to_visit) > 0:

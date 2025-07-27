@@ -9,6 +9,10 @@ class Memory:
         self.output = ""
 
     def write(self, address, data):
+        """Writes data to the memory at the specified address.
+        Example:
+
+        """
         self.exec_time += self.access_time
 
     def read(self, address, data=None):

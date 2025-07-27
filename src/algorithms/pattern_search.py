@@ -1,24 +1,22 @@
-def pattern_search(text: str, pattern: str) -> None:
+def pattern_search(text: str, pattern: str) -> tuple[int, str] | None:
     """
     - string pattern searching algo
 
     Examples:
+    >>> pattern_search("HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE", "NEEDLE")
+    (6, 'NEEDLE')
+    >>> pattern_search("HAYHAYNEEDLEHAYHAYHAYNEEDLEHAYHAYHAYHAYNEEDLE", "NEEDLEHAY")
+    (6, 'NEEDLEHAY')
     """
-    print("Input Text:", text, "Input Pattern:", pattern)
     for index, _ in enumerate(text):
-        print("Text Index:", index)
         match_count = 0
         for char, _ in enumerate(pattern):
-            print("Pattern Index:", char)
             if pattern[char] == text[char + index]:
-                print("Matching index found")
-                print(f"Match count: {match_count}")
-
                 match_count += 1
             else:
                 break
         if match_count == len(pattern):
-            print(f"{pattern} found at index {index}")
+            return (index, pattern)
 
 
 def find_pattern(text: str, pattern: str) -> bool:

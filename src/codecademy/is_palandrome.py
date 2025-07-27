@@ -1,4 +1,4 @@
-def is_palindrome_r(str: str) -> bool:
+def is_palindrome_r(input_string: str) -> bool:
     """
     Example:
     >>> is_palindrome_r("abba")
@@ -11,14 +11,14 @@ def is_palindrome_r(str: str) -> bool:
     False
     """
 
-    if len(str) < 2:
+    if len(input_string) < 2:
         return True
-    if str[0] != str[-1]:
+    if input_string[0] != input_string[-1]:
         return False
-    return is_palindrome_r(str[1:-1])
+    return is_palindrome_r(input_string[1:-1])
 
 
-def is_palindrome_i(my_string: str) -> bool:
+def is_palindrome_i(input_string: str) -> bool:
     """
     Example:
     >>> is_palindrome_i("abba")
@@ -31,8 +31,26 @@ def is_palindrome_i(my_string: str) -> bool:
     False
     """
 
-    while len(my_string) > 1:
-        if my_string[0] != my_string[-1]:
+    while len(input_string) > 1:
+        if input_string[0] != input_string[-1]:
             return False
-        my_string = my_string[1:-1]
+        input_string = input_string[1:-1]
     return True
+
+def is_palandrome(input_string: str) -> bool:
+    '''
+    Simplest Implementation
+
+    Example:
+    >>> is_palandrome("abba")
+    True
+    >>> is_palandrome("abcba")
+    True
+    >>> is_palandrome("")
+    True
+    >>> is_palandrome("abcd")
+    False
+
+    '''
+
+    return input_string == input_string[::-1]
