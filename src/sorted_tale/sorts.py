@@ -55,10 +55,24 @@ def bubble_sort(arr: list, comparison_function: Callable) -> list:
         for idx in range(len(arr) - 1):
             if comparison_function(arr[idx], arr[idx + 1]):
                 is_sorted = False
-                arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
+                arr = swap(arr, idx, idx + 1)
                 swaps += 1
 
     return arr
+
+def swap(array, idx1, idx2):
+    '''
+    Example:
+    >>> lst = [1, 2, 3, 4]
+    >>> lst
+    [1, 2, 3, 4]
+    >>> lst = swap(lst, 1, 2)
+    >>> lst
+    [1, 3, 2, 4]
+
+    '''
+    array[idx1], array[idx2] = array[idx2], array[idx1]
+    return array
 
 
 def bubble_sort2(arr: list, comparison_function: Callable) -> Callable | list:
@@ -78,7 +92,7 @@ def bubble_sort2(arr: list, comparison_function: Callable) -> Callable | list:
 
     for idx in range(len(arr) - 1):
         if comparison_function(arr[idx], arr[idx + 1]):
-            arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
+            arr = swap(arr, idx, idx+1)
 
             return bubble_sort2(arr=arr, comparison_function=comparison_function)
 

@@ -95,4 +95,9 @@ def binary_search_recursive(nums: list[int], target: int) -> int:
         else:
             return inner_func(left, mid - 1)
 
-    return inner_func(0, len(nums) - 1)
+    result = inner_func(0, len(nums) - 1)
+
+    if not isinstance(result, int):
+        raise RecursionError("Recursion did not return an integer index.")
+
+    return result

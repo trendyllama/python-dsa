@@ -26,7 +26,7 @@ class School:
 
 
 class PrimarySchool(School):
-    '''
+    """
     Example:
     >>> p = PrimarySchool("Wyndcroft", 500, "Parents only")
     >>> p.name
@@ -35,7 +35,8 @@ class PrimarySchool(School):
     'primary'
     >>> p.numberofStudents
     500
-    '''
+    """
+
     def __init__(self, name, numberofStudents, pickupPolicy):
         super().__init__(name, "primary", numberofStudents)
         self.pickupPolicy = pickupPolicy
@@ -48,7 +49,7 @@ class PrimarySchool(School):
 
 
 class HighSchool(School):
-    '''
+    """
 
     Example:
     >>> h = HighSchool("Lawrenceville", 100, ["Soccer", "Track", "Hockey"])
@@ -62,7 +63,8 @@ class HighSchool(School):
     ['Soccer', 'Track', 'Hockey']
     >>> h.__repr__()
     "We offer ['Soccer', 'Track', 'Hockey'] as extra ciricular sports"
-    '''
+    """
+
     def __init__(self, name, numberofStudents, sportsTeams):
         super().__init__(name, "High", numberofStudents)
         self.sportsTeams = sportsTeams

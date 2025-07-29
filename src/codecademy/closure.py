@@ -1,4 +1,4 @@
-from typing import Callable, Any
+from typing import Callable
 
 
 def make_multiplier(factor: float | int) -> Callable[[float | int], float | int]:

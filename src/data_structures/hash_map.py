@@ -21,7 +21,7 @@ class HashMap:
 
     @property
     def array(self) -> list:
-        return list(map(lambda _: LinkedList(), range(self.array_size)))
+        return [LinkedList() for _ in range(self.array_size)]
 
     def hash(self, key: Hashable) -> int:
         hash_code = hash(key)

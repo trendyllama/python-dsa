@@ -11,6 +11,8 @@ def depth(tree_node: TreeNode | None) -> Callable | None:
     """
     - note: this function is recursive
     - returns the depth of the tree as an integer
+
+
     """
 
     if tree_node is None:
