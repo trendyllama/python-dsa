@@ -2,80 +2,43 @@
 - module for treenode class
 """
 
-from typing import Self
+from typing import Self, Literal
+
+
 
 
 class TreeNode:
     """
-    - codecademy implementation of treenode
+    - treenode class for two value tree
     """
 
     def __init__(self, value) -> None:
+        self.value = value
+        self.left_child: Self | None = None
+        self.right_child: Self | None = None
+
+    def add_child(self, child: Self, left_or_right: Literal["left", "right"]) -> Self:
         """
-        - initializes a tree node with a value and an empty list of children
+        - adds a child to the left or right child of the current node
+        - if the left or right child is already set, it raises an error
 
         Examples:
-        >>> node = TreeNode(1)
-        >>> node.value
-        1
-        >>> node.children
-        []
+        >>> node = TwoChildTreeNode(1).add_child(TwoChildTreeNode(2), "left")
         """
-        self._value = value
-        self._children = []
+        if left_or_right == "left":
+            if self.left_child is not None:
+                raise ValueError("Left child already exists.")
+            self.left_child = child
+        elif left_or_right == "right":
+            if self.right_child is not None:
+                raise ValueError("Right child already exists.")
+            self.right_child = child
+        else:
+            raise ValueError("left_or_right must be 'left' or 'right'.")
 
-    @property
-    def value(self):
-        return self._value
+        return self
 
-    @property
-    def children(self) -> list[Self]:
-        return self._children
 
-    @children.setter
-    def children(self, new_children: list[Self]) -> None:
-        self._children = new_children
-
-    def add_child(self, child_node: Self) -> None:
-        """
-        - adds a child node to the current node
-
-        Examples:
-        >>> parent_node = TreeNode(1)
-        >>> child_node = TreeNode(2)
-        >>> parent_node.add_child(child_node)
-        """
-        self.children.append(child_node)
-
-    def remove_child(self, child_node: Self) -> None:
-        """
-
-        - removes a child node from the current node
-        - if the child node is not in the list of children, it does nothing
-        - if the child node is in the list of children, it removes it
-        Examples:
-        >>> parent_node = TreeNode(1)
-        >>> child_node = TreeNode(2)
-        >>> parent_node.add_child(child_node)
-        >>> parent_node.remove_child(child_node)
-        >>> parent_node.children
-        []
-        """
-        self.children = list(filter(lambda x: x != child_node, self.children))
-
-    def traverse(self, nodes_to_visit) -> None:
-        print("Traversing...")
-        nodes_to_visit = [self]
-
-        if len(nodes_to_visit) < 0:
-            return
-
-        current_node = nodes_to_visit.pop()
-
-        while len(nodes_to_visit) > 0:
-            current_node = nodes_to_visit.pop()
-            print(current_node.value)
-            nodes_to_visit += current_node.children
 
 
 class StoryTreeNode:
