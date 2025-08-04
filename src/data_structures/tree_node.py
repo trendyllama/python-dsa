@@ -23,7 +23,7 @@ class TreeNode:
         - if the left or right child is already set, it raises an error
 
         Examples:
-        >>> node = TwoChildTreeNode(1).add_child(TwoChildTreeNode(2), "left")
+        >>> node = TreeNode(1).add_child(TreeNode(2), "left")
         """
         if left_or_right == "left":
             if self.left_child is not None:
