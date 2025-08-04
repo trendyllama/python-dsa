@@ -2,35 +2,72 @@
 - algos for trees
 """
 
-from collections.abc import Callable
+from collections import deque
 
 from src.data_structures.tree_node import TreeNode
 
 
-def depth(tree_node: TreeNode | None) -> Callable | None:
+def breadth_first_search(tree_node: TreeNode | None, value) -> bool:
     """
     - note: this function is recursive
-    - returns the depth of the tree as an integer
+    - returns a generator that yields the values of the tree in breadth-first order
 
-
+    Examples:
+    >>> root = TwoChildTreeNode(1).add_child(TwoChildTreeNode(2), "left").add_child(TwoChildTreeNode(3), "right")
+    >>> breadth_first_search(root, 2)
+    True
+    >>> breadth_first_search(root, 4)
+    False
     """
 
     if tree_node is None:
-        return
+        return False
 
-    left_depth = depth(tree_node["left_child"])
-    right_depth = depth(tree_node["right_child"])
+    queue = deque([tree_node])
 
-    if left_depth > right_depth:
-        return left_depth + 1
+    while queue:
+        current_node = queue.popleft()
 
-    return right_depth + 1
+        if current_node == value:
+            return True
+
+        if current_node.left_child:
+            queue.append(current_node.left_child)
+        if current_node.right_child:
+            queue.append(current_node.right_child)
+
+    return False
+
+
+def depth_first_search(tree_node: TreeNode, value) -> bool:
+    """
+
+    Examples:
+    >>> root = TwoChildTreeNode(1).add_child(TwoChildTreeNode(2), "left").add_child(TwoChildTreeNode(3), "right")
+    >>> depth_first_search(root, 2)
+    True
+    >>> depth_first_search(root, 4)
+    False
+    """
+
+    raise NotImplementedError("This function is not implemented yet.")
 
 
 def build_bst(my_list: list):
     """
     - note: this function is recursive
     - helper function to build trees
+
+
+    Examples:
+    >>> my_list = [1, 2, 3, 4, 5]
+    >>> tree = build_bst(my_list)
+    >>> tree['data']
+    3
+    >>> tree['left_child']['data']
+    2
+    >>> tree['right_child']['data']
+    5
     """
     if len(my_list) == 0:
         return None
@@ -43,25 +80,3 @@ def build_bst(my_list: list):
     tree_node["right_child"] = build_bst(my_list[mid_idx + 1 :])
 
     return tree_node
-
-
-def test_cases_tree() -> None:
-    """
-    - test cases
-    - helper variables
-    """
-
-    tree_level_1 = build_bst([1])
-    tree_level_2 = build_bst([1, 2, 3])
-    tree_level_4 = build_bst([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
-
-    assert depth(tree_level_1) == 1
-    assert depth(tree_level_2) == 2
-    assert depth(tree_level_4) == 4
-
-
-if __name__ == "__main__":
-    """
-    - run test cases
-    """
-    test_cases_tree()
