@@ -1,9 +1,14 @@
 from src.data_structures.queue import Queue
+import pytest
 
 
-def test_enqueue():
+@pytest.fixture
+def queue():
     queue = Queue()
 
+    return queue
+
+def test_enqueue(queue: Queue):
     queue.enqueue(1)
 
     assert queue.head is not None
@@ -18,8 +23,7 @@ def test_enqueue():
     assert queue.tail.next_node.value == 1
 
 
-def test_dequeue():
-    queue = Queue()
+def test_dequeue(queue: Queue):
 
     queue.enqueue(1)
     queue.enqueue(2)
@@ -38,8 +42,7 @@ def test_dequeue():
     assert queue.is_empty
 
 
-def test_multiple_dequeue():
-    queue = Queue()
+def test_multiple_dequeue(queue: Queue):
 
     for i in range(1, 10):
         queue.enqueue(i)
