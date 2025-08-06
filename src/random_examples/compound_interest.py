@@ -17,17 +17,17 @@ if __name__ == "__main__":
 
     print("How much money do you currently have?")
     principle = float(input("Enter how much money you currently have: "))
-    log_msg2 = "The user currently has ${:,.2f}".format(principle)
+    log_msg2 = f"The user currently has ${principle:,.2f}"
     logging.info(log_msg2)
 
     print("How much money do you plan on investing monthly?")
     monthly_investment = float(input("Enter ammount: "))
-    log_msg3 = "The user is investing ${:,.2f} monthly".format(monthly_investment)
+    log_msg3 = f"The user is investing ${monthly_investment:,.2f} monthly"
     logging.info(log_msg3)
 
     print("What yearly intrest rate are you expecting?")
     interest = float(input("Enter the expected intrest rate in decimals (10% = 0.1): "))
-    log_msg4 = "The user's intrest rate is {}".format(interest)
+    log_msg4 = f"The user's intrest rate is {interest}"
     logging.info(log_msg4)
     print(" ")
 

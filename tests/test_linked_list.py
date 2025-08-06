@@ -1,6 +1,7 @@
 from src.data_structures.linked_list import LinkedList
 import pytest
 
+
 @pytest.fixture
 def linked_list():
     return LinkedList()

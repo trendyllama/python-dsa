@@ -63,9 +63,10 @@ def binary_search(nums: list[int], target: int) -> int:
         elif sorted_nums[mid] < target:
             left = mid + 1  # Search in the right half
         else:
-            right = mid - 1 # Search in the left half
+            right = mid - 1  # Search in the left half
 
-    return -1 # Target not found
+    return -1  # Target not found
+
 
 def binary_search_recursive(nums: list[int], target: int) -> int:
     """

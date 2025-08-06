@@ -8,6 +8,7 @@ def queue():
 
     return queue
 
+
 def test_enqueue(queue: Queue):
     queue.enqueue(1)
 
@@ -24,7 +25,6 @@ def test_enqueue(queue: Queue):
 
 
 def test_dequeue(queue: Queue):
-
     queue.enqueue(1)
     queue.enqueue(2)
 
@@ -43,7 +43,6 @@ def test_dequeue(queue: Queue):
 
 
 def test_multiple_dequeue(queue: Queue):
-
     for i in range(1, 10):
         queue.enqueue(i)
         assert queue.size == i

@@ -3,7 +3,12 @@ from scipy.stats import norm
 
 
 def black_scholes(
-    S: float, K: float, T: int | float, r: float, sigma: int | float, input_type: str = "c"
+    S: float,
+    K: float,
+    T: int | float,
+    r: float,
+    sigma: int | float,
+    input_type: str = "c",
 ) -> np.float64:
     """
     Calculates the price of a European-style option using the Black-Scholes model.

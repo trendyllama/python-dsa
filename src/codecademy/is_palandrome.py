@@ -37,8 +37,9 @@ def is_palindrome_i(input_string: str) -> bool:
         input_string = input_string[1:-1]
     return True
 
+
 def is_palandrome(input_string: str) -> bool:
-    '''
+    """
     Simplest Implementation
 
     Example:
@@ -51,6 +52,6 @@ def is_palandrome(input_string: str) -> bool:
     >>> is_palandrome("abcd")
     False
 
-    '''
+    """
 
     return input_string == input_string[::-1]

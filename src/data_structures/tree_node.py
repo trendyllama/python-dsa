@@ -5,8 +5,6 @@
 from typing import Self, Literal
 
 
-
-
 class TreeNode:
     """
     - treenode class for two value tree
@@ -37,8 +35,6 @@ class TreeNode:
             raise ValueError("left_or_right must be 'left' or 'right'.")
 
         return self
-
-
 
 
 class StoryTreeNode:
