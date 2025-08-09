@@ -47,10 +47,9 @@ def display_imdb_reviews():
     r = requests.get(url)
 
     if r.status_code == 200:
-        content = io.BytesIO(r.content)
 
         s = time.perf_counter()
-        _ = pd.read_csv(content, encoding="utf-8", engine="pyarrow")
+        _ = pd.read_csv(io.BytesIO(r.content), encoding="utf-8", engine="pyarrow")
         print(f"Function took {time.perf_counter() - s:.4f} seconds to run.")
 
         # s = time.perf_counter()

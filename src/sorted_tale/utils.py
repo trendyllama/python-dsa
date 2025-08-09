@@ -60,10 +60,10 @@ def load_books_to_db(filename: Path) -> None:
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS books (
-                title TEXT,
-                author TEXT,
-                author_lower TEXT,
-                title_lower TEXT
+                title TEXT primary key,
+                author TEXT not null,
+                author_lower TEXT not null,
+                title_lower TEXT not null
             )
             """
         )

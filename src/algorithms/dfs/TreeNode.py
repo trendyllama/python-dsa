@@ -99,15 +99,3 @@ def print_path(path):
         for node in path:
             print(node.value)
 
-
-if __name__ == "__main__":
-    sample_root_node = TreeNode("A")
-    two = TreeNode("B")
-    three = TreeNode("C")
-    sample_root_node.children = [three, two]
-    four = TreeNode("D")
-    five = TreeNode("E")
-    six = TreeNode("F")
-    seven = TreeNode("G")
-    two.children = [five, four]
-    three.children = [seven, six]

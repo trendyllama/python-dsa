@@ -17,6 +17,7 @@ def quicksort(list_input: list, start: int, end: int) -> None:
         return
 
     # select random element to be pivot
+
     pivot_idx = randrange(start, end + 1)
     pivot_element = list_input[pivot_idx]
 
