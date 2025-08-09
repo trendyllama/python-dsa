@@ -5,6 +5,7 @@ description = "data structures and algorithms course from codecademy"
 requires-python = ">=3.10"
 readme = "README.md"
 dependencies = [
+    "duckdb>=1.3.2",
     "numpy>=2.2.6",
     "pandas>=2.3.0",
     "polars>=1.32.2",
