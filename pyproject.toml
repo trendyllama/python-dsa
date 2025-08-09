@@ -7,6 +7,7 @@ readme = "README.md"
 dependencies = [
     "numpy>=2.2.6",
     "pandas>=2.3.0",
+    "polars>=1.32.2",
     "pyarrow>=20.0.0",
     "requests>=2.32.4",
     "scipy>=1.15.3",
