@@ -21,10 +21,4 @@ class TestStack:
             stack.pop()
             assert stack.peek() == 199 - i
 
-    def test_print(self):
-        stack = Stack()
 
-        for i in range(1, 200):
-            stack.push(i)
-
-        stack.print()

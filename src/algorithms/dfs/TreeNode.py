@@ -98,4 +98,3 @@ def print_path(path):
         print("Path found:")
         for node in path:
             print(node.value)
-

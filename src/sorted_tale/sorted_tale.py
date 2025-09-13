@@ -3,14 +3,13 @@
 - uses functions from sorts.py and utils.py
 """
 
-from pathlib import Path
 from operator import gt
+from pathlib import Path
 
 from src.algorithms.quick_sort import quicksort
 
 from .sorts import bubble_sort
 from .utils import load_books
-
 
 if __name__ == "__main__":
     bookshelf = load_books(Path("src/sorted_tale/books_small.csv"))

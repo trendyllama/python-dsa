@@ -159,7 +159,6 @@ class Queue:
         3
         """
         if self.is_empty:
-            assert self.size == 0
             new_node = Node(value, None, None)
 
             self.head = new_node
@@ -189,7 +188,6 @@ class Queue:
 
         self.tail = new_node
         self._increase_size()
-        assert self.size > 0
 
     def dequeue(self):
         """

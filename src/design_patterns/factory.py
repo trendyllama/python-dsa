@@ -6,8 +6,8 @@ This pattern is useful for eliminating complex conditional statements when creat
 It allows us to create objects without specifying the exact class of object that will be created.
 """
 
-from typing import Protocol
 import json
+from typing import Protocol
 
 
 class File(Protocol):
@@ -26,7 +26,7 @@ class FileParserFactory:
     """
 
     def _parse_json(self, file: File) -> str:
-        with open(file.read(), "r", encoding="utf-8") as f:
+        with open(file.read(), encoding="utf-8") as f:
             data = json.load(f)
 
         return data

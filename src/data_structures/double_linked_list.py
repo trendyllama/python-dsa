@@ -111,9 +111,6 @@ class DoublyLinkedList:
             case _:
                 next_node = node_to_remove.next_node
 
-        if not isinstance(next_node, Node):
-            raise TypeError
-
         prev_node = node_to_remove.previous_node
         next_node.previous_node = prev_node
         prev_node.next_node = next_node

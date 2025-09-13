@@ -38,7 +38,7 @@ class ISA:
         self._memory = memory
 
     def read_instructions(self, filename):
-        with open(filename, "r") as file:
+        with open(filename) as file:
             for line in file:
                 instruction = line.strip()
                 if instruction:

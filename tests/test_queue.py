@@ -1,5 +1,6 @@
-from src.data_structures.queue import Queue
 import pytest
+
+from src.data_structures.queue import Queue
 
 
 @pytest.fixture

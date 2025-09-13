@@ -3,9 +3,10 @@
 
 """
 
+import logging
 import time
-from functools import wraps
 from collections.abc import Callable
+from functools import wraps
 
 
 def get_time(func: Callable) -> Callable:
@@ -17,7 +18,7 @@ def get_time(func: Callable) -> Callable:
 
         elp = time.perf_counter() - s
 
-        print(f"{func.__name__} executed in {elp} seconds")
+        logging.debug("%s executed in %s seconds", func.__name__, elp)
 
     return wrapper
 

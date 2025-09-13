@@ -73,4 +73,4 @@ class HighSchool(School):
         return self.sportsTeams
 
     def __repr__(self):
-        return "We offer {} as extra ciricular sports".format(self.sportsTeams)
+        return f"We offer {self.sportsTeams} as extra ciricular sports"

@@ -176,7 +176,6 @@ def main():
     # Basta Fazoolin Business
     Basta = Business("Basta Fazoolin' with my Heart", [flagship_store, new_installment])
 
-    print(Basta.franchises)
 
     # Take a' Arepa Business
     Arepa = Business("Take a' Arepa", arepas_place)

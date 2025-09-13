@@ -20,14 +20,14 @@ class RecursivePalindromeChecker(PalindromeChecker):
 
     def check(self) -> bool:
         """
-    Example:
-    >>> self.check("abcba")
-    True
-    >>> self.check("")
-    True
-    >>> self.check("abcd")
-    False
-    """
+        Example:
+        >>> self.check("abcba")
+        True
+        >>> self.check("")
+        True
+        >>> self.check("abcd")
+        False
+        """
 
         input_string = self.input_string
 
@@ -48,14 +48,14 @@ class IterativePalindromeChecker(PalindromeChecker):
 
     def check(self) -> bool:
         """
-    Example:
-    >>> self.check("abcba")
-    True
-    >>> self.check("")
-    True
-    >>> self.check("abcd")
-    False
-    """
+        Example:
+        >>> self.check("abcba")
+        True
+        >>> self.check("")
+        True
+        >>> self.check("abcd")
+        False
+        """
         input_string = self.input_string
 
         while len(input_string) > 1:
@@ -71,12 +71,12 @@ class SimplePalindromeChecker(PalindromeChecker):
 
     def check(self) -> bool:
         """
-    Example:
-    >>> self.check("abcba")
-    True
-    >>> self.check("")
-    True
-    >>> self.check("abcd")
-    False
-    """
+        Example:
+        >>> self.check("abcba")
+        True
+        >>> self.check("")
+        True
+        >>> self.check("abcd")
+        False
+        """
         return self.input_string == self.input_string[::-1]

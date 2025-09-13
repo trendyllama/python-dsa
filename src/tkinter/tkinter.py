@@ -1,14 +1,10 @@
-import tkinter as tk
 import logging
+import tkinter as tk
 
+logging.basicConfig(level=logging.INFO)
 
+logger = logging.getLogger(__name__)
 def main():
-    logging.basicConfig(
-        filename="tk_inter_first_log.log",
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s - %(message)s",
-    )
-
     root = tk.Tk()
 
     root.geometry("800x400")
@@ -25,7 +21,7 @@ def main():
     myentry.pack()
 
     def user_click():
-        logging.info("User clicked button")
+        logger.info("User clicked button")
 
     button = tk.Button(root, text="Click Me!", font=("Arial", 18), command=user_click())  # type: ignore
     button.pack(padx=10, pady=10)

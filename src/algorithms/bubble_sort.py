@@ -1,6 +1,3 @@
-NUMS = [5, 2, 9, 1, 5, 6]
-
-
 def swap(arr: list, index_1: int, index_2: int) -> list:
     """
     Examples:

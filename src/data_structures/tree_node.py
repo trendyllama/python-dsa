@@ -2,7 +2,7 @@
 - module for treenode class
 """
 
-from typing import Self, Literal
+from typing import Literal, Self
 
 
 class TreeNode:

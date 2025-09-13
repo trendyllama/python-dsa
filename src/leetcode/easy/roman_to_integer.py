@@ -86,11 +86,7 @@ class Solution:
 
         for idx, char in enumerate(numeral):
             try:
-                if numeral[idx + 1] in ["V", "X"] and char == "I":
-                    result -= self.mapping[char]
-                elif numeral[idx + 1] in ["L", "C"] and char == "X":
-                    result -= self.mapping[char]
-                elif numeral[idx + 1] in ["D", "M"] and char == "C":
+                if numeral[idx + 1] in ["V", "X"] and char == "I" or numeral[idx + 1] in ["L", "C"] and char == "X" or numeral[idx + 1] in ["D", "M"] and char == "C":
                     result -= self.mapping[char]
                 else:
                     result += self.mapping[char]

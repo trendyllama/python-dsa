@@ -31,9 +31,7 @@ def find_pattern(text: str, pattern: str) -> bool:
 
     """
 
-    if pattern in text:
-        return True
-    return False
+    return pattern in text
 
 
 def find_number_of_patterns(text: str, pattern: str) -> int:

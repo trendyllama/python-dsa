@@ -10,7 +10,8 @@ while the strategy pattern
 is used to define the algorithm itself.
 """
 
-from typing import Protocol, Callable, Any
+from collections.abc import Callable
+from typing import Any, Protocol
 
 
 class SortStrategy(Protocol):

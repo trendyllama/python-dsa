@@ -1,10 +1,9 @@
-import numpy as np
-import pyarrow as pa
-import pandas as pd
-from functools import wraps
 import time
+from functools import wraps
 
-from .iris import display_iris, display_imdb_reviews
+import numpy as np
+import pandas as pd
+import pyarrow as pa
 
 
 def perf_timer(func):
@@ -20,7 +19,7 @@ def perf_timer(func):
 
 
 @perf_timer
-def display_pyarrow():
+def _display_pyarrow():
     arrow_table = pa.table([np.random.rand(1000, 3)], names=["A", "B", "C"])
 
     print("PyArrow table:")
@@ -28,7 +27,7 @@ def display_pyarrow():
 
 
 @perf_timer
-def display_pandas():
+def _display_pandas():
     # Create a Pandas DataFrame from the NumPy array
     df = pd.DataFrame(
         [
@@ -44,12 +43,8 @@ def display_pandas():
 
 
 def main():
-    # display_pyarrow()
-    # display_pandas()
-
-    display_iris()
-
-    display_imdb_reviews()
+    _display_pyarrow()
+    _display_pandas()
 
 
 if __name__ == "__main__":

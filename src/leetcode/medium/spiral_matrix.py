@@ -1,9 +1,8 @@
-from typing import List
 
 
 class Solution:
     @staticmethod
-    def generateMatrix(n: int) -> List[List[int]]:
+    def generateMatrix(n: int) -> list[list[int]]:
         """
 
         Coordinate order:
@@ -17,7 +16,7 @@ class Solution:
 
         final_num = n**2
 
-        main_matrix: List[List[int | None]] = [
+        main_matrix: list[list[int | None]] = [
             [None for _ in range(n)] for _ in range(n)
         ]
 

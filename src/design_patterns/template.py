@@ -7,7 +7,8 @@ the algorithm without changing its structure.
 
 """
 
-from typing import Protocol, Callable
+from collections.abc import Callable
+from typing import Protocol
 
 
 class AlgoirthmTemplate(Protocol):

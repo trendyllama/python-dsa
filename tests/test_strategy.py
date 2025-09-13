@@ -3,7 +3,8 @@ test_strategy.py is a test file for testing the strategy pattern.
 """
 
 import random
-from src.design_patterns.strategy import BubbleSortStrategy, QuickSortStrategy, Context
+
+from src.design_patterns.strategy import BubbleSortStrategy, Context, QuickSortStrategy
 
 
 def test_sort_strategy():

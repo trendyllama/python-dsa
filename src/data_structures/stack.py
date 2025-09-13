@@ -291,24 +291,6 @@ class Stack:
         self._decrease_size()
         return value
 
-    def print(self) -> None:
-        """
-        - prints the stack
-
-        Examples:
-        >>> stack = Stack()
-        >>> stack.push(1)
-        >>> stack.push(2)
-        >>> stack.push(3)
-        >>> stack.print()
-        3
-        2
-        1
-        """
-
-        for node in self:
-            print(node)
-
     def __str__(self) -> str:
         """
         - returns the string representation of the stack

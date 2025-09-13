@@ -13,7 +13,9 @@ def breadth_first_search(tree_node: TreeNode | None, value) -> bool:
     - returns a generator that yields the values of the tree in breadth-first order
 
     Examples:
-    >>> root = TreeNode(1).add_child(TreeNode(2), "left").add_child(TreeNode(3), "right")
+    >>> root = (
+    ...     TreeNode(1).add_child(TreeNode(2), "left").add_child(TreeNode(3), "right")
+    ... )
     >>> breadth_first_search(root, 2)
     True
     >>> breadth_first_search(root, 4)
@@ -43,7 +45,9 @@ def depth_first_search(tree_node: TreeNode, value) -> bool:
     """
 
     Examples:
-    >>> root = TreeNode(1).add_child(TreeNode(2), "left").add_child(TreeNode(3), "right")
+    >>> root = (
+    ...     TreeNode(1).add_child(TreeNode(2), "left").add_child(TreeNode(3), "right")
+    ... )
     >>> depth_first_search(root, 2)
     True
     >>> depth_first_search(root, 4)
@@ -62,11 +66,11 @@ def build_bst(my_list: list):
     Examples:
     >>> my_list = [1, 2, 3, 4, 5]
     >>> tree = build_bst(my_list)
-    >>> tree['data']
+    >>> tree["data"]
     3
-    >>> tree['left_child']['data']
+    >>> tree["left_child"]["data"]
     2
-    >>> tree['right_child']['data']
+    >>> tree["right_child"]["data"]
     5
     """
     if len(my_list) == 0:
