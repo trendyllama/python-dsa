@@ -30,8 +30,7 @@ def load_books(filename: Path) -> list[Book]:
 
     bookshelf: list[Book] = []
 
-    with open(filename, encoding="utf-8") as file:
-        shelf = csv.DictReader(file)
+    shelf = csv.DictReader(filename.read_text())
 
     for book in shelf:
         # add your code here
@@ -55,7 +54,6 @@ def load_books_to_db(filename: Path) -> None:
 
     with (
         sqlite3.connect("books.db") as conn,
-        open(filename, encoding="utf-8") as file,
     ):
         cursor = conn.cursor()
         cursor.execute(
@@ -69,7 +67,7 @@ def load_books_to_db(filename: Path) -> None:
             """
         )
 
-        shelf = csv.DictReader(file)
+        shelf = csv.DictReader(filename.read_text())
 
         for book in shelf:
             cursor.execute(
@@ -117,8 +115,7 @@ class BookFileLoader(BookLoader):
 
         bookshelf: list[Book] = []
 
-        with open(self.file_name, encoding="utf-8") as file:
-            shelf = csv.DictReader(file)
+        shelf = csv.DictReader(self.file_name.read_text())
 
         for book in shelf:
             # add your code here

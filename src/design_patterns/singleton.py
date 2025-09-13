@@ -1,5 +1,5 @@
 import os
-from typing import Self
+from typing import ClassVar, Self
 
 
 class SingletonMeta(type):
@@ -19,7 +19,7 @@ class SingletonMeta(type):
 
     """
 
-    _instances: dict = {}
+    _instances: ClassVar[dict] = {}
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
@@ -35,16 +35,18 @@ class Configuration(SingletonMeta):
     It reads the environment variable "ENVIRONMENT" to determine the configuration.
     """
 
-    def __init__(self):
+    def __init__(cls):
         env_var = os.getenv("ENVIRONMENT")
         if env_var is None:
-            raise ValueError("ENVIRONMENT variable not set")
+            msg = "ENVIRONMENT variable not set"
+            raise ValueError(msg)
 
-        self.environment: str = env_var
+        cls.environment: str = env_var
+
 
 
 class ApplicationState:
-    _instances = {}
+    _instances: ClassVar[dict] = {}
 
     def __new__(cls) -> Self:
         if cls not in cls._instances:

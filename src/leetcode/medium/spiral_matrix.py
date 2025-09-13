@@ -2,7 +2,7 @@
 
 class Solution:
     @staticmethod
-    def generateMatrix(n: int) -> list[list[int]]:
+    def generate_matrix(n: int) -> list[list[int]]:
         """
 
         Coordinate order:
@@ -22,10 +22,9 @@ class Solution:
 
         incrementor = (i for i in range(1, final_num + 1))
 
-        coordinate_pairs = []
 
         for i, row in enumerate(main_matrix):
-            for j, col in enumerate(row):
+            for j, _ in enumerate(row):
                 match (i, j):
                     case (0, _):
                         main_matrix[i][j] = next(incrementor)

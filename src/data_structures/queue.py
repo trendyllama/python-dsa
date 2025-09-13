@@ -209,7 +209,8 @@ class Queue:
         3
         """
         if self.is_empty:
-            raise EmptyQueueError("Cannot dequeue from an empty queue")
+            msg = "Cannot dequeue from an empty queue"
+            raise EmptyQueueError(msg)
 
         if self.size == 1:
             self.head = None
@@ -247,7 +248,8 @@ class Queue:
         1
         """
         if self.is_empty:
-            raise EmptyQueueError("Cannot peek from an empty queue")
+            msg = "Cannot peek from an empty queue"
+            raise EmptyQueueError(msg)
 
         if self.head is None:
             raise RuntimeError

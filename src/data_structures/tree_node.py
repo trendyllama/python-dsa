@@ -2,7 +2,10 @@
 - module for treenode class
 """
 
+import logging
 from typing import Literal, Self
+
+logger = logging.getLogger(__name__)
 
 
 class TreeNode:
@@ -25,14 +28,17 @@ class TreeNode:
         """
         if left_or_right == "left":
             if self.left_child is not None:
-                raise ValueError("Left child already exists.")
+                msg = "Left child already exists."
+                raise ValueError(msg)
             self.left_child = child
         elif left_or_right == "right":
             if self.right_child is not None:
-                raise ValueError("Right child already exists.")
+                msg = "Right child already exists."
+                raise ValueError(msg)
             self.right_child = child
         else:
-            raise ValueError("left_or_right must be 'left' or 'right'.")
+            msg = "left_or_right must be 'left' or 'right'."
+            raise ValueError(msg)
 
         return self
 
@@ -51,19 +57,19 @@ class StoryTreeNode:
 
     def traverse(self) -> None:
         """
-        - traverses the story tree and prints the story piece
-        - prints the story piece and the choices
+        - traverses the story tree and logger.infos the story piece
+        - logger.infos the story piece and the choices
         """
         story_node = self
-        print(story_node.story_piece)
+        logger.info(story_node.story_piece)
 
         while story_node.choices:
             choice = input("Enter 1 or 2 to continue the story: ")
 
             if choice not in ["1", "2"]:
-                print("Please choice 1 or 2!")
+                logger.info("Please choice 1 or 2!")
                 chosen_index = int(choice)
                 chosen_index -= 1
                 chosen_child: Self = story_node.choices[chosen_index]
-                print(chosen_child.story_piece)
+                logger.info(chosen_child.story_piece)
                 story_node = chosen_child

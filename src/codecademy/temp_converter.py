@@ -23,8 +23,9 @@ def conversion(units: str, temp: float):
         f = (temp * (9 / 5)) + 32
         return f
     else:
+        msg = "Invalid units. Please use 'F' for Fahrenheit or 'C' for Celcius."
         raise ValueError(
-            "Invalid units. Please use 'F' for Fahrenheit or 'C' for Celcius."
+            msg
         )
 
 

@@ -1,3 +1,4 @@
+import logging
 import time
 from functools import wraps
 
@@ -5,6 +6,7 @@ import numpy as np
 import pandas as pd
 import pyarrow as pa
 
+logger = logging.getLogger(__name__)
 
 def perf_timer(func):
     @wraps(func)
@@ -12,7 +14,7 @@ def perf_timer(func):
         s = time.perf_counter()
         result = func(*args, **kwargs)
         e = time.perf_counter()
-        print(f"Function {func.__name__} took {e - s:.4f} seconds to run.")
+        logger.info("Function %s took %.4f seconds to run.", func.__name__, e - s)
         return result
 
     return wrapper
@@ -22,8 +24,8 @@ def perf_timer(func):
 def _display_pyarrow():
     arrow_table = pa.table([np.random.rand(1000, 3)], names=["A", "B", "C"])
 
-    print("PyArrow table:")
-    print(arrow_table)
+    logger.info("PyArrow table:")
+    logger.info(arrow_table)
 
 
 @perf_timer
@@ -37,9 +39,9 @@ def _display_pandas():
         ],
         columns=["A", "B", "C"],
     )
-    print(df.dtypes)
+    logger.info(df.dtypes)
 
-    print(df)
+    logger.info(df)
 
 
 def main():

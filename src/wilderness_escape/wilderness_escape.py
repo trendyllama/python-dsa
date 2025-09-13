@@ -2,10 +2,14 @@
 - main module for the wilderness escape project
 """
 
+import logging
+
 from src.data_structures.tree_node import StoryTreeNode
 
+logger = logging.getLogger(__name__)
+
 if __name__ == "__main__":
-    print("Once upon a time...")
+    logger.info("Once upon a time...")
     ######
     # VARIABLES FOR TREE
     ######
@@ -72,8 +76,8 @@ if __name__ == "__main__":
     ######
     # TESTING AREA
     ######
-    print(story_root.story_piece)
-    print(user_choice)
-    print(story_root.add_child(choice_a))
+    logger.info(story_root.story_piece)
+    logger.info(user_choice)
+    logger.info(story_root.add_child(choice_a))
     story_root.add_child(choice_b)
     story_root.traverse()

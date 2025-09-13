@@ -7,11 +7,12 @@ It allows us to create objects without specifying the exact class of object that
 """
 
 import json
+from pathlib import Path
 from typing import Protocol
 
 
 class File(Protocol):
-    def read(self) -> str: ...
+    def read(self) -> Path: ...
 
     def write(self, data: str) -> None: ...
 
@@ -26,16 +27,18 @@ class FileParserFactory:
     """
 
     def _parse_json(self, file: File) -> str:
-        with open(file.read(), encoding="utf-8") as f:
-            data = json.load(f)
+
+        data = json.loads(file.read().read_text())
 
         return data
 
     def _parse_xml(self, file: File) -> str:
-        raise NotImplementedError("XML parsing is not implemented yet")
+        msg = "XML parsing is not implemented yet"
+        raise NotImplementedError(msg)
 
     def _parse_yaml(self, file: File) -> str:
-        raise NotImplementedError("YAML parsing is not implemented yet")
+        msg = "YAML parsing is not implemented yet"
+        raise NotImplementedError(msg)
 
     def parse(self, file: File, file_type: str) -> str:
         """
@@ -52,7 +55,8 @@ class FileParserFactory:
         if file_type == "yaml":
             return self._parse_yaml(file)
 
-        raise ValueError(f"Unsupported file type: {file_type}")
+        msg = f"Unsupported file type: {file_type}"
+        raise ValueError(msg)
 
 
 def file_parser(file: File, file_type: str) -> str:

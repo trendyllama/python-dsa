@@ -8,7 +8,6 @@ from src.data_structures.stack import Stack
 
 # set up game
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class GameStates(enum.Enum):
@@ -38,7 +37,7 @@ class Game(TowersOfHanoiInterface):
         self.num_moves = 0
         self.num_disks = number_of_disks
 
-        print("\nLet's play Towers of Hanoi!!")
+        logger.info("Let's play Towers of Hanoi!!")
 
         left_stack = Stack()
         middle_stack = Stack()
@@ -88,14 +87,14 @@ class Game(TowersOfHanoiInterface):
             if self.right_stack.size != self.num_disks:
                 logger.info("Current Stacks...")
                 for stack in self.stacks:
-                    print(stack)
+                    logger.info(stack)
 
                 def move() -> Callable | None:
-                    logger.info("\nWhich stack do you want to move from?\n")
+                    logger.info("Which stack do you want to move from?\n")
                     from_stack = self.get_input()
 
                     if from_stack is None:
-                        logger.info("\n\nInvalid Move. Try Again")
+                        logger.info("Invalid Move. Try Again")
 
                         return move()
 
@@ -103,7 +102,7 @@ class Game(TowersOfHanoiInterface):
                     to_stack = self.get_input()
 
                     if from_stack.size == 0 or from_stack is None:
-                        logger.info("\n\nInvalid Move. Try Again")
+                        logger.info("Invalid Move. Try Again")
 
                         return move()
 
@@ -114,7 +113,7 @@ class Game(TowersOfHanoiInterface):
                         self.num_moves += 1
                         return self.exit_game()
 
-                    logger.info("\n\nInvalid Move. Try Again")
+                    logger.info("Invalid Move. Try Again")
 
                     return move()
 

@@ -1,4 +1,8 @@
+import logging
+from pathlib import Path
 from random import randint
+
+logger = logging.getLogger(__name__)
 
 
 class Memory:
@@ -31,14 +35,15 @@ class ISA:
     @property
     def memory(self):
         if self._memory is None:
-            raise ValueError("Memory not set. Please set memory before accessing it.")
+            msg = "Memory not set. Please set memory before accessing it."
+            raise ValueError(msg)
         return self._memory
 
     def set_memory(self, memory: Memory):
         self._memory = memory
 
-    def read_instructions(self, filename):
-        with open(filename) as file:
+    def read_instructions(self, filename: Path):
+        with filename.open() as file:
             for line in file:
                 instruction = line.strip()
                 if instruction:
@@ -140,7 +145,6 @@ class Cache(Memory):
         return set_number
 
     def fifo_policy(self, set_number):
-        # index = self.fifo_indices[set_number]
         self.fifo_indices[set_number] += 1
         if self.fifo_indices[set_number] == len(self.data) / self.sets + (
             set_number * int(len(self.data) / self.sets)
@@ -156,10 +160,10 @@ class Cache(Memory):
 
         match list(entry):
             case []:
-                print("Miss")
+                logger.info("Miss")
                 return
             case _:
-                print("Hit")
+                logger.info("Hit")
                 return entry
 
     def get_exec_time(self):
@@ -177,5 +181,5 @@ if __name__ == "__main__":
     # This outputs the memory data and code execution time
     exec_time = cache_arch.get_exec_time()
     if exec_time > 0:
-        print(f"OUTPUT STRING: {cache_arch.output}")
-        print(f"EXECUTION TIME: {exec_time:.2f} nanoseconds")
+        logger.info("OUTPUT STRING: %s", cache_arch.output)
+        logger.info("EXECUTION TIME: %.2f nanoseconds", exec_time)

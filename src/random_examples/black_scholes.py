@@ -21,9 +21,9 @@ class CallOptionCalculator(BlackScholesCalculator):
         self,
         underlying_price: float,
         strike_price: float,
-        years_to_maturity: int | float,
+        years_to_maturity: float,
         risk_free_rate: float,
-        sigma: int | float,
+        sigma: float,
     ) -> None:
         self.underlying_price = underlying_price
         self.strike_price = strike_price
@@ -56,9 +56,9 @@ class PutOptionCalculator(BlackScholesCalculator):
         self,
         underlying_price: float,
         strike_price: float,
-        years_to_maturity: int | float,
+        years_to_maturity: float,
         risk_free_rate: float,
-        sigma: int | float,
+        sigma: float,
     ) -> None:
         self.underlying_price = underlying_price
         self.strike_price = strike_price
@@ -89,9 +89,9 @@ class BlackScholesCalculatorBuilder:
         self,
         underlying_price: float,
         strike_price: float,
-        years_to_maturity: int | float,
+        years_to_maturity: float,
         risk_free_rate: float,
-        sigma: int | float,
+        sigma: float,
     ) -> None:
         self.underlying_price = underlying_price
         self.strike_price = strike_price
@@ -121,9 +121,9 @@ class BlackScholesCalculatorBuilder:
 def black_scholes(
     underlying_price: float,
     strike_price: float,
-    years_to_expiration: int | float,
+    years_to_expiration: float,
     r: float,
-    sigma: int | float,
+    sigma: float,
     input_type: str = "c",
 ) -> np.float64:
     """

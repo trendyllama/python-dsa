@@ -39,7 +39,7 @@ docstring-code-line-length = "dynamic"
 # Enable reformatting of code snippets in docstrings.
 docstring-code-format = true
 
-[tool.ruff]
+[tool.ruff.lint]
 
 extend-select = [
     "A",  # All auto-fixes
@@ -56,6 +56,21 @@ extend-select = [
     "LOG",
     "G",
     "PD",
+    "ERA",
+    "C4",
+    'EM',
+    "INT",
+    "ISC",
+    "ICN",
+    "PIE",
+    "T20",
+    "PYI",
+    "PTH",
+    "PERF",
+   "UP",
+   "FURB",
+   "RUF"
+
 
 ]
 

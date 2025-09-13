@@ -15,18 +15,21 @@ print("Executed in: " + str(elapsed) + " seconds")
 """
 
 import asyncio
+import logging
 import os
 import threading
 
+logger = logging.getLogger(__name__)
+
 
 def _task1():
-    print(f"Task 1 assigned to thread: {threading.current_thread().name}")
-    print(f"ID of process running task 1: {os.getpid()}")
+    logger.info("Task 1 assigned to thread: %s", threading.current_thread().name)
+    logger.info("ID of process running task 1: %s", os.getpid())
 
 
 def _task2():
-    print(f"Task 2 assigned to thread: {threading.current_thread().name}")
-    print(f"ID of process running task 2: {os.getpid()}")
+    logger.info("Task 2 assigned to thread: %s", threading.current_thread().name)
+    logger.info("ID of process running task 2: %s", os.getpid())
 
 
 async def _tasks_example() -> None:
@@ -35,16 +38,16 @@ async def _tasks_example() -> None:
 
     res1, res2 = await asyncio.gather(task1_thread, task2_thread)
 
-    print(f"Task 1 result: {res1}")
-    print(f"Task 2 result: {res2}")
+    logger.info("Task 1 result: %s", res1)
+    logger.info("Task 2 result: %s", res2)
 
 
 if __name__ == "__main__":
-    # print ID of current process
-    print(f"ID of process running main program: {os.getpid()}")
+    # logger.info ID of current process
+    logger.info("ID of process running main program: %s", os.getpid())
 
-    # print name of main thread
-    print(f"Main thread name: {threading.current_thread().name}")
+    # logger.info name of main thread
+    logger.info("Main thread name: %s", threading.current_thread().name)
 
     # creating threads
     t1 = threading.Thread(target=_task1, name="t1")

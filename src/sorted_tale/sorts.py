@@ -6,7 +6,7 @@ from collections.abc import Callable
 from typing import Protocol
 
 
-def is_greater_than(element1: int | float, element2: int | float) -> bool:
+def is_greater_than(element1: float, element2: float) -> bool:
     """
     Examples:
     >>> is_greater_than(1, 2)
@@ -20,7 +20,7 @@ def is_greater_than(element1: int | float, element2: int | float) -> bool:
     return element1 < element2
 
 
-def is_less_than(element1: int | float, element2: int | float) -> bool:
+def is_less_than(element1: float, element2: float) -> bool:
     """
     Examples:
     >>> is_less_than(1, 2)

@@ -1,9 +1,11 @@
 import io
+import logging
 import time
 
 import pandas as pd
 import requests
 
+logger = logging.getLogger(__name__)
 
 def _display_iris():
     url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/refs/heads/master/iris.csv"
@@ -15,7 +17,7 @@ def _display_iris():
         df = pd.read_csv(io.BytesIO(request.content))
 
         e = time.perf_counter()
-        print(f"Function took {e - s:.4f} seconds to run.")
+        logger.info("Function took %.4f seconds to run.", e - s)
         return df
 
 
@@ -44,12 +46,12 @@ def _display_imdb_reviews():
 
     s = time.perf_counter()
     _ = pd.read_csv(content, encoding="utf-8", engine="pyarrow")
-    print(f"Function took {time.perf_counter() - s:.4f} seconds to run.")
+    logger.info("Function took %.4f seconds to run.", time.perf_counter() - s)
 
     content = io.BytesIO(response.content)
     s = time.perf_counter()
     _ = pd.read_csv(content, encoding="utf-8")
-    print(f"Function took {time.perf_counter() - s:.4f} seconds to run.")
+    logger.info("Function took %.4f seconds to run.", time.perf_counter() - s)
 
 
 if __name__ == "__main__":

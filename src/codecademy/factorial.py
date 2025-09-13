@@ -15,7 +15,8 @@ def fact(n: int) -> int:
     3628800
     """
     if n < 0:
-        raise ValueError("Factorial is not defined for negative numbers")
+        msg = "Factorial is not defined for negative numbers"
+        raise ValueError(msg)
 
     if n == 0:
         return 1
@@ -37,7 +38,8 @@ def fact_itr(n: int) -> int:
     3628800
     """
     if n < 0:
-        raise ValueError("Factorial is not defined for negative numbers")
+        msg = "Factorial is not defined for negative numbers"
+        raise ValueError(msg)
 
     fact = 1
     for i in range(1, n + 1):

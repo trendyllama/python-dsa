@@ -22,12 +22,12 @@ class StringGenerator(Protocol):
 class DefaultStringGenerator(StringGenerator):
     @staticmethod
     def generate_user_name(initials: str, n: int) -> str:
-        return str(initials) + "".join(random.choice(string.digits) for _ in range(n))  # noqa: S311
+        return str(initials) + "".join(random.choice(string.digits) for _ in range(n))
 
     @staticmethod
     def generate_password(n: int) -> str:
         return "".join(
-            random.choice(string.ascii_letters + string.digits + string.punctuation)  # noqa: S311
+            random.choice(string.ascii_letters + string.digits + string.punctuation)
             for _ in range(n)
         )
 

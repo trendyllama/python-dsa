@@ -74,10 +74,12 @@ def get_largest_palandrome(input_string: str) -> str:
     """
 
     if not input_string.isalpha() or not input_string.islower():
-        raise ValueError("all characters of the input string must be letters")
+        msg = "all characters of the input string must be letters"
+        raise ValueError(msg)
 
     if len(input_string) < 0:
-        raise ValueError("unexpected input of string with a negative length")
+        msg = "unexpected input of string with a negative length"
+        raise ValueError(msg)
 
     if len(input_string) == 0:
         return ""
@@ -86,7 +88,8 @@ def get_largest_palandrome(input_string: str) -> str:
         return input_string
 
     if len(input_string) > 1000:
-        raise ValueError("undefined for string inputs longer than 1000 chars")
+        msg = "undefined for string inputs longer than 1000 chars"
+        raise ValueError(msg)
 
     palandromes = set()
 

@@ -20,7 +20,10 @@ Hello, Users!
 
 """
 
+import logging
 from typing import Protocol
+
+logger = logging.getLogger(__name__)
 
 
 class Message:
@@ -60,4 +63,4 @@ class AppUser:
         self.observers.remove(observer)
 
     def receive_notification(self, message: Message) -> None:
-        print(message.message_text)
+        logger.info(message.message_text)

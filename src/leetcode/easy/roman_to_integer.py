@@ -52,6 +52,8 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 """
 
+from typing import ClassVar
+
 
 class Solution:
     """
@@ -70,27 +72,42 @@ class Solution:
     1994
     """
 
-    mapping = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    mapping: ClassVar[dict[str, int]] = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000,
+    }
 
     def __init__(self):
         pass
 
     def roman_numeral_to_int(self, numeral: str) -> int:
         if len(numeral) < 1:
-            raise ValueError("undefined for string inputs less than 1 chars")
+            msg = "undefined for string inputs less than 1 chars"
+            raise ValueError(msg)
 
         if len(numeral) > 15:
-            raise ValueError("undefined for string inputs longer than 15 chars")
+            msg = "undefined for string inputs longer than 15 chars"
+            raise ValueError(msg)
 
         result = 0
 
         for idx, char in enumerate(numeral):
-            try:
-                if numeral[idx + 1] in ["V", "X"] and char == "I" or numeral[idx + 1] in ["L", "C"] and char == "X" or numeral[idx + 1] in ["D", "M"] and char == "C":
+            if idx + 1 < len(numeral):
+                next_char = numeral[idx + 1]
+                if (
+                    (next_char in ["V", "X"] and char == "I")
+                    or (next_char in ["L", "C"] and char == "X")
+                    or (next_char in ["D", "M"] and char == "C")
+                ):
                     result -= self.mapping[char]
                 else:
                     result += self.mapping[char]
-            except IndexError:
+            else:
                 result += self.mapping[char]
 
         return result

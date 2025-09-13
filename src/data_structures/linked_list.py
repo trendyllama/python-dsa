@@ -99,7 +99,8 @@ class LinkedList:
 
         while current_node is not None:
             if current_node.next_node is None:
-                raise ValueError(f"Value {value_to_delete} not found in list")
+                msg = f"Value {value_to_delete} not found in list"
+                raise ValueError(msg)
 
             # want to look ahead by one node to see if the next node is the one to delete
             if current_node.next_node.value == value_to_delete:
@@ -125,22 +126,22 @@ class LinkedList:
         4
         """
         if self.is_empty:
-            raise IndexError("Index out of bounds")
+            msg = "Index out of bounds"
+            raise IndexError(msg)
 
         current_node = self.head_node
-        current_index = 0
 
-        for node in self:
+        for idx, _ in enumerate(self):
             if current_node is None:
-                raise IndexError("Index out of bounds")
+                msg = "Index out of bounds"
+                raise IndexError(msg)
 
-            if current_index == index - 1:
+            if idx == index - 1:
                 new_node = Node(new_node_value, current_node)
                 new_node.next_node = current_node.next_node
                 current_node.next_node = new_node
                 return
 
-            current_index += 1
             current_node = current_node.next_node
 
     def __str__(self) -> str:

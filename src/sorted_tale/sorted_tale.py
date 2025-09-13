@@ -3,6 +3,7 @@
 - uses functions from sorts.py and utils.py
 """
 
+import logging
 from operator import gt
 from pathlib import Path
 
@@ -11,12 +12,14 @@ from src.algorithms.quick_sort import quicksort
 from .sorts import bubble_sort
 from .utils import load_books
 
+logger = logging.getLogger(__name__)
+
 if __name__ == "__main__":
     bookshelf = load_books(Path("src/sorted_tale/books_small.csv"))
 
-    print(ord("a"))
+    logger.info(ord("a"))
 
-    print(ord("A"))
+    logger.info(ord("A"))
 
     def by_title_ascending(booka, bookb) -> bool:
         return gt(booka["title_lower"], bookb["title_lower"])
@@ -41,7 +44,7 @@ if __name__ == "__main__":
     quicksort(bookshelf_v2, 0, len(bookshelf_v2) - 1, by_author_ascending)
 
     for book in bookshelf_v2:
-        print(book["author"])
+        logger.info(book["author"])
 
     long_bookshelf = load_books(Path("books_large.csv"))
 

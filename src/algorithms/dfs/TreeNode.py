@@ -1,5 +1,9 @@
+
+import logging
 from collections import deque
 from typing import Self
+
+logger = logging.getLogger(__name__)
 
 
 class TreeNode:
@@ -43,7 +47,7 @@ class TreeNode:
 
     def remove_child(self, child_node_value):
         # removes parent-child relationship
-        print("Removing " + child_node_value + " from " + self.value)
+        logger.info("Removing %s from %s", child_node_value, self.value)
         self.children = list(filter(lambda x: x != child_node_value, self.children))
 
     def traverse(self):
@@ -55,7 +59,7 @@ class TreeNode:
         nodes_to_visit = [self]
         while len(nodes_to_visit) > 0:
             current_node = nodes_to_visit.pop()
-            print(current_node.value)
+            logger.info(current_node.value)
             nodes_to_visit += current_node.children
 
     def get_children(self):
@@ -69,32 +73,30 @@ def print_tree(root: TreeNode):
     stack = deque()
     stack.append([root, 0])
     level_str = "\n"
-    # prev_level = 0
     level = 0
     while len(stack) > 0:
-        # prev_level = level
         node, level = stack.pop()
 
         if level > 0 and len(stack) > 0 and level <= stack[-1][1]:
-            level_str += "   " * (level - 1) + "├─"
+            level_str += f"{'   ' * (level - 1)}├─"
         elif level > 0:
-            level_str += "   " * (level - 1) + "└─"
+            level_str += f"{'   ' * (level - 1)}└─"
         level_str += str(node.value)
         level_str += "\n"
         level += 1
         for child in node.children:
             stack.append([child, level])
 
-    print(level_str)
+    logger.info(level_str)
 
 
 def print_path(path):
     # If path is None, no path was found
     if path is None:
-        print("No paths found!")
+        logger.info("No paths found!")
 
     # If a path was found, print path
     else:
-        print("Path found:")
+        logger.info("Path found:")
         for node in path:
-            print(node.value)
+            logger.info(node.value)

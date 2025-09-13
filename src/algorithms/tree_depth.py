@@ -54,7 +54,8 @@ def depth_first_search(tree_node: TreeNode, value) -> bool:
     False
     """
 
-    raise NotImplementedError("This function is not implemented yet.")
+    msg = "This function is not implemented yet."
+    raise NotImplementedError(msg)
 
 
 def build_bst(my_list: list):

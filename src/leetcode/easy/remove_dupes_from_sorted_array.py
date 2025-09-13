@@ -48,7 +48,7 @@ nums is sorted in non-decreasing order.
 
 
 class Solution:
-    def removeDuplicates(self, nums: list[int]) -> tuple[int, list]:
+    def remove_duplicates(self, nums: list[int]) -> tuple[int, list]:
         """
         Examples:
         >>> Solution().removeDuplicates([1, 1, 2])

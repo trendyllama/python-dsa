@@ -61,10 +61,12 @@ class Stack:
     @size.setter
     def size(self, new_size: int) -> None:
         if not isinstance(new_size, int):
-            raise TypeError("Size must be an integer")
+            msg = "Size must be an integer"
+            raise TypeError(msg)
 
         if new_size < 0:
-            raise ValueError("Size cannot be negative")
+            msg = "Size cannot be negative"
+            raise ValueError(msg)
 
         self._size = new_size
 

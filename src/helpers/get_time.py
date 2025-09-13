@@ -8,6 +8,8 @@ import time
 from collections.abc import Callable
 from functools import wraps
 
+logger = logging.getLogger(__name__)
+
 
 def get_time(func: Callable) -> Callable:
     @wraps(func)
@@ -18,7 +20,7 @@ def get_time(func: Callable) -> Callable:
 
         elp = time.perf_counter() - s
 
-        logging.debug("%s executed in %s seconds", func.__name__, elp)
+        logger.debug("%s executed in %s seconds", func.__name__, elp)
 
     return wrapper
 

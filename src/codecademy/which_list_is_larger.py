@@ -18,5 +18,5 @@ def larger_sum(lst1: list[int], lst2: list[int]) -> tuple[int, list[int], int]:
     return (
         1 if sum1 > sum2 else 2,
         lst1 if sum1 > sum2 else lst2,
-        sum1 if sum1 > sum2 else sum2,
+        max(sum2, sum1),
     )

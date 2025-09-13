@@ -1,7 +1,7 @@
 from collections.abc import Callable
 
 
-def make_multiplier(factor: float | int) -> Callable[[float | int], float | int]:
+def make_multiplier(factor: float) -> Callable[[float | int], float | int]:
     """
     Example:
     >>> times3 = make_multiplier(3)
@@ -12,7 +12,7 @@ def make_multiplier(factor: float | int) -> Callable[[float | int], float | int]
     50
     """
 
-    def multiplier(number: float | int) -> float | int:
+    def multiplier(number: float) -> float | int:
         return number * factor
 
     return multiplier

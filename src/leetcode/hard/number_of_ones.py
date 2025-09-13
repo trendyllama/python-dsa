@@ -3,7 +3,7 @@ import re
 
 class Solution:
     @staticmethod
-    def countDigitOne(n: int) -> int:
+    def count_digit_one(n: int) -> int:
         """
         Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
 
@@ -27,8 +27,8 @@ class Solution:
         return sum(ones)
 
     def tests(self):
-        assert self.countDigitOne(13) == 6
-        assert self.countDigitOne(0) == 0
+        assert self.count_digit_one(13) == 6
+        assert self.count_digit_one(0) == 0
 
 
 if __name__ == "__main__":

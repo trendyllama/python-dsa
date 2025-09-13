@@ -16,7 +16,7 @@ def dfs(root: TreeNode, target, path: tuple = ()) -> tuple | None:
     None
 
     """
-    path = path + (root,)
+    path = (*path, root)
 
     if root.value == target:
         return path

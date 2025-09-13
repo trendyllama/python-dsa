@@ -50,7 +50,7 @@ class QuickSortStrategy(SortStrategy):
             else:
                 items_lower.append(item)
 
-        return self.sort(items_lower) + [pivot] + self.sort(items_greater)
+        return [*self.sort(items_lower), pivot, *self.sort(items_greater)]
 
 
 class Context:

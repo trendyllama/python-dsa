@@ -29,4 +29,4 @@ def quick_sort(list_input: list) -> list:
     smaller = list(filter(lambda x: le(x, pivot), list_input[:-1]))
     larger = list(filter(lambda x: gt(x, pivot), list_input[:-1]))
 
-    return quick_sort(smaller) + [pivot] + quick_sort(larger)
+    return [*quick_sort(smaller), pivot, *quick_sort(larger)]

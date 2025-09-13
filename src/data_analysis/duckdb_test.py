@@ -1,8 +1,11 @@
 import io
+import logging
 
 import duckdb
 import pandas as pd
 import requests
+
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -21,7 +24,7 @@ def main():
 
     filtered = duckdb.query("select * from data_view where sentiment = 'positive'")
 
-    print(filtered)
+    logger.info(filtered)
 
     connection = duckdb.connect(database=":memory:")
 
@@ -38,9 +41,9 @@ def main():
     select review from df where sentiment = 'positive'
     """)
 
-    print(positive)
+    logger.info(positive)
 
-    print(negative)
+    logger.info(negative)
 
 
 if __name__ == "__main__":

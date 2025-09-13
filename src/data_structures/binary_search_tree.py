@@ -60,7 +60,10 @@ Insert 25
 
 """
 
+import logging
 import random
+
+logger = logging.getLogger(__name__)
 
 
 class BinarySearchTree:
@@ -74,8 +77,9 @@ class BinarySearchTree:
         if value < self.value:
             if self.left is None:
                 self.left = BinarySearchTree(value, self.depth + 1)
-                print(
-                    f"Tree node {value} added to the left of {self.value} at depth {self.depth + 1}"
+                logger.info(
+                    "Tree node %s added to the left of %s at depth %s",
+                    value, self.value, self.depth + 1
                 )
             else:
                 self.left.insert(value)
@@ -83,8 +87,9 @@ class BinarySearchTree:
             match self.right:
                 case None:
                     self.right = BinarySearchTree(value, self.depth + 1)
-                    print(
-                        f"Tree node {value} added to the right of {self.value} at depth {self.depth + 1}"
+                    logger.info(
+                        "Tree node %s added to the right of %s at depth %s",
+                        value, self.value, self.depth + 1
                     )
                 case _:
                     self.right.insert(value)
@@ -103,7 +108,7 @@ class BinarySearchTree:
         if self.left is not None:
             self.left.depth_first_traversal()
 
-        print(f"Depth={self.depth}, Value={self.value}")
+        logger.info("Depth=%s, Value=%s", self.depth, self.value)
 
         if self.right is not None:
             self.right.depth_first_traversal()
@@ -111,11 +116,11 @@ class BinarySearchTree:
 
 if __name__ == "__main__":
     # Example usage
-    print("Creating Binary Search Tree rooted at value 100:")
+    logger.info("Creating Binary Search Tree rooted at value 100:")
     tree = BinarySearchTree(100)
 
     for _x in range(10):
         tree.insert(random.randint(0, 100))
 
-    print("Printing the inorder depth-first traversal:")
+    logger.info("logger.infoing the inorder depth-first traversal:")
     tree.depth_first_traversal()

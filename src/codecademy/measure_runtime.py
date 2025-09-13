@@ -1,5 +1,8 @@
 import functools
+import logging
 import time
+
+logger = logging.getLogger(__name__)
 
 
 # decorator to measure running time
@@ -10,8 +13,10 @@ def measure_running_time(echo=True):
             t_1 = time.perf_counter()
             ans = func(*args, **kwargs)
             t_2 = time.perf_counter()
+            elp = t_2 - t_1
+
             if echo:
-                print(f"{func.__name__}() running time is {t_2 - t_1:.2f} s")
+                logger.info("%s running time is %s s", func.__name__, elp)
             return ans
 
         return wrapped

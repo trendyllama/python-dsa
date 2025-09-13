@@ -1,3 +1,6 @@
+from typing import ClassVar
+
+
 class SingletonMeta(type):
     """
     A metaclass for creating singleton classes.
@@ -14,7 +17,7 @@ class SingletonMeta(type):
 
     """
 
-    _instances = {}
+    _instances: ClassVar[dict[type, object]] = {}
 
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:

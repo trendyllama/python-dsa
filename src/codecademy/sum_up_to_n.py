@@ -34,6 +34,6 @@ def sum_to_n_functional(n: int) -> int:
     5050
     """
 
-    sum_out = reduce(lambda x, y: x + y, range(0, n + 1))
+    sum_out = reduce(lambda x, y: x + y, range(n + 1))
 
     return sum_out

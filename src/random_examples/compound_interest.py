@@ -28,7 +28,7 @@ class MonthlyCompoundInterestCalculator(CompoundInterestCalculator):
         monthly_invest = self.monthly_investment * 12
         final_ammount = 0.0
 
-        for _ in range(0, self.years):
+        for _ in range(self.years):
             if final_ammount == 0:
                 final_ammount = self.principle
 
@@ -52,7 +52,7 @@ class YearlyCompoundInterestCalculator(CompoundInterestCalculator):
         yearly_invest = self.monthly_investment * 12
         final_ammount = 0.0
 
-        for _ in range(0, self.years):
+        for _ in range(self.years):
             if final_ammount == 0:
                 final_ammount = self.principle
 
@@ -76,7 +76,7 @@ class DailyCompoundInterestCalculator(CompoundInterestCalculator):
         daily_invest = self.monthly_investment * 12 / 365
         final_ammount = 0.0
 
-        for _ in range(0, self.years * 365):
+        for _ in range(self.years * 365):
             if final_ammount == 0:
                 final_ammount = self.principle
 
@@ -137,33 +137,33 @@ if __name__ == "__main__":
     log_msg1 = f"The user is investing for {years} years"
     logger.info(log_msg1)
 
-    print("How much money do you currently have?")
+    logger.info("How much money do you currently have?")
     principle = float(input("Enter how much money you currently have: "))
     log_msg2 = f"The user currently has ${principle:,.2f}"
     logger.info(log_msg2)
 
-    print("How much money do you plan on investing monthly?")
+    logger.info("How much money do you plan on investing monthly?")
     monthly_investment = float(input("Enter ammount: "))
     log_msg3 = f"The user is investing ${monthly_investment:,.2f} monthly"
     logger.info(log_msg3)
 
-    print("What yearly intrest rate are you expecting?")
+    logger.info("What yearly intrest rate are you expecting?")
     interest = float(input("Enter the expected intrest rate in decimals (10% = 0.1): "))
     log_msg4 = f"The user's intrest rate is {interest}"
     logger.info(log_msg4)
-    print(" ")
+    logger.info(" ")
 
     monthly_invest = monthly_investment * 12
     final_ammount = 0
 
-    for _ in range(0, years):
+    for _ in range(years):
         if final_ammount == 0:
             final_ammount = principle
 
         final_ammount = (final_ammount + monthly_invest) * (1 + interest)
 
     final = f"This is how much money you will have after {years} years: ${final_ammount:,.2f}"
-    print(final)
+    logger.info(final)
 
     logger.info(
         "This is the user's final balance at the end of the period: %s", final_ammount

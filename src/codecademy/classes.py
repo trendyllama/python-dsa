@@ -1,3 +1,8 @@
+
+import logging
+
+logger = logging.getLogger(__name__)
+
 class Menu:
     """
     Example:
@@ -74,10 +79,7 @@ class Franchise:
         return self.address
 
     def available_menus(self, time):
-        available_menus = []
-        for menu in self.menus:
-            if time >= menu.start_time and time <= menu.end_time:
-                available_menus.append(menu)
+        available_menus = [menu for menu in self.menus if time >= menu.start_time and time <= menu.end_time]
         return available_menus
 
 
@@ -110,7 +112,7 @@ def main():
 
     brunch_menu = Menu("Brunch", brunch_items, 1100, 1600)
 
-    print(brunch_menu.calculate_bill(["pancakes", "home fries", "coffee"]))
+    logger.info(brunch_menu.calculate_bill(["pancakes", "home fries", "coffee"]))
 
     # Early Bird
     early_bird_items = {
@@ -125,7 +127,7 @@ def main():
 
     early_bird_menu = Menu("Early Bird", early_bird_items, 1500, 1800)
 
-    print(
+    logger.info(
         early_bird_menu.calculate_bill(["salumeria plate", "mushroom ravioli (vegan)"])
     )
 
@@ -171,16 +173,16 @@ def main():
 
     arepas_place = Franchise("189 Fitzgerald Avenue", arepas_menu)
 
-    # print(flagship_store.available_menus(1900))
-
     # Basta Fazoolin Business
-    Basta = Business("Basta Fazoolin' with my Heart", [flagship_store, new_installment])
+    basta = Business("Basta Fazoolin' with my Heart", [flagship_store, new_installment])
+
+    logger.info(basta.franchises)
 
 
     # Take a' Arepa Business
-    Arepa = Business("Take a' Arepa", arepas_place)
+    arepa = Business("Take a' Arepa", arepas_place)
 
-    print(Arepa.franchises)
+    logger.info(arepa.franchises)
 
 
 if __name__ == "__main__":
