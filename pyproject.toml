@@ -12,6 +12,7 @@ dependencies = [
     "pyarrow>=20.0.0",
     "requests>=2.32.4",
     "scipy>=1.15.3",
+    "sqlalchemy>=2.0.43",
 ]
 
 
@@ -24,3 +25,40 @@ dev-dependencies = [
 
 [tool.pytest.ini_options]
 addopts = "-s --doctest-modules"
+
+
+[tool.ruff.format]
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
+# Enable reformatting of code snippets in docstrings.
+docstring-code-format = true
+
+[tool.ruff]
+
+extend-select = [
+    "A",  # All auto-fixes
+    "B",  # Bug risk
+    "C",  # Complexity
+    "E",  # Error
+    "F",  # Formatting
+    "I",  # Import-related
+    "N",  # Naming convention
+    "Q",  # Quality
+    "W",  # Warning
+    "SIM",
+    "UP",
+    "LOG",
+    "G",
+    "PD",
+
+]
+
+extend-ignore = [
+    "E501",  # Line too long
+]
