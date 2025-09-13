@@ -1,57 +1,82 @@
-def is_palindrome_r(input_string: str) -> bool:
-    """
+""" """
+
+from typing import Protocol
+
+
+class PalindromeChecker(Protocol):
+
+    input_string: str
+
+    def __init__(self, input_string: str) -> None: ...
+
+    def check(self) -> bool:
+        ...
+
+
+class RecursivePalindromeChecker(PalindromeChecker):
+
+    def __init__(self, input_string: str) -> None:
+        self.input_string = input_string
+
+    def check(self) -> bool:
+        """
     Example:
-    >>> is_palindrome_r("abba")
+    >>> self.check("abcba")
     True
-    >>> is_palindrome_r("abcba")
+    >>> self.check("")
     True
-    >>> is_palindrome_r("")
-    True
-    >>> is_palindrome_r("abcd")
+    >>> self.check("abcd")
     False
     """
 
-    if len(input_string) < 2:
+        input_string = self.input_string
+
+        def inner_check(input_string: str) -> bool:
+            if len(input_string) < 2:
+                return True
+            if input_string[0] != input_string[-1]:
+                return False
+            return inner_check(input_string[1:-1])
+
+
+        return inner_check(input_string)
+
+class IterativePalindromeChecker(PalindromeChecker):
+
+    def __init__(self, input_string: str) -> None:
+        self.input_string = input_string
+
+    def check(self) -> bool:
+        """
+    Example:
+    >>> self.check("abcba")
+    True
+    >>> self.check("")
+    True
+    >>> self.check("abcd")
+    False
+    """
+        input_string = self.input_string
+
+        while len(input_string) > 1:
+            if input_string[0] != input_string[-1]:
+                return False
+            input_string = input_string[1:-1]
         return True
-    if input_string[0] != input_string[-1]:
-        return False
-    return is_palindrome_r(input_string[1:-1])
 
+class SimplePalindromeChecker(PalindromeChecker):
 
-def is_palindrome_i(input_string: str) -> bool:
-    """
+    def __init__(self, input_string: str) -> None:
+        self.input_string = input_string
+
+    def check(self) -> bool:
+        """
     Example:
-    >>> is_palindrome_i("abba")
+    >>> self.check("abcba")
     True
-    >>> is_palindrome_i("abcba")
+    >>> self.check("")
     True
-    >>> is_palindrome_i("")
-    True
-    >>> is_palindrome_i("abcd")
+    >>> self.check("abcd")
     False
     """
-
-    while len(input_string) > 1:
-        if input_string[0] != input_string[-1]:
-            return False
-        input_string = input_string[1:-1]
-    return True
-
-
-def is_palandrome(input_string: str) -> bool:
-    """
-    Simplest Implementation
-
-    Example:
-    >>> is_palandrome("abba")
-    True
-    >>> is_palandrome("abcba")
-    True
-    >>> is_palandrome("")
-    True
-    >>> is_palandrome("abcd")
-    False
-
-    """
-
-    return input_string == input_string[::-1]
+        return self.input_string == self.input_string[::-1]
