@@ -3,9 +3,10 @@
 """
 
 import csv
-from pathlib import Path
-from dataclasses import dataclass
 import sqlite3
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Protocol
 
 
 @dataclass
@@ -29,7 +30,7 @@ def load_books(filename: Path) -> list[Book]:
 
     bookshelf: list[Book] = []
 
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(filename, encoding="utf-8") as file:
         shelf = csv.DictReader(file)
 
     for book in shelf:
@@ -54,7 +55,7 @@ def load_books_to_db(filename: Path) -> None:
 
     with (
         sqlite3.connect("books.db") as conn,
-        open(filename, "r", encoding="utf-8") as file,
+        open(filename, encoding="utf-8") as file,
     ):
         cursor = conn.cursor()
         cursor.execute(
@@ -85,3 +86,56 @@ def load_books_to_db(filename: Path) -> None:
             )
 
         conn.commit()
+
+
+class DatabaseService(Protocol):
+
+    def get_engine(self): ...
+
+
+
+class BookLoader(Protocol):
+
+    books: list[Book] | None
+
+    def scan_source(self) -> None: ...
+
+    def load(self) -> None: ...
+
+
+class BookFileLoader(BookLoader):
+
+    file_name: Path
+    book: Book
+    books: list[Book] | None
+
+    def scan_source(self) -> None:
+        """
+        This code loads the current book shelf data from the csv file
+
+        """
+
+        bookshelf: list[Book] = []
+
+        with open(self.file_name, encoding="utf-8") as file:
+            shelf = csv.DictReader(file)
+
+        for book in shelf:
+            # add your code here
+            book_temp = Book(
+                title=book["title"],
+                author=book["author"],
+                author_lower=book["author"].lower(),
+                title_lower=book["title"].lower(),
+            )
+            bookshelf.append(book_temp)
+
+        self.books = bookshelf
+
+    def load(self) -> None: ...
+
+
+
+
+class BookDatabaseLoader(BookLoader):
+    pass

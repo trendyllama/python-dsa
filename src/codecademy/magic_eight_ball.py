@@ -1,7 +1,53 @@
-import random
 import logging
+import random
+from typing import Protocol, runtime_checkable
 
-if __name__ == "__main__":
+
+@runtime_checkable
+class MagicEightBall(Protocol):
+    question: str
+    answer: str
+    random_number: int
+
+    def _generate_random_number(self) -> None: ...
+
+    def return_answer(self) -> str: ...
+
+
+class DefaultMagicEightBall(MagicEightBall):
+    def __init__(self, question: str) -> None:
+        self.question = question
+        self.random_number = 0
+
+    def _generate_random_number(self) -> None:
+        self.random_number = random.randint(1, 9)
+
+    def return_answer(self) -> str:
+        self._generate_random_number()
+        if self.random_number == 1:
+            return "Yes - definitely."
+        elif self.random_number == 2:
+            return "It is decidedly so."
+        elif self.random_number == 3:
+            return "Without a doubt."
+        elif self.random_number == 4:
+            self.answer = "Reply hazy, try again."
+        elif self.random_number == 5:
+            self.answer = "Ask again later."
+        elif self.random_number == 6:
+            self.answer = "Better not tell you now."
+        elif self.random_number == 7:
+            self.answer = "My sources say no."
+        elif self.random_number == 8:
+            self.answer = "Outlook not so good."
+        elif self.random_number == 9:
+            self.answer = "Very doubtful."
+        else:
+            raise ValueError
+        return self.answer
+
+
+def main() -> None:
     logger = logging.getLogger(__name__)
     logging.basicConfig(
         filename="magic_8_ball_log.log",
@@ -9,42 +55,19 @@ if __name__ == "__main__":
         format="[%(asctime)s] %(levelname)s - %(message)s",
     )
 
-    logging.info("New User!!")
+    logger.info("New User!!")
     name = input("Tell me your name: ")
-    logging.info("The user's name is {}".format(name))
+    logger.info("The user's name is %s", name)
 
     question = input("Ask me your question: ")
-    logging.info("The user asked: {}".format(question))
+    logger.info("The user asked: %s", question)
 
-    random_number = random.randint(1, 9)
-    logging.info("The random number is {}".format(random_number))
-    answer = ""
+    eight_ball = DefaultMagicEightBall(question)
 
-    def statements(random_number: int) -> str:
-        if random_number == 1:
-            answer = "Yes - definitely."
-        elif random_number == 2:
-            answer = "It is decidedly so."
-        elif random_number == 3:
-            answer = "Without a doubt."
-        elif random_number == 4:
-            answer = "Reply hazy, try again."
-        elif random_number == 5:
-            answer = "Ask again later."
-        elif random_number == 6:
-            answer = "Better not tell you now."
-        elif random_number == 7:
-            answer = "My sources say no."
-        elif random_number == 8:
-            answer = "Outlook not so good."
-        elif random_number == 9:
-            answer = "Very doubtful."
-        else:
-            answer = "Error!"
-        return answer
+    logger.info("The 8-ball answered: %s", eight_ball.return_answer())
 
-    logging.info("The 8-ball answered: {}".format(statements(random_number)))
-    # print('{name} asks: {question}'.format(name = name, question = question))
-    print("Magic 8-Ball's answer: " + statements(random_number))
+    logger.info("Session over!")
 
-    logging.info("Session over!")
+
+if __name__ == "__main__":
+    main()

@@ -9,9 +9,21 @@ Example usage:
 """
 
 import tkinter as tk
+from typing import Protocol
 
 
-class InputBox:
+class InputBoxProtocol(Protocol):
+
+    def __init__(self, geo: str, message: str) -> None: ...
+
+    def init_box(self) -> None:
+        ...
+
+    def get_input(self) -> str:
+        ...
+
+
+class InputBox(InputBoxProtocol):
     """
     A class that creates a graphical user interface (GUI) for taking user input.
 
@@ -39,6 +51,10 @@ class InputBox:
         self.geo = geo
         self.message = message
 
+        self.init_box()
+
+    def init_box(self) -> None:
+
         self.root = tk.Tk()
         self.root.geometry(self.geo)
 
@@ -46,8 +62,8 @@ class InputBox:
         label.config(font=("Courier", 14))
         label.pack()
 
-        userInput = tk.Text(self.root, height=5, width=20)
-        userInput.pack()
+        user_input = tk.Text(self.root, height=5, width=20)
+        user_input.pack()
 
         button = tk.Button(master=self.root, text="Enter", command=self.get_input)
         button.pack()

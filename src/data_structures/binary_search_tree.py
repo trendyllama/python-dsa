@@ -114,7 +114,7 @@ if __name__ == "__main__":
     print("Creating Binary Search Tree rooted at value 100:")
     tree = BinarySearchTree(100)
 
-    for x in range(10):
+    for _x in range(10):
         tree.insert(random.randint(0, 100))
 
     print("Printing the inorder depth-first traversal:")

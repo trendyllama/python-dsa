@@ -1,10 +1,15 @@
+import enum
+import logging
 import sys
 from collections.abc import Callable
-import enum
+from typing import Protocol
+
 from src.data_structures.stack import Stack
 
 # set up game
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class GameStates(enum.Enum):
     INVALID_MOVE = 0
@@ -12,10 +17,26 @@ class GameStates(enum.Enum):
 
 class InputError(Exception): ...
 
+class TowersOfHanoiInterface(Protocol):
 
-class Game:
-    def __init__(self) -> None:
+    num_moves: int
+    num_disks: int
+    num_optimal_moves: int
+    stacks: list[Stack]
+
+    def __init__(self, number_of_disks: int) -> None: ...
+
+    def get_input(self) -> Stack: ...
+
+    def exit_game(self) -> None: ...
+
+    def run(self) -> None: ...
+
+
+class Game(TowersOfHanoiInterface):
+    def __init__(self, number_of_disks: int) -> None:
         self.num_moves = 0
+        self.num_disks = number_of_disks
 
         print("\nLet's play Towers of Hanoi!!")
 
@@ -25,25 +46,18 @@ class Game:
 
         self.stacks: list[Stack] = [left_stack, middle_stack, self.right_stack]
 
-        self.num_disks = int(input("\nHow many disks do you want to play with?\n"))
-
-        num_input = int(input("Enter a number greater than or equal to 3\n"))
-
-        if num_input < 3:
-            raise InputError("Enter a number greater or equal to 3")
 
         for i in range(self.num_disks, 0, -1):
             left_stack.push(i)
 
         self.num_optimal_moves = 2**self.num_disks - 1
 
-        print(
-            f"\nThe fastest you can solve this game is in {self.num_optimal_moves} moves"
+        logger.info(
+            "The fastest you can solve this game is in %s moves", self.num_optimal_moves
         )
 
     def get_input(self) -> Stack:
-        # choices = [stack.__qualname__[0] for stack in self.stacks]
-        choices = list(map(lambda x: x.__qualname__[0], self.stacks))
+        choices = [stack.__qualname__[0] for stack in self.stacks]
 
         while True:
             for i, val in enumerate(self.stacks):
@@ -51,7 +65,7 @@ class Game:
 
                 letter = choices[i]
 
-                print(f"Enter {name} for {letter}")
+                logger.info("Enter %s for %s", name, letter)
 
             user_input = input("")
             if user_input in choices:
@@ -60,50 +74,67 @@ class Game:
                         return val
 
     def exit_game(self) -> None:
-        print(
-            f"\n\nYou completed the game in {self.num_moves} moves, and the optimal number of moves is {self.num_optimal_moves}"
+        logger.info(
+            "You completed the game in %s moves, and the optimal number of moves is %s",
+            self.num_moves,
+            self.num_optimal_moves,
         )
         sys.exit(0)
 
-    def main_loop(self) -> Callable | None:
-        if self.right_stack.size != self.num_disks:
-            print("\n\n\n...Current Stacks...")
-            for stack in self.stacks:
-                stack.print()
+    def run(self) -> None:
 
-            def move() -> Callable | None:
-                print("\nWhich stack do you want to move from?\n")
-                from_stack = self.get_input()
 
-                if from_stack is None:
-                    print("\n\nInvalid Move. Try Again")
+        def runner():
+            if self.right_stack.size != self.num_disks:
+                logger.info("Current Stacks...")
+                for stack in self.stacks:
+                    print(stack)
+
+                def move() -> Callable | None:
+                    logger.info("\nWhich stack do you want to move from?\n")
+                    from_stack = self.get_input()
+
+                    if from_stack is None:
+                        logger.info("\n\nInvalid Move. Try Again")
+
+                        return move()
+
+                    logger.info("Which stack do you want to move to?\n")
+                    to_stack = self.get_input()
+
+                    if from_stack.size == 0 or from_stack is None:
+                        logger.info("\n\nInvalid Move. Try Again")
+
+                        return move()
+
+                    if to_stack.size == 0 or from_stack.peek().value < to_stack.peek().value:
+                        disk = from_stack.pop()
+                        to_stack.push(disk)
+
+                        self.num_moves += 1
+                        return self.exit_game()
+
+                    logger.info("\n\nInvalid Move. Try Again")
 
                     return move()
 
-                print("\nWhich stack do you want to move to?\n")
-                to_stack = self.get_input()
+                return
 
-                if from_stack.size == 0 or from_stack is None:
-                    print("\n\nInvalid Move. Try Again")
+            else:
+                return runner()
 
-                    return move()
+        return runner()
 
-                if to_stack.size == 0 or from_stack.peek() < to_stack.peek():
-                    disk = from_stack.pop()
-                    to_stack.push(disk)
 
-                    self.num_moves += 1
-                    return self.exit_game()
+class GameBuilder:
 
-                print("\n\nInvalid Move. Try Again")
 
-                return move()
+    def __init__(self, number_of_disks: int) -> None:
+        self.number_of_disks = number_of_disks
 
-            move()
-
-        else:
-            return self.main_loop()
+    def build(self) -> Game:
+        pass
 
 
 if __name__ == "__main__":
-    Game().main_loop()
+    Game(number_of_disks=15).run()

@@ -115,6 +115,10 @@ class ContinuousCompoundInterestCalculator(CompoundInterestCalculator):
             )
 
         self.final_amount = final_ammount
+
+        if self.final_amount is None:
+            raise ValueError
+
         return self.final_amount
 
 

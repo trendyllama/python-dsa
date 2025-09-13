@@ -1,4 +1,4 @@
-from functools import reduce, lru_cache
+from functools import lru_cache, reduce
 
 
 @lru_cache(maxsize=10)

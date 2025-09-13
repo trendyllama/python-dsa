@@ -62,7 +62,9 @@ def get_largest_palandrome(input_string: str) -> str:
     brute force method
 
     Examples:
-    >>> get_largest_palandrome("babad") == "bab" or get_largest_palandrome("babad") == "aba"
+    >>> get_largest_palandrome("babad") == "bab" or get_largest_palandrome(
+    ...     "babad"
+    ... ) == "aba"
     True
     >>> get_largest_palandrome("cbbd") == "bb"
     True
