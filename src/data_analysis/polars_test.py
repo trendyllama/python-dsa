@@ -21,6 +21,8 @@ _df = (
 )
 logger.info(_df)
 
-df = pl.DataFrame(np.random.rand(100000, 16)).sql("SELECT column_0, column_4 FROM self WHERE column_0 > 0.9 and column_4 < 0.1")
+df = pl.DataFrame(np.random.rand(100000, 16)).sql(
+    "SELECT column_0, column_4 FROM self WHERE column_0 > 0.9 and column_4 < 0.1"
+)
 
 logger.info(_df.describe())

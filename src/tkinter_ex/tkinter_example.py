@@ -2,9 +2,10 @@ import logging
 import tkinter as tk
 
 logging.basicConfig(level=logging.INFO)
-
 logger = logging.getLogger(__name__)
+
 def main():
+    logger.debug("Starting main function")
     root = tk.Tk()
 
     root.geometry("800x400")
@@ -23,10 +24,12 @@ def main():
     def user_click():
         logger.info("User clicked button")
 
-    button = tk.Button(root, text="Click Me!", font=("Arial", 18), command=user_click())  # type: ignore
+    button = tk.Button(root, text="Click Me!", font=("Arial", 18), command=user_click)  # type: ignore
     button.pack(padx=10, pady=10)
 
+    logger.debug("Entering main loop")
     root.mainloop()
+    logger.debug("Exited main loop")
 
 
 if __name__ == "__main__":

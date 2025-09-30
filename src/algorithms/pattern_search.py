@@ -1,3 +1,13 @@
+
+from typing import Protocol
+
+
+class IPatternSearcher(Protocol):
+    pattern: str
+
+    def search(self) -> tuple[int, str]: ...
+
+
 def pattern_search(text: str, pattern: str) -> tuple[int, str] | None:
     """
     - string pattern searching algo

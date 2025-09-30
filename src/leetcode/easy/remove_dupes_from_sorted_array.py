@@ -51,10 +51,10 @@ class Solution:
     def remove_duplicates(self, nums: list[int]) -> tuple[int, list]:
         """
         Examples:
-        >>> Solution().removeDuplicates([1, 1, 2])
+        >>> Solution().remove_duplicates([1, 1, 2])
         (2, [1, 2, 0])
 
-        >>> Solution().removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
+        >>> Solution().remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
         (5, [0, 1, 2, 3, 4, 0, 0, 0, 0, 0])
 
         """

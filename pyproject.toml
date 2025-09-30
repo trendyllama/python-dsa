@@ -69,7 +69,8 @@ extend-select = [
     "PERF",
    "UP",
    "FURB",
-   "RUF"
+   "RUF",
+   'PT'
 
 
 ]

@@ -34,6 +34,7 @@ with engine.begin() as conn:
     result = conn.execute(
         sa.select(User).where(User.name.like("Al%")).order_by(User.id)
     ).all()
+    logger.debug("Selected users with names starting with 'Al': %s", result)
 
     for row in result:
         logger.info("User %s: %s, %s", row.id, row.name, row.email)

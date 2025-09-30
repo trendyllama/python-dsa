@@ -63,4 +63,4 @@ class AppUser:
         self.observers.remove(observer)
 
     def receive_notification(self, message: Message) -> None:
-        logger.info(message.message_text)
+        print(message.message_text)

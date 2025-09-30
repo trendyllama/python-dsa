@@ -17,7 +17,7 @@ class Solution:
         Output: 0
 
         Examples:
-        >>> Solution.countDigitOne(13)
+        >>> Solution.count_digit_one(13)
         6
         """
         if n == 0:

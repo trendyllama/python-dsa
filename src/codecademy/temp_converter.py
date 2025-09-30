@@ -1,6 +1,8 @@
 
+import logging
 from typing import Protocol
 
+logger = logging.getLogger(__name__)
 
 def conversion(units: str, temp: float):
     """
@@ -16,14 +18,19 @@ def conversion(units: str, temp: float):
     212.0
     """
 
+    logger.debug("Converting %s degrees %s", temp, units)
+
     if units == "F" or units == "Fahrenheit":
         c = (temp - 32) * (5 / 9)
+        logger.debug("Converted to %s degrees Celsius", c)
         return c
     elif units == "C" or units == "Celcius":
         f = (temp * (9 / 5)) + 32
+        logger.debug("Converted to %s degrees Fahrenheit", f)
         return f
     else:
         msg = "Invalid units. Please use 'F' for Fahrenheit or 'C' for Celcius."
+        logger.error(msg)
         raise ValueError(
             msg
         )
@@ -40,6 +47,7 @@ class TemperatureConverter(Protocol):
 class FahrenheitToCelciusConverter(TemperatureConverter):
 
     def __init__(self, temperature: float) -> None:
+        logger.debug("Initializing FahrenheitToCelciusConverter with temperature: %s", temperature)
         self.temperature = temperature
 
 
@@ -50,6 +58,7 @@ class FahrenheitToCelciusConverter(TemperatureConverter):
 class CelciusToFahrenheitConverter(TemperatureConverter):
 
     def __init__(self, temperature: float) -> None:
+        logger.debug("Initializing CelciusToFahrenheitConverter with temperature: %s", temperature)
 
         self.temperature = temperature
 
@@ -63,6 +72,10 @@ class TemperatureConverterBuilder:
         self.units_to = units_to
         self.units_from = units_from
         self.temperature = temperature
+        logger.debug(
+            "Initializing TemperatureConverterBuilder with units_to: %s, units_from: %s, temperature: %s",
+            units_to, units_from, temperature
+        )
 
     def build(self) -> TemperatureConverter:
 
@@ -75,3 +88,4 @@ class TemperatureConverterBuilder:
 
 
         raise NotImplementedError
+

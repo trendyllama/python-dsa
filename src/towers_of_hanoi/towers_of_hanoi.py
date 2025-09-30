@@ -36,6 +36,7 @@ class Game(TowersOfHanoiInterface):
     def __init__(self, number_of_disks: int) -> None:
         self.num_moves = 0
         self.num_disks = number_of_disks
+        logger.debug("Initializing game with %s disks", number_of_disks)
 
         logger.info("Let's play Towers of Hanoi!!")
 
@@ -47,6 +48,7 @@ class Game(TowersOfHanoiInterface):
 
 
         for i in range(self.num_disks, 0, -1):
+            logger.debug("Pushing disk %s to left stack", i)
             left_stack.push(i)
 
         self.num_optimal_moves = 2**self.num_disks - 1
@@ -68,8 +70,10 @@ class Game(TowersOfHanoiInterface):
 
             user_input = input("")
             if user_input in choices:
+                logger.debug("User selected stack: %s", user_input)
                 for i, val in enumerate(self.stacks):
                     if user_input == choices[i]:
+                        logger.debug("Returning stack: %s", val)
                         return val
 
     def exit_game(self) -> None:

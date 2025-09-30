@@ -12,6 +12,8 @@ class Memory:
         self.exec_time = 0
         self.output = ""
 
+        logger.debug("Initialized %s with access time %.2f", name, access_time)
+
     def write(self, address, data):
         """Writes data to the memory at the specified address.
         Example:
@@ -31,6 +33,7 @@ class ISA:
         self._memory: Memory | None = None
         self.instructions = []
         self.output = ""
+        logger.debug("Initialized ISA")
 
     @property
     def memory(self):
@@ -45,6 +48,7 @@ class ISA:
     def read_instructions(self, filename: Path):
         with filename.open() as file:
             for line in file:
+                logger.debug("Reading instruction: %s", line.strip())
                 instruction = line.strip()
                 if instruction:
                     self.instructions.append(instruction)
@@ -93,6 +97,9 @@ class Cache(Memory):
         self.fifo_indices = [0, 0, 0, 0]
         self.sets = 1  # Set to 1, 2 or 4
         self.fifo_indices = [0, None, None, None]
+
+        logger.debug("Initialized Cache with FIFO indices: %s", self.fifo_indices)
+        logger.debug("Initialized Cache with sets: %s", self.sets)
 
         # Sets self.fifo_indicies based on
         # the number of sets in the cache

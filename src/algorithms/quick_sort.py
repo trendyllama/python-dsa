@@ -1,4 +1,11 @@
 from random import randrange
+from typing import Protocol
+
+
+class IQuickSort(Protocol):
+
+    def sort(self): ...
+
 
 
 def quicksort(list_input: list, start: int, end: int) -> None:

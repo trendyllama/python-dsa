@@ -10,7 +10,7 @@ class School:
     'Hill'
     >>> s.level
     'High'
-    >>> s.numberofStudents
+    >>> s.number_of_students
     100
     >>> s.__repr__()
     'A High school named Hill with 100 students'
@@ -19,10 +19,10 @@ class School:
     def __init__(self, name, level, number_of_students):
         self.name = name
         self.level = level
-        self.numberofStudents = number_of_students
+        self.number_of_students = number_of_students
 
     def __repr__(self):
-        return f"A {self.level} school named {self.name} with {self.numberofStudents} students"
+        return f"A {self.level} school named {self.name} with {self.number_of_students} students"
 
 
 class PrimarySchool(School):
@@ -33,7 +33,7 @@ class PrimarySchool(School):
     'Wyndcroft'
     >>> p.level
     'primary'
-    >>> p.numberofStudents
+    >>> p.number_of_students
     500
     """
 
@@ -57,9 +57,9 @@ class HighSchool(School):
     'Lawrenceville'
     >>> h.level
     'High'
-    >>> h.numberofStudents
+    >>> h.number_of_students
     100
-    >>> h.sportsTeams
+    >>> h.sports_teams
     ['Soccer', 'Track', 'Hockey']
     >>> h.__repr__()
     "We offer ['Soccer', 'Track', 'Hockey'] as extra ciricular sports"
@@ -67,10 +67,10 @@ class HighSchool(School):
 
     def __init__(self, name, number_of_students, sports_teams):
         super().__init__(name, "High", number_of_students)
-        self.sportsTeams = sports_teams
+        self.sports_teams = sports_teams
 
     def get_st(self):
-        return self.sportsTeams
+        return self.sports_teams
 
     def __repr__(self):
-        return f"We offer {self.sportsTeams} as extra ciricular sports"
+        return f"We offer {self.sports_teams} as extra ciricular sports"

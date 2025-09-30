@@ -14,3 +14,5 @@ class User(UserInterface):
     name: str
     age: int
     is_active: bool
+
+

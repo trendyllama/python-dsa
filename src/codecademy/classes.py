@@ -27,6 +27,7 @@ class Menu:
         self.items = items
         self.start_time = start_time
         self.end_time = end_time
+        logger.debug("Initialized Menu: %s from %s to %s", name, start_time, end_time)
 
     def __repr__(self):
         return (
@@ -41,9 +42,11 @@ class Menu:
 
     def calculate_bill(self, purchased_items):
         bill = 0
+        logger.debug("Calculating bill for items: %s", purchased_items)
         for item in purchased_items:
             if item in self.items:
                 bill += self.items[item]
+
         return bill
 
 

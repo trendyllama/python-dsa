@@ -1,24 +1,24 @@
+import pytest
+
 from src.data_structures.stack import Stack
 
 
-class TestStack:
-    def test_push(self):
-        stack = Stack()
+@pytest.fixture
+def stack():
+    return Stack()
 
-        for i in range(1, 200):
-            stack.push(i)
-            assert stack.peek() == i
+def test_push(stack):
+    for i in range(1, 200):
+        stack.push(i)
+        assert stack.peek() == i
 
-    def test_pop(self):
-        stack = Stack()
+def test_pop(stack):
+    for i in range(1, 200):
+        stack.push(i)
 
-        for i in range(1, 200):
-            stack.push(i)
+    assert stack.size == 199
 
-        assert stack.size == 199
-
-        for i in range(1, 199):
-            stack.pop()
-            assert stack.peek() == 199 - i
-
+    for i in range(1, 199):
+        stack.pop()
+        assert stack.peek() == 199 - i
 

@@ -2,6 +2,7 @@ import logging
 import random
 from typing import Protocol, runtime_checkable
 
+logger = logging.getLogger(__name__)
 
 @runtime_checkable
 class MagicEightBall(Protocol):
@@ -18,9 +19,11 @@ class DefaultMagicEightBall(MagicEightBall):
     def __init__(self, question: str) -> None:
         self.question = question
         self.random_number = 0
+        logger.debug("Initializing DefaultMagicEightBall with question: %s", question)
 
     def _generate_random_number(self) -> None:
         self.random_number = random.randint(1, 9)
+        logger.debug("Generated random number: %s", self.random_number)
 
     def return_answer(self) -> str:
         self._generate_random_number()
@@ -44,16 +47,12 @@ class DefaultMagicEightBall(MagicEightBall):
             self.answer = "Very doubtful."
         else:
             raise ValueError
+
+        logger.debug("Magic 8-Ball answered: %s", "Yes - definitely.")
         return self.answer
 
 
 def main() -> None:
-    logger = logging.getLogger(__name__)
-    logging.basicConfig(
-        filename="magic_8_ball_log.log",
-        level=logging.INFO,
-        format="[%(asctime)s] %(levelname)s - %(message)s",
-    )
 
     logger.info("New User!!")
     name = input("Tell me your name: ")
