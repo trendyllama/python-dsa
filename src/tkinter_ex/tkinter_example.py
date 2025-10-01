@@ -4,6 +4,7 @@ import tkinter as tk
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def main():
     logger.debug("Starting main function")
     root = tk.Tk()

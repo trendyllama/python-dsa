@@ -20,6 +20,21 @@ class SortStrategy(Protocol):
 
 class BubbleSortStrategy(SortStrategy):
     def sort(self, dataset: list) -> list:
+        """
+
+        Examples:
+        >>> strategy = BubbleSortStrategy()
+        >>> strategy.sort([3, 1, 2])
+        [1, 2, 3]
+
+        >>> strategy.sort([5, 4, 3, 2, 1])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 2, 3, 4, 5])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 3, 2, 5, 4])
+        [1, 2, 3, 4, 5]
+
+        """
         dataset = dataset.copy()
 
         n = len(dataset)
@@ -34,6 +49,18 @@ class BubbleSortStrategy(SortStrategy):
 
 class QuickSortStrategy(SortStrategy):
     def sort(self, dataset):
+        """
+        Examples:
+        >>> strategy = QuickSortStrategy()
+        >>> strategy.sort([3, 1, 2])
+        [1, 2, 3]
+        >>> strategy.sort([5, 4, 3, 2, 1])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 2, 3, 4, 5])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 3, 2, 5, 4])
+        [1, 2, 3, 4, 5]
+        """
         dataset = dataset.copy()
 
         if len(dataset) <= 1:

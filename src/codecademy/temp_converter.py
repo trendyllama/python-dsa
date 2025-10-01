@@ -1,8 +1,8 @@
-
 import logging
 from typing import Protocol
 
 logger = logging.getLogger(__name__)
+
 
 def conversion(units: str, temp: float):
     """
@@ -31,61 +31,59 @@ def conversion(units: str, temp: float):
     else:
         msg = "Invalid units. Please use 'F' for Fahrenheit or 'C' for Celcius."
         logger.error(msg)
-        raise ValueError(
-            msg
-        )
+        raise ValueError(msg)
 
 
 class TemperatureConverter(Protocol):
-
     temperature: float
 
     def __init__(self, temperature: float) -> None: ...
 
     def convert(self) -> float: ...
 
+
 class FahrenheitToCelciusConverter(TemperatureConverter):
-
     def __init__(self, temperature: float) -> None:
-        logger.debug("Initializing FahrenheitToCelciusConverter with temperature: %s", temperature)
+        logger.debug(
+            "Initializing FahrenheitToCelciusConverter with temperature: %s",
+            temperature,
+        )
         self.temperature = temperature
-
 
     def convert(self) -> float:
         return (self.temperature - 32) * (5 / 9)
 
 
 class CelciusToFahrenheitConverter(TemperatureConverter):
-
     def __init__(self, temperature: float) -> None:
-        logger.debug("Initializing CelciusToFahrenheitConverter with temperature: %s", temperature)
+        logger.debug(
+            "Initializing CelciusToFahrenheitConverter with temperature: %s",
+            temperature,
+        )
 
         self.temperature = temperature
 
     def convert(self) -> float:
         return (self.temperature * (9 / 5)) + 32
 
+
 class TemperatureConverterBuilder:
-
     def __init__(self, units_to: str, units_from: str, temperature: float) -> None:
-
         self.units_to = units_to
         self.units_from = units_from
         self.temperature = temperature
         logger.debug(
             "Initializing TemperatureConverterBuilder with units_to: %s, units_from: %s, temperature: %s",
-            units_to, units_from, temperature
+            units_to,
+            units_from,
+            temperature,
         )
 
     def build(self) -> TemperatureConverter:
-
         if self.units_to == "Celcius" and self.units_from == "Fahrenheit":
             return FahrenheitToCelciusConverter(self.temperature)
-
 
         if self.units_to == "Fahrenheit" and self.units_from == "Celcius":
             return CelciusToFahrenheitConverter(self.temperature)
 
-
         raise NotImplementedError
-

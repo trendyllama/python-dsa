@@ -1,5 +1,6 @@
 import random
-import unittest
+
+import pytest
 
 from src.algorithms.bubble_sort import bubble_sort
 from src.sorted_tale.sorts import (
@@ -39,36 +40,18 @@ def test_bubble_sort3():
         )
 
 
-class TestBubbleSortClasses(unittest.TestCase):
-
-    def setUp(self) -> None:
-
-        self.sort_methods: list[type[BubbleSortMethod]] = [
-            RecursiveBubbleSort,
-            IterativeBubbleSort
-        ]
-
-        self.comparison_functions = [
-            is_greater_than,
-            is_less_than
-        ]
+@pytest.fixture(params=[RecursiveBubbleSort, IterativeBubbleSort])
+def sort_method(request: pytest.FixtureRequest) -> type[BubbleSortMethod]:
+    return request.param
 
 
-    def test_methods_with_less_than(self):
+def test_sort_method_with_less_than(sort_method: type[BubbleSortMethod]) -> None:
+    rand_list = random.sample(range(100), 10)
+    method = sort_method(rand_list, is_less_than)
+    assert method.sort() == sorted(rand_list)
 
-        rand_list = random.sample(range(100), 10)
 
-        for method in self.sort_methods:
-
-            method = method(rand_list, is_less_than)
-
-            assert method.sort() == sorted(rand_list)
-
-    def test_methods_with_grater_then(self):
-        rand_list = random.sample(range(100), 10)
-
-        for method in self.sort_methods:
-
-            method = method(rand_list, is_greater_than)
-
-            assert method.sort() == sorted(rand_list, reverse=True)
+def test_sort_method_with_greater_than(sort_method: type[BubbleSortMethod]) -> None:
+    rand_list = random.sample(range(100), 10)
+    method = sort_method(rand_list, is_greater_than)
+    assert method.sort() == sorted(rand_list, reverse=True)

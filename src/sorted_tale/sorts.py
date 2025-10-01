@@ -3,7 +3,7 @@
 """
 
 from collections.abc import Callable
-from typing import Protocol
+from typing import Any, Protocol
 
 
 def is_greater_than(element1: float, element2: float) -> bool:
@@ -33,7 +33,7 @@ def is_less_than(element1: float, element2: float) -> bool:
     return element1 > element2
 
 
-def bubble_sort(arr: list, comparison_function: Callable) -> list:
+def bubble_sort(arr: list, comparison_function: Callable[[Any, Any], bool]) -> list:
     """
     - codecademy implementation of bubble sort
 
@@ -77,7 +77,9 @@ def swap(array, idx1, idx2):
     return array
 
 
-def bubble_sort2(arr: list, comparison_function: Callable) -> Callable | list:
+def bubble_sort2(
+    arr: list, comparison_function: Callable[[Any, Any], bool]
+) -> Callable | list:
     """
     - not correct yet
 
@@ -102,9 +104,11 @@ def bubble_sort2(arr: list, comparison_function: Callable) -> Callable | list:
 
 
 class BubbleSortMethod(Protocol):
-    comparision_function: Callable
+    comparision_function: Callable[[Any, Any], bool]
 
-    def __init__(self, array: list, comparison_function: Callable) -> None: ...
+    def __init__(
+        self, array: list, comparison_function: Callable[[Any, Any], bool]
+    ) -> None: ...
 
     @staticmethod
     def swap(array: list, idx1, idx2) -> list: ...
@@ -170,6 +174,24 @@ class RecursiveBubbleSort(BubbleSortMethod):
         return array
 
     def sort(self) -> list:
+        """
+
+        Examples:
+        >>> sorter = RecursiveBubbleSort([1, 2, 3], is_greater_than)
+        >>> sorter.sort()
+        [3, 2, 1]
+        >>> sorter = RecursiveBubbleSort([3, 2, 1], is_greater_than)
+        >>> sorter.sort()
+        [3, 2, 1]
+        >>> sorter = RecursiveBubbleSort([1, 3, 2], is_greater_than)
+        >>> sorter.sort()
+        [3, 2, 1]
+        >>> sorter = RecursiveBubbleSort([1, 2, 3], is_less_than)
+        >>> sorter.sort()
+        [1, 2, 3]
+
+        """
+
         def inner(arr: list):
             for idx in range(len(arr) - 1):
                 if self.comparision_function(arr[idx], arr[idx + 1]):

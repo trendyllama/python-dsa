@@ -1,5 +1,3 @@
-
-
 class Solution:
     @staticmethod
     def generate_matrix(n: int) -> list[list[int]]:
@@ -21,7 +19,6 @@ class Solution:
         ]
 
         incrementor = (i for i in range(1, final_num + 1))
-
 
         for i, row in enumerate(main_matrix):
             for j, _ in enumerate(row):

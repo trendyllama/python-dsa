@@ -7,6 +7,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
+
 def _display_iris():
     url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/refs/heads/master/iris.csv"
 

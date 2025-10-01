@@ -8,6 +8,7 @@ import pyarrow as pa
 
 logger = logging.getLogger(__name__)
 
+
 def perf_timer(func):
     @wraps(func)
     def wrapper(*args, **kwargs):

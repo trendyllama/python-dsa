@@ -21,6 +21,7 @@ Hello, Users!
 """
 
 import logging
+import sys
 from typing import Protocol
 
 logger = logging.getLogger(__name__)
@@ -63,4 +64,4 @@ class AppUser:
         self.observers.remove(observer)
 
     def receive_notification(self, message: Message) -> None:
-        print(message.message_text)
+        sys.stdout.write(message.message_text + "\n")

@@ -4,6 +4,7 @@ from typing import Protocol, runtime_checkable
 
 logger = logging.getLogger(__name__)
 
+
 @runtime_checkable
 class MagicEightBall(Protocol):
     question: str
@@ -53,7 +54,6 @@ class DefaultMagicEightBall(MagicEightBall):
 
 
 def main() -> None:
-
     logger.info("New User!!")
     name = input("Tell me your name: ")
     logger.info("The user's name is %s", name)

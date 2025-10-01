@@ -79,7 +79,9 @@ class BinarySearchTree:
                 self.left = BinarySearchTree(value, self.depth + 1)
                 logger.info(
                     "Tree node %s added to the left of %s at depth %s",
-                    value, self.value, self.depth + 1
+                    value,
+                    self.value,
+                    self.depth + 1,
                 )
             else:
                 self.left.insert(value)
@@ -89,7 +91,9 @@ class BinarySearchTree:
                     self.right = BinarySearchTree(value, self.depth + 1)
                     logger.info(
                         "Tree node %s added to the right of %s at depth %s",
-                        value, self.value, self.depth + 1
+                        value,
+                        self.value,
+                        self.depth + 1,
                     )
                 case _:
                     self.right.insert(value)

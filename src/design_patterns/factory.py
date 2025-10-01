@@ -27,7 +27,6 @@ class FileParserFactory:
     """
 
     def _parse_json(self, file: File) -> str:
-
         data = json.loads(file.read().read_text())
 
         return data

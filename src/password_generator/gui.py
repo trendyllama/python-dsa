@@ -13,14 +13,11 @@ from typing import Protocol
 
 
 class InputBoxProtocol(Protocol):
-
     def __init__(self, geo: str, message: str) -> None: ...
 
-    def init_box(self) -> None:
-        ...
+    def init_box(self) -> None: ...
 
-    def get_input(self) -> str:
-        ...
+    def get_input(self) -> str: ...
 
 
 class InputBox(InputBoxProtocol):
@@ -54,7 +51,6 @@ class InputBox(InputBoxProtocol):
         self.init_box()
 
     def init_box(self) -> None:
-
         self.root = tk.Tk()
         self.root.geometry(self.geo)
 

@@ -10,14 +10,15 @@ from src.data_structures.stack import Stack
 
 logger = logging.getLogger(__name__)
 
+
 class GameStates(enum.Enum):
     INVALID_MOVE = 0
 
 
 class InputError(Exception): ...
 
-class TowersOfHanoiInterface(Protocol):
 
+class TowersOfHanoiInterface(Protocol):
     num_moves: int
     num_disks: int
     num_optimal_moves: int
@@ -45,7 +46,6 @@ class Game(TowersOfHanoiInterface):
         self.right_stack = Stack()
 
         self.stacks: list[Stack] = [left_stack, middle_stack, self.right_stack]
-
 
         for i in range(self.num_disks, 0, -1):
             logger.debug("Pushing disk %s to left stack", i)
@@ -85,8 +85,6 @@ class Game(TowersOfHanoiInterface):
         sys.exit(0)
 
     def run(self) -> None:
-
-
         def runner():
             if self.right_stack.size != self.num_disks:
                 logger.info("Current Stacks...")
@@ -110,7 +108,10 @@ class Game(TowersOfHanoiInterface):
 
                         return move()
 
-                    if to_stack.size == 0 or from_stack.peek().value < to_stack.peek().value:
+                    if (
+                        to_stack.size == 0
+                        or from_stack.peek().value < to_stack.peek().value
+                    ):
                         disk = from_stack.pop()
                         to_stack.push(disk)
 
@@ -130,8 +131,6 @@ class Game(TowersOfHanoiInterface):
 
 
 class GameBuilder:
-
-
     def __init__(self, number_of_disks: int) -> None:
         self.number_of_disks = number_of_disks
 

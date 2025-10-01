@@ -5,6 +5,10 @@
 from src.data_structures.node import Node
 
 
+class MissingNodeError(Exception):
+    pass
+
+
 class LinkedList:
     """
     - codecademy implementation of linked list
@@ -100,7 +104,7 @@ class LinkedList:
         while current_node is not None:
             if current_node.next_node is None:
                 msg = f"Value {value_to_delete} not found in list"
-                raise ValueError(msg)
+                raise MissingNodeError(msg)
 
             # want to look ahead by one node to see if the next node is the one to delete
             if current_node.next_node.value == value_to_delete:

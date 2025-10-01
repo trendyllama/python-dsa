@@ -1,6 +1,6 @@
 import pytest
 
-from src.data_structures.linked_list import LinkedList
+from src.data_structures.linked_list import LinkedList, MissingNodeError
 
 
 @pytest.fixture
@@ -63,7 +63,7 @@ def test_delete_empty_list(linked_list: LinkedList):
 
     linked_list.append(30)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(MissingNodeError):
         linked_list.delete(10)
 
     linked_list.append(10)

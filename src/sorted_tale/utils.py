@@ -87,13 +87,10 @@ def load_books_to_db(filename: Path) -> None:
 
 
 class DatabaseService(Protocol):
-
     def get_engine(self): ...
 
 
-
 class BookLoader(Protocol):
-
     books: list[Book] | None
 
     def scan_source(self) -> None: ...
@@ -102,7 +99,6 @@ class BookLoader(Protocol):
 
 
 class BookFileLoader(BookLoader):
-
     file_name: Path
     book: Book
     books: list[Book] | None
@@ -130,8 +126,6 @@ class BookFileLoader(BookLoader):
         self.books = bookshelf
 
     def load(self) -> None: ...
-
-
 
 
 class BookDatabaseLoader(BookLoader):

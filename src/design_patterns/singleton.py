@@ -44,7 +44,6 @@ class Configuration(SingletonMeta):
         cls.environment: str = env_var
 
 
-
 class ApplicationState:
     _instances: ClassVar[dict] = {}
 

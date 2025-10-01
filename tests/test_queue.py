@@ -4,7 +4,7 @@ from src.data_structures.queue import Queue
 
 
 @pytest.fixture
-def queue():
+def queue() -> Queue:
     queue = Queue()
 
     return queue

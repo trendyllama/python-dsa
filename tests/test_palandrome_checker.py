@@ -8,17 +8,20 @@ from src.codecademy.is_palandrome import (
 )
 
 
-@pytest.fixture(params=[
-    IterativePalindromeChecker,
-    RecursivePalindromeChecker,
-    SimplePalindromeChecker,
-])
-def checker(request):
+@pytest.fixture(
+    params=[
+        IterativePalindromeChecker,
+        RecursivePalindromeChecker,
+        SimplePalindromeChecker,
+    ]
+)
+def checker(request: pytest.FixtureRequest) -> type[PalindromeChecker]:
     return request.param
 
 
 def test_empty_string(checker: type[PalindromeChecker]) -> None:
     assert checker("").check()
+
 
 def test_single_character(checker: type[PalindromeChecker]) -> None:
     assert checker("a").check()
@@ -28,6 +31,7 @@ def test_single_character(checker: type[PalindromeChecker]) -> None:
     assert checker(" ").check()
     assert checker("\n").check()
     assert checker("\t").check()
+
 
 def test_even_length_palindromes(checker: type[PalindromeChecker]) -> None:
     palindromes = [
@@ -45,6 +49,7 @@ def test_even_length_palindromes(checker: type[PalindromeChecker]) -> None:
         assert checker(palindrome).check()
         assert checker(palindrome.upper()).check()
 
+
 def test_odd_length_palindromes(checker: type[PalindromeChecker]) -> None:
     palindromes = [
         "aba",
@@ -60,6 +65,7 @@ def test_odd_length_palindromes(checker: type[PalindromeChecker]) -> None:
     for palindrome in palindromes:
         assert checker(palindrome).check()
         assert checker(palindrome.upper()).check()
+
 
 def test_non_palindromes(checker: type[PalindromeChecker]) -> None:
     non_palindromes = [

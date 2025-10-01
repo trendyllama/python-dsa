@@ -1,7 +1,7 @@
-
 import logging
 
 logger = logging.getLogger(__name__)
+
 
 class Menu:
     """
@@ -82,7 +82,11 @@ class Franchise:
         return self.address
 
     def available_menus(self, time):
-        available_menus = [menu for menu in self.menus if time >= menu.start_time and time <= menu.end_time]
+        available_menus = [
+            menu
+            for menu in self.menus
+            if time >= menu.start_time and time <= menu.end_time
+        ]
         return available_menus
 
 
@@ -180,7 +184,6 @@ def main():
     basta = Business("Basta Fazoolin' with my Heart", [flagship_store, new_installment])
 
     logger.info(basta.franchises)
-
 
     # Take a' Arepa Business
     arepa = Business("Take a' Arepa", arepas_place)

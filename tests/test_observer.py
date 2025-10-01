@@ -23,3 +23,8 @@ def test_observer(observer: AppObserver):
     observer.subscribe(AppUser("user3"))
 
     observer.notify(Message("A new feature was just released!"))
+
+    assert len(observer.users) == 3
+    assert observer.users[0].name == "user1"
+    assert observer.users[1].name == "user2"
+    assert observer.users[2].name == "user3"

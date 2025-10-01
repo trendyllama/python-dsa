@@ -11,6 +11,7 @@ from typing import Protocol
 
 logger = logging.getLogger(__name__)
 
+
 class StringGenerator(Protocol):
     @staticmethod
     def generate_user_name(initials: str, n: int) -> str: ...

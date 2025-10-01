@@ -10,6 +10,7 @@ from .node import Node
 
 logger = logging.getLogger(__name__)
 
+
 class HashMap:
     """
     - codecademy implementation of a hashmap
