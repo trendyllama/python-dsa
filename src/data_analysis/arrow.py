@@ -1,12 +1,20 @@
 import logging
 import time
 from functools import wraps
+from contextlib import contextmanager
 
 import numpy as np
 import pandas as pd
 import pyarrow as pa
 
 logger = logging.getLogger(__name__)
+
+@contextmanager
+def timed_context():
+    start_time = time.perf_counter()
+    yield
+    end_time = time.perf_counter()
+    logger.info("%s took %.4f seconds to complete.", end_time - start_time)
 
 
 def perf_timer(func):

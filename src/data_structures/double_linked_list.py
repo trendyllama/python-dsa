@@ -119,10 +119,12 @@ class DoublyLinkedList:
             raise ValueError
 
         prev_node = node_to_remove.previous_node
+
+        if next_node is None:
+            raise ValueError
+
         next_node.previous_node = prev_node
         prev_node.next_node = next_node
-
-        return node_to_remove
 
     def stringify_list(self) -> str:
         string_list = ""

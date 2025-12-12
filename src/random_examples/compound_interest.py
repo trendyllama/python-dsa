@@ -1,6 +1,14 @@
 import logging
+from enum import unique, IntEnum
 from math import e
 from typing import Protocol, runtime_checkable
+
+
+@unique
+class YearInterval(IntEnum):
+
+    MONTHS=12
+    DAYS=365
 
 
 @runtime_checkable
@@ -25,7 +33,7 @@ class MonthlyCompoundInterestCalculator(CompoundInterestCalculator):
         self.final_amount = None
 
     def calculate_final_amount(self) -> float:
-        monthly_invest = self.monthly_investment * 12
+        monthly_invest = self.monthly_investment * YearInterval.MONTHS.value
         final_ammount = 0.0
 
         for _ in range(self.years):
@@ -49,7 +57,7 @@ class YearlyCompoundInterestCalculator(CompoundInterestCalculator):
         self.final_amount = None
 
     def calculate_final_amount(self) -> float:
-        yearly_invest = self.monthly_investment * 12
+        yearly_invest = self.monthly_investment * YearInterval.MONTHS.value
         final_ammount = 0.0
 
         for _ in range(self.years):
@@ -73,15 +81,14 @@ class DailyCompoundInterestCalculator(CompoundInterestCalculator):
         self.final_amount = None
 
     def calculate_final_amount(self) -> float:
-        daily_invest = self.monthly_investment * 12 / 365
+        daily_invest = self.monthly_investment * YearInterval.MONTHS.value / YearInterval.DAYS.value
         final_ammount = 0.0
 
-        for _ in range(self.years * 365):
+        for _ in range(self.years * YearInterval.DAYS.value):
             if final_ammount == 0:
                 final_ammount = self.principle
 
-            final_ammount = (final_ammount + daily_invest) * (1 + self.interest / 365)
-
+            final_ammount = (final_ammount + daily_invest) * (1 + self.interest / YearInterval.DAYS.value)
         self.final_amount = final_ammount
         return self.final_amount
 
@@ -105,13 +112,13 @@ class ContinuousCompoundInterestCalculator(CompoundInterestCalculator):
         self.final_amount = None
 
     def calculate_final_amount(self) -> float:
-        total_months = self.years * 12
+        total_months = self.years * YearInterval.MONTHS.value
         monthly_invest = self.monthly_investment
         final_ammount = self.principle * e ** (self.interest * self.years)
 
         for _ in range(total_months):
             final_ammount += monthly_invest * e ** (
-                self.interest * (self.years - 1 / 12)
+                self.interest * ((self.years - 1) / YearInterval.MONTHS.value)
             )
 
         self.final_amount = final_ammount
@@ -122,7 +129,7 @@ class ContinuousCompoundInterestCalculator(CompoundInterestCalculator):
         return self.final_amount
 
 
-if __name__ == "__main__":
+def main() -> None:
     logger = logging.getLogger(__name__)
 
     logging.basicConfig(
@@ -153,7 +160,7 @@ if __name__ == "__main__":
     logger.info(log_msg4)
     logger.info(" ")
 
-    monthly_invest = monthly_investment * 12
+    monthly_invest = monthly_investment * YearInterval.MONTHS.value
     final_ammount = 0
 
     for _ in range(years):
@@ -171,3 +178,7 @@ if __name__ == "__main__":
 
     logger.info("Session over...")
     logger.info("Thank you for using our calculator")
+
+
+if __name__ == "__main__":
+    main()

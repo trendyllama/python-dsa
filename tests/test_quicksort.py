@@ -4,12 +4,13 @@
 
 import random
 
+import pytest
+
 from src.algorithms.elegant_quick_sort import quick_sort
 
 
-def test_quicksort():
-    assert quick_sort([3, 6, 2, 9]) == [2, 3, 6, 9]
-
-    rand_list = [random.randint(1, 50) for _ in range(50)]
+@pytest.mark.parametrize("value", list(range(1, 1000)))
+def test_quicksort(value: int):
+    rand_list = [random.randint(1, 50) for _ in range(value)]
 
     assert quick_sort(rand_list) == sorted(rand_list)

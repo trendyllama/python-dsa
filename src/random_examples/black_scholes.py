@@ -1,4 +1,4 @@
-from enum import Enum, StrEnum, unique
+from enum import StrEnum, unique
 from typing import Protocol, runtime_checkable
 
 import numpy as np
@@ -132,7 +132,7 @@ def black_scholes(
     years_to_expiration: float,
     r: float,
     sigma: float,
-    input_type: str = "c",
+    input_type: ContractType,
 ) -> np.float64:
     """
     Calculates the price of a European-style option using the Black-Scholes model.

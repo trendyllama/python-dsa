@@ -43,24 +43,19 @@ def test_dequeue(queue: Queue):
     assert queue.is_empty
 
 
-def test_multiple_dequeue(queue: Queue):
-    for i in range(1, 10):
+@pytest.mark.parametrize("value", list(range(1000)))
+def test_multiple_dequeue(queue: Queue, value: int):
+    for i in range(value):
         queue.enqueue(i)
-        assert queue.size == i
+        assert queue.size == i + 1
         assert queue.head is not None
-        assert queue.head.value == 1
+        assert queue.head.value == 0
         assert queue.tail is not None
         assert queue.tail.value == i
 
-    assert queue.size == 9
-    assert queue.head is not None
-    assert queue.head.value == 1
-    assert queue.tail is not None
-    assert queue.tail.value == 9
-
-    for i in range(1, 10):
+    for i in range(value):
         queue.dequeue()
-        assert queue.size == 9 - i
+        assert queue.size == value - i - 1
 
     assert queue.size == 0
     assert queue.is_empty

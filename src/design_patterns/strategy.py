@@ -80,6 +80,23 @@ class QuickSortStrategy(SortStrategy):
         return [*self.sort(items_lower), pivot, *self.sort(items_greater)]
 
 
+class DefaultSortStrategy(SortStrategy):
+    def sort(self, dataset: list) -> list:
+        """
+        Examples:
+        >>> strategy = DefaultSortStrategy()
+        >>> strategy.sort([3, 1, 2])
+        [1, 2, 3]
+        >>> strategy.sort([5, 4, 3, 2, 1])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 2, 3, 4, 5])
+        [1, 2, 3, 4, 5]
+        >>> strategy.sort([1, 3, 2, 5, 4])
+        [1, 2, 3, 4, 5]
+        """
+        return sorted(dataset)
+
+
 class Context:
     def __init__(self, strategy: SortStrategy) -> None:
         self.strategy = strategy

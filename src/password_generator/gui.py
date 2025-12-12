@@ -8,9 +8,11 @@ Example usage:
     user_input = input_box.get_input()
 """
 
+import logging
 import tkinter as tk
 from typing import Protocol
 
+logger = logging.getLogger(__name__)
 
 class InputBoxProtocol(Protocol):
     def __init__(self, geo: str, message: str) -> None: ...
@@ -45,6 +47,8 @@ class InputBox(InputBoxProtocol):
             geo (str): The dimensions for the GUI window in the format "widthxheight".
             message (str): The message to display as a label in the GUI window.
         """
+        logger.debug("Initializing InputBox with geo: %s and message: %s", geo, message)
+
         self.geo = geo
         self.message = message
 
@@ -72,6 +76,7 @@ class InputBox(InputBoxProtocol):
         Returns:
             str: The user input as a string.
         """
+
         self.input = self.input.get(1.0, "end-1c")
         self.root.destroy()
         return self.input

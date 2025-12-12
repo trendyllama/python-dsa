@@ -1,6 +1,3 @@
-from operator import gt, le
-
-
 def quick_sort(list_input: list) -> list:
     """
     - most elegant implementation of quicksort
@@ -21,12 +18,12 @@ def quick_sort(list_input: list) -> list:
     [1, 1, 2, 3, 6, 8, 10]
     """
 
-    if le(len(list_input), 1):
+    if len(list_input) <= 1:
         return list_input
 
     pivot = list_input[-1]
 
-    smaller = list(filter(lambda x: le(x, pivot), list_input[:-1]))
-    larger = list(filter(lambda x: gt(x, pivot), list_input[:-1]))
+    smaller = list(filter(lambda x: x <= pivot, list_input[:-1]))
+    larger = list(filter(lambda x: x > pivot, list_input[:-1]))
 
     return [*quick_sort(smaller), pivot, *quick_sort(larger)]

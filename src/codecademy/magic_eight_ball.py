@@ -1,18 +1,19 @@
 import logging
 import random
-from typing import Protocol, runtime_checkable
+from abc import ABC, abstractmethod
 
 logger = logging.getLogger(__name__)
 
 
-@runtime_checkable
-class MagicEightBall(Protocol):
+class MagicEightBall(ABC):
     question: str
     answer: str
     random_number: int
 
+    @abstractmethod
     def _generate_random_number(self) -> None: ...
 
+    @abstractmethod
     def return_answer(self) -> str: ...
 
 

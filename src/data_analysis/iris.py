@@ -1,6 +1,7 @@
 import io
 import logging
 import time
+from contextlib import contextmanager
 
 import pandas as pd
 import requests
@@ -8,18 +9,26 @@ import requests
 logger = logging.getLogger(__name__)
 
 
+@contextmanager
+def timed_context():
+    start_time = time.perf_counter()
+    yield
+    end_time = time.perf_counter()
+    logger.info("%s took %.4f seconds to complete.", end_time - start_time)
+
+
 def _display_iris():
     url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/refs/heads/master/iris.csv"
 
-    request = requests.get(url)
+    response = requests.get(url)
 
-    if request.status_code == 200:
-        s = time.perf_counter()
-        df = pd.read_csv(io.BytesIO(request.content))
+    response.raise_for_status()
 
-        e = time.perf_counter()
-        logger.info("Function took %.4f seconds to run.", e - s)
-        return df
+    with timed_context():
+
+        df = pd.read_csv(io.BytesIO(response.content))
+
+    return df
 
 
 def _test_display_iris():
@@ -45,14 +54,13 @@ def _display_imdb_reviews():
 
     content = io.BytesIO(response.content)
 
-    s = time.perf_counter()
-    _ = pd.read_csv(content, encoding="utf-8", engine="pyarrow")
-    logger.info("Function took %.4f seconds to run.", time.perf_counter() - s)
+    with timed_context():
+        _ = pd.read_csv(content, encoding="utf-8", engine="pyarrow")
 
     content = io.BytesIO(response.content)
-    s = time.perf_counter()
-    _ = pd.read_csv(content, encoding="utf-8")
-    logger.info("Function took %.4f seconds to run.", time.perf_counter() - s)
+
+    with timed_context():
+        _ = pd.read_csv(content, encoding="utf-8")
 
 
 if __name__ == "__main__":
