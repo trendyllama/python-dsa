@@ -11,8 +11,9 @@ from src.data_structures.stack import Stack
 logger = logging.getLogger(__name__)
 
 
-class GameStates(enum.Enum):
+class GameState(enum.IntEnum):
     INVALID_MOVE = 0
+
 
 
 class InputError(Exception): ...
@@ -134,8 +135,7 @@ class GameBuilder:
     def __init__(self, number_of_disks: int) -> None:
         self.number_of_disks = number_of_disks
 
-    def build(self) -> Game:
-        pass
+    def build(self) -> Game: ...
 
 
 if __name__ == "__main__":

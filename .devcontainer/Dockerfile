@@ -1,4 +1,4 @@
 
-FROM mcr.microsoft.com/devcontainers/rust:latest
+FROM mcr.microsoft.com/devcontainers/base:alpine
 
-RUN pip install uv && uv sync
+RUN apk add git uv bash 

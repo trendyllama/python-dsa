@@ -45,17 +45,11 @@ def test_insert_multiple_nodes(linked_list: LinkedList):
     assert after_after_head.value == 30
 
 
-def test_larger_lists(linked_list: LinkedList):
-    for i in range(1, 100):
-        linked_list.append(i)
-        assert linked_list.head_node is not None
-        assert linked_list.head_node.value == 1
-
-    current_node = linked_list.head_node
-    for i in range(1, 100):
-        assert current_node is not None
-        assert current_node.value == i
-        current_node = current_node.next_node
+@pytest.mark.parametrize("value", range(1, 100))
+def test_larger_lists(linked_list: LinkedList, value: int) -> None:
+    linked_list.append(value)
+    assert linked_list.head_node is not None
+    assert linked_list.head_node.value == value
 
 
 def test_delete_empty_list(linked_list: LinkedList):

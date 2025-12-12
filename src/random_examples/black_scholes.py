@@ -1,7 +1,14 @@
+from enum import Enum, StrEnum, unique
 from typing import Protocol, runtime_checkable
 
 import numpy as np
 from scipy.stats import norm
+
+
+@unique
+class ContractType(StrEnum):
+    CALL = "c"
+    PUT = "p"
 
 
 @runtime_checkable
@@ -99,23 +106,24 @@ class BlackScholesCalculatorBuilder:
         self.risk_free_rate = risk_free_rate
         self.sigma = sigma
 
-    def build(self, option_type: str) -> BlackScholesCalculator:
-        if option_type == "c":
-            return CallOptionCalculator(
-                self.underlying_price,
-                self.strike_price,
-                self.years_to_maturity,
-                self.risk_free_rate,
-                self.sigma,
-            )
-        else:
-            return PutOptionCalculator(
-                self.underlying_price,
-                self.strike_price,
-                self.years_to_maturity,
-                self.risk_free_rate,
-                self.sigma,
-            )
+    def build(self, option_type: ContractType) -> BlackScholesCalculator:
+        match option_type:
+            case ContractType.CALL:
+                return CallOptionCalculator(
+                    self.underlying_price,
+                    self.strike_price,
+                    self.years_to_maturity,
+                    self.risk_free_rate,
+                    self.sigma,
+                )
+            case ContractType.PUT:
+                return PutOptionCalculator(
+                    self.underlying_price,
+                    self.strike_price,
+                    self.years_to_maturity,
+                    self.risk_free_rate,
+                    self.sigma,
+                )
 
 
 def black_scholes(

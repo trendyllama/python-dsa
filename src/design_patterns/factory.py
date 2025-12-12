@@ -7,9 +7,15 @@ It allows us to create objects without specifying the exact class of object that
 """
 
 import json
+from enum import StrEnum
 from pathlib import Path
 from typing import Protocol
 
+
+class FileType(StrEnum):
+    JSON = "json"
+    XML = "xml"
+    YAML = "yaml"
 
 class File(Protocol):
     def read(self) -> Path: ...
@@ -39,26 +45,24 @@ class FileParserFactory:
         msg = "YAML parsing is not implemented yet"
         raise NotImplementedError(msg)
 
-    def parse(self, file: File, file_type: str) -> str:
+    def parse(self, file: File, file_type: FileType) -> str:
         """
         generic parse method that can be extended to support other file types
 
         hides these if statements from behind a clean interface
         """
-        if file_type == "json":
-            return self._parse_json(file)
 
-        if file_type == "xml":
-            return self._parse_xml(file)
-
-        if file_type == "yaml":
-            return self._parse_yaml(file)
-
-        msg = f"Unsupported file type: {file_type}"
-        raise ValueError(msg)
+        match file_type:
+            case FileType.JSON:
+                return self._parse_json(file)
+            case FileType.XML:
+                return self._parse_xml(file)
+            case FileType.YAML:
+                return self._parse_yaml(file)
 
 
-def file_parser(file: File, file_type: str) -> str:
+
+def file_parser(file: File, file_type: FileType) -> str:
     """
     factory method that creates a FileParserFactory instance
     and calls the parse method on it
