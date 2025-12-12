@@ -20,11 +20,19 @@
       "group": "test"
     },
     {
+      "label": "lint and fix",
+      "type": "shell",
+      "command": "uv run ruff check --fix",
+      "dependsOn": ["format", "lint"],
+      "group": "build"
+
+
+    },
+    {
       "label": "main workflow",
       "dependsOn": ["format", "lint", "test"],
       "group": {
         "kind": "build",
-        "isDefault": true
       }
     }
   ]
