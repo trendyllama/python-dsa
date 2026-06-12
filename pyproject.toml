@@ -2,7 +2,7 @@
 name = "codecademy-dsa-python"
 dynamic = ["version"]
 description = "data structures and algorithms course from codecademy"
-requires-python = ">=3.10"
+requires-python = ">=3.14"
 readme = "README.md"
 dependencies = [
     "aiosqlite>=0.21.0",
@@ -17,8 +17,8 @@ dependencies = [
 ]
 
 
-[tool.uv]
-dev-dependencies = [
+[project.optional-dependencies]
+dev = [
     "pytest>=8.3.4",
     "ruff>=0.6.8",
     "uv>=0.4.17",

@@ -36,6 +36,7 @@ class Queue:
         self._head: Node | None = None
         self._tail: Node | None = None
         self._size: int = 0
+        self._iter_node: Node | None = None
 
     @property
     def head(self) -> Node | None:
@@ -269,3 +270,16 @@ class Queue:
         1
         """
         return self.size
+
+    def __iter__(self):
+        self._iter_node = self.head
+        return self
+
+
+    def __next__(self):
+        if self._iter_node is None:
+            raise StopIteration
+
+        value = self._iter_node.value
+        self._iter_node = self._iter_node.next_node
+        return value

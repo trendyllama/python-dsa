@@ -1,7 +1,7 @@
 import logging
 
 import sqlalchemy as sa
-from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import create_async_engine
 
 logger = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class User(Base):  # type: ignore
+class User(Base):
     __tablename__ = "users"
 
     id = sa.Column(sa.Integer, primary_key=True)
@@ -56,5 +56,3 @@ def init_db():
         result = conn.execute(sa.select(User).order_by(User.id)).all()
         for row in result:
             logger.info("User %s: %s, %s", row.id, row.name, row.email)
-
-

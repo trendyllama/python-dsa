@@ -66,13 +66,17 @@ class ImmutableMeta(type):
         return instance
 
     def __setattr__(cls, key, value):
-        raise AttributeError("Cannot modify immutable class attributes")
+        msg = "Cannot modify immutable class attributes"
+        raise AttributeError(msg)
 
     def __delattr__(cls, key):
-        raise AttributeError("Cannot delete immutable class attributes")
+        msg = "Cannot delete immutable class attributes"
+        raise AttributeError(msg)
 
     def __setitem__(cls, key, value):
-        raise AttributeError("Cannot modify immutable class items")
+        msg = "Cannot modify immutable class items"
+        raise AttributeError(msg)
 
     def __delitem__(cls, key):
-        raise AttributeError("Cannot delete immutable class items")
+        msg = "Cannot delete immutable class items"
+        raise AttributeError(msg)
