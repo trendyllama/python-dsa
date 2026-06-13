@@ -11,7 +11,6 @@ from functools import wraps
 logger = logging.getLogger(__name__)
 
 
-
 def get_time(func: Callable) -> Callable:
     @wraps(func)
     def wrapper(*args, **kwargs):

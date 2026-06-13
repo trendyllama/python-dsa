@@ -15,7 +15,6 @@ class GameState(enum.IntEnum):
     INVALID_MOVE = 0
 
 
-
 class InputError(Exception): ...
 
 

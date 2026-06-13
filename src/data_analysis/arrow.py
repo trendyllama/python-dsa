@@ -9,6 +9,7 @@ import pyarrow as pa
 
 logger = logging.getLogger(__name__)
 
+
 @contextmanager
 def timed_context():
     start_time = time.perf_counter()

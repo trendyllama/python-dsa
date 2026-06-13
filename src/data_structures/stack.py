@@ -263,7 +263,6 @@ class Stack:
         self._iter_node = self.head
         return self
 
-
     def __next__(self):
         """
 

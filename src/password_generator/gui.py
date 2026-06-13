@@ -14,6 +14,7 @@ from typing import Protocol
 
 logger = logging.getLogger(__name__)
 
+
 class InputBoxProtocol(Protocol):
     def __init__(self, geo: str, message: str) -> None: ...
 

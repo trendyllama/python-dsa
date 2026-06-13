@@ -25,7 +25,6 @@ def _display_iris():
     response.raise_for_status()
 
     with timed_context():
-
         df = pd.read_csv(io.BytesIO(response.content))
 
     return df

@@ -12,7 +12,6 @@ def example_groupby():
     # Group by age
     grouped = groupby(data, key=lambda x: x["age"])
     for age, group in grouped:
-
         sys.stdout.write(f"Age: {age}\n")
         for person in group:
             sys.stdout.write(f" - {person['name']}\n")
@@ -23,6 +22,7 @@ def example_chain():
     list2 = ["a", "b", "c"]
     combined = chain(list1, list2)
     sys.stdout.write(str(list(combined)) + "\n")
+
 
 def example_batched():
     data = range(10)
@@ -42,6 +42,7 @@ def example_tee():
     iter1, iter2 = tee(data, 2)
     sys.stdout.write("Iterator 1: " + str(list(iter1)) + "\n")
     sys.stdout.write("Iterator 2: " + str(list(iter2)) + "\n")
+
 
 if __name__ == "__main__":
     example_groupby()

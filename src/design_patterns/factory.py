@@ -17,6 +17,7 @@ class FileType(StrEnum):
     XML = "xml"
     YAML = "yaml"
 
+
 class File(Protocol):
     def read(self) -> Path: ...
 
@@ -59,7 +60,6 @@ class FileParserFactory:
                 return self._parse_xml(file)
             case FileType.YAML:
                 return self._parse_yaml(file)
-
 
 
 def file_parser(file: File, file_type: FileType) -> str:

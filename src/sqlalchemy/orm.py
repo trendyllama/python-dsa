@@ -11,9 +11,9 @@ logging.basicConfig(level=logging.INFO)
 def get_engine():
     return sa.create_engine("sqlite:///:memory:")
 
+
 def get_async_engine():
     return create_async_engine("sqlite+aiosqlite:///:memory:")
-
 
 
 class Base(DeclarativeBase):

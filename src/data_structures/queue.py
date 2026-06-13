@@ -275,7 +275,6 @@ class Queue:
         self._iter_node = self.head
         return self
 
-
     def __next__(self):
         if self._iter_node is None:
             raise StopIteration

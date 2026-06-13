@@ -6,9 +6,8 @@ from typing import Protocol, runtime_checkable
 
 @unique
 class YearInterval(IntEnum):
-
-    MONTHS=12
-    DAYS=365
+    MONTHS = 12
+    DAYS = 365
 
 
 @runtime_checkable
@@ -81,14 +80,20 @@ class DailyCompoundInterestCalculator(CompoundInterestCalculator):
         self.final_amount = None
 
     def calculate_final_amount(self) -> float:
-        daily_invest = self.monthly_investment * YearInterval.MONTHS.value / YearInterval.DAYS.value
+        daily_invest = (
+            self.monthly_investment
+            * YearInterval.MONTHS.value
+            / YearInterval.DAYS.value
+        )
         final_ammount = 0.0
 
         for _ in range(self.years * YearInterval.DAYS.value):
             if final_ammount == 0:
                 final_ammount = self.principle
 
-            final_ammount = (final_ammount + daily_invest) * (1 + self.interest / YearInterval.DAYS.value)
+            final_ammount = (final_ammount + daily_invest) * (
+                1 + self.interest / YearInterval.DAYS.value
+            )
         self.final_amount = final_ammount
         return self.final_amount
 
