@@ -28,8 +28,8 @@ jobs:
       run: uv run ruff format --check
     - name: Lint with ruff check
       run: uv run ruff check
-    - name: Type check with mypy
-      run: uv run mypy src
+    - name: Type check with ty
+      run: uv run ty check
 
   build:
     runs-on: ubuntu-latest
