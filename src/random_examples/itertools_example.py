@@ -26,7 +26,7 @@ def example_chain():
 
 def example_batched():
     data = range(10)
-    batched_data = batched(data, 3)
+    batched_data = batched(data, 3, strict=False)
     for batch in batched_data:
         sys.stdout.write(str(batch) + "\n")
 
