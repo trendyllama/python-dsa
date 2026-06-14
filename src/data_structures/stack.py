@@ -6,7 +6,7 @@ from src.data_structures.exceptions import EmptyStackError, StackOverflowError
 from src.data_structures.node import Node
 
 
-class Stack:
+class Stack[T]:
     """
     - codecademy implementation of a stack
     """
@@ -35,9 +35,9 @@ class Stack:
         1
         """
         self._size: int = 0
-        self._head: Node | None = None
+        self._head: Node[T] | None = None
         self._limit: int = 1000
-        self._iter_node: Node | None = None
+        self._iter_node: Node[T] | None = None
 
     @property
     def size(self) -> int:
@@ -69,7 +69,7 @@ class Stack:
         self._size = new_size
 
     @property
-    def head(self) -> Node | None:
+    def head(self) -> Node[T] | None:
         """
         - returns the head node of the stack
         - the head node is the top of the stack
@@ -86,7 +86,7 @@ class Stack:
         return self._head
 
     @head.setter
-    def head(self, new_top_item: Node | None) -> None:
+    def head(self, new_top_item: Node[T] | None) -> None:
         self._head = new_top_item
 
         return None
@@ -126,7 +126,7 @@ class Stack:
         self.size -= 1
         return None
 
-    def push(self, value) -> None:
+    def push(self, value: T) -> None:
         """
         - adds a node to the top of the stack
 
@@ -189,7 +189,7 @@ class Stack:
 
         return None
 
-    def peek(self):
+    def peek(self) -> T | None:
         """
         - returns the value of the Node at the top of the stack
 

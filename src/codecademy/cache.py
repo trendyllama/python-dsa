@@ -79,11 +79,11 @@ class MainMemory(Memory):
         self.data = {}
 
     def write(self, address, data):
-        super().write()
+        super().write(address, data)
         self.data[address] = data
 
-    def read(self, address):
-        super().read()
+    def read(self, address, data=None):
+        super().read(address, data)
         return self.data.get(address, None)
 
     def get_exec_time(self):
@@ -116,7 +116,7 @@ class Cache(Memory):
         ]
 
     def write(self, address, data):
-        super().write()
+        super().write(address, data)
         entry = self.get_entry(address)
         if entry is not None:
             entry["data"] = data
@@ -125,9 +125,8 @@ class Cache(Memory):
 
         self.main_memory.write(address, data)
 
-    def read(self, address):
-        super().read()
-        data = None
+    def read(self, address, data=None):
+        super().read(address, data)
         entry = self.get_entry(address)
         if entry is not None:
             data = entry["data"]

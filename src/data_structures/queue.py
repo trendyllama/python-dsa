@@ -5,7 +5,7 @@ from src.data_structures.node import Node
 from .exceptions import EmptyQueueError
 
 
-class Queue:
+class Queue[T]:
     """
     - codecademy implementation of a queue
     """
@@ -33,13 +33,13 @@ class Queue:
         3
 
         """
-        self._head: Node | None = None
-        self._tail: Node | None = None
+        self._head: Node[T] | None = None
+        self._tail: Node[T] | None = None
         self._size: int = 0
-        self._iter_node: Node | None = None
+        self._iter_node: Node[T] | None = None
 
     @property
-    def head(self) -> Node | None:
+    def head(self) -> Node[T] | None:
         """
         - returns the head of the queue
         - the head is the first node in the queue
@@ -56,11 +56,11 @@ class Queue:
         return self._head
 
     @head.setter
-    def head(self, new_head: Node | None) -> None:
+    def head(self, new_head: Node[T] | None) -> None:
         self._head = new_head
 
     @property
-    def tail(self) -> Node | None:
+    def tail(self) -> Node[T] | None:
         """
         - returns the tail of the queue
         - the tail is the last node in the queue
@@ -76,7 +76,7 @@ class Queue:
         return self._tail
 
     @tail.setter
-    def tail(self, new_tail: Node | None) -> None:
+    def tail(self, new_tail: Node[T] | None) -> None:
         self._tail = new_tail
 
     @property
@@ -143,7 +143,7 @@ class Queue:
         """
         self.size -= 1
 
-    def enqueue(self, value):
+    def enqueue(self, value: T) -> None:
         """
         - adds a node to the end of the queue
 
@@ -190,7 +190,7 @@ class Queue:
         self.tail = new_node
         self._increase_size()
 
-    def dequeue(self):
+    def dequeue(self) -> None:
         """
         - removes the first node of the queue
 
@@ -233,7 +233,7 @@ class Queue:
         self.head = self.head.next_node
         self._decrease_size()
 
-    def peek(self):
+    def peek(self) -> T | None:
         """
 
         - returns the value of the first node in the queue

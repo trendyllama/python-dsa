@@ -5,14 +5,14 @@
 from typing import Self
 
 
-class Node:
+class Node[T]:
     """
     - codecademy implementation of a node
     """
 
     def __init__(
         self,
-        value,
+        value: T,
         next_node: Self | None = None,
         prev_node: Self | None = None,
     ) -> None:
@@ -83,7 +83,7 @@ class Node:
         self._prev_node = link_node
 
     @property
-    def value(self) -> Self | None:
+    def value(self) -> T | None:
         """
         - returns the value of the node
 
@@ -101,7 +101,7 @@ class Node:
         return self._value
 
     @value.setter
-    def value(self, new_value) -> None:
+    def value(self, new_value: T) -> None:
         self._value = new_value
 
     def __str__(self) -> str:

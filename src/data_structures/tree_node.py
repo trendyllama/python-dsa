@@ -8,12 +8,12 @@ from typing import Literal, Self
 logger = logging.getLogger(__name__)
 
 
-class TreeNode:
+class TreeNode[T]:
     """
     - treenode class for two value tree
     """
 
-    def __init__(self, value) -> None:
+    def __init__(self, value: T) -> None:
         self.value = value
         self.left_child: Self | None = None
         self.right_child: Self | None = None
@@ -26,19 +26,18 @@ class TreeNode:
         Examples:
         >>> node = TreeNode(1).add_child(TreeNode(2), "left")
         """
-        if left_or_right == "left":
-            if self.left_child is not None:
-                msg = "Left child already exists."
-                raise ValueError(msg)
-            self.left_child = child
-        elif left_or_right == "right":
-            if self.right_child is not None:
-                msg = "Right child already exists."
-                raise ValueError(msg)
-            self.right_child = child
-        else:
-            msg = "left_or_right must be 'left' or 'right'."
-            raise ValueError(msg)
+
+        match left_or_right:
+            case "left":
+                if self.left_child is not None:
+                    msg = "Left child already exists."
+                    raise ValueError(msg)
+                self.left_child = child
+            case "right":
+                if self.right_child is not None:
+                    msg = "Right child already exists."
+                    raise ValueError(msg)
+                self.right_child = child
 
         return self
 
@@ -48,7 +47,7 @@ class StoryTreeNode:
     - treenode class for sorted tale
     """
 
-    def __init__(self, story_piece) -> None:
+    def __init__(self, story_piece: str) -> None:
         self.story_piece = story_piece
         self.choices: list[Self] = []
 

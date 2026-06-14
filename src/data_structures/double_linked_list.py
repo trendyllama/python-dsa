@@ -1,7 +1,7 @@
 from .node import Node
 
 
-class DoublyLinkedList:
+class DoublyLinkedList[T]:
     """
     - codecademy implementation of a doubly linked list
     """
@@ -11,22 +11,14 @@ class DoublyLinkedList:
         self._tail_node = None
 
     @property
-    def head(self) -> Node | None:
+    def head(self) -> Node[T] | None:
         return self._head_node
 
-    @head.setter
-    def head(self, new_head: Node | None) -> None:
-        self._head_node = new_head
-
     @property
-    def tail(self) -> Node | None:
+    def tail(self) -> Node[T] | None:
         return self._tail_node
 
-    @tail.setter
-    def tail(self, new_tail: Node | None) -> None:
-        self._tail_node = new_tail
-
-    def add_to_head(self, new_value) -> None:
+    def add_to_head(self, new_value: T) -> None:
         new_head = Node(new_value)
         current_head = self.head_node
 
@@ -42,7 +34,7 @@ class DoublyLinkedList:
             case _:
                 return
 
-    def add_to_tail(self, new_value) -> None:
+    def add_to_tail(self, new_value: T) -> None:
         new_tail = Node(new_value)
         current_tail = self.tail_node
 
@@ -85,8 +77,8 @@ class DoublyLinkedList:
 
         return removed_tail.value
 
-    def remove_by_value(self, value_to_remove) -> None:
-        node_to_remove: Node | None = None
+    def remove_by_value(self, value_to_remove: T) -> None:
+        node_to_remove: Node[T] | None = None
         current_node = self.head_node
 
         while current_node is not None:
@@ -109,9 +101,6 @@ class DoublyLinkedList:
             case _:
                 next_node = node_to_remove.next_node
 
-        if node_to_remove is None:
-            raise ValueError
-
         if node_to_remove.previous_node is None:
             raise ValueError
 
@@ -128,22 +117,20 @@ class DoublyLinkedList:
 
     def stringify_list(self) -> str:
         string_list = ""
-        current_node = self.head_node
-        while current_node is not None:
-            if current_node.value is not None:
-                string_list += str(current_node.value) + "\n"
-            current_node = current_node.next_node
+
+        for node in self:
+            string_list += str(node) + "\n"
         return string_list
 
     def __iter__(self):
-        self.current_node = self.head_node
+        self._iter_node = self.head_node
         return self
 
     def __next__(self):
-        if self.current_node is None:
+        if self._iter_node is None:
             raise StopIteration
-        value = self.current_node.value
-        self.current_node = self.current_node.next_node
+        value = self._iter_node.value
+        self._iter_node = self._iter_node.next_node
         return value
 
     def __str__(self) -> str:
@@ -153,9 +140,7 @@ class DoublyLinkedList:
         return self.stringify_list()
 
     def __len__(self) -> int:
-        current_node = self.head_node
         count = 0
-        while current_node is not None:
+        for _ in self:
             count += 1
-            current_node = current_node.next_node
         return count

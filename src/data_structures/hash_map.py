@@ -11,7 +11,7 @@ from .node import Node
 logger = logging.getLogger(__name__)
 
 
-class HashMap:
+class HashMap[U: Hashable, V]:
     """
     - codecademy implementation of a hashmap
     """
@@ -29,15 +29,15 @@ class HashMap:
     def array(self) -> list:
         return [LinkedList() for _ in range(self.array_size)]
 
-    def hash(self, key: Hashable) -> int:
+    def hash(self, key: U) -> int:
         hash_code = hash(key)
         logger.debug("Hash code for key %s: %s", key, hash_code)
         return hash_code
 
-    def compress(self, hash_code):
+    def compress(self, hash_code: int) -> int:
         return hash_code % self.array_size
 
-    def assign(self, key: Hashable, value) -> None:
+    def assign(self, key: U, value: V) -> None:
         payload = Node([key, value])
         hash_code = self.hash(key)
         array_index = self.compress(hash_code)
@@ -49,7 +49,7 @@ class HashMap:
 
         list_at_array.insert(payload)
 
-    def retrieve(self, key: Hashable) -> list | None:
+    def retrieve(self, key: U) -> V | None:
         hash_code = self.hash(key)
         logger.debug("Hash code for key %s: %s", key, hash_code)
         array_index = self.compress(hash_code)

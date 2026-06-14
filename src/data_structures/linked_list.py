@@ -9,7 +9,7 @@ class MissingNodeError(Exception):
     pass
 
 
-class LinkedList:
+class LinkedList[T]:
     """
     - codecademy implementation of linked list
     """
@@ -60,7 +60,7 @@ class LinkedList:
         """
         return self.head_node is None
 
-    def append(self, new_node_value) -> None:
+    def append(self, new_node_value: T) -> None:
         """
         - adds a new node to the end of the linked list
         - if the linked list is empty, it sets the new node as the head node
@@ -85,7 +85,7 @@ class LinkedList:
                 return
             current_node = current_node.next_node
 
-    def delete(self, value_to_delete) -> None:
+    def delete(self, value_to_delete: T) -> None:
         """
         Examples:
         >>> linked_list = LinkedList()
@@ -113,7 +113,7 @@ class LinkedList:
 
             current_node = current_node.next_node
 
-    def insert(self, new_node_value, index) -> None:
+    def insert(self, new_node_value: T, index: int) -> None:
         """
         - inserts a new node at the given index
         - if the index is out of bounds, it raises an IndexError
@@ -229,7 +229,7 @@ class LinkedList:
         2
         3
         """
-        self.current_node = self.head_node
+        self._iter_node = self.head_node
         return self
 
     def __next__(self):
@@ -250,9 +250,9 @@ class LinkedList:
         >>> next(iterator)
         3
         """
-        if self.current_node is None:
+        if self._iter_node is None:
             raise StopIteration
 
-        value = self.current_node.value
-        self.current_node = self.current_node.next_node
+        value = self._iter_node.value
+        self._iter_node = self._iter_node.next_node
         return value
