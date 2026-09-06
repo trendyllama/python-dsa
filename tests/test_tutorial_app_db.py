@@ -54,10 +54,22 @@ async def test_database_initialization_is_idempotent(tmp_path: Path) -> None:
     assert recipe_count == 6
 
 
-async def test_database_initialization_adds_missing_seeded_records(tmp_path: Path) -> None:
+async def test_database_initialization_adds_missing_seeded_records(
+    tmp_path: Path,
+) -> None:
     engine = create_engine(tmp_path / "recipes.db")
 
-    await initialize_database(engine, {1: {"name": "Fried egg", "description": "Egg fried in butter", "ingredients": ["1 Egg"], "instructions": ["Cook it"]}})
+    await initialize_database(
+        engine,
+        {
+            1: {
+                "name": "Fried egg",
+                "description": "Egg fried in butter",
+                "ingredients": ["1 Egg"],
+                "instructions": ["Cook it"],
+            }
+        },
+    )
 
     await initialize_database(engine)
 

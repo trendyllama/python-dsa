@@ -35,6 +35,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
+        cache-dependency-path: src/tutorial_app/client/package-lock.json
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
@@ -44,6 +50,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install uv
         uv sync
+    - name: Build frontend
+      working-directory: src/tutorial_app/client
+      run: |
+        npm ci
+        npm run build
     - name: Build package
       run: uv build
     - name: Upload build artifacts

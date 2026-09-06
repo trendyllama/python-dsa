@@ -89,7 +89,6 @@ class Stack[T]:
     def head(self, new_top_item: Node[T] | None) -> None:
         self._head = new_top_item
 
-
     @property
     def limit(self) -> int:
         """
@@ -114,10 +113,8 @@ class Stack[T]:
     def limit(self, new_limit: int) -> None:
         self._limit = new_limit
 
-
     def _increase_size(self) -> None:
         self.size += 1
-
 
     def _decrease_size(self) -> None:
         self.size -= 1

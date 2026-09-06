@@ -15,6 +15,10 @@ def test_recipe_api_lists_seeded_recipes(tmp_path: Path) -> None:
     assert response.json() == [
         {"id": 1, "name": "Fried egg"},
         {"id": 2, "name": "Butter toast"},
+        {"id": 3, "name": "Pancakes"},
+        {"id": 4, "name": "Grilled cheese sandwich"},
+        {"id": 5, "name": "Tomato pasta"},
+        {"id": 6, "name": "Fruit smoothie"},
     ]
 
 

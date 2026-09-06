@@ -23,7 +23,11 @@ class Config[Index: int](Publisher):
     async def snapshot(self):
         # Simulate taking a snapshot of the current configuration
         async with self._lock:
-            return self._data.copy(), self._diffs.copy(), datetime.datetime.now(datetime.UTC)
+            return (
+                self._data.copy(),
+                self._diffs.copy(),
+                datetime.datetime.now(datetime.UTC),
+            )
 
     async def get(self, key: str):
         async with self._lock:

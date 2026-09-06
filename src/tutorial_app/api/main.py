@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -93,6 +94,10 @@ def build_app(db_path: Path) -> FastAPI:
         session: Annotated[AsyncSession, Depends(session_dependency)],
     ) -> RecipeResponse:
         return await get_recipe(session, recipe_id)
+
+    frontend_dir = Path(__file__).resolve().parents[1] / "dist"
+    if frontend_dir.is_dir():
+        app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
 
     return app
 

@@ -388,20 +388,16 @@ class DIError(Exception):
     """Base exception for dependency injection errors."""
 
 
-
 class ServiceNotRegisteredError(DIError):
     """Raised when attempting to resolve an unregistered service."""
-
 
 
 class CircularDependencyError(DIError):
     """Raised when a circular dependency is detected."""
 
 
-
 class AsyncServiceNotSupportedError(DIError):
     """Raised when trying to resolve async service synchronously."""
-
 
 
 # FastAPI integration helper

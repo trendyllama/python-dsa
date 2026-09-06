@@ -23,3 +23,17 @@ npm run dev
 
 The Vite development server proxies `/api` requests to the FastAPI server on
 `127.0.0.1:8000`.
+
+Build the frontend and Python distribution with `uv`:
+
+```bash
+cd src/tutorial_app/client
+npm ci
+npm run build
+cd ../../..
+uv build
+```
+
+The resulting wheel includes the React build under `tutorial_app/dist`, the
+configuration files under `tutorial_app/api/config`, and serves the frontend
+from FastAPI at `/`.

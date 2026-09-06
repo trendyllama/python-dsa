@@ -46,6 +46,13 @@
       "group": "build"
     },
     {
+      "label": "python package",
+      "type": "shell",
+      "command": "uv build",
+      "dependsOn": ["frontend build"],
+      "group": "build"
+    },
+    {
       "label": "lint and fix",
       "type": "shell",
       "command": "uv run ruff check --fix",
@@ -62,7 +69,8 @@
         "test",
         "typecheck",
         "frontend build",
-        "frontend lint"
+        "frontend lint",
+        "python package"
       ],
       "group": {
         "kind": "build",
