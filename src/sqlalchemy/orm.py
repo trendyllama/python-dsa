@@ -1,8 +1,9 @@
 import logging
 
+from sqlalchemy.ext.asyncio import create_async_engine
+
 import sqlalchemy as sa
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.ext.asyncio import create_async_engine
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)

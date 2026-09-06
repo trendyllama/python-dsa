@@ -182,7 +182,7 @@ if __name__ == "__main__":
     cache_arch.set_memory(Cache())
 
     # Architecture runs the instructions
-    cache_arch.read_instructions("ex9_instructions")
+    cache_arch.read_instructions(Path("ex9_instructions"))
 
     # This outputs the memory data and code execution time
     exec_time = cache_arch.get_exec_time()

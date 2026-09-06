@@ -1,0 +1,104 @@
+{
+  "1": {
+    "name": "Fried egg",
+    "description": "Egg fried in butter",
+    "ingredients": [
+      "1 pad of butter",
+      "1 Egg",
+      "A pinch of salt"
+    ],
+    "instructions": [
+      "Melt butter in pan over medium-low heat",
+      "Crack the egg into the buttered pan",
+      "Sprinkle the pinch of salt onto the cooking egg",
+      "Flip egg after about a minute and a half",
+      "Serve egg after about a minute and a half"
+    ]
+  },
+  "2": {
+    "name": "Butter toast",
+    "description": null,
+    "ingredients": [
+      "1 pad of salted butter",
+      "1 slice of bread"
+    ],
+    "instructions": [
+      "Put the bread in the toaster",
+      "Take the toast out of the toaster",
+      "Put the pad of butter on the toasted bread",
+      "After a minute spread the melted butter onto the bread"
+    ]
+  },
+  "3": {
+    "name": "Pancakes",
+    "description": "Fluffy pancakes served warm",
+    "ingredients": [
+      "1 cup of flour",
+      "1 tablespoon of sugar",
+      "1 teaspoon of baking powder",
+      "1 egg",
+      "3/4 cup of milk",
+      "1 tablespoon of melted butter"
+    ],
+    "instructions": [
+      "Whisk the flour, sugar, and baking powder together",
+      "Mix in the egg, milk, and melted butter",
+      "Heat a lightly buttered pan over medium heat",
+      "Pour batter into the pan and cook until bubbles form",
+      "Flip the pancake and cook until golden brown",
+      "Serve warm"
+    ]
+  },
+  "4": {
+    "name": "Grilled cheese sandwich",
+    "description": "Crispy bread with melted cheese",
+    "ingredients": [
+      "2 slices of bread",
+      "2 slices of cheddar cheese",
+      "1 tablespoon of butter"
+    ],
+    "instructions": [
+      "Butter one side of each slice of bread",
+      "Place one slice of bread butter-side down in a pan",
+      "Add the cheese and top with the second slice of bread",
+      "Cook until the bottom is golden brown",
+      "Flip and cook until the cheese melts and the other side is golden brown",
+      "Slice and serve"
+    ]
+  },
+  "5": {
+    "name": "Tomato pasta",
+    "description": "Pasta tossed in a simple tomato sauce",
+    "ingredients": [
+      "200 g of pasta",
+      "1 cup of tomato sauce",
+      "1 tablespoon of olive oil",
+      "1 clove of garlic",
+      "A pinch of salt",
+      "Grated parmesan to serve"
+    ],
+    "instructions": [
+      "Boil the pasta in salted water until tender",
+      "Warm the olive oil in a pan and cook the garlic briefly",
+      "Add the tomato sauce and simmer for five minutes",
+      "Drain the pasta and add it to the sauce",
+      "Toss until the pasta is coated",
+      "Top with parmesan and serve"
+    ]
+  },
+  "6": {
+    "name": "Fruit smoothie",
+    "description": "A quick blended fruit drink",
+    "ingredients": [
+      "1 banana",
+      "1 cup of frozen berries",
+      "1/2 cup of yogurt",
+      "1/2 cup of milk"
+    ],
+    "instructions": [
+      "Add all ingredients to a blender",
+      "Blend until smooth",
+      "Pour into a glass and serve immediately"
+    ]
+  }
+}

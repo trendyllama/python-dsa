@@ -58,11 +58,11 @@ class Game(TowersOfHanoiInterface):
         )
 
     def get_input(self) -> Stack:
-        choices = [stack.__qualname__[0] for stack in self.stacks]
+        choices = ["L", "M", "R"]
 
         while True:
-            for i, val in enumerate(self.stacks):
-                name = val.__qualname__
+            for i, _val in enumerate(self.stacks):
+                name = f"stack {choices[i]}"
 
                 letter = choices[i]
 
@@ -108,9 +108,12 @@ class Game(TowersOfHanoiInterface):
 
                         return move()
 
-                    if (
-                        to_stack.size == 0
-                        or from_stack.peek().value < to_stack.peek().value
+                    from_disk = from_stack.peek()
+                    to_disk = to_stack.peek()
+                    if to_stack.size == 0 or (
+                        from_disk is not None
+                        and to_disk is not None
+                        and from_disk < to_disk
                     ):
                         disk = from_stack.pop()
                         to_stack.push(disk)
@@ -134,7 +137,8 @@ class GameBuilder:
     def __init__(self, number_of_disks: int) -> None:
         self.number_of_disks = number_of_disks
 
-    def build(self) -> Game: ...
+    def build(self) -> Game:
+        return Game(self.number_of_disks)
 
 
 if __name__ == "__main__":

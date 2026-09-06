@@ -7,8 +7,6 @@ import logging
 from operator import gt
 from pathlib import Path
 
-from src.algorithms.quick_sort import quicksort
-
 from .sorts import bubble_sort
 from .utils import load_books
 
@@ -41,13 +39,13 @@ if __name__ == "__main__":
 
     bookshelf_v2 = bookshelf.copy()
 
-    quicksort(bookshelf_v2, 0, len(bookshelf_v2) - 1, by_author_ascending)
+    bookshelf_v2.sort(key=lambda book: book.author_lower)
 
     for book in bookshelf_v2:
-        logger.info(book["author"])
+        logger.info(book.author)
 
     long_bookshelf = load_books(Path("books_large.csv"))
 
     bubble_sort(long_bookshelf, by_total_length)
 
-    quicksort(long_bookshelf, 0, len(long_bookshelf) - 1, by_total_length)
+    long_bookshelf.sort(key=lambda book: len(book.title) + len(book.author))

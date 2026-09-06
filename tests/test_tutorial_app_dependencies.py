@@ -10,16 +10,16 @@ Tests cover:
 - Circular dependency detection
 """
 
-import pytest
 import asyncio
 from typing import Protocol
 
+import pytest
+
 from src.tutorial_app.api.dependencies import (
-    ServiceContainer,
-    ServiceScope,
-    ServiceNotRegisteredError,
-    CircularDependencyError,
     AsyncServiceNotSupportedError,
+    CircularDependencyError,
+    ServiceContainer,
+    ServiceNotRegisteredError,
     create_fastapi_dependency,
 )
 
@@ -28,18 +28,20 @@ from src.tutorial_app.api.dependencies import (
 class IRepository(Protocol):
     """Test interface for dependency."""
 
-    def get(self, id: int) -> str: ...
+    def get(self, item_id: int) -> str: ...
 
 
 class Repository:
     """Test repository service."""
 
+    initialized: bool = False
+
     def __init__(self):
         self.call_count = 0
 
-    def get(self, id: int) -> str:
+    def get(self, item_id: int) -> str:
         self.call_count += 1
-        return f"data_{id}"
+        return f"data_{item_id}"
 
 
 class ServiceWithDependency:
@@ -48,8 +50,8 @@ class ServiceWithDependency:
     def __init__(self, repository):
         self.repository = repository
 
-    def process(self, id: int) -> str:
-        return self.repository.get(id)
+    def process(self, item_id: int) -> str:
+        return self.repository.get(item_id)
 
 
 class ComplexService:
@@ -73,10 +75,10 @@ class AsyncRepository:
     def __init__(self):
         self.call_count = 0
 
-    async def get(self, id: int) -> str:
+    async def get(self, item_id: int) -> str:
         await asyncio.sleep(0.001)  # Simulate async work
         self.call_count += 1
-        return f"async_data_{id}"
+        return f"async_data_{item_id}"
 
 
 class ServiceWithAsyncDependency:
@@ -85,8 +87,8 @@ class ServiceWithAsyncDependency:
     def __init__(self, async_repository):
         self.async_repository = async_repository
 
-    async def process(self, id: int) -> str:
-        return await self.async_repository.get(id)
+    async def process(self, item_id: int) -> str:
+        return await self.async_repository.get(item_id)
 
 
 # Tests
@@ -326,7 +328,7 @@ class TestFactories:
             return ServiceWithDependency(repo)
 
         container.register(ServiceWithDependency).transient(factory)
-        service = container.resolve(ServiceWithDependency)
+        container.resolve(ServiceWithDependency)
 
         assert len(factory_calls) == 1
         assert isinstance(factory_calls[0], Repository)
@@ -376,7 +378,7 @@ class TestIntegration:
         try:
             service = container.resolve(ServiceWithDependency)
             all_resolved = service.repository is not None
-        except Exception:
+        except (AttributeError, TypeError, ServiceNotRegisteredError):
             all_resolved = False
 
         assert all_resolved
@@ -433,5 +435,3 @@ class TestRequestScope:
         container.clear_request_context(request_id=1)
         ctx_new = container.get_request_context(request_id=1)
         assert ctx_new is not ctx
-
-

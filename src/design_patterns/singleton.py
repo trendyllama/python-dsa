@@ -1,5 +1,5 @@
 import os
-from typing import ClassVar, Self
+from typing import ClassVar, Self, cast
 
 
 class SingletonMeta(type):
@@ -49,6 +49,6 @@ class ApplicationState:
 
     def __new__(cls) -> Self:
         if cls not in cls._instances:
-            cls.instance = super().__new__(cls)
+            cls._instances[cls] = super().__new__(cls)
 
-        return cls.instance
+        return cast(Self, cls._instances[cls])

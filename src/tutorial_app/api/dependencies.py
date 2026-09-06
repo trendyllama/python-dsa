@@ -6,26 +6,15 @@ Custom dependency injection container with support for:
 - Factory functions and automatic constructor injection
 """
 
+import inspect
+from collections import defaultdict
+from collections.abc import Awaitable, Callable
+from enum import Enum
 from typing import (
     Any,
-    Generic,
     Protocol,
-    TypeVar,
-    Union,
-    Optional,
     get_type_hints,
 )
-from collections.abc import Awaitable
-from collections.abc import Callable
-from abc import ABC, abstractmethod
-from enum import Enum
-import inspect
-import asyncio
-from collections import defaultdict
-
-
-# T = TypeVar("T")
-# ServiceFactory = Callable[..., T] | Callable[..., Any]
 
 
 class ServiceScope(Enum):
@@ -62,7 +51,7 @@ class ServiceDescriptor[T: Awaitable]:
                 for param in sig.parameters.values()
                 if param.annotation != inspect.Parameter.empty and param.name != "self"
             ]
-        except Exception:
+        except (NameError, TypeError):
             return []
 
     def is_coroutine_factory(self) -> bool:
@@ -73,11 +62,11 @@ class ServiceDescriptor[T: Awaitable]:
 class IServiceProvider[T](Protocol):
     """Protocol for service resolution."""
 
-    def resolve(self, service_type: type[T]) -> T:
+    def resolve(self, service_type: type[Any]) -> Any:
         """Resolve a service synchronously."""
         ...
 
-    async def resolve_async(self, service_type: type[T]) -> T:
+    async def resolve_async(self, service_type: type[Any]) -> Any:
         """Resolve a service asynchronously."""
         ...
 
@@ -138,7 +127,7 @@ class ServiceContainer[T: Awaitable]:
         """Register a service descriptor."""
         self._descriptors[service_type] = descriptor
 
-    def resolve(self, service_type: type[T]) -> T:
+    def resolve(self, service_type: type[Any]) -> Any:
         """
         Resolve a service synchronously.
 
@@ -154,23 +143,17 @@ class ServiceContainer[T: Awaitable]:
         """
         if service_type not in self._descriptors:
             msg = f"Service {service_type.__name__} is not registered"
-            raise ServiceNotRegisteredError(
-                msg
-            )
+            raise ServiceNotRegisteredError(msg)
 
         if service_type in self._resolution_stack:
             msg = f"Circular dependency detected for {service_type.__name__}"
-            raise CircularDependencyError(
-                msg
-            )
+            raise CircularDependencyError(msg)
 
         descriptor = self._descriptors[service_type]
 
         if descriptor.is_coroutine_factory():
             msg = f"Use resolve_async for async service {service_type.__name__}"
-            raise AsyncServiceNotSupportedError(
-                msg
-            )
+            raise AsyncServiceNotSupportedError(msg)
 
         # Handle singleton scope
         if descriptor.scope == ServiceScope.SINGLETON:
@@ -192,7 +175,7 @@ class ServiceContainer[T: Awaitable]:
         finally:
             self._resolution_stack.discard(service_type)
 
-    async def resolve_async(self, service_type: type[T]) -> T:
+    async def resolve_async(self, service_type: type[Any]) -> Any:
         """
         Resolve a service asynchronously.
 
@@ -208,15 +191,11 @@ class ServiceContainer[T: Awaitable]:
         """
         if service_type not in self._descriptors:
             msg = f"Service {service_type.__name__} is not registered"
-            raise ServiceNotRegisteredError(
-                msg
-            )
+            raise ServiceNotRegisteredError(msg)
 
         if service_type in self._resolution_stack:
             msg = f"Circular dependency detected for {service_type.__name__}"
-            raise CircularDependencyError(
-                msg
-            )
+            raise CircularDependencyError(msg)
 
         descriptor = self._descriptors[service_type]
 
@@ -244,7 +223,7 @@ class ServiceContainer[T: Awaitable]:
         """Resolve dependencies and call factory synchronously."""
         kwargs = {}
         for param_name, dep_type in self._get_dependencies(descriptor):
-            kwargs[param_name] = self.resolve(dep_type)
+            kwargs[param_name] = self.resolve(dep_type)  # type: ignore[arg-type]
         return descriptor.factory(**kwargs)
 
     async def _resolve_async(self, descriptor: ServiceDescriptor[T]) -> T:
@@ -255,11 +234,11 @@ class ServiceContainer[T: Awaitable]:
             if dep_type in self._descriptors:
                 dep_descriptor = self._descriptors[dep_type]
                 if dep_descriptor.is_coroutine_factory():
-                    kwargs[param_name] = await self.resolve_async(dep_type)
+                    kwargs[param_name] = await self.resolve_async(dep_type)  # type: ignore[arg-type]
                 else:
-                    kwargs[param_name] = self.resolve(dep_type)
+                    kwargs[param_name] = self.resolve(dep_type)  # type: ignore[arg-type]
             else:
-                kwargs[param_name] = self.resolve(dep_type)
+                kwargs[param_name] = self.resolve(dep_type)  # type: ignore[arg-type]
 
         if descriptor.is_coroutine_factory():
             return await descriptor.factory(**kwargs)
@@ -285,8 +264,12 @@ class ServiceContainer[T: Awaitable]:
                 service_type
                 for service_type in self._descriptors
                 if (
-                    service_type.__name__.replace("_", "").lower().startswith(parameter_name)
-                    or service_type.__name__.replace("_", "").lower().endswith(parameter_name)
+                    service_type.__name__.replace("_", "")
+                    .lower()
+                    .startswith(parameter_name)
+                    or service_type.__name__.replace("_", "")
+                    .lower()
+                    .endswith(parameter_name)
                 )
             ]
             if len(matches) == 1:
@@ -351,7 +334,7 @@ class ServiceRegistration[T: Awaitable]:
 
     def transient(
         self,
-        factory: Callable[[], T] | None = None,
+        factory: Callable[..., T] | None = None,
     ) -> ServiceContainer:
         """
         Register service as transient (new instance each time).
@@ -401,28 +384,24 @@ class ServiceRegistration[T: Awaitable]:
 
 
 # Exception classes
-class DIException(Exception):
+class DIError(Exception):
     """Base exception for dependency injection errors."""
 
-    pass
 
 
-class ServiceNotRegisteredError(DIException):
+class ServiceNotRegisteredError(DIError):
     """Raised when attempting to resolve an unregistered service."""
 
-    pass
 
 
-class CircularDependencyError(DIException):
+class CircularDependencyError(DIError):
     """Raised when a circular dependency is detected."""
 
-    pass
 
 
-class AsyncServiceNotSupportedError(DIException):
+class AsyncServiceNotSupportedError(DIError):
     """Raised when trying to resolve async service synchronously."""
 
-    pass
 
 
 # FastAPI integration helper

@@ -54,20 +54,10 @@ class HashMap[U: Hashable, V]:
         logger.debug("Hash code for key %s: %s", key, hash_code)
         array_index = self.compress(hash_code)
         logger.debug("Array index for key %s: %s", key, array_index)
-        payload: list = self.array[array_index]
-        list_at_index = Node([array_index, payload])
+        list_at_index = self.array[array_index]
 
-        if payload[0] == key:
-            logger.debug("Key found: %s", key)
-            logger.debug("Value: %s", payload[1])
-            return payload[1]
-
-        if payload is None or payload[0] != key:
-            return None
-
-        for i in list_at_index:
-            logger.debug("Checking key: %s", i[0])
-            if i[0] == key:
-                return i[1]
-            else:
-                return None
+        for item in list_at_index:
+            logger.debug("Checking key: %s", item[0])
+            if item[0] == key:
+                return item[1]
+        return None

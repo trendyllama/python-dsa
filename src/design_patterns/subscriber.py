@@ -1,8 +1,6 @@
-
-
 import asyncio
 import datetime
-from typing import Protocol, Any
+from typing import Any, Protocol
 
 
 class DiffSubscriber(Protocol):
@@ -17,17 +15,17 @@ class Publisher(Protocol):
 
 class Config[Index: int](Publisher):
     def __init__(self):
-        self._data = {}
-        self._diffs: dict[tuple[str, Index], dict[str, Any]] = {}
+        self._data: dict[str, Any] = {}
+        self._diffs: dict[tuple[str, int], dict[str, Any]] = {}
         self._subscribers: list[DiffSubscriber] = []
         self._lock = asyncio.Lock()
 
     async def snapshot(self):
         # Simulate taking a snapshot of the current configuration
         async with self._lock:
-            return self._data.copy(), self._diffs.copy(), datetime.datetime.now()
+            return self._data.copy(), self._diffs.copy(), datetime.datetime.now(datetime.UTC)
 
-    async def get(self, key):
+    async def get(self, key: str):
         async with self._lock:
             return self._data.get(key, None)
 
@@ -46,19 +44,20 @@ class Config[Index: int](Publisher):
         for subscriber in subscribers:
             await subscriber.receive_diff(diff)
 
-    async def put(self, key, value):
+    async def put(self, key: str, value: Any):
         async with self._lock:
             old_value = self._data.get(key, None)
             self._data[key] = value
 
             max_idx = max((idx for (_, idx) in self._diffs), default=0)
-            diff = {
+            version = max_idx + 1
+            diff: dict[str, Any] = {
                 "key": key,
                 "old": old_value,
                 "new": value,
-                "version": max_idx + 1,
+                "version": version,
             }
-            self._diffs[(key, diff["version"])] = diff
+            self._diffs[(key, version)] = diff
 
         await self._notify_diff_listeners(diff)
 

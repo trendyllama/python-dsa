@@ -14,7 +14,7 @@ def timed_context():
     start_time = time.perf_counter()
     yield
     end_time = time.perf_counter()
-    logger.info("%s took %.4f seconds to complete.", end_time - start_time)
+    logger.info("%.4f seconds to complete.", end_time - start_time)
 
 
 def _display_iris():

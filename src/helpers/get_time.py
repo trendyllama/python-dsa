@@ -20,7 +20,7 @@ def get_time(func: Callable) -> Callable:
 
         elp = time.perf_counter() - s
 
-        logger.debug("%s executed in %s seconds", func.__name__, elp)
+        logger.debug("%s executed in %s seconds", getattr(func, "__name__", func), elp)
 
     return wrapper
 

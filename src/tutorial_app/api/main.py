@@ -3,11 +3,13 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated
 
-import sqlalchemy as sa
 from fastapi import Depends, FastAPI, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
+import sqlalchemy as sa
+
+from .configuration import load_seed_recipes
 from .db import (
     Ingredient,
     Instruction,
@@ -32,13 +34,17 @@ class RecipeResponse(RecipeSummary):
 
 async def list_recipes(session: AsyncSession) -> list[RecipeSummary]:
     result = await session.execute(sa.select(Recipe).order_by(Recipe.id))
-    return [RecipeSummary(id=recipe.id, name=recipe.name) for recipe in result.scalars()]
+    return [
+        RecipeSummary(id=recipe.id, name=recipe.name) for recipe in result.scalars()
+    ]
 
 
 async def get_recipe(session: AsyncSession, recipe_id: int) -> RecipeResponse:
     recipe = await session.get(Recipe, recipe_id)
     if recipe is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Recipe not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Recipe not found"
+        )
 
     ingredients_result = await session.execute(
         sa.select(Ingredient.name)
@@ -65,7 +71,7 @@ def build_app(db_path: Path) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(_: FastAPI):
-        await initialize_database(engine)
+        await initialize_database(engine, load_seed_recipes())
         yield
         await close_engine(engine)
 

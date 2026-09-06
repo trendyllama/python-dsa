@@ -1,10 +1,46 @@
 {
-  "configurations": [
-    {
-      "name": "pytest",
-      "type": "debugpy",
-      "request": "launch",
-      "module": "pytest"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "pytest",
+			"type": "debugpy",
+			"request": "launch",
+			"module": "pytest"
+		},
+		{
+			"name": "Backend: FastAPI",
+			"type": "debugpy",
+			"request": "launch",
+			"module": "uvicorn",
+			"cwd": "${workspaceFolder}",
+			"args": [
+				"src.tutorial_app.api.main:app",
+				"--host",
+				"127.0.0.1",
+				"--port",
+				"8000",
+				"--reload"
+			],
+			"jinja": true,
+			"justMyCode": true
+		},
+		{
+			"name": "Frontend: Vite",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "npm run dev -- --host 127.0.0.1",
+			"cwd": "${workspaceFolder}/src/tutorial_app/client"
+		}
+	],
+	"compounds": [
+		{
+			"name": "Tutorial app: frontend + backend",
+			"configurations": [
+				"Backend: FastAPI",
+				"Frontend: Vite"
+			],
+			"stopAll": true
+		}
+	]
 }
+

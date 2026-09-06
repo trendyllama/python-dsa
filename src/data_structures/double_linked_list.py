@@ -51,7 +51,7 @@ class DoublyLinkedList[T]:
         removed_head = self.head_node
 
         if removed_head is None:
-            return None
+            return
 
         self.head_node = removed_head.next_node
 
@@ -90,7 +90,7 @@ class DoublyLinkedList[T]:
 
         match node_to_remove:
             case None:
-                return None
+                return
 
             case self.head_node:
                 self.remove_head()

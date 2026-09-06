@@ -1,4 +1,4 @@
-""" """
+"""Palindrome checking examples."""
 
 import logging
 from typing import Protocol

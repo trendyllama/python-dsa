@@ -1,11 +1,11 @@
 from logging.config import dictConfig
+from typing import Any
 
-
-from app.context import AppContext, LoggingConfig
+AppContext = Any
+LoggingConfig = Any
 
 
 def init_logger(app_context: AppContext) -> None:
-
 
     config = {
         "version": 1,
@@ -28,6 +28,5 @@ def init_logger(app_context: AppContext) -> None:
             },
         },
     }
-
 
     dictConfig(config)

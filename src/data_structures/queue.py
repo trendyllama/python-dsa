@@ -168,7 +168,7 @@ class Queue[T]:
 
             self._increase_size()
 
-            return None
+            return
 
         if self.size == 1:
             new_node = Node(value, self.head, None)
@@ -182,7 +182,7 @@ class Queue[T]:
 
             self._increase_size()
 
-            return None
+            return
 
         # this is the last node in the queue
         new_node = Node(value, self.tail, None)
@@ -218,14 +218,14 @@ class Queue[T]:
             self.tail = None
             self._decrease_size()
 
-            return None
+            return
 
         if self.size == 2:
             self.head = self.tail
             self.tail = self.head
             self._decrease_size()
 
-            return None
+            return
 
         if self.head is None or self.tail is None:
             raise RuntimeError

@@ -7,23 +7,19 @@ This repository is a Python learning project for data structures, algorithms, an
 
 
 ## Recommended commands
-Use the repository's `uv` tasks and `pyproject.toml` settings.
-- `uv run format` — format code with `ruff`.
-- `uv run lint` — run lint checks with `ruff`.
-- `uv run test` — run tests with `pytest`.
+
 
 - Do not use ripgrep (`rg`)
 
-For manual commands:
-- `python -m pytest`
-- `python -m ruff check`
-- `python -m ruff format`
+- Prefer using the tasks in `.vscode/tasks.json` to generated commands
+
 
 ## What to inspect first
 - `pyproject.toml` for dependency, formatter, and lint configuration.
 - `README.md` for the project description.
 - `src/` for algorithm, data structure, and Codecademy example modules.
 - `tests/` for expected behavior and usage patterns.
+- `.vscode/tasks.json` for build, test, and lint commands
 
 
 ## Useful references

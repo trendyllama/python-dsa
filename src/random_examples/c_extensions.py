@@ -1,6 +1,5 @@
-from ctypes import CDLL
 import logging
-
+from ctypes import CDLL
 
 if __name__ == "__main__":
     # Configure logging and load the shared library

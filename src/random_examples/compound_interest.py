@@ -1,5 +1,5 @@
 import logging
-from enum import unique, IntEnum
+from enum import IntEnum, unique
 from math import e
 from typing import Protocol, runtime_checkable
 

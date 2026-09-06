@@ -25,7 +25,7 @@ def main():
     def user_click():
         logger.info("User clicked button")
 
-    button = tk.Button(root, text="Click Me!", font=("Arial", 18), command=user_click)  # type: ignore
+    button = tk.Button(root, text="Click Me!", font=("Arial", 18), command=user_click)
     button.pack(padx=10, pady=10)
 
     logger.debug("Entering main loop")

@@ -89,7 +89,6 @@ class Stack[T]:
     def head(self, new_top_item: Node[T] | None) -> None:
         self._head = new_top_item
 
-        return None
 
     @property
     def limit(self) -> int:
@@ -115,16 +114,13 @@ class Stack[T]:
     def limit(self, new_limit: int) -> None:
         self._limit = new_limit
 
-        return None
 
     def _increase_size(self) -> None:
         self.size += 1
 
-        return None
 
     def _decrease_size(self) -> None:
         self.size -= 1
-        return None
 
     def push(self, value: T) -> None:
         """
@@ -144,14 +140,14 @@ class Stack[T]:
         if self.is_empty:
             self.head = Node(value, None)
             self._increase_size()
-            return None
+            return
 
         if self.has_space:
             item = Node(value, self.head)
 
             self.head = item
             self._increase_size()
-            return None
+            return
 
         raise StackOverflowError
 
@@ -179,7 +175,7 @@ class Stack[T]:
         if self.size == 1:
             self.head = None
             self.size = 0
-            return None
+            return
 
         if self.head is None:
             raise RuntimeError
@@ -187,7 +183,7 @@ class Stack[T]:
         self.head = self.head.next_node
         self._decrease_size()
 
-        return None
+        return
 
     def peek(self) -> T | None:
         """
