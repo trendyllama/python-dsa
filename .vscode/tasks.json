@@ -20,6 +20,25 @@
       "group": "test"
     },
     {
+      "label": "frontend build",
+      "type": "shell",
+      "command": "npm run build",
+      "options": {
+        "cwd": "${workspaceFolder}/src/tutorial_app/client"
+      },
+      "problemMatcher": ["$tsc"],
+      "group": "build"
+    },
+    {
+      "label": "frontend lint",
+      "type": "shell",
+      "command": "npm run lint",
+      "options": {
+        "cwd": "${workspaceFolder}/src/tutorial_app/client"
+      },
+      "group": "build"
+    },
+    {
       "label": "lint and fix",
       "type": "shell",
       "command": "uv run ruff check --fix",
@@ -30,9 +49,16 @@
     },
     {
       "label": "main workflow",
-      "dependsOn": ["format", "lint", "test"],
+      "dependsOn": [
+        "format",
+        "lint",
+        "test",
+        "frontend build",
+        "frontend lint"
+      ],
       "group": {
         "kind": "build",
+        "isDefault": true
       }
     }
   ]

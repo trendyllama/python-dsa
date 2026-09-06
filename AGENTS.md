@@ -12,6 +12,8 @@ Use the repository's `uv` tasks and `pyproject.toml` settings.
 - `uv run lint` — run lint checks with `ruff`.
 - `uv run test` — run tests with `pytest`.
 
+- Do not use ripgrep (`rg`)
+
 For manual commands:
 - `python -m pytest`
 - `python -m ruff check`

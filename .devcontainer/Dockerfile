@@ -1,4 +1,5 @@
 
-FROM mcr.microsoft.com/devcontainers/base:alpine
+FROM alpine:latest
 
-RUN apk add git uv bash 
+RUN apk update && apk add uv git nodejs npm ripgrep
+
